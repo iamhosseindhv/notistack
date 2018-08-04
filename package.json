@@ -1,0 +1,27 @@
+{
+  "name": "notistack",
+  "version": "0.1.1",
+  "description": "Highly customisable notification snackbars (Material-UI Snackbar) that can be stacked on top of each other",
+  "main": "src/index.js",
+  "repository": {
+    "url": "https://github.com/iamhosseindhv/notistack",
+    "type": "git"
+  },
+  "author": "Hossein Dehnokhalaji",
+  "keywords": [
+    "react",
+    "javascript",
+    "stacked",
+    "snackbar",
+    "notification",
+    "material-ui",
+    "material ui"
+  ],
+  "homepage": "https://github.com/iamhosseindhv/notistack",
+  "bugs": "https://github.com/iamhosseindhv/notistack/issues",
+  "contributors": [
+    "Your Friend <their-email@example.com> (http://their-website.com)",
+    "Another Friend <another-email@example.com> (https://another-website.org)"
+  ],
+  "license": "MIT"
+}
