@@ -1,3 +1,3 @@
-import SnackbarItem from "./SnackbarItem";
+import SnackbarItem from './SnackbarItem';
 
 export default SnackbarItem;

@@ -8,24 +8,6 @@
     "type": "git"
   },
   "author": "Hossein Dehnokhalaji",
-  "keywords": [
-    "react",
-    "javascript",
-    "stacked",
-    "snackbar",
-    "notification",
-    "material-ui",
-    "material ui"
-  ],
-  "homepage": "https://github.com/iamhosseindhv/notistack",
-  "bugs": {
-    "url": "https://github.com/iamhosseindhv/notistack/issues"
-  },
-  "contributors": [
-    "Your Friend <their-email@example.com> (http://their-website.com)",
-    "Another Friend <another-email@example.com> (https://another-website.org)"
-  ],
-  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
@@ -38,18 +20,38 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-2": "^6.5.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.26.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-react": "^7.10.0",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "babel-runtime": "^6.26.0"
+    "react-dom": "^16.4.2"
   },
   "dependencies": {
     "@material-ui/core": "^1.4.3",
     "react-scripts": "1.1.4"
-  }
+  },
+  "homepage": "https://github.com/iamhosseindhv/notistack",
+  "bugs": {
+    "url": "https://github.com/iamhosseindhv/notistack/issues"
+  },
+  "contributors": [
+    "Hossein Dehnokhalaji (https://www.linkedin.com/in/iamhosseindhv/)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "javascript",
+    "material-ui",
+    "stacked",
+    "snackbar",
+    "notification"
+  ]
 }

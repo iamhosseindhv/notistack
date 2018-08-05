@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-
 import { styles, getTransitionStyles } from './SnackbarItem.styles';
-import { variantIcon, TransitionComponent } from './SnackbarItem.util';
+import {
+    variantIcon,
+    TransitionComponent,
+    getTransitionDirection
+} from './SnackbarItem.util';
 
 
 class SnackbarItem extends Component {
 
     getTransitionStyles = index => {
-        //FIXME: fix styling rows based on position when specified in anchorOrigin
         return getTransitionStyles(index, this.props.anchorOrigin);
     };
 
@@ -26,13 +28,18 @@ class SnackbarItem extends Component {
             level,
             snack: { message, variant, key, open },
             onExited,
-            ...props,
+            anchorOrigin,
+            ...props
         } = this.props;
 
         return (
             <Snackbar
                 {...props}
                 open={open}
+                TransitionProps={{
+                    direction: getTransitionDirection(anchorOrigin)
+                }}
+                anchorOrigin={anchorOrigin}
                 style={this.getTransitionStyles(level)}
                 onClose={this.handleClose(key)}
                 onExited={event => onExited(key)}
@@ -49,10 +56,10 @@ class SnackbarItem extends Component {
                 />
             </Snackbar>
         );
-    };
+    }
 }
 
-SnackbarItem.classNames = {
+SnackbarItem.propTypes = {
     classes: PropTypes.object.isRequired,
     level: PropTypes.number.isRequired,
     snack: PropTypes.shape({
@@ -65,6 +72,7 @@ SnackbarItem.classNames = {
     }).isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
+    anchorOrigin: PropTypes.object,
 };
 
 SnackbarItem.defaultProps = {

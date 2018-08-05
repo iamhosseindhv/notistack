@@ -1,9 +1,9 @@
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
-import { 
+import {
     TRANSITION_DELAY,
     TRANSITION_DOWN_DURATION,
-} from '../utils/constants'; 
+} from '../utils/constants';
 
 const styles = theme => ({
     success: {
@@ -37,8 +37,7 @@ const styles = theme => ({
 const getTransitionStyles = (level, anchorOrigin) => {
     return Object.assign(
         {
-            bottom: (level * 48) + 20,
-            marginBottom: (level * 16)
+            [anchorOrigin.vertical]: (level * 48) + (level * 16) + 20,
         },
         {
             WebKitTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
@@ -47,11 +46,6 @@ const getTransitionStyles = (level, anchorOrigin) => {
             OTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
             transition: `all ${TRANSITION_DOWN_DURATION}ms`,
             transitionDelay: `${TRANSITION_DELAY}ms`,
-            WebkitTransform: 'translatez(0)',
-            MozTransform: 'translatez(0)',
-            msTransform: 'translatez(0)',
-            OTransform: 'translatez(0)',
-            transform: 'translatez(0)',
         }
     );
 };
