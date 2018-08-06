@@ -7,15 +7,15 @@
     "url": "git+https://github.com/iamhosseindhv/notistack.git",
     "type": "git"
   },
-  "author": "Hossein Dehnokhalaji",
+  "author": {
+    "name": "Hossein Dehnokhalaji",
+    "email": "hossein.dehnavi98@yahoo.com",
+    "url": "https://github.com/iamhosseindhv/notistack"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
     "build": "webpack"
-  },
-  "peerDependencies": {
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -34,9 +34,10 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@material-ui/core": "^1.4.3",
-    "react-scripts": "1.1.4"
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
   },
   "homepage": "https://github.com/iamhosseindhv/notistack",
   "bugs": {
