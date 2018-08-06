@@ -1,0 +1,56 @@
+{
+    "name": "notistack",
+    "description": "Demo for NotiStack",
+    "repository": {
+        "url": "git+https://github.com/iamhosseindhv/notistack.git",
+        "type": "git"
+    },
+    "author": {
+        "name": "Hossein Dehnokhalaji",
+        "email": "hossein.dehnavi98@yahoo.com",
+        "url": "https://github.com/iamhosseindhv/notistack"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack-dev-server --mode development"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.5.0",
+        "babel-preset-stage-2": "^6.5.0",
+        "babel-runtime": "^6.26.0",
+        "html-webpack-plugin": "^3.2.0",
+        "webpack": "^4.16.5",
+        "webpack-cli": "^3.1.0",
+        "webpack-dev-server": "^3.1.5",
+        "@material-ui/core": "^1.4.3",
+        "react": "^16.4.2",
+        "react-dom": "^16.4.2"
+    },
+    "peerDependencies": {},
+    "homepage": "https://github.com/iamhosseindhv/notistack",
+    "bugs": {
+        "url": "https://github.com/iamhosseindhv/notistack/issues"
+    },
+    "contributors": [
+        "Hossein Dehnokhalaji (https://www.linkedin.com/in/iamhosseindhv/)"
+    ],
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "javascript",
+        "material-ui",
+        "stacked",
+        "snackbar",
+        "notification"
+    ],
+    "dependencies": {
+        "@material-ui/core": "^1.4.3",
+        "@material-ui/icons": "^2.0.1"
+    }
+}
