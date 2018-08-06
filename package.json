@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.0.11",
+    "version": "0.1.0",
     "description": "Highly customisable notification snackbars (Material-UI Snackbar) that can be stacked on top of each other",
     "main": "build/index.js",
     "repository": {
