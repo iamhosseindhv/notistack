@@ -1,4 +1,5 @@
 # notistack
+> Big hero banner here
 Highly customisable notification snackbars that can be stacked on top of each other
 
 ## Usage
@@ -8,9 +9,14 @@ npm install notistack
 yarn add notistack 
 ```
 
-```javscript
-const snippet = goes here.
-```
+> short usage snippet (
+>    a. wrap your (entire) app inside `SnackbarProvider`
+>    b. export any component that pushes notification with `withSnackbar` HOC
+>    c. now you have access to `onPresentSnackbar` in your component that can be used to push/add notification to the central snackbar.
+> )
+
+
+> some nice gifs
 
 ### Demo
 You can see the online demo at: `_______`.
