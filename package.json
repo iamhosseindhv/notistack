@@ -1,58 +1,56 @@
 {
-  "name": "notistack",
-  "version": "0.0.2",
-  "description": "Highly customisable notification snackbars (Material-UI Snackbar) that can be stacked on top of each other",
-  "main": "build/index.js",
-  "repository": {
-    "url": "git+https://github.com/iamhosseindhv/notistack.git",
-    "type": "git"
-  },
-  "author": {
-    "name": "Hossein Dehnokhalaji",
-    "email": "hossein.dehnavi98@yahoo.com",
-    "url": "https://github.com/iamhosseindhv/notistack"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --watch",
-    "build": "webpack"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-2": "^6.5.0",
-    "babel-runtime": "^6.26.0",
-    "eslint": "^5.3.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-plugin-react": "^7.10.0",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
-  },
-  "peerDependencies": {
-    "@material-ui/core": "^1.4.3",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2"
-  },
-  "homepage": "https://github.com/iamhosseindhv/notistack",
-  "bugs": {
-    "url": "https://github.com/iamhosseindhv/notistack/issues"
-  },
-  "contributors": [
-    "Hossein Dehnokhalaji (https://www.linkedin.com/in/iamhosseindhv/)"
-  ],
-  "license": "MIT",
-  "keywords": [
-    "react",
-    "javascript",
-    "material-ui",
-    "stacked",
-    "snackbar",
-    "notification"
-  ]
+    "name": "notistack",
+    "version": "0.0.11",
+    "description": "Highly customisable notification snackbars (Material-UI Snackbar) that can be stacked on top of each other",
+    "main": "build/index.js",
+    "repository": {
+        "url": "git+https://github.com/iamhosseindhv/notistack.git",
+        "type": "git"
+    },
+    "author": {
+        "name": "Hossein Dehnokhalaji",
+        "email": "hossein.dehnavi98@yahoo.com",
+        "url": "https://github.com/iamhosseindhv/notistack"
+    },
+    "scripts": {
+        "transpile": "babel src -d build --copy-files",
+        "prepublishOnly": "npm run transpile"
+    },
+    "peerDependencies": {
+        "react": "^16.4.2",
+        "react-dom": "^16.4.2",
+        "@material-ui/core": "^1.4.3"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.5.0",
+        "babel-preset-stage-2": "^6.5.0",
+        "babel-runtime": "^6.26.0",
+        "react": "^16.4.2",
+        "react-dom": "^16.4.2",
+        "@material-ui/core": "^1.4.3"
+    },
+    "dependencies": {},
+    "homepage": "https://github.com/iamhosseindhv/notistack",
+    "bugs": {
+        "url": "https://github.com/iamhosseindhv/notistack/issues"
+    },
+    "contributors": [
+        "Hossein Dehnokhalaji (https://www.linkedin.com/in/iamhosseindhv/)"
+    ],
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "javascript",
+        "material-ui",
+        "snackbar",
+        "stacked",
+        "notification",
+        "material design"
+    ]
 }
