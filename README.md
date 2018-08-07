@@ -31,3 +31,8 @@ npm install
 cd demo && npm install
 npm start
 ```
+
+
+### TODO
+- [ ] Support for customization of snackbars
+- [ ] Some snackbars should get dismissed after timeout and some other should only get dissmissed when user clicks on dismiss/close button.
