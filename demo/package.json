@@ -48,6 +48,7 @@
     ],
     "dependencies": {
         "@material-ui/core": "^1.4.3",
+        "@material-ui/docs": "^1.0.0-alpha.4",
         "@material-ui/icons": "^2.0.1",
         "prop-types": "^15.6.2",
         "react": "^16.4.2",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
@@ -12,13 +12,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import Grid from '@material-ui/core/Grid';
+import Layout from './Layout';
 
 const styles = theme => ({
-    root: {
-        display: 'flex',
-        margin: 8 * 2,
-        backgroundColor: '#f2f2f2',
-    },
     formControl: {
         margin: theme.spacing.unit * 3,
     },
@@ -74,77 +71,89 @@ class ConfigButtons extends React.Component {
         } = this.props;
 
         return (
-            <Paper className={classes.root} elevation={2}>
-                <FormControl component="fieldset" className={classes.formControl} row={false}>
-                    <FormLabel component="legend">
-                        Vertical
-                    </FormLabel>
-                    <RadioGroup
-                        row
-                        name="anchorVertical"
-                        className={classes.group}
-                        value={anchorVertical}
-                        onChange={onChangeRadio}
-                    >
-                        <FormControlLabel value="top" control={<Radio />} label="Top" />
-                        <FormControlLabel value="bottom" control={<Radio />} label="Bottom" />
-                    </RadioGroup>
-                </FormControl>
-                <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel component="legend">
-                        Horizontal
-                    </FormLabel>
-                    <RadioGroup
-                        row
-                        name="anchorHorizontal"
-                        className={classes.group}
-                        value={anchorHorizontal}
-                        onChange={onChangeRadio}
-                    >
-                        <FormControlLabel value="left" control={<Radio />} label="Left" />
-                        <FormControlLabel value="center" control={<Radio />} label="Center" />
-                        <FormControlLabel value="right" control={<Radio />} label="Right" />
-                    </RadioGroup>
-                </FormControl>
-                <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel component="legend">
-                        Max Snack
-                    </FormLabel>
-                    <TextField
-                        disabled
-                        value={maxSnack}
-                        className={classes.textField}
-                        InputProps={{
-                            startAdornment: (
-                                <Andornified
-                                    icon={<RemoveIcon />}
-                                    classes={{ root: classes.andornmentBtn }}
-                                    onClick={this.handleChangeInput('remove')}
+            <Layout>
+                <Fragment>
+                    <Grid item xs={12} container>
+                        <Grid item xs={12} sm={6}>
+                            <FormControl component="fieldset" className={classes.formControl} row>
+                                <FormLabel component="legend">
+                                    Vertical
+                                </FormLabel>
+                                <RadioGroup
+                                    name="anchorVertical"
+                                    className={classes.group}
+                                    value={anchorVertical}
+                                    onChange={onChangeRadio}
+                                >
+                                    <FormControlLabel value="top" control={<Radio />} label="Top" />
+                                    <FormControlLabel value="bottom" control={<Radio />} label="Bottom" />
+                                </RadioGroup>
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <FormControl component="fieldset" className={classes.formControl}>
+                                <FormLabel component="legend">
+                                    Horizontal
+                                </FormLabel>
+                                <RadioGroup
+                                    name="anchorHorizontal"
+                                    className={classes.group}
+                                    value={anchorHorizontal}
+                                    onChange={onChangeRadio}
+                                >
+                                    <FormControlLabel value="left" control={<Radio />} label="Left" />
+                                    <FormControlLabel value="center" control={<Radio />} label="Center" />
+                                    <FormControlLabel value="right" control={<Radio />} label="Right" />
+                                </RadioGroup>
+                            </FormControl>
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={12} container>
+                        <Grid item xs={12} sm={6}>
+                            <FormControl component="fieldset" className={classes.formControl}>
+                                <FormLabel component="legend">
+                                    Max Snack
+                                </FormLabel>
+                                <TextField
+                                    disabled
+                                    value={maxSnack}
+                                    className={classes.textField}
+                                    InputProps={{
+                                        startAdornment: (
+                                            <Andornified
+                                                icon={<RemoveIcon />}
+                                                classes={{ root: classes.andornmentBtn }}
+                                                onClick={this.handleChangeInput('remove')}
+                                            />
+                                        ),
+                                        endAdornment: (
+                                            <Andornified
+                                                icon={<AddIcon />}
+                                                classes={{ root: classes.andornmentBtn }}
+                                                onClick={this.handleChangeInput('add')}
+                                            />
+                                        ),
+                                    }}
                                 />
-                            ),
-                            endAdornment: (
-                                <Andornified
-                                    icon={<AddIcon />}
-                                    classes={{ root: classes.andornmentBtn }}
-                                    onClick={this.handleChangeInput('add')}
+                            </FormControl>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <FormControl component="fieldset" className={classes.formControl}>
+                                <FormLabel component="legend">
+                                    Dismiss Duration
+                                </FormLabel>
+                                <TextField
+                                    type="number"
+                                    name="autoHideDuration"
+                                    value={autoHideDuration}
+                                    className={classes.textField}
+                                    onChange={this.handleChange}
                                 />
-                            ),
-                        }}
-                    />
-                </FormControl>
-                <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel component="legend">
-                        Dismiss Duration
-                    </FormLabel>
-                    <TextField
-                        type="number"
-                        name="autoHideDuration"
-                        value={autoHideDuration}
-                        className={classes.textField}
-                        onChange={this.handleChange}
-                    />
-                </FormControl>
-            </Paper>
+                            </FormControl>
+                        </Grid>
+                    </Grid>
+                </Fragment>
+            </Layout>
         );
     }
 }

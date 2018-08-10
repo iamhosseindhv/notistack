@@ -1,8 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import { SnackbarProvider } from '../src';
 import MessageButtons from './MessageButtons';
 import ConfigButtons from './ConfigButtons';
 
+const styles = {
+    root: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#fafafa',
+    },
+};
 
 class App extends Component {
     state = {
@@ -21,6 +30,7 @@ class App extends Component {
     );
 
     render() {
+        const { classes } = this.props;
         const {
             maxSnack,
             anchorVertical,
@@ -36,9 +46,9 @@ class App extends Component {
                     vertical: anchorVertical,
                     horizontal: anchorHorizontal,
                 }}
-            // transitionDuration={{ exit: 380, enter: 400 }}
+                // transitionDuration={{ exit: 380, enter: 400 }}
             >
-                <Fragment>
+                <div className={classes.root}>
                     <ConfigButtons
                         maxSnack={maxSnack}
                         anchorVertical={anchorVertical}
@@ -48,10 +58,14 @@ class App extends Component {
                         onChangeInput={this.handleChangeInput}
                     />
                     <MessageButtons />
-                </Fragment>
+                </div>
             </SnackbarProvider>
         );
     }
 }
 
-export default App;
+App.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(App);
