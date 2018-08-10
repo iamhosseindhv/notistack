@@ -31,11 +31,11 @@ const styles = theme => ({
 /**
  * @param {object} anchorOrigin - how snack is postioned. e.g.
  * { vertical: 'bottom', horizontal: 'left' }
- * @param {number} level - Level on which snakcbar should be displayed 
+ * @param {number} level - Level on which snakcbar should be displayed
  * (when snackbars are stacked on top of eachother)
  */
-const getTransitionStyles = (level, anchorOrigin) => {
-    return Object.assign(
+const getTransitionStyles = (level, anchorOrigin) => (
+    Object.assign(
         {
             [anchorOrigin.vertical]: (level * 48) + (level * 16) + 20,
         },
@@ -46,9 +46,9 @@ const getTransitionStyles = (level, anchorOrigin) => {
             OTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
             transition: `all ${TRANSITION_DOWN_DURATION}ms`,
             transitionDelay: `${TRANSITION_DELAY}ms`,
-        }
-    );
-};
+        },
+    )
+);
 
 export {
     styles,

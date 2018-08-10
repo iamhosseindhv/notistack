@@ -16,16 +16,14 @@ const variantIcon = {
     info: 'ℹ️',
 };
 
-const getTransitionDirection = anchorOrigin => {
+const getTransitionDirection = (anchorOrigin) => {
     if (anchorOrigin.horizontal !== 'center') {
         return DIRECTION[anchorOrigin.horizontal];
     }
     return DIRECTION[anchorOrigin.vertical];
 };
 
-const TransitionComponent = (props) => {
-    return <Slide {...props} />;
-};
+const TransitionComponent = props => <Slide {...props} />;
 
 export {
     variantIcon,

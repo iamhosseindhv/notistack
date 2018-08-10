@@ -7,28 +7,31 @@ import { styles, getTransitionStyles } from './SnackbarItem.styles';
 import {
     variantIcon,
     TransitionComponent,
-    getTransitionDirection
+    getTransitionDirection,
 } from './SnackbarItem.util';
 
 
 class SnackbarItem extends Component {
-
-    getTransitionStyles = index => {
-        return getTransitionStyles(index, this.props.anchorOrigin);
+    getTransitionStyles = (index) => {
+        const { anchorOrigin } = this.props;
+        return getTransitionStyles(index, anchorOrigin);
     };
 
-    handleClose = (key) => (event, reason) => {
+    handleClose = key => (event, reason) => {
+        const { onClose } = this.props;
         if (reason === 'clickaway') return;
-        this.props.onClose(key);
+        onClose(key);
     };
 
     render() {
         const {
             classes,
             level,
-            snack: { message, variant, key, open },
-            onExited,
+            snack: {
+                message, variant, key, open,
+            },
             anchorOrigin,
+            onExited,
             ...props
         } = this.props;
 
@@ -37,12 +40,12 @@ class SnackbarItem extends Component {
                 {...props}
                 open={open}
                 TransitionProps={{
-                    direction: getTransitionDirection(anchorOrigin)
+                    direction: getTransitionDirection(anchorOrigin),
                 }}
                 anchorOrigin={anchorOrigin}
                 style={this.getTransitionStyles(level)}
                 onClose={this.handleClose(key)}
-                onExited={event => onExited(key)}
+                onExited={() => onExited(key)}
             >
                 <SnackbarContent
                     className={classes[variant]}
@@ -65,7 +68,7 @@ SnackbarItem.propTypes = {
     snack: PropTypes.shape({
         message: PropTypes.string.isRequired,
         variant: PropTypes.oneOf(
-            ['error', 'success', 'warning', 'info']
+            ['error', 'success', 'warning', 'info'],
         ).isRequired,
         key: PropTypes.number.isRequired,
         open: PropTypes.bool.isRequired,
@@ -73,6 +76,8 @@ SnackbarItem.propTypes = {
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
     anchorOrigin: PropTypes.object,
+    autoHideDuration: PropTypes.number,
+    TransitionComponent: PropTypes.func,
 };
 
 SnackbarItem.defaultProps = {
