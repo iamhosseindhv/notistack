@@ -35,27 +35,32 @@ const styles = theme => ({
     },
 });
 
+
 const Andornified = ({ icon, ...props }) => (
     <InputAdornment>
-        <IconButton color="primary"  {...props}>
+        <IconButton color="primary" {...props}>
             {icon}
         </IconButton>
     </InputAdornment>
 );
+Andornified.propTypes = {
+    icon: PropTypes.object.isRequired,
+};
 
 class ConfigButtons extends React.Component {
-
-    handleChange = event => {
+    handleChange = (event) => {
+        const { onChangeInput } = this.props;
         let value = parseInt(event.target.value, 10);
         if (!value) value = 5000;
-        this.props.onChangeInput(event.target.name, value);
+        onChangeInput(event.target.name, value);
     };
 
-    handleChangeInput = action => event => {
+    handleChangeInput = action => () => {
+        const { onChangeInput, maxSnack: max } = this.props;
         const maxSnack = action === 'add'
-            ? this.props.maxSnack + 1
-            : this.props.maxSnack - 1;
-        if (maxSnack > 0) this.props.onChangeInput('maxSnack', maxSnack);
+            ? max + 1
+            : max - 1;
+        if (maxSnack > 0) onChangeInput('maxSnack', maxSnack);
     };
 
     render() {
@@ -71,7 +76,9 @@ class ConfigButtons extends React.Component {
         return (
             <Paper className={classes.root} elevation={2}>
                 <FormControl component="fieldset" className={classes.formControl} row={false}>
-                    <FormLabel component="legend">Vertical</FormLabel>
+                    <FormLabel component="legend">
+                        Vertical
+                    </FormLabel>
                     <RadioGroup
                         row
                         name="anchorVertical"
@@ -84,7 +91,9 @@ class ConfigButtons extends React.Component {
                     </RadioGroup>
                 </FormControl>
                 <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel component="legend">Horizontal</FormLabel>
+                    <FormLabel component="legend">
+                        Horizontal
+                    </FormLabel>
                     <RadioGroup
                         row
                         name="anchorHorizontal"
@@ -98,7 +107,9 @@ class ConfigButtons extends React.Component {
                     </RadioGroup>
                 </FormControl>
                 <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel component="legend">Max Snack</FormLabel>
+                    <FormLabel component="legend">
+                        Max Snack
+                    </FormLabel>
                     <TextField
                         disabled
                         value={maxSnack}
@@ -122,7 +133,9 @@ class ConfigButtons extends React.Component {
                     />
                 </FormControl>
                 <FormControl component="fieldset" className={classes.formControl}>
-                    <FormLabel component="legend">Dismiss Duration</FormLabel>
+                    <FormLabel component="legend">
+                        Dismiss Duration
+                    </FormLabel>
                     <TextField
                         type="number"
                         name="autoHideDuration"
@@ -140,6 +153,8 @@ ConfigButtons.propTypes = {
     classes: PropTypes.object.isRequired,
     anchorVertical: PropTypes.string.isRequired,
     anchorHorizontal: PropTypes.string.isRequired,
+    autoHideDuration: PropTypes.number.isRequired,
+    maxSnack: PropTypes.number.isRequired,
     onChangeRadio: PropTypes.func.isRequired,
     onChangeInput: PropTypes.func.isRequired,
 };

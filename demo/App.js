@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { SnackbarProvider } from '../src';
 import MessageButtons from './MessageButtons';
 import ConfigButtons from './ConfigButtons';
@@ -16,9 +16,9 @@ class App extends Component {
         this.setState({ [key]: value });
     };
 
-    handleChangeRadio = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
+    handleChangeRadio = event => (
+        this.setState({ [event.target.name]: event.target.value })
+    );
 
     render() {
         const {
@@ -36,17 +36,19 @@ class App extends Component {
                     vertical: anchorVertical,
                     horizontal: anchorHorizontal,
                 }}
-                // transitionDuration={{ exit: 380, enter: 400 }}
+            // transitionDuration={{ exit: 380, enter: 400 }}
             >
-                <ConfigButtons
-                    maxSnack={maxSnack}
-                    anchorVertical={anchorVertical}
-                    anchorHorizontal={anchorHorizontal}
-                    autoHideDuration={autoHideDuration}
-                    onChangeRadio={this.handleChangeRadio}
-                    onChangeInput={this.handleChangeInput}
-                />
-                <MessageButtons />
+                <Fragment>
+                    <ConfigButtons
+                        maxSnack={maxSnack}
+                        anchorVertical={anchorVertical}
+                        anchorHorizontal={anchorHorizontal}
+                        autoHideDuration={autoHideDuration}
+                        onChangeRadio={this.handleChangeRadio}
+                        onChangeInput={this.handleChangeInput}
+                    />
+                    <MessageButtons />
+                </Fragment>
             </SnackbarProvider>
         );
     }
