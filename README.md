@@ -1,8 +1,9 @@
 # notistack
-> Big hero banner here (Material-ui logo and Notistack logo)
 
-Notistack is an extention to [Material-ui Snackbar](https://material-ui.com/demos/snackbars) that manages snackbars so they can be displayed and stacked on top of one another.
-It's highly customisable and you can customise it the same way you customise MUI-Snackbars.
+> Hero banner here (Material-ui logo and Notistack logo)
+
+**Notistack** is an extention to Material-ui [Snackbar](https://material-ui.com/demos/snackbars) that manages snackbars so they can be displayed and stacked on top of one another.
+It's **highly customizable** and you can customize it the same way you do for Mui-Snackbars.
 
     
 | Stacking behaviour | Dissmiss oldest when reached maxSnack (3 here)| 
@@ -20,7 +21,7 @@ yarn add notistack
 
 ### Usage
 
-1. Wrap your app inside a `SnackbarProvider` component: (see [docs](#docs) for a full list of available props)
+**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](#docs) for a full list of available props)
 ```javascript
 import { SnackbarProvider } from 'notistack';
 
@@ -32,8 +33,7 @@ import { SnackbarProvider } from 'notistack';
 
 
 
-2. Export any component that needs to send notification using `withSnackbar`.
-By doing this, you'll have access to the method `onPresentSnackbar` in your props which can be used to send notifications.
+**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to the method `onPresentSnackbar` in your props which can be used to send snackbars.
 
 ```javascript
 import { withSnackbar } from 'notistack';
