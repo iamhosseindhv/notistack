@@ -1,8 +1,8 @@
 # notistack
 > Big hero banner here (Material-ui logo and Notistack logo)
 
-> description saying this is an extention to [material-ui snakcbar](https://material-ui.com/demos/snackbars) and of course you can customise it the same  you can with MUISnackbar
 > Highly customisable notification snackbars that can be stacked on top of each other
+> description saying this is an extention to [Material-ui Snackbar](https://material-ui.com/demos/snackbars) and of course you can customise it the same way you can customise MUISnackbar.
 
 
 > some HQ nice gifs
