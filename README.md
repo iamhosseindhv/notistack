@@ -1,11 +1,14 @@
 # notistack
 > Big hero banner here (Material-ui logo and Notistack logo)
 
-> Highly customisable notification snackbars that can be stacked on top of each other
-> description saying this is an extention to [Material-ui Snackbar](https://material-ui.com/demos/snackbars) and of course you can customise it the same way you can customise MUISnackbar.
+Notistack is an extention to [Material-ui Snackbar](https://material-ui.com/demos/snackbars) that manages snackbars so they can be displayed and stacked on top of one another.
+It's highly customisable and you can customise it the same way you customise MUI-Snackbars.
 
+    
+| Stacking behaviour | Dissmiss oldest when reached maxSnack (3 here)| 
+| --- | --- |
+| <img width="400" src="https://i.imgur.com/MtijvAK.gif"/>    | <img width="400" src="https://i.imgur.com/urX47Wn.gif"/>|
 
-> some HQ nice gifs
 
 
 ## Getting Started
