@@ -47,7 +47,7 @@ class MyComponent extends Component {
      //...
   };
   
-);
+};
 
 export default withSnackbar(MyCompnent);
 ```
