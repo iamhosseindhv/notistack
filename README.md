@@ -1,7 +1,7 @@
 # notistack
 > Big hero banner here (Material-ui logo and Notistack logo)
 
-> description saying this is an extention to material-ui [snakcbar][https://material-ui.com/demos/snackbars/] and of course you can customise it the same  you can with MUISnackbar
+> description saying this is an extention to [material-ui snakcbar](https://material-ui.com/demos/snackbars) and of course you can customise it the same  you can with MUISnackbar
 > Highly customisable notification snackbars that can be stacked on top of each other
 
 
@@ -83,8 +83,13 @@ npm start
 Open an issue and your problem will be solved.
 
 
-## Author
+## Author - Contact
+Hossein Dehnokhalaji
 
+<a href="https://www.facebook.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/facebook.png" alt="Hossein Dehnokhalaji Linkedin profile" align="right" width="32" height="32"/></a>
+<a href="https://www.instagram.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/instagram.png" alt="Hossein Dehnokhalaji Linkedin profile" align="right" width="32" height="32"/></a>
+<a href="https://www.linkedin.com/in/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/linkedin.png" alt="Hossein Dehnokhalaji Linkedin profile" align="right" width="32" height="32"/></a>
+<a href="mailto:hossein.dehnavi98@yahoo.com"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/contact.png" alt="Hossein Dehnokhalaji email address" align="right" width="32" height="32"/></a>
 
 ### License
 MIT

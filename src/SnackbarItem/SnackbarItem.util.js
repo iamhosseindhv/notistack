@@ -16,7 +16,12 @@ const variantIcon = {
     info: 'ℹ️',
 };
 
-const getTransitionDirection = (anchorOrigin) => {
+const defaultAnchorOrigin = {
+    vertical: 'bottom',
+    horizontal: 'left',
+};
+
+const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
     if (anchorOrigin.horizontal !== 'center') {
         return DIRECTION[anchorOrigin.horizontal];
     }
@@ -27,6 +32,7 @@ const TransitionComponent = props => <Slide {...props} />;
 
 export {
     variantIcon,
+    defaultAnchorOrigin,
     TransitionComponent,
     getTransitionDirection,
 };

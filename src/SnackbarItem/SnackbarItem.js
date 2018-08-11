@@ -8,6 +8,7 @@ import {
     variantIcon,
     TransitionComponent,
     getTransitionDirection,
+    defaultAnchorOrigin,
 } from './SnackbarItem.util';
 
 
@@ -37,12 +38,14 @@ class SnackbarItem extends Component {
 
         return (
             <Snackbar
-                {...props}
-                open={open}
+                autoHideDuration={5000}
+                TransitionComponent={TransitionComponent}
                 TransitionProps={{
                     direction: getTransitionDirection(anchorOrigin),
                 }}
-                anchorOrigin={anchorOrigin}
+                anchorOrigin={anchorOrigin || defaultAnchorOrigin}
+                {...props}
+                open={open}
                 style={this.getTransitionStyles(level)}
                 onClose={this.handleClose(key)}
                 onExited={() => onExited(key)}
@@ -52,7 +55,9 @@ class SnackbarItem extends Component {
                     aria-describedby="client-snackbar"
                     message={
                         <span id="client-snackbar" className={classes.message}>
-                            <span className={classes.iconVariant}>{variantIcon[variant]}</span>
+                            <span className={classes.iconVariant}>
+                                {variantIcon[variant]}
+                            </span>
                             {message}
                         </span>
                     }
@@ -75,18 +80,6 @@ SnackbarItem.propTypes = {
     }).isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
-    anchorOrigin: PropTypes.object,
-    autoHideDuration: PropTypes.number,
-    TransitionComponent: PropTypes.func,
-};
-
-SnackbarItem.defaultProps = {
-    autoHideDuration: 5000,
-    anchorOrigin: {
-        vertical: 'bottom',
-        horizontal: 'left',
-    },
-    TransitionComponent: TransitionComponent,
 };
 
 export default withStyles(styles)(SnackbarItem);
