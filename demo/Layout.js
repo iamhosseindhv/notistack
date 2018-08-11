@@ -4,16 +4,16 @@ import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
-const styles = {
+const styles = theme => ({
     root: {
         flexGrow: 1,
         display: 'flex',
-        margin: 8 * 2,
+        padding: theme.spacing.unit * 2,
     },
     paper: {
         backgroundColor: '#f2f2f2',
     },
-};
+});
 
 const Layout = ({ children, classes }) => (
     <div className={classes.root}>
@@ -33,6 +33,5 @@ Layout.propTypes = {
     children: PropTypes.element.isRequired,
     classes: PropTypes.object.isRequired,
 };
-
 
 export default withStyles(styles)(Layout);
