@@ -1,7 +1,7 @@
 # notistack
-> Big hero banner here
+> Big hero banner here (Material-ui logo and Notistack logo)
 
-> descriotion that says this is an extention to material-ui snackbar and you of course you can customise MUISnackbar.
+> description saying this is an extention to material-ui [snakcbar][https://material-ui.com/demos/snackbars/] and of course you can customise it the same  you can with MUISnackbar
 > Highly customisable notification snackbars that can be stacked on top of each other
 
 
@@ -30,6 +30,7 @@ import { SnackbarProvider } from 'notistack';
 
 
 2. Export any component that needs to send notification using `withSnackbar`.
+By doing this, you'll have access to the method `onPresentSnackbar` in your props which can be used to send notifications.
 
 ```javascript
 import { withSnackbar } from 'notistack';
@@ -39,8 +40,8 @@ class MyComponent extends Component {
   handleNetworkRequest = () => {
      const { onPresentSnackbar } = this.props; 
      fetchSomeData()
-        .then(() => onPresentSnackbar('success', 'Successfully uploaded the file.'))
-        .catch(() => onPresentSnackbar('error', 'Failed uploading the file.'));
+        .then(() => onPresentSnackbar('success', 'Successfully fetched the data.'))
+        .catch(() => onPresentSnackbar('error', 'Failed fetching data.'));
   };
 
   render(){
@@ -51,7 +52,6 @@ class MyComponent extends Component {
 
 export default withSnackbar(MyCompnent);
 ```
-By doing this, you'll have access to the method `onPresentSnackbar` in your props which can be used to send notifications.
 
 
 ### Demo
@@ -70,21 +70,22 @@ npm start
 ## Docs
 
 
-## Notes
+### Notes
 -- link to google material design that says don't stack snackbars (we don't care)
 
 
-## Author
+### Future
+- [ ] Allow snackbar type customization 
+- [ ] Some snackbars should get dismissed after timeout and some other should only get dissmissed when user clicks on dismiss/close button.
 
 
 ### Contribution
 Open an issue and your problem will be solved.
 
 
-## License
+## Author
+
+
+### License
 MIT
-
-
-## TODO
-- [ ] Support for customization of snackbars
-- [ ] Some snackbars should get dismissed after timeout and some other should only get dissmissed when user clicks on dismiss/close button.
+> MIT badge at the top of the repo
