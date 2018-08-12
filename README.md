@@ -1,7 +1,5 @@
 # notistack
 
-> Hero banner here (React, Material-ui and Notistack logo)
-
 **Notistack** is an extention to Material-ui [Snackbar](https://material-ui.com/demos/snackbars) that manages snackbars so they can be displayed and stacked on top of one another.
 It's **highly customizable** and you can customize it the same way you do for Mui-Snackbars.
 
@@ -71,19 +69,42 @@ npm start
 
 
 ## Docs
+**SnackbarProvider** props:
+Any other prop gets passed down to a Snackbar component. 
+
+See Material-ui Snackbar [docs](https://material-ui.com/api/snackbar/) for more info.
+```javascript
+// Maximum number of snackbars that can be stacked on top of eachother.
+maxSnack            type: number          default=3
+
+// An example of prop passed to Mui-Snackbar
+transitionDuration={{ exit: 380, enter: 400 }}
+```
 
 
-### Notes
--- link to google material design that says don't stack snackbars (we don't care)
+
+**withSnackbar**:
+When you export your component using `withSnackbar` you'll have access to `onPresentSnackbar` in your props that basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `variant` and `message`.
+```
+// type of the snackbar
+variant         type:string             oneOf(['error', 'success', 'warning', 'info'])
+
+// text of the snackbar
+message         type:string             
+```
 
 
-### Future
+## Future
 - [ ] Allow snackbar type customization 
 - [ ] Some snackbars should get dismissed after timeout and some other should only get dissmissed when user clicks on dismiss/close button.
 
 
-### Contribution
+## Contribution
 Open an issue and your problem will be solved.
+
+### Notes
+Material Design guidlines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😂 So I made notistack.
+
 
 
 ## Author - Contact
@@ -93,7 +114,3 @@ Hossein Dehnokhalaji
 <a href="https://www.instagram.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/instagram.png" alt="Hossein Dehnokhalaji Linkedin profile" align="right" width="32" height="32"/></a>
 <a href="https://www.linkedin.com/in/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/linkedin.png" alt="Hossein Dehnokhalaji Linkedin profile" align="right" width="32" height="32"/></a>
 <a href="mailto:hossein.dehnavi98@yahoo.com"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/contact.png" alt="Hossein Dehnokhalaji email address" align="right" width="32" height="32"/></a>
-
-### License
-MIT
-> MIT badge at the top of the repo
