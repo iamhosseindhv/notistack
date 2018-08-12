@@ -1,12 +1,12 @@
 # notistack
 
-> Hero banner here (Material-ui logo and Notistack logo)
+> Hero banner here (React, Material-ui and Notistack logo)
 
 **Notistack** is an extention to Material-ui [Snackbar](https://material-ui.com/demos/snackbars) that manages snackbars so they can be displayed and stacked on top of one another.
 It's **highly customizable** and you can customize it the same way you do for Mui-Snackbars.
 
     
-| Stacking behaviour | Dissmiss oldest when reached maxSnack (3 here)| 
+| Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)| 
 | --- | --- |
 | <img width="400" src="https://i.imgur.com/MtijvAK.gif"/>    | <img width="400" src="https://i.imgur.com/urX47Wn.gif"/>|
 
