@@ -17,7 +17,7 @@ class SnackbarProvider extends Component {
 
     /**
      * Adds a new snackbar to the queue to be presented.
-     * @param {string} variant - type of the snackbar. can be: 
+     * @param {string} variant - type of the snackbar. can be:
      * (success, error, warning, info)
      * @param {string} message - text of the notification
      */
