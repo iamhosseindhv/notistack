@@ -71,10 +71,8 @@ npm start
 
 
 ## Docs
-**SnackbarProvider** props:
-Any other prop gets passed down to a Snackbar component. 
-
-See Material-ui Snackbar [docs](https://material-ui.com/api/snackbar/) for more info.
+**SnackbarProvider**:
+Besides `maxSnack`, any other prop gets passed down to a Snackbar component. See Material-ui Snackbar [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
 // Maximum number of snackbars that can be stacked on top of eachother.
 maxSnack            type: number          default=3
