@@ -25,7 +25,15 @@ yarn add notistack
 ```javascript
 import { SnackbarProvider } from 'notistack';
 
-<SnackbarProvider maxSnack={3}>
+<SnackbarProvider 
+  maxSnack={3}
+  iconVariant={{
+    success: '✅',
+    warning: '⚠️',
+    error: '✖️',
+    info: 'ℹ️',
+  }}
+>
     <App />
 </SnackbarProvider>
 
@@ -72,10 +80,13 @@ npm start
 
 ## Docs
 **SnackbarProvider**:
-Besides `maxSnack`, any other prop gets passed down to a Snackbar component. See Material-ui Snackbar [docs](https://material-ui.com/api/snackbar/) for more info.
+Besides `maxSnack` and `iconVariant`, any other prop gets passed down to a Snackbar component. See Material-ui Snackbar [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
 // Maximum number of snackbars that can be stacked on top of eachother.
-maxSnack            type: number          default=3
+maxSnack            type: number          required: true        default=3
+
+// The little icon that is displayed in a snackbar in (see examples.)
+iconVariant         type: any             required: false       default=Material design icons
 
 // An example of prop passed to Mui-Snackbar
 transitionDuration={{ exit: 380, enter: 400 }}

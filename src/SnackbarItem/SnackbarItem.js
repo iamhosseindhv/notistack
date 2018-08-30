@@ -31,6 +31,7 @@ class SnackbarItem extends Component {
             snack: {
                 message, variant, key, open,
             },
+            iconVariant,
             anchorOrigin,
             onExited,
             ...props
@@ -56,7 +57,7 @@ class SnackbarItem extends Component {
                     message={
                         <span id="client-snackbar" className={classes.message}>
                             <span className={classes.iconVariant}>
-                                {variantIcon[variant]}
+                                {iconVariant[variant]}
                             </span>
                             {message}
                         </span>
@@ -78,8 +79,18 @@ SnackbarItem.propTypes = {
         key: PropTypes.number.isRequired,
         open: PropTypes.bool.isRequired,
     }).isRequired,
+    iconVariant: PropTypes.shape({
+        success: PropTypes.any.isRequired,
+        warning: PropTypes.any.isRequired,
+        error: PropTypes.any.isRequired,
+        info: PropTypes.any.isRequired,
+    }),
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
+};
+
+SnackbarItem.defaultProps = {
+    iconVariant: variantIcon,
 };
 
 export default withStyles(styles)(SnackbarItem);
