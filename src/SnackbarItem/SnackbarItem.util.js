@@ -1,6 +1,6 @@
 import React from 'react';
 import Slide from '@material-ui/core/Slide';
-import { Icon } from '@material-ui/core'
+import Icon from '@material-ui/core/Icon';
 
 const DIRECTION = {
     right: 'left',
@@ -10,10 +10,10 @@ const DIRECTION = {
 };
 
 const variantIcon = {
-    success: <Icon style={{ fontSize: 24, marginRight: "16px" }}>check_circle</Icon>,
-    warning: <Icon style={{ fontSize: 24, marginRight: "16px" }}>warning</Icon>,
-    error: <Icon style={{ fontSize: 24, marginRight: "16px" }}>error</Icon>,
-    info: <Icon style={{ fontSize: 24, marginRight: "16px" }}>info</Icon>,
+    success: <Icon style={{ fontSize: 24, marginRight: 16 }}>check_circle</Icon>,
+    warning: <Icon style={{ fontSize: 24, marginRight: 16 }}>warning</Icon>,
+    error: <Icon style={{ fontSize: 24, marginRight: 16 }}>error</Icon>,
+    info: <Icon style={{ fontSize: 24, marginRight: 16 }}>info</Icon>,
 };
 
 const defaultAnchorOrigin = {
