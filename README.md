@@ -88,7 +88,7 @@ transitionDuration={{ exit: 380, enter: 400 }}
 
 **withSnackbar**:
 When you export your component using `withSnackbar` you'll have access to `onPresentSnackbar` in your props that basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `variant` and `message`.
-```
+```javascript
 // type of the snackbar
 variant         type:string             oneOf(['error', 'success', 'warning', 'info'])
 
