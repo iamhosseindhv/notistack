@@ -106,7 +106,7 @@ message         type:string
 Open an issue and your problem will be solved.
 
 ### Notes
-Material Design guidlines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😂 So I made notistack.
+Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😂 So I made notistack.
 
 
 
