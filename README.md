@@ -88,7 +88,7 @@ transitionDuration={{ exit: 380, enter: 400 }}
 
 **withSnackbar**:
 When you export your component using `withSnackbar` you'll have access to `onPresentSnackbar` in your props that basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `variant` and `message`.
-```
+```javascript
 // type of the snackbar
 variant         type:string             oneOf(['error', 'success', 'warning', 'info'])
 
@@ -106,7 +106,7 @@ message         type:string
 Open an issue and your problem will be solved.
 
 ### Notes
-Material Design guidlines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😂 So I made notistack.
+Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😂 So I made notistack.
 
 
 
