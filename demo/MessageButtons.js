@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { withSnackbar } from '../src';
+import { withSnackbar } from 'notistack';
 
 const styles = theme => ({
     root: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { SnackbarProvider } from '../src';
+import { SnackbarProvider } from 'notistack';
 import MessageButtons from './MessageButtons';
 import ConfigButtons from './ConfigButtons';
 
@@ -46,7 +46,7 @@ class App extends Component {
                     vertical: anchorVertical,
                     horizontal: anchorHorizontal,
                 }}
-                // transitionDuration={{ exit: 380, enter: 400 }}
+            // transitionDuration={{ exit: 380, enter: 400 }}
             >
                 <div className={classes.root}>
                     <ConfigButtons
