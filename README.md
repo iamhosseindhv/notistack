@@ -58,16 +58,9 @@ export default withSnackbar(MyCompnent);
 
 
 ### Demo
-You can see the online demo [`here`](https://www.iamhosseindhv.com/notistack).
-To play with the demo locally, do the following:
-```
-git clone https://github.com/iamhosseindhv/notistack
-cd notistack
+**You can see the online demo and experiment all the possible configurations [`here`](https://www.iamhosseindhv.com/notistack).**
 
-npm install
-cd demo && npm install
-npm start
-```
+Or see the code for a minimal working example: [`codesandbox`](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo??hidenavigation=1&module=%2FApp.js)
 
 
 ## Docs
