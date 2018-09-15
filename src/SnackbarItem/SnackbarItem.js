@@ -54,14 +54,14 @@ class SnackbarItem extends Component {
                 <SnackbarContent
                     className={classes[variant]}
                     aria-describedby="client-snackbar"
-                    message={
+                    message={(
                         <span id="client-snackbar" className={classes.message}>
                             <span className={classes.iconVariant}>
                                 {iconVariant[variant]}
                             </span>
                             {message}
                         </span>
-                    }
+                    )}
                 />
             </Snackbar>
         );

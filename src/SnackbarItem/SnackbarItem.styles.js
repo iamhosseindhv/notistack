@@ -25,6 +25,7 @@ const styles = theme => ({
     },
     iconVariant: {
         opacity: 0.9,
+        height: 24,
         marginRight: theme.spacing.unit,
     },
 });
