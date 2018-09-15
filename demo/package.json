@@ -1,0 +1,38 @@
+{
+    "name": "notistack-demo",
+    "description": "Demo for NotiStack",
+    "repository": {
+        "url": "git+https://github.com/iamhosseindhv/notistack.git",
+        "type": "git"
+    },
+    "author": {
+        "name": "Hossein Dehnokhalaji",
+        "email": "hossein.dehnavi98@yahoo.com",
+        "url": "https://github.com/iamhosseindhv/notistack"
+    },
+    "homepage": "https://github.com/iamhosseindhv/notistack",
+    "bugs": {
+        "url": "https://github.com/iamhosseindhv/notistack/issues"
+    },
+    "contributors": [
+        "Hossein Dehnokhalaji (https://www.linkedin.com/in/iamhosseindhv/)"
+    ],
+    "license": "MIT",
+    "keywords": [
+        "react",
+        "javascript",
+        "material-ui",
+        "stacked",
+        "snackbar",
+        "notification"
+    ],
+    "dependencies": {
+        "@material-ui/core": "^1.4.3",
+        "@material-ui/docs": "^1.0.0-alpha.4",
+        "@material-ui/icons": "^2.0.1",
+        "notistack": "^0.2.0",
+        "prop-types": "^15.6.2",
+        "react": "^16.4.2",
+        "react-dom": "^16.4.2"
+    }
+}
