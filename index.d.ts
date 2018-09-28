@@ -1,5 +1,3 @@
-// Type definitions
-
 import * as React from "react";
 import { TransitionActions } from "react-transition-group/Transition";
 import { SvgIconProps } from "@material-ui/core/SvgIcon";
@@ -20,7 +18,6 @@ export function withSnackbar<P extends InjectedNotistackProps>(component: React.
 export interface SnackbarProviderProps extends Omit<SnackbarProps, "open">  {
   maxSnack: number;
   iconVariant?: React.ComponentType<SvgIconProps>;
-  transitionDuration?: number | { enter?: number, exit?: number };
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
