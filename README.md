@@ -4,7 +4,7 @@
 It's **highly customizable** and you can customize it the same way you do for Mui-Snackbars.
 
     
-#### [`Play with online demo here`](https://www.iamhosseindhv.com/notistack)
+#### `SEE THE DEMO SECTION BELOW)`
   
 | Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)| 
 | --- | --- |
