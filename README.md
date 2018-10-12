@@ -4,7 +4,7 @@
 It's **highly customizable** and you can customize it the same way you do for Mui-Snackbars.
 
     
-#### [`Play with online demo here`](https://iamhosseindhv.herokuapp.com/notistack)
+#### [`Play with online demo here`](http://iamhosseindhv.com/notistack)
   
 | Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)| 
 | --- | --- |
@@ -58,7 +58,7 @@ export default withSnackbar(MyCompnent);
 
 
 ### Demo
-**You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.herokuapp.com/notistack).** </br>
+**You can see the online demo and experiment all the possible configurations [`here`](http://iamhosseindhv.com/notistack).** </br>
 Or see the code for a minimal working example: [`codesandbox`](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo??hidenavigation=1&module=%2FApp.js) </br>
 [![Edit notistack-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo)
 
