@@ -1,22 +1,21 @@
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
-import { defaultAnchorOrigin } from './SnackbarItem.util';
 import {
     TRANSITION_DELAY,
     TRANSITION_DOWN_DURATION,
 } from '../utils/constants';
 
 const styles = theme => ({
-    success: {
+    variantSuccess: {
         backgroundColor: green[600],
     },
-    error: {
+    variantError: {
         backgroundColor: theme.palette.error.dark,
     },
-    info: {
+    variantInfo: {
         backgroundColor: '#2979ff', // nice blue
     },
-    warning: {
+    variantWarning: {
         backgroundColor: amber[700],
     },
     message: {
@@ -35,8 +34,9 @@ const styles = theme => ({
  * { vertical: 'bottom', horizontal: 'left' }
  * @param {number} level - Level on which snakcbar should be displayed
  * (when snackbars are stacked on top of eachother)
+ * @returns {object}
  */
-const getTransitionStyles = (level, anchorOrigin = defaultAnchorOrigin) => (
+const getTransitionStyles = (level, anchorOrigin) => (
     Object.assign(
         {
             [anchorOrigin.vertical]: (level * 48) + (level * 16) + 20,
