@@ -42,7 +42,7 @@ const buttons = [
     { variant: 'info', message: 'For your info...' },
 ];
 
-const MessageButtons = ({ classes, onPresentSnackbar }) => (
+const MessageButtons = ({ classes, enqueueSnackbar }) => (
     <div className={classes.root}>
         <Grid container spacing={24}>
             <Grid item xs md />
@@ -53,7 +53,7 @@ const MessageButtons = ({ classes, onPresentSnackbar }) => (
                             key={button.variant}
                             variant="contained"
                             className={classNames(classes.button, classes[button.variant])}
-                            onClick={() => onPresentSnackbar(button.variant, button.message)}
+                            onClick={() => enqueueSnackbar(button.message, { variant: button.variant })}
                         >
                             {button.variant}
                         </Button>
@@ -67,7 +67,7 @@ const MessageButtons = ({ classes, onPresentSnackbar }) => (
 
 MessageButtons.propTypes = {
     classes: PropTypes.object.isRequired,
-    onPresentSnackbar: PropTypes.func.isRequired,
+    enqueueSnackbar: PropTypes.func.isRequired,
 };
 
 export default withSnackbar(withStyles(styles)(MessageButtons));

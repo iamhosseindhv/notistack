@@ -41,10 +41,10 @@ import { withSnackbar } from 'notistack';
 class MyComponent extends Component {
   
   handleNetworkRequest = () => {
-     const { onPresentSnackbar } = this.props; 
+     const { enqueueSnackbar } = this.props; 
      fetchSomeData()
-        .then(() => onPresentSnackbar('success', 'Successfully fetched the data.'))
-        .catch(() => onPresentSnackbar('error', 'Failed fetching data.'));
+        .then(() => enqueueSnackbar('Successfully fetched the data.'))
+        .catch(() => enqueueSnackbar('Failed fetching data.'));
   };
 
   render(){
@@ -63,35 +63,47 @@ Or see the code for a minimal working example: [`codesandbox`](https://codesandb
 [![Edit notistack-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo)
 
 ## Docs
-**SnackbarProvider**:
+### **SnackbarProvider**:
 Besides `maxSnack` and `iconVariant`, any other prop gets passed down to a Snackbar component. See Material-ui Snackbar [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
 // Maximum number of snackbars that can be stacked on top of eachother.
-maxSnack            type: number          required: true        default=3
+maxSnack            type: number          required: true        default: 3
 
 // The little icon that is displayed in a snackbar
-iconVariant         type: any             required: false       default=Material design icons
+iconVariant         type: any             required: false       default: Material design icons
 
-// An example of prop passed to Mui-Snackbar
+// hide or display icon variant of a snackbar
+hideIconVariant     type: boolean         required: false       default: false
+
+// Example of a prop passed to Mui-Snackbar
 transitionDuration={{ exit: 380, enter: 400 }}
 ```
 
 
-
-**withSnackbar**:
-When you export your component using `withSnackbar` you'll have access to `onPresentSnackbar` in your props that basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `variant` and `message`.
+### **withSnackbar**:
+**Note**: `onPresentSnackbar` has been now deprecated. Use enqueueSnackbar instead:
 ```javascript
-// type of the snackbar
-variant         type:string             oneOf(['error', 'success', 'warning', 'info'])
+// ❌ before:
+this.props.onPresentSnackbar('variant', 'message')
 
-// text of the snackbar
-message         type:string             
+// ✅ after:
+this.props.enqueueSnackbar('message', { variant: 'variant' })
+
 ```
+When you export your component using `withSnackbar` you'll have access to `enqueueSnackbar` in your props which basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options`.
+```javascript
+// text of the snackbar
+message         type:string         
 
 
-## Future
-- [ ] Allow snackbar type customization 
-- [ ] Some snackbars should get dismissed after timeout and some other should only get dissmissed when user clicks on dismiss/close button.
+// object containing options
+options:        type:object
+shape: 
+// type of the snackbar
+options.variant         type:string             oneOf(['default', 'error', 'success', 'warning', 'info'])
+
+options.onClickAction
+```
 
 
 ## Contribution
