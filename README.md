@@ -33,7 +33,7 @@ import { SnackbarProvider } from 'notistack';
 
 
 
-**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to the method `onPresentSnackbar` in your props which can be used to send snackbars.
+**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to the method `enqueueSnackbar` in your props which can be used to send snackbars.
 
 ```javascript
 import { withSnackbar } from 'notistack';
@@ -64,7 +64,7 @@ Or see the code for a minimal working example: [`codesandbox`](https://codesandb
 
 ## Docs
 ### **SnackbarProvider**:
-Besides `maxSnack` and `iconVariant`, any other prop gets passed down to a Snackbar component. See Material-ui Snackbar [docs](https://material-ui.com/api/snackbar/) for more info.
+All material-ui Snackbar props will get passed down to a Snackbar component. See Material-ui [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
 // Maximum number of snackbars that can be stacked on top of eachother.
 maxSnack            type: number          required: true        default: 3
@@ -74,6 +74,9 @@ iconVariant         type: any             required: false       default: Materia
 
 // hide or display icon variant of a snackbar
 hideIconVariant     type: boolean         required: false       default: false
+
+// event fired when user clicks on action button (if any)
+onClickAction       type: func            required: false       defualt: dismisses the snackbar
 
 // Example of a prop passed to Mui-Snackbar
 transitionDuration={{ exit: 380, enter: 400 }}
@@ -90,11 +93,10 @@ this.props.onPresentSnackbar('variant', 'message')
 this.props.enqueueSnackbar('message', { variant: 'variant' })
 
 ```
-When you export your component using `withSnackbar` you'll have access to `enqueueSnackbar` in your props which basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options`.
+When you export your component using `withSnackbar` you'll have access to `enqueueSnackbar` method in your props which basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options`.
 ```javascript
 // text of the snackbar
 message         type:string         
-
 
 // object containing options
 options:        type:object
@@ -102,9 +104,18 @@ shape:
 // type of the snackbar
 options.variant         type:string             oneOf(['default', 'error', 'success', 'warning', 'info'])
 
-options.onClickAction
+// event fired when user clicks on action button (if any)
+onClickAction       type: func            required: false       defualt: dismisses the snackbar
+
+// other material-ui Snackbar props
 ```
 
+## Release notes: 
+- New prop `hideIconVariant` to hide `iconVariant`.
+- Set `variant` of a snackbar to `default` and apply your preferred styles.
+- Add actions to a snackbar
+- Customise individual snackbars by `options` parameter of `enqueueSnackbar` method.
+- Specify styles applied to snackbars when variant is set to success, error, etc
 
 ## Contribution
 Open an issue and your problem will be solved.
