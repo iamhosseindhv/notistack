@@ -62,11 +62,14 @@ const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
     return DIRECTION[anchorOrigin.vertical];
 };
 
+const capitalise = string => string.charAt(0).toUpperCase() + string.slice(1);
+
 const TransitionComponent = props => <Slide {...props} />;
 
 export {
-    variantIcon,
+    capitalise,
     defaultAnchorOrigin,
-    TransitionComponent,
     getTransitionDirection,
+    TransitionComponent,
+    variantIcon,
 };

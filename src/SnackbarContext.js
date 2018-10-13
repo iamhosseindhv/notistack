@@ -1,5 +1,9 @@
 import React from 'react';
 
-const SnackContext = React.createContext();
+const SnackbarContext = React.createContext();
+const SnackbarContextNext = React.createContext();
 
-export default SnackContext;
+export {
+    SnackbarContext,
+    SnackbarContextNext,
+};
