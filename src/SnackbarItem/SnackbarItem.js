@@ -24,10 +24,10 @@ class SnackbarItem extends Component {
         const {
             classes,
             action,
-            anchorOrigin,
+            anchorOrigin = defaultAnchorOrigin,
             ContentProps = {},
             hideIconVariant,
-            iconVariant = defaultAnchorOrigin,
+            iconVariant,
             level,
             snack,
             snack: {
