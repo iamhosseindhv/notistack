@@ -6,6 +6,12 @@ import {
 } from '../utils/constants';
 
 const styles = theme => ({
+    root: {
+        fontSize: '0.875rem',
+        lineHeight: '1.46429em',
+        fontWeight: theme.typography.fontWeightRegular,
+        fontFamily: theme.typography.fontFamily,
+    },
     variantSuccess: {
         backgroundColor: green[600],
     },

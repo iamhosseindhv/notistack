@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -30,21 +31,19 @@ class SnackbarItem extends Component {
             iconVariant,
             level,
             snack,
-            snack: {
-                key,
-                variant = 'default',
-                ...singleSnackProps
-            },
             style,
             onExited,
             onClickAction,
-            ...props
+            ...other
         } = this.props;
 
+        const { action: contentAction, className, ...otherContentProps } = ContentProps;
+        const { key, variant = 'default', ...singleSnackProps } = snack;
+
         const contentProps = {
-            ...ContentProps,
+            ...otherContentProps,
             ...singleSnackProps.ContentProps,
-            action: snack.action || ContentProps.action || action,
+            action: snack.action || contentAction || action,
         };
 
         let onClickHandler = snack.action ? snack.onClickAction : onClickAction;
@@ -62,14 +61,19 @@ class SnackbarItem extends Component {
                     ...style,
                     ...getTransitionStyles(level, anchorOrigin),
                 }}
-                {...props}
+                {...other}
                 {...singleSnackProps}
                 open={snack.open}
                 onClose={this.handleClose(key)}
                 onExited={() => onExited(key)}
             >
                 <SnackbarContent
-                    className={classes[`variant${capitalise(variant)}`]}
+                    component="div"
+                    className={classNames(
+                        classes.root,
+                        classes[`variant${capitalise(variant)}`],
+                        className,
+                    )}
                     {...contentProps}
                     aria-describedby="client-snackbar"
                     message={(
