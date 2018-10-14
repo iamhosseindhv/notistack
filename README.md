@@ -88,7 +88,7 @@ hideIconVariant     type: boolean         required: false       default: false
 // event fired when user clicks on action button (if any)
 onClickAction       type: func            required: false       defualt: dismisses the snackbar
 
-// Example of a prop passed to Mui-Snackbar
+// Example of a Mui-Snackbar prop
 transitionDuration={{ exit: 380, enter: 400 }}
 ```
 Using material-ui `classes` prop, you can override styles applied to a snackbar based on its variant. For more info see [overriding with classes](https://material-ui.com/customization/overrides/#overriding-with-classes). This accepts the following keys:
@@ -132,15 +132,15 @@ this.props.enqueueSnackbar('message', { variant: 'variant' })
 ### Add actions to snackbar: 
 You can add actions to snackbars in the same manner specified in material-ui [docs](https://material-ui.com/demos/snackbars):
 ```javascript
-    <SnackbarProvider
-        maxSnack={3}
-        action={[
-            <Button color="secondary" size="small">My Action</Button>
-        ]}
-        onClickAction={() => alert('Clicked on my action button.')}
-    >
-        <App />
-    </SnackbarProvider >
+<SnackbarProvider
+    maxSnack={3}
+    action={[
+        <Button color="secondary" size="small">My Action</Button>
+    ]}
+    onClickAction={() => alert('Clicked on my action button.')}
+>
+    <App />
+</SnackbarProvider >
 ```
 
 However, notice that by passing `action` to `SnackbarProvider`, you’ll be adding action to all of the snackbars. To specify action for a single snackbar, use `options` argument of `enqueueSnackbar` method instead: 
@@ -151,6 +151,7 @@ this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
 })
 ```
 Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
+
 
 ## Contribution
 Open an issue and your problem will be solved.
