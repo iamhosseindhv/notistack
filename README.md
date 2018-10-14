@@ -93,9 +93,9 @@ transitionDuration={{ exit: 380, enter: 400 }}
 Using material-ui `classes` prop, you can override styles applied to a snackbar based on its variant. For more info see [overriding with classes](https://material-ui.com/customization/overrides/#overriding-with-classes). This accepts the following keys:
 ```
 classes.variantSuccess:       Styles applied to the snackbar if variant is set to 'success'.
-classes.variantError:         Styles applied to the snackbar if variant is set to 'error'.
-classes.variantWarning:       Styles applied to the snackbar if variant is set to 'warning'.
-classes.variantInfo:          Styles applied to the snackbar if variant is set to 'info'.
+classes.variantError:                                                   is set to 'error'.
+classes.variantWarning:                                                 is set to 'warning'.
+classes.variantInfo:                                                    is set to 'info'.
 ```
 
 ### **withSnackbar**:
