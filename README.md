@@ -39,7 +39,6 @@ import { SnackbarProvider } from 'notistack';
 import { withSnackbar } from 'notistack';
 
 class MyComponent extends Component {
-  
   handleNetworkRequest = () => {
      const { enqueueSnackbar } = this.props; 
      fetchSomeData()
@@ -81,44 +80,55 @@ onClickAction       type: func            required: false       defualt: dismiss
 // Example of a prop passed to Mui-Snackbar
 transitionDuration={{ exit: 380, enter: 400 }}
 ```
-
+Using material-ui `classes` prop, you can override styles applied to a snackbar based on its variant. For more info see [overriding with classes](https://material-ui.com/customization/overrides/#overriding-with-classes). This accepts the following keys:
+```
+classes.variantSuccess:       Styles applied to the snackbar if variant is set to 'success'.
+classes.variantError:         Styles applied to the snackbar if variant is set to 'error'.
+classes.variantWarning:       Styles applied to the snackbar if variant is set to 'warning'.
+classes.variantInfo:          Styles applied to the snackbar if variant is set to 'info'.
+```
 
 ### **withSnackbar**:
-**Note**: `onPresentSnackbar` has been now deprecated. Use enqueueSnackbar instead:
+When you export your component using `withSnackbar` you'll have access to `enqueueSnackbar` method in your props which basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options`.
+```javascript
+this.props.enqueueSnackbar(message, options)
+
+// text of the snackbar
+message         type:string         required: true
+
+// object containing options with the following shape
+options:        type:object         required: false 
+
+// type of the snackbar
+options.variant type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
+
+// event fired when user clicks on action button (if any)
+options.onClickAction   type: func          required: false       defualt: dismisses the snackbar
+
+// You can pass material-ui Snackbar props here, and they will be applied to this individual snackbar.
+// for example, this particular snackbar will be dismissed after 1sec.
+options.autoHideDuration: 1000
+```
+**Note**: `onPresentSnackbar` has been now deprecated. Use `enqueueSnackbar` instead:
 ```javascript
 // ❌ before:
 this.props.onPresentSnackbar('variant', 'message')
 
 // ✅ after:
 this.props.enqueueSnackbar('message', { variant: 'variant' })
-
-```
-When you export your component using `withSnackbar` you'll have access to `enqueueSnackbar` method in your props which basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options`.
-```javascript
-// text of the snackbar
-message         type:string         
-
-// object containing options
-options:        type:object
-shape: 
-// type of the snackbar
-options.variant         type:string             oneOf(['default', 'error', 'success', 'warning', 'info'])
-
-// event fired when user clicks on action button (if any)
-onClickAction       type: func            required: false       defualt: dismisses the snackbar
-
-// other material-ui Snackbar props
 ```
 
-## Release notes: 
+### Release notes `v0.3.0`: 
 - New prop `hideIconVariant` to hide `iconVariant`.
 - Set `variant` of a snackbar to `default` and apply your preferred styles.
 - Add actions to a snackbar
-- Customise individual snackbars by `options` parameter of `enqueueSnackbar` method.
+- Customise snackbars **individually**, by `options` parameter of `enqueueSnackbar` method.
 - Specify styles applied to snackbars when variant is set to success, error, etc
+
 
 ## Contribution
 Open an issue and your problem will be solved.
+
 
 ### Notes
 Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😂 So I made notistack.
