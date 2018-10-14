@@ -11,6 +11,17 @@ It's **highly customizable** and you can customize it the same way you do for Mu
 | <img width="400" src="https://i.imgur.com/MtijvAK.gif"/>    | <img width="400" src="https://i.imgur.com/urX47Wn.gif"/>|
 
 
+Table of Contents
+--
+- [How to use](#how-to-use)
+- [Online demo](#online-demo)
+- [Documentation](#documentation)
+    - [`SnackbarProvider`](#snackbarProvider)
+    - [`withSnackbar`](#withSnackbar)
+- [Contribution](#contribution)
+- [Notes](#notes)
+- [Author - Contact me](#author---contact)
+
 
 ## Getting Started
 Use your prefered package manager:
@@ -19,9 +30,9 @@ npm install notistack
 yarn add notistack 
 ```
 
-### Usage
+## How to use
 
-**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](#docs) for a full list of available props)
+**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](#documentation) for a full list of available props)
 ```javascript
 import { SnackbarProvider } from 'notistack';
 
@@ -30,7 +41,6 @@ import { SnackbarProvider } from 'notistack';
 </SnackbarProvider>
 
 ```
-
 
 
 **2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to the method `enqueueSnackbar` in your props which can be used to send snackbars.
@@ -56,12 +66,12 @@ export default withSnackbar(MyCompnent);
 ```
 
 
-### Demo
+## Online demo
 **You can see the online demo and experiment all the possible configurations [`here`](http://iamhosseindhv.com/notistack).** </br>
 Or see the code for a minimal working example: [`codesandbox`](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo??hidenavigation=1&module=%2FApp.js) </br>
 [![Edit notistack-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo)
 
-## Docs
+## Documentation
 ### **SnackbarProvider**:
 All material-ui Snackbar props will get passed down to a Snackbar component. See Material-ui [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
@@ -118,21 +128,14 @@ this.props.onPresentSnackbar('variant', 'message')
 this.props.enqueueSnackbar('message', { variant: 'variant' })
 ```
 
-### Release notes `v0.3.0`: 
-- New prop `hideIconVariant` to hide `iconVariant`.
-- Set `variant` of a snackbar to `default` and apply your preferred styles.
-- Add actions to a snackbar
-- Customise snackbars **individually**, by `options` parameter of `enqueueSnackbar` method.
-- Specify styles applied to snackbars when variant is set to success, error, etc
-
-
 ## Contribution
 Open an issue and your problem will be solved.
 
 
 ### Notes
-Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😂 So I made notistack.
-
+Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😁 So I made notistack.
+</br >
+Also, multiple actions for a snackbar is not supported by notistack. 
 
 
 ## Author - Contact
