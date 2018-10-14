@@ -25,7 +25,7 @@ class SnackbarItem extends Component {
             classes,
             action,
             anchorOrigin,
-            ContentProps,
+            ContentProps = {},
             hideIconVariant,
             iconVariant = defaultAnchorOrigin,
             level,
