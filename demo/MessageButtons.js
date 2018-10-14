@@ -36,6 +36,7 @@ const styles = theme => ({
 });
 
 const buttons = [
+    { variant: 'default', message: 'Customise this snackbar youself.' },
     { variant: 'success', message: 'Successfully done the operation.' },
     { variant: 'error', message: 'Something went wrong.' },
     { variant: 'warning', message: 'Be careful of what you just did!' },
