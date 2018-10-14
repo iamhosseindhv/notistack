@@ -18,6 +18,7 @@ Table of Contents
 - [Documentation](#documentation)
     - [`SnackbarProvider`](#snackbarprovider)
     - [`withSnackbar`](#withsnackbar)
+    - [Add actions to snackbar](#add-actions-to-snackbar)
 - [Contribution](#contribution)
 - [Notes](#notes)
 - [Author - Contact me](#author---contact)
@@ -128,14 +129,35 @@ this.props.onPresentSnackbar('variant', 'message')
 this.props.enqueueSnackbar('message', { variant: 'variant' })
 ```
 
+### Add actions to snackbar: 
+You can add actions to snackbars in the same manner specified in material-ui [docs](https://material-ui.com/demos/snackbars):
+```javascript
+    <SnackbarProvider
+        maxSnack={3}
+        action={[
+            <Button color="secondary" size="small">My Action</Button>
+        ]}
+        onClickAction={() => alert('Clicked on my action button.')}
+    >
+        <App />
+    </SnackbarProvider >
+```
+
+However, notice that by passing `action` to `SnackbarProvider`, you’ll be adding action to all of the snackbars. To specify action for a single snackbar, use `options` argument of `enqueueSnackbar` method instead: 
+```javascript
+this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
+    variant: 'default',
+    action: <Button color="secondary" size="small">Undo</Button>,
+})
+```
+Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
+
 ## Contribution
 Open an issue and your problem will be solved.
 
 
 ### Notes
 Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😁 So I made notistack.
-</br >
-Also, multiple actions for a snackbar is not supported by notistack. 
 
 
 ## Author - Contact
