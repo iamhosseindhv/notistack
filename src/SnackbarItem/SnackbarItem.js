@@ -49,17 +49,19 @@ class SnackbarItem extends Component {
         let onClickHandler = snack.action ? snack.onClickAction : onClickAction;
         onClickHandler = onClickHandler || this.handleClose(key);
 
+        const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
+
         return (
             <Snackbar
                 autoHideDuration={5000}
-                anchorOrigin={anchorOrigin}
+                anchorOrigin={anchOrigin}
                 TransitionComponent={TransitionComponent}
                 TransitionProps={{
-                    direction: getTransitionDirection(anchorOrigin),
+                    direction: getTransitionDirection(anchOrigin),
                 }}
                 style={{
                     ...style,
-                    ...getTransitionStyles(level, anchorOrigin),
+                    ...getTransitionStyles(level, anchOrigin),
                 }}
                 {...other}
                 {...singleSnackProps}
