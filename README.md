@@ -140,7 +140,7 @@ You can add actions to snackbars in the same manner specified in material-ui [do
     onClickAction={() => alert('Clicked on my action button.')}
 >
     <App />
-</SnackbarProvider >
+</SnackbarProvider>
 ```
 
 However, notice that by passing `action` to `SnackbarProvider`, you’ll be adding action to all of the snackbars. To specify action for a single snackbar, use `options` argument of `enqueueSnackbar` method instead: 
