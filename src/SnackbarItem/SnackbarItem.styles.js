@@ -6,7 +6,8 @@ import {
 } from '../utils/constants';
 
 const styles = theme => ({
-    root: {
+    root: {},
+    base: {
         fontSize: '0.875rem',
         lineHeight: '1.46429em',
         fontWeight: theme.typography.fontWeightRegular,

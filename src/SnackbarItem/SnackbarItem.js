@@ -9,6 +9,7 @@ import {
     capitalise,
     defaultAnchorOrigin,
     getTransitionDirection,
+    muiClasses,
     TransitionComponent,
     variantIcon,
 } from './SnackbarItem.util';
@@ -66,13 +67,14 @@ class SnackbarItem extends Component {
                 {...other}
                 {...singleSnackProps}
                 open={snack.open}
+                classes={muiClasses(classes)}
                 onClose={this.handleClose(key)}
                 onExited={() => onExited(key)}
             >
                 <SnackbarContent
                     variant="subtitle1"
                     className={classNames(
-                        classes.root,
+                        classes.base,
                         classes[`variant${capitalise(variant)}`],
                         className,
                     )}

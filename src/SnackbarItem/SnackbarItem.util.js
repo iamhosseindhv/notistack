@@ -36,6 +36,8 @@ const InfoIcon = props => (
     </SvgIcon>
 );
 
+const TransitionComponent = props => <Slide {...props} />;
+
 const variantIcon = {
     success: <CheckIcon />,
     warning: <WarningIcon />,
@@ -55,6 +57,20 @@ const defaultAnchorOrigin = {
     horizontal: 'left',
 };
 
+const notistackClasses = [
+    'base',
+    'variantSuccess',
+    'variantError',
+    'variantInfo',
+    'variantWarning',
+    'message',
+    'iconVariant',
+];
+
+/**
+ * returns transition direction according the the given anchor origin
+ * @param {object} anchorOrigin
+ */
 const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
     if (anchorOrigin.horizontal !== 'center') {
         return DIRECTION[anchorOrigin.horizontal];
@@ -62,14 +78,31 @@ const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
     return DIRECTION[anchorOrigin.vertical];
 };
 
-const capitalise = string => string.charAt(0).toUpperCase() + string.slice(1);
+/**
+ * Capitalises a piece of string
+ * @param {string} text
+ */
+const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
 
-const TransitionComponent = props => <Slide {...props} />;
+/**
+ * Filteres classes object and returns the keys that are allowed
+ * in material-ui snackbar classes prop
+ * @param {object} classes
+ */
+const muiClasses = classes => (
+    Object.keys(classes)
+        .filter(key => !notistackClasses.includes(key))
+        .reduce((obj, key) => ({
+            ...obj,
+            [key]: classes[key],
+        }), {})
+);
 
 export {
     capitalise,
     defaultAnchorOrigin,
     getTransitionDirection,
+    muiClasses,
     TransitionComponent,
     variantIcon,
 };
