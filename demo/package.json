@@ -28,7 +28,7 @@
     ],
     "dependencies": {
         "@material-ui/core": "1.4.3",
-        "notistack": "^0.3.2",
+        "notistack": "^0.3.7",
         "prop-types": "15.6.2",
         "react": "16.4.2",
         "react-dom": "16.4.2"
