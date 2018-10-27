@@ -1,4 +1,4 @@
-## 0.3.9
+## 0.3.8
 ###### To be published
 Thanks to all contributers who improved notistack by opening an issue/PR. 
 
