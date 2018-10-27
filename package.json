@@ -9,7 +9,7 @@
         "email": "hossein.dehnavi98@yahoo.com",
         "url": "https://github.com/iamhosseindhv/notistack"
     },
-    "homepage": "http://www.iamhosseindhv.com",
+    "homepage": "https://www.iamhosseindhv.com/notistack",
     "repository": {
         "url": "git+https://github.com/iamhosseindhv/notistack.git",
         "type": "git"
@@ -52,7 +52,7 @@
         "url": "https://github.com/iamhosseindhv/notistack/issues"
     },
     "contributors": [
-        "Hossein Dehnokhalaji (https://www.linkedin.com/in/iamhosseindhv/)"
+        "Hossein Dehnokhalaji (https://www.iamhosseindhv.com/)"
     ],
     "keywords": [
         "react",
