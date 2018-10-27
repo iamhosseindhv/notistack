@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 
 
@@ -27,9 +26,9 @@ class SnackbarProvider extends Component {
             message,
             variant,
             open: true,
-            key: new Date().getTime(),
+            key: new Date().getTime() + Math.random(),
         });
-        this.handleDisplaySnack();
+        this.processQueue();
     };
 
     /**
@@ -45,48 +44,58 @@ class SnackbarProvider extends Component {
             message,
             ...options,
             open: true,
-            key: new Date().getTime(),
+            key: new Date().getTime() + Math.random(),
         });
-        this.handleDisplaySnack();
+        this.processQueue();
     };
 
     /**
-     * Display snack if there's space for it. Otherwise, immediately begin dismissing the
-     * oldest message to start showing the new one.
-     */
-    handleDisplaySnack = () => {
-        const { maxSnack } = this.props;
-        const { snacks } = this.state;
-        if (snacks.length >= maxSnack) {
-            return this.handleDismissOldest();
-        }
-        return this.processQueue();
-    };
-
-    /**
-     * Display items (notifications) in the queue if there's space for them.
+     * Process the queue until queue is empty.
+     * Dismiss the oldest message if there is no space for new snack.
+     * Then, display the next item (notification) in the queue.
      */
     processQueue = () => {
-        if (this.queue.length > 0) {
+        const { maxSnack } = this.props;
+        while (this.queue.length > 0) {
             const { snacks } = this.state;
             const newOne = this.queue.shift();
-            this.setState({
-                snacks: [...snacks, newOne],
-            });
+
+            if (snacks.length >= maxSnack) this.handleDismissOldest();
+            this.setState(({ snacks: s }) => ({
+                snacks: [...s, { ...newOne, level: snacks.length - 1 }],
+            }));
+            this.recomputeLevel();
         }
+    };
+
+    /**
+     * Compute the correct level for each notification
+     */
+    recomputeLevel = () => {
+        const { maxSnack } = this.props;
+        this.setState(({ snacks }) => ({
+            snacks: snacks.map((item, i) => ({
+                ...item,
+                level: item.open ? i - Math.max(maxSnack, snacks.length) + maxSnack : 0
+            })),
+        }));
     };
 
     /**
      * Hide oldest snackbar on the screen because there exists a new one which we have to display.
      */
     handleDismissOldest = () => {
+        const { maxSnack } = this.props;
         this.setState(({ snacks }) => ({
-            snacks: [
-                ...snacks
-                    .filter(item => item.open === true)
-                    .map((item, i) => (i === 0 ? { ...item, open: false } : { ...item })),
-            ],
+            snacks: snacks.map(
+                (item, i) => (
+                    i <= snacks.length - maxSnack
+                        ? { ...item, open: false }
+                        : { ...item }
+                ),
+            ),
         }));
+        this.recomputeLevel();
     };
 
     /**
@@ -95,10 +104,9 @@ class SnackbarProvider extends Component {
      */
     handleCloseSnack = (key) => {
         this.setState(({ snacks }) => ({
-            snacks: [
-                ...snacks.map(item => (item.key === key ? { ...item, open: false } : { ...item })),
-            ],
+            snacks: snacks.map(item => (item.key === key ? { ...item, open: false } : { ...item })),
         }));
+        this.recomputeLevel();
     };
 
     /**
@@ -109,15 +117,10 @@ class SnackbarProvider extends Component {
      * @param {number} key - id of the snackbar we want to remove
      */
     handleExitedSnack = (key) => {
-        const enterDelay = TRANSITION_DELAY + TRANSITION_DOWN_DURATION + 40;
-        this.setState(
-            ({ snacks }) => ({
-                snacks: [
-                    ...snacks.filter(item => item.key !== key),
-                ],
-            }),
-            () => setTimeout(this.handleDisplaySnack, enterDelay),
-        );
+        this.setState(({ snacks }) => ({
+            snacks: snacks.filter(item => item.key !== key),
+        }));
+        this.recomputeLevel();
     };
 
     render() {
@@ -129,11 +132,11 @@ class SnackbarProvider extends Component {
                 <SnackbarContextNext.Provider value={this.handleEnqueueSnackbar}>
                     <Fragment>
                         {children}
-                        {snacks.map((snack, index) => (
+                        {snacks.map(snack => (
                             <SnackbarItem
                                 {...props}
                                 key={snack.key}
-                                level={index}
+                                level={snack.level}
                                 snack={snack}
                                 onClose={this.handleCloseSnack}
                                 onExited={this.handleExitedSnack}
