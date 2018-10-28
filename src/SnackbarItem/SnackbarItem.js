@@ -51,7 +51,6 @@ const SnackbarItem = (props) => {
         action: snack.action || contentAction || action,
     };
 
-    // TODO
     const onHandleClose = createHandleClose(key, onClose);
     let onClickHandler = snack.action ? snack.onClickAction : onClickAction;
     onClickHandler = onClickHandler || onHandleClose;
