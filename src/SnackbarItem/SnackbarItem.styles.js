@@ -29,9 +29,9 @@ const styles = theme => ({
         display: 'flex',
         alignItems: 'center',
     },
-    iconVariant: {
+    icon: {
         opacity: 0.9,
-        height: 24,
+        fontSize: 20,
         marginRight: theme.spacing.unit,
     },
 });

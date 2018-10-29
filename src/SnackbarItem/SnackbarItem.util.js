@@ -39,10 +39,10 @@ const InfoIcon = props => (
 const TransitionComponent = props => <Slide {...props} />;
 
 const variantIcon = {
-    success: <CheckIcon />,
-    warning: <WarningIcon />,
-    error: <ErrorIcon />,
-    info: <InfoIcon />,
+    success: CheckIcon,
+    warning: WarningIcon,
+    error: ErrorIcon,
+    info: InfoIcon,
 };
 
 const DIRECTION = {
