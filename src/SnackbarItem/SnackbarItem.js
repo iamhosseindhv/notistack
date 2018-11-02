@@ -73,7 +73,6 @@ class SnackbarItem extends Component {
                 onExited={() => onExited(key)}
             >
                 <SnackbarContent
-                    variant="subtitle1"
                     className={classNames(
                         classes.base,
                         classes[`variant${capitalise(variant)}`],
