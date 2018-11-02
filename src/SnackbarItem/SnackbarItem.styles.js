@@ -5,8 +5,18 @@ import {
     TRANSITION_DOWN_DURATION,
 } from '../utils/constants';
 
-const styles = theme => ({
+const muiClasses = {
     root: {},
+    anchorOriginTopCenter: {},
+    anchorOriginBottomCenter: {},
+    anchorOriginTopRight: {},
+    anchorOriginBottomRight: {},
+    anchorOriginTopLeft: {},
+    anchorOriginBottomLeft: {},
+};
+
+const styles = theme => ({
+    ...muiClasses,
     base: {
         fontSize: '0.875rem',
         lineHeight: '1.46429em',

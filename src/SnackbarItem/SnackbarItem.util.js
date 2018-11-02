@@ -64,7 +64,7 @@ const notistackClasses = [
     'variantInfo',
     'variantWarning',
     'message',
-    'iconVariant',
+    'icon',
 ];
 
 /**
