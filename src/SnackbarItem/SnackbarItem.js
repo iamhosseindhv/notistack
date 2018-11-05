@@ -18,8 +18,8 @@ import {
 class SnackbarItem extends Component {
     handleClose = key => (event, reason) => {
         const { onClose } = this.props;
-        if (reason === 'clickaway') return;
-        onClose(key);
+
+        onClose(event, reason, key);
     };
 
     render() {

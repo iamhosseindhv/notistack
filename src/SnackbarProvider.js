@@ -91,14 +91,26 @@ class SnackbarProvider extends Component {
 
     /**
      * Hide a snackbar after its timeout.
-     * @param {number} key - id of the snackbar we want to hide
      */
-    handleCloseSnack = (key) => {
-        this.setState(({ snacks }) => ({
-            snacks: [
-                ...snacks.map(item => (item.key === key ? { ...item, open: false } : { ...item })),
-            ],
-        }));
+    handleCloseSnack = snackOnClose => (event, reason, key) => {
+        const { onClose } = this.props;
+
+        if (reason !== 'clickaway') {
+            this.setState(({ snacks }) => ({
+                snacks: [
+                    ...snacks
+                        .map(item => (item.key === key ? { ...item, open: false } : { ...item })),
+                ],
+            }));
+        }
+
+        if (snackOnClose) {
+            snackOnClose(event, reason, key);
+        }
+
+        if (onClose) {
+            onClose(event, reason, key);
+        }
     };
 
     /**
@@ -106,9 +118,10 @@ class SnackbarProvider extends Component {
      * it leaves the screen and immediately after leaving animation is done, this method
      * gets called. We remove the hidden snackbar from state and then display notifications
      * waiting in the queue (if any).
-     * @param {number} key - id of the snackbar we want to remove
      */
-    handleExitedSnack = (key) => {
+    handleExitedSnack = snackOnExited => (key) => {
+        const { onExited } = this.props;
+
         const enterDelay = TRANSITION_DELAY + TRANSITION_DOWN_DURATION + 40;
         this.setState(
             ({ snacks }) => ({
@@ -118,6 +131,14 @@ class SnackbarProvider extends Component {
             }),
             () => setTimeout(this.handleDisplaySnack, enterDelay),
         );
+
+        if (snackOnExited) {
+            snackOnExited(key);
+        }
+
+        if (onExited) {
+            onExited(key);
+        }
     };
 
     render() {
@@ -135,8 +156,8 @@ class SnackbarProvider extends Component {
                                 key={snack.key}
                                 level={index}
                                 snack={snack}
-                                onClose={this.handleCloseSnack}
-                                onExited={this.handleExitedSnack}
+                                onClose={this.handleCloseSnack(snack.onClose)}
+                                onExited={this.handleExitedSnack(snack.onExited)}
                             />
                         ))}
                     </Fragment>
@@ -153,10 +174,14 @@ SnackbarProvider.propTypes = {
      * on top of one another
      */
     maxSnack: PropTypes.number,
+    onClose: PropTypes.func,
+    onExited: PropTypes.func,
 };
 
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
+    onClose: null,
+    onExited: null,
 };
 
 export default SnackbarProvider;
