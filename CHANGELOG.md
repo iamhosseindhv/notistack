@@ -9,7 +9,6 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 * Smaller default icon variants so they don't make snackbars larger in height.
 * Support for enqueueing multiple snackbars at once. [#14](https://github.com/iamhosseindhv/notistack/issues/14)
 * Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
-* Add support to access `SnackbarContext`. [#13](https://github.com/iamhosseindhv/notistack/issues/13)
 * Remove material-ui Typography `v2` warnings. [#19](https://github.com/iamhosseindhv/notistack/issues/19)
 
 ## 0.3.7
