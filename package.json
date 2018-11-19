@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "description": "Highly customisable notification snackbars (Material-UI Snackbar) that can be stacked on top of each other",
     "main": "build/index",
     "license": "MIT",
@@ -27,7 +27,7 @@
         "@material-ui/core": "^3.2.0"
     },
     "devDependencies": {
-        "@material-ui/core": "^1.4.3",
+        "@material-ui/core": "^3.2.0",
         "babel-cli": "^6.26.0",
         "babel-core": "^6.26.3",
         "babel-eslint": "^8.2.6",
