@@ -1,14 +1,22 @@
-## 0.3.8
+## 0.3.9
 ###### To be published
-Thanks to all contributers who improved notistack by opening an issue/PR. 
 
-**@BornaP @pantharshit00 @ysgk @Ang-YC**
+Thanks to all contributers who improved notistack by opening an issue/PR.
 
-
-* Fix bug where user couldn't apply css classes to mui-Snackbar `classes.root`. [#11](https://github.com/iamhosseindhv/notistack/issues/11)
-* Smaller default icon variants so they don't make snackbars larger in height.
+**@ysgk @Ang-YC**
 * Support for enqueueing multiple snackbars at once. [#14](https://github.com/iamhosseindhv/notistack/issues/14)
 * Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
+
+
+## 0.3.8
+###### Nov 19, 2018
+
+### `notistack@0.3.8`
+Thanks to all contributers who improved notistack by opening an issue/PR. 
+
+**@BornaP @pantharshit00**
+* Fix bug where user couldn't apply css classes to mui-Snackbar `classes.root`. [#11](https://github.com/iamhosseindhv/notistack/issues/11)
+* Smaller default icon variants so they don't make snackbars larger in height.
 * Remove material-ui Typography `v2` warnings. [#19](https://github.com/iamhosseindhv/notistack/issues/19)
 
 ## 0.3.7
