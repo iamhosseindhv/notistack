@@ -78,26 +78,28 @@ class SnackbarItem extends Component {
                 onClose={this.handleClose(key)}
                 onExited={this.handleExited(key)}
             >
-                <SnackbarContent
-                    className={classNames(
-                        classes.base,
-                        classes[`variant${capitalise(variant)}`],
-                        className,
-                    )}
-                    {...contentProps}
-                    aria-describedby="client-snackbar"
-                    message={(
-                        <span id="client-snackbar" className={classes.message}>
-                            {!hideIconVariant ? <Icon className={classes.icon} /> : null}
-                            {snack.message}
-                        </span>
-                    )}
-                    action={contentProps.action && (
-                        <span onClick={onClickHandler}>
-                            {contentProps.action}
-                        </span>
-                    )}
-                />
+                {snack.children || (
+                    <SnackbarContent
+                        className={classNames(
+                            classes.base,
+                            classes[`variant${capitalise(variant)}`],
+                            className,
+                        )}
+                        {...contentProps}
+                        aria-describedby="client-snackbar"
+                        message={(
+                            <span id="client-snackbar" className={classes.message}>
+                                {!hideIconVariant ? <Icon className={classes.icon} /> : null}
+                                {snack.message}
+                            </span>
+                        )}
+                        action={contentProps.action && (
+                            <span onClick={onClickHandler}>
+                                {contentProps.action}
+                            </span>
+                        )}
+                    />
+                )}
             </Snackbar>
         );
     }
