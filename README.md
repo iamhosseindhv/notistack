@@ -73,6 +73,8 @@ Or see the code for a minimal working example: [`codesandbox`](https://codesandb
 [![Edit notistack-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo)
 
 ## Documentation
+#### [`See full docs here`](https://iamhosseindhv.com/notistack)
+
 ### **SnackbarProvider**:
 All material-ui Snackbar props will get passed down to a Snackbar component. See Material-ui [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
