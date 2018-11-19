@@ -3,7 +3,9 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@ysgk @Ang-YC**
+**@nocksapp @nijk @ysgk @Ang-YC**
+* Add support for `onExited` and `onClose` props. [#21](https://github.com/iamhosseindhv/notistack/pull/21)
+* Add support to pass `children` via `enqueueSnackbar`. [#23](https://github.com/iamhosseindhv/notistack/pull/23)
 * Support for enqueueing multiple snackbars at once. [#14](https://github.com/iamhosseindhv/notistack/issues/14)
 * Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
 
