@@ -43,6 +43,8 @@ const buttons = [
 
 class MessageButtons extends Component {
     handleClick = button => () => {
+        // Avoid material-ui warnings. more info: https://material-ui.com/style/typography/#migration-to-typography-v2
+        window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
         this.props.enqueueSnackbar(button.message, { variant: button.variant });
     };
 

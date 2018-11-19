@@ -2,5 +2,8 @@ src
 demo
 .github
 .babelrc
+.eslintrc
 .gitignore
+.README.md
+.CHANGELOG.md
 webpack.config.js

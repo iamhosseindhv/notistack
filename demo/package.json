@@ -27,7 +27,7 @@
         "notification"
     ],
     "dependencies": {
-        "@material-ui/core": "1.4.3",
+        "@material-ui/core": "3.4.0",
         "notistack": "^0.3.7",
         "prop-types": "15.6.2",
         "react": "16.4.2",
