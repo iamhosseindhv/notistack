@@ -99,6 +99,8 @@ class SnackbarProvider extends Component {
                 ...snacks.map(item => (item.key === key ? { ...item, open: false } : { ...item })),
             ],
         }));
+
+        if (this.props.onClose) this.props.onClose(key);
     };
 
     /**
@@ -118,6 +120,8 @@ class SnackbarProvider extends Component {
             }),
             () => setTimeout(this.handleDisplaySnack, enterDelay),
         );
+
+        if (this.props.onExited) this.props.onExited(key);
     };
 
     render() {
@@ -153,10 +157,14 @@ SnackbarProvider.propTypes = {
      * on top of one another
      */
     maxSnack: PropTypes.number,
+    onClose: PropTypes.func,
+    onExited: PropTypes.func,
 };
 
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
+    onClose: undefined,
+    onExited: undefined,
 };
 
 export default SnackbarProvider;

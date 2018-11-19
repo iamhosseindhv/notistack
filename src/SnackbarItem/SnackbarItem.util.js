@@ -57,15 +57,15 @@ const defaultAnchorOrigin = {
     horizontal: 'left',
 };
 
-const notistackClasses = [
-    'base',
-    'variantSuccess',
-    'variantError',
-    'variantInfo',
-    'variantWarning',
-    'message',
-    'icon',
-];
+const muiClasses = {
+    root: {},
+    anchorOriginTopCenter: {},
+    anchorOriginBottomCenter: {},
+    anchorOriginTopRight: {},
+    anchorOriginBottomRight: {},
+    anchorOriginTopLeft: {},
+    anchorOriginBottomLeft: {},
+};
 
 /**
  * returns transition direction according the the given anchor origin
@@ -89,9 +89,9 @@ const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
  * in material-ui snackbar classes prop
  * @param {object} classes
  */
-const muiClasses = classes => (
+const getMuiClasses = classes => (
     Object.keys(classes)
-        .filter(key => !notistackClasses.includes(key))
+        .filter(key => muiClasses[key] !== undefined)
         .reduce((obj, key) => ({
             ...obj,
             [key]: classes[key],
@@ -102,6 +102,7 @@ export {
     capitalise,
     defaultAnchorOrigin,
     getTransitionDirection,
+    getMuiClasses,
     muiClasses,
     TransitionComponent,
     variantIcon,

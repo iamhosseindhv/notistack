@@ -1,19 +1,10 @@
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
+import { muiClasses } from './SnackbarItem.util';
 import {
     TRANSITION_DELAY,
     TRANSITION_DOWN_DURATION,
 } from '../utils/constants';
-
-const muiClasses = {
-    root: {},
-    anchorOriginTopCenter: {},
-    anchorOriginBottomCenter: {},
-    anchorOriginTopRight: {},
-    anchorOriginBottomRight: {},
-    anchorOriginTopLeft: {},
-    anchorOriginBottomLeft: {},
-};
 
 const styles = theme => ({
     ...muiClasses,

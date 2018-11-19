@@ -9,7 +9,7 @@ import {
     capitalise,
     defaultAnchorOrigin,
     getTransitionDirection,
-    muiClasses,
+    getMuiClasses,
     TransitionComponent,
     variantIcon,
 } from './SnackbarItem.util';
@@ -17,9 +17,16 @@ import {
 
 class SnackbarItem extends Component {
     handleClose = key => (event, reason) => {
-        const { onClose } = this.props;
+        const { onClose, snack: { onClose: singleOnClose } } = this.props;
         if (reason === 'clickaway') return;
+        if (singleOnClose) singleOnClose(key);
         onClose(key);
+    };
+
+    handleExited = key => () => {
+        const { onExited, snack: { onExited: singleOnExited } } = this.props;
+        if (singleOnExited) singleOnExited(key);
+        onExited(key);
     };
 
     render() {
@@ -33,7 +40,6 @@ class SnackbarItem extends Component {
             level,
             snack,
             style,
-            onExited,
             onClickAction,
             ...other
         } = this.props;
@@ -68,9 +74,9 @@ class SnackbarItem extends Component {
                 {...other}
                 {...singleSnackProps}
                 open={snack.open}
-                classes={muiClasses(classes)}
+                classes={getMuiClasses(classes)}
                 onClose={this.handleClose(key)}
-                onExited={() => onExited(key)}
+                onExited={this.handleExited(key)}
             >
                 <SnackbarContent
                     className={classNames(
