@@ -1,13 +1,23 @@
-## 0.3.9
+## 0.4.0
 ###### To be published
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@nocksapp @nijk @ysgk @Ang-YC**
+**@Ang-YC**
+* Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
+
+
+## 0.3.9
+###### Nov 20, 2018
+
+### `notistack@0.3.9`
+Thanks to all contributers who improved notistack by opening an issue/PR. 
+
+**@nowaalex @nocksapp @nijk @ysgk**
 * Add support for `onExited` and `onClose` props. [#21](https://github.com/iamhosseindhv/notistack/pull/21)
 * Add support to pass `children` via `enqueueSnackbar`. [#23](https://github.com/iamhosseindhv/notistack/pull/23)
 * Support for enqueueing multiple snackbars at once. [#14](https://github.com/iamhosseindhv/notistack/issues/14)
-* Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
+* Fix bug "Uncaught Error". [#26](https://github.com/iamhosseindhv/notistack/issues/26)
 
 
 ## 0.3.8
