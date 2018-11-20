@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -10,6 +10,7 @@ import {
     defaultAnchorOrigin,
     getTransitionDirection,
     getMuiClasses,
+    Icon,
     TransitionComponent,
     variantIcon,
 } from './SnackbarItem.util';
@@ -46,7 +47,7 @@ class SnackbarItem extends Component {
 
         const { action: contentAction, className, ...otherContentProps } = ContentProps;
         const { key, variant = 'default', ...singleSnackProps } = snack;
-        const Icon = iconVariant[variant] || <Fragment />;
+        const icon = iconVariant[variant];
 
         const contentProps = {
             ...otherContentProps,
@@ -89,7 +90,9 @@ class SnackbarItem extends Component {
                         aria-describedby="client-snackbar"
                         message={(
                             <span id="client-snackbar" className={classes.message}>
-                                {!hideIconVariant ? <Icon className={classes.icon} /> : null}
+                                {!hideIconVariant && (
+                                    <Icon Component={icon} className={classes.icon} />
+                                )}
                                 {snack.message}
                             </span>
                         )}
