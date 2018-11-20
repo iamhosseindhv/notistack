@@ -27,7 +27,7 @@ class SnackbarProvider extends Component {
             message,
             variant,
             open: true,
-            key: new Date().getTime(),
+            key: new Date().getTime() + Math.random(),
         });
         this.handleDisplaySnack();
     };
@@ -45,7 +45,7 @@ class SnackbarProvider extends Component {
             message,
             ...options,
             open: true,
-            key: new Date().getTime(),
+            key: new Date().getTime() + Math.random(),
         });
         this.handleDisplaySnack();
     };
@@ -68,11 +68,10 @@ class SnackbarProvider extends Component {
      */
     processQueue = () => {
         if (this.queue.length > 0) {
-            const { snacks } = this.state;
             const newOne = this.queue.shift();
-            this.setState({
+            this.setState(({ snacks }) => ({
                 snacks: [...snacks, newOne],
-            });
+            }));
         }
     };
 
@@ -81,11 +80,9 @@ class SnackbarProvider extends Component {
      */
     handleDismissOldest = () => {
         this.setState(({ snacks }) => ({
-            snacks: [
-                ...snacks
-                    .filter(item => item.open === true)
-                    .map((item, i) => (i === 0 ? { ...item, open: false } : { ...item })),
-            ],
+            snacks: snacks
+                .filter(item => item.open === true)
+                .map((item, i) => (i === 0 ? { ...item, open: false } : { ...item })),
         }));
     };
 
@@ -95,9 +92,9 @@ class SnackbarProvider extends Component {
      */
     handleCloseSnack = (key) => {
         this.setState(({ snacks }) => ({
-            snacks: [
-                ...snacks.map(item => (item.key === key ? { ...item, open: false } : { ...item })),
-            ],
+            snacks: snacks.map(item => (
+                item.key === key ? { ...item, open: false } : { ...item }
+            )),
         }));
     };
 
@@ -112,9 +109,7 @@ class SnackbarProvider extends Component {
         const enterDelay = TRANSITION_DELAY + TRANSITION_DOWN_DURATION + 40;
         this.setState(
             ({ snacks }) => ({
-                snacks: [
-                    ...snacks.filter(item => item.key !== key),
-                ],
+                snacks: snacks.filter(item => item.key !== key),
             }),
             () => setTimeout(this.handleDisplaySnack, enterDelay),
         );
