@@ -1,7 +1,6 @@
 # notistack
 
-**Notistack** is an extention to Material-UI [Snackbar](https://material-ui.com/demos/snackbars) that manages snackbars so they can be displayed and stacked on top of one another.
-It's **highly customizable** and you can customize it the same way you do for Mui-Snackbars.
+**Notistack** is an extention to Material-UI [Snackbar](https://material-ui.com/demos/snackbars). notistack makes it extremely easy to display snackbars (so you don't have to deal with open/close state of them), and also enables **you** to stack snackbars on top of one another. It's **highly customizable** and you can customize snackbars the same way you do for Mui-Snackbars.
 
     
 #### [`Play with online demo here`](https://iamhosseindhv.com/notistack)
