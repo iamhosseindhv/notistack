@@ -1,6 +1,6 @@
 {
-    "name": "notistack-demo",
-    "description": "Demo for NotiStack",
+    "name": "notistack-simple-example",
+    "description": "Minimal example for NotiStack",
     "repository": {
         "url": "git+https://github.com/iamhosseindhv/notistack.git",
         "type": "git"
@@ -28,7 +28,7 @@
     ],
     "dependencies": {
         "@material-ui/core": "3.4.0",
-        "notistack": "^0.3.7",
+        "notistack": "^0.3.9",
         "prop-types": "15.6.2",
         "react": "16.4.2",
         "react-dom": "16.4.2"
