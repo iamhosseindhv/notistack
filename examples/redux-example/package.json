@@ -1,0 +1,26 @@
+{
+  "name": "notistack-redux-example",
+  "description": "Redux example for notistack",
+  "homepage": "https://www.iamhosseindhv.com/notistack",
+  "repository": {
+    "url": "git+https://github.com/iamhosseindhv/notistack.git",
+    "type": "git"
+  },
+  "main": "src/index.js",
+  "dependencies": {
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-redux": "5.0.7",
+    "react-scripts": "1.1.4",
+    "redux": "latest",
+    "notistack": "^0.3.9",
+    "@material-ui/core": "3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

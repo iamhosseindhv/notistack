@@ -1,6 +1,6 @@
 {
     "name": "notistack-simple-example",
-    "description": "Minimal example for NotiStack",
+    "description": "Minimal example for notistack",
     "repository": {
         "url": "git+https://github.com/iamhosseindhv/notistack.git",
         "type": "git"
