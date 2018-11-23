@@ -68,8 +68,8 @@ export default withSnackbar(MyCompnent);
 
 ## Online demo
 **You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack).** </br>
-Or see the code for a minimal working example: [`codesandbox`](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo??hidenavigation=1&module=%2FApp.js) </br>
-[![Edit notistack-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/demo)
+Or see the code for a minimal working example: [`codesandbox`](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
+[![Edit notistack-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example)
 
 ## Documentation
 #### [`See full docs here`](https://iamhosseindhv.com/notistack)
