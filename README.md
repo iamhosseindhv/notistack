@@ -18,6 +18,7 @@ Table of Contents
     - [`SnackbarProvider`](#snackbarprovider)
     - [`withSnackbar`](#withsnackbar)
     - [Add actions to snackbar](#add-actions-to-snackbar)
+    - [Redux example](#redux-example)
 - [Contribution](#contribution)
 - [Notes](#notes)
 - [Author - Contact me](#author---contact)
@@ -67,9 +68,9 @@ export default withSnackbar(MyCompnent);
 
 
 ## Online demo
-**You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack).** </br>
-Or see the code for a minimal working example: [`codesandbox`](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
-[![Edit notistack-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example)
+**You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack).**</br>
+Or see the code for a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
+
 
 ## Documentation
 #### [`See full docs here`](https://iamhosseindhv.com/notistack)
@@ -153,6 +154,8 @@ this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
 ```
 Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
 
+### Redux example:
+You can use notistack to send snackbars from reducers. This has lots of applications but particularly useful when a network request fails. For more information check out notistack's [minimal redux example](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/redux-example).
 
 ## Contribution
 Open an issue and your problem will be solved.
