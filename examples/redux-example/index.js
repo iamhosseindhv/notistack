@@ -1,3 +1,6 @@
+/**
+ * CREDIT to GitHub@natepage for this example
+ */
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore, combineReducers } from 'redux';
