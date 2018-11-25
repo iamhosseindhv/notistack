@@ -38,18 +38,17 @@ const InfoIcon = props => (
 
 const TransitionComponent = props => <Slide {...props} />;
 
-const Icon = ({ Component, ...props }) => {
-    if (Component) {
-        return <Component {...props} />;
-    }
-    return null;
+const iconStyles = {
+    opacity: 0.9,
+    fontSize: 20,
+    marginRight: 8,
 };
 
 const variantIcon = {
-    success: CheckIcon,
-    warning: WarningIcon,
-    error: ErrorIcon,
-    info: InfoIcon,
+    success: <CheckIcon style={iconStyles} />,
+    warning: <WarningIcon style={iconStyles} />,
+    error: <ErrorIcon style={iconStyles} />,
+    info: <InfoIcon style={iconStyles} />,
 };
 
 const DIRECTION = {
@@ -110,7 +109,6 @@ export {
     defaultAnchorOrigin,
     getTransitionDirection,
     getMuiClasses,
-    Icon,
     muiClasses,
     TransitionComponent,
     variantIcon,

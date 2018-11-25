@@ -10,7 +10,6 @@ import {
     defaultAnchorOrigin,
     getTransitionDirection,
     getMuiClasses,
-    Icon,
     TransitionComponent,
     variantIcon,
 } from './SnackbarItem.util';
@@ -84,15 +83,14 @@ class SnackbarItem extends Component {
                         className={classNames(
                             classes.base,
                             classes[`variant${capitalise(variant)}`],
+                            (!hideIconVariant && icon) ? classes.lessPadding : null,
                             className,
                         )}
                         {...contentProps}
                         aria-describedby="client-snackbar"
                         message={(
                             <span id="client-snackbar" className={classes.message}>
-                                {!hideIconVariant && (
-                                    <Icon Component={icon} className={classes.icon} />
-                                )}
+                                {!hideIconVariant ? icon : null}
                                 {snack.message}
                             </span>
                         )}

@@ -14,6 +14,9 @@ const styles = theme => ({
         fontWeight: theme.typography.fontWeightRegular,
         fontFamily: theme.typography.fontFamily,
     },
+    lessPadding: {
+        paddingLeft: theme.spacing.unit * 2.5,
+    },
     variantSuccess: {
         backgroundColor: green[600],
     },
@@ -29,11 +32,6 @@ const styles = theme => ({
     message: {
         display: 'flex',
         alignItems: 'center',
-    },
-    icon: {
-        opacity: 0.9,
-        fontSize: 20,
-        marginRight: theme.spacing.unit,
     },
 });
 
