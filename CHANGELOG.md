@@ -4,6 +4,7 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
 **@Ang-YC**
+* Fix issue where we couldn't add custom variant icon of type string (like emojies).
 * Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
 
 
