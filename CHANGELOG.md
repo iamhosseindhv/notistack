@@ -1,10 +1,19 @@
-## 0.4.0
+## 0.4.1
 ###### To be published
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@Ang-YC**
+**@Ang-YC @james-cordeiro**
 * Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
+* Add support to close snackbars programmatically [#20](https://github.com/iamhosseindhv/notistack/issues/20)
+
+
+
+## 0.3.9
+###### Nov 29, 2018
+
+### `notistack@0.4.0`
+* Fix issue where we couldn't add custom variant icon of type string (like emojies).
 
 
 ## 0.3.9
