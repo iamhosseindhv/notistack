@@ -117,7 +117,10 @@ SnackbarItem.propTypes = {
         /**
          * Text of the snackbar/notification.
          */
-        message: PropTypes.string.isRequired,
+        message: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.node,
+        ]).isRequired,
         /**
          * Type of snackbar. defaulted to 'default'.
          */
