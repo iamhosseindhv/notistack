@@ -26,6 +26,7 @@ export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open'|'messa
     iconVariant?: React.ComponentType<SvgIconProps>;
     hideIconVariant?: boolean;
     onClickAction?: Function;
+    classes?: Object;
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
