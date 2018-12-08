@@ -3,8 +3,8 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@Ang-YC @james-cordeiro**
-* Better performance when user enqueues too many snackbars at once. [#15](https://github.com/iamhosseindhv/notistack/pull/15)
+**@james-cordeiro**
+* Allow snackbar messages of type node to be passed in enqueueSnackbar [#34](https://github.com/iamhosseindhv/notistack/pull/34)
 * Add support to close snackbars programmatically [#20](https://github.com/iamhosseindhv/notistack/issues/20)
 
 
