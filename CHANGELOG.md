@@ -1,25 +1,24 @@
-## 0.4.1
+## `notistack@0.4.1`
 ###### To be published
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@james-cordeiro**
+**@james-cordeiro @steinbergh**
 * Allow snackbar messages of type node to be passed in enqueueSnackbar [#34](https://github.com/iamhosseindhv/notistack/pull/34)
+* Allow snackbars with different heights to be stacked without overlapping on others. [#35](https://github.com/iamhosseindhv/notistack/issues/35)
 * Add support to close snackbars programmatically [#20](https://github.com/iamhosseindhv/notistack/issues/20)
 
 
 
-## 0.3.9
+## `notistack@0.4.0`
 ###### Nov 29, 2018
 
-### `notistack@0.4.0`
 * Fix issue where we couldn't add custom variant icon of type string (like emojies).
 
 
-## 0.3.9
+## `notistack@0.3.9`
 ###### Nov 20, 2018
 
-### `notistack@0.3.9`
 Thanks to all contributers who improved notistack by opening an issue/PR. 
 
 **@nowaalex @nocksapp @nijk @ysgk**
@@ -29,10 +28,9 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 * Fix bug "Uncaught Error". [#26](https://github.com/iamhosseindhv/notistack/issues/26)
 
 
-## 0.3.8
+## `notistack@0.3.8`
 ###### Nov 19, 2018
 
-### `notistack@0.3.8`
 Thanks to all contributers who improved notistack by opening an issue/PR. 
 
 **@BornaP @pantharshit00**
@@ -40,10 +38,9 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 * Smaller default icon variants so they don't make snackbars larger in height.
 * Remove material-ui Typography `v2` warnings. [#19](https://github.com/iamhosseindhv/notistack/issues/19)
 
-## 0.3.7
+## `notistack@0.3.7`
 ###### Oct 22, 2018
 
-### `notistack@0.3.7`
 * **More customisation**: 
   * New prop hideIconVariant to hide iconVariant.
   * Set variant of a snackbar to default, (which is the default value) and you'll have a naked snackbar ready to be customised.
