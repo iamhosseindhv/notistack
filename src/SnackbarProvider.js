@@ -12,6 +12,19 @@ class SnackbarProvider extends Component {
 
     queue = [];
 
+    get offsets() {
+        const { snacks } = this.state;
+        return snacks.map((item, i) => {
+            let index = i;
+            let offset = 20;
+            while (snacks[index - 1]) {
+                offset += snacks[index - 1].height + 16;
+                index -= 1;
+            }
+            return offset;
+        });
+    }
+
     /**
      * Adds a new snackbar to the queue to be presented.
      * @param {string} variant - type of the snackbar. can be:
@@ -21,6 +34,7 @@ class SnackbarProvider extends Component {
      */
     handlePresentSnackbar = (variant, message) => {
         if (process.env.NODE_ENV !== 'production') {
+            /* eslint-disable no-console */
             console.warn('DEPRECATED - notistack: method \'onPresentSnackbar\' has  been  deprecated and will be removed in future versions of notistack. Please use \'enqueueSnackbar\' method instead. see https://github.com/iamhosseindhv/notistack#withsnackbar for more info.');
         }
         this.queue.push({
@@ -119,6 +133,19 @@ class SnackbarProvider extends Component {
         if (this.props.onExited) this.props.onExited(key);
     };
 
+    /**
+     * Sets height for a given snackbar
+     * @param {number} height - height of snackbar after it's been rendered
+     * @param {number} key - id of the snackbar we want to remove
+     */
+    handleSetHeight = (key, height) => {
+        this.setState(({ snacks }) => ({
+            snacks: snacks.map(item => (
+                item.key === key ? { ...item, height } : { ...item }
+            )),
+        }));
+    };
+
     render() {
         const { children, maxSnack, ...props } = this.props;
         const { snacks } = this.state;
@@ -132,10 +159,11 @@ class SnackbarProvider extends Component {
                             <SnackbarItem
                                 {...props}
                                 key={snack.key}
-                                level={index}
                                 snack={snack}
+                                offset={this.offsets[index]}
                                 onClose={this.handleCloseSnack}
                                 onExited={this.handleExitedSnack}
+                                onSetHeight={this.handleSetHeight}
                             />
                         ))}
                     </Fragment>

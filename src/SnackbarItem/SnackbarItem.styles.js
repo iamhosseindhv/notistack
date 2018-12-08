@@ -1,12 +1,10 @@
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
 import { muiClasses } from './SnackbarItem.util';
-import {
-    TRANSITION_DELAY,
-    TRANSITION_DOWN_DURATION,
-} from '../utils/constants';
+import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION } from '../utils/constants';
 
-const styles = theme => ({
+
+export const styles = theme => ({
     ...muiClasses,
     base: {
         fontSize: '0.875rem',
@@ -42,10 +40,10 @@ const styles = theme => ({
  * (when snackbars are stacked on top of eachother)
  * @returns {object}
  */
-const getTransitionStyles = (level, anchorOrigin) => (
+export const getTransitionStyles = (offset, anchorOrigin) => (
     Object.assign(
         {
-            [anchorOrigin.vertical]: (level * 48) + (level * 16) + 20,
+            [anchorOrigin.vertical]: offset,
         },
         {
             WebKitTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
@@ -57,8 +55,3 @@ const getTransitionStyles = (level, anchorOrigin) => (
         },
     )
 );
-
-export {
-    styles,
-    getTransitionStyles,
-};

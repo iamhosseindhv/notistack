@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import RootRef from '@material-ui/core/RootRef';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { styles, getTransitionStyles } from './SnackbarItem.styles';
@@ -16,6 +17,11 @@ import {
 
 
 class SnackbarItem extends Component {
+    constructor(props) {
+        super(props);
+        this.ref = React.createRef();
+    }
+
     handleClose = key => (event, reason) => {
         const { onClose, snack: { onClose: singleOnClose } } = this.props;
         if (reason === 'clickaway') return;
@@ -29,6 +35,12 @@ class SnackbarItem extends Component {
         onExited(key);
     };
 
+    componentDidMount = () => {
+        const { onSetHeight, snack } = this.props;
+        const height = this.ref.current.clientHeight;
+        onSetHeight(snack.key, height);
+    };
+
     render() {
         const {
             classes,
@@ -37,10 +49,11 @@ class SnackbarItem extends Component {
             ContentProps = {},
             hideIconVariant,
             iconVariant,
-            level,
+            offset,
             snack,
             style,
             onClickAction,
+            onSetHeight,
             ...other
         } = this.props;
 
@@ -60,48 +73,50 @@ class SnackbarItem extends Component {
         const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
 
         return (
-            <Snackbar
-                autoHideDuration={5000}
-                anchorOrigin={anchOrigin}
-                TransitionComponent={TransitionComponent}
-                TransitionProps={{
-                    direction: getTransitionDirection(anchOrigin),
-                }}
-                style={{
-                    ...style,
-                    ...getTransitionStyles(level, anchOrigin),
-                }}
-                {...other}
-                {...singleSnackProps}
-                open={snack.open}
-                classes={getMuiClasses(classes)}
-                onClose={this.handleClose(key)}
-                onExited={this.handleExited(key)}
-            >
-                {snack.children || (
-                    <SnackbarContent
-                        className={classNames(
-                            classes.base,
-                            classes[`variant${capitalise(variant)}`],
-                            (!hideIconVariant && icon) ? classes.lessPadding : null,
-                            className,
-                        )}
-                        {...contentProps}
-                        aria-describedby="client-snackbar"
-                        message={(
-                            <span id="client-snackbar" className={classes.message}>
-                                {!hideIconVariant ? icon : null}
-                                {snack.message}
-                            </span>
-                        )}
-                        action={contentProps.action && (
-                            <span onClick={onClickHandler}>
-                                {contentProps.action}
-                            </span>
-                        )}
-                    />
-                )}
-            </Snackbar>
+            <RootRef rootRef={this.ref}>
+                <Snackbar
+                    autoHideDuration={5000}
+                    anchorOrigin={anchOrigin}
+                    TransitionComponent={TransitionComponent}
+                    TransitionProps={{
+                        direction: getTransitionDirection(anchOrigin),
+                    }}
+                    style={{
+                        ...style,
+                        ...getTransitionStyles(offset, anchOrigin),
+                    }}
+                    {...other}
+                    {...singleSnackProps}
+                    open={snack.open}
+                    classes={getMuiClasses(classes)}
+                    onClose={this.handleClose(key)}
+                    onExited={this.handleExited(key)}
+                >
+                    {snack.children || (
+                        <SnackbarContent
+                            className={classNames(
+                                classes.base,
+                                classes[`variant${capitalise(variant)}`],
+                                (!hideIconVariant && icon) ? classes.lessPadding : null,
+                                className,
+                            )}
+                            {...contentProps}
+                            aria-describedby="client-snackbar"
+                            message={(
+                                <span id="client-snackbar" className={classes.message}>
+                                    {!hideIconVariant ? icon : null}
+                                    {snack.message}
+                                </span>
+                            )}
+                            action={contentProps.action && (
+                                <span onClick={onClickHandler}>
+                                    {contentProps.action}
+                                </span>
+                            )}
+                        />
+                    )}
+                </Snackbar>
+            </RootRef>
         );
     }
 }
@@ -109,10 +124,10 @@ class SnackbarItem extends Component {
 SnackbarItem.propTypes = {
     classes: PropTypes.object.isRequired,
     /**
-     * Level on which snakcbar should be displayed
+     * offset from top/bottom of the screen where a snakcbar should be displayed
      * (when snackbars are stacked on top of eachother)
      */
-    level: PropTypes.number.isRequired,
+    offset: PropTypes.number.isRequired,
     snack: PropTypes.shape({
         /**
          * Text of the snackbar/notification.
@@ -173,6 +188,7 @@ SnackbarItem.propTypes = {
     onClickAction: PropTypes.func,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
+    onSetHeight: PropTypes.func.isRequired,
 };
 
 SnackbarItem.defaultProps = {
