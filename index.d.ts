@@ -7,7 +7,7 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
-export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message'> {
+export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     variant?: VariantType;
     onClickAction?: Function;
 }
