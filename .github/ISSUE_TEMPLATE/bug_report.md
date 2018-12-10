@@ -27,7 +27,7 @@ about: Create a bug report to help us improve notistack
     Include code to reproduce, if relevant (which it most likely is).
 
     This codesandbox.io template _may_ be a good starting point:
-    https://codesandbox.io/embed/github/iamhosseindhv/notistack/tree/master/demo
+    https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example
 
     If YOU DO NOT take time to provide a codesandbox.io reproduction, should the COMMUNITY take time to help you?
 -->
