@@ -1,12 +1,21 @@
-## `notistack@0.4.1`
+## `notistack@0.4.2`
 ###### To be published
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@james-cordeiro @steinbergh**
-* Allow snackbar messages of type node to be passed in enqueueSnackbar [#34](https://github.com/iamhosseindhv/notistack/pull/34)
-* Allow snackbars with different heights to be stacked without overlapping on others. [#35](https://github.com/iamhosseindhv/notistack/issues/35)
+**@james-cordeiro**
 * Add support to close snackbars programmatically [#20](https://github.com/iamhosseindhv/notistack/issues/20)
+
+
+## `notistack@0.4.1`
+###### Dec 10, 2018
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@james-cordeiro @steinbergh @sethduncan @martinmckenna**
+* Allow snackbar messages of type node to be passed in enqueueSnackbar [#34](https://github.com/iamhosseindhv/notistack/pull/34)
+* Allow snackbars with different heights to be stacked without overlapping on others [#35](https://github.com/iamhosseindhv/notistack/issues/35)
+* Improve typings [#37](https://github.com/iamhosseindhv/notistack/pull/37)
 
 
 
