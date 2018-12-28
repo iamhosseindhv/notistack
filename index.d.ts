@@ -22,7 +22,7 @@ export type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
 export interface InjectedNotistackProps {
     onPresentSnackbar: (variant: VariantType, message: string) => void;
-    enqueueSnackbar: (message: string, options?: OptionsObject) => void;
+    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => void;
 }
 
 export function withSnackbar<P extends InjectedNotistackProps>(component: React.ComponentType<P>):
