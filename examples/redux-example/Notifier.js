@@ -6,35 +6,33 @@ import { removeSnackbar } from './redux/actions';
 
 class Notifier extends Component {
     displayed = [];
+
     storeDisplayed = id => {
         this.displayed = [...this.displayed, id];
     };
-    shouldComponentUpdate({ notifications: nn = [] }) {
-        const { notifications: cn } = this.props;
+
+    shouldComponentUpdate({ notifications: newSnacks = [] }) {
+        const { notifications: currentSnacks } = this.props;
         let notExists = false;
-        for (let i = 0; i < nn.length; i++) {
+        for (let i = 0; i < newSnacks.length; i++) {
             if (notExists) continue;
-            notExists =
-                notExists || !cn.filter(({ key }) => nn[i].key === key).length;
+            notExists = notExists || !currentSnacks.filter(({ key }) => newSnacks[i].key === key).length;
         }
         return notExists;
     }
+
     componentDidUpdate() {
-        const {
-            notifications = [],
-            enqueueSnackbar,
-            removeSnackbar: rs
-        } = this.props;
+        const { notifications = [] } = this.props;
 
         notifications.forEach(notification => {
-            // If notification already displayed, abort
-            if (this.displayed.indexOf(notification.key) > -1) return;
-            // Display notification using notistack
-            enqueueSnackbar(notification.message, notification.options);
-            // Add notification's id to the local state
+            // Do nothing if snackbar is already displayed
+            if (this.displayed.includes(notification.key)) return;
+            // Display snackbar using notistack
+            this.props.enqueueSnackbar(notification.message, notification.options);
+            // Keep track of snackbars that we've displayed
             this.storeDisplayed(notification.key);
-            // Dispatch action to remove the notification from the redux store
-            rs(notification.key);
+            // Dispatch action to remove snackbar from redux store
+            this.props.removeSnackbar(notification.key);
         });
     }
     render() {
