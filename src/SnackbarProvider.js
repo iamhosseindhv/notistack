@@ -53,15 +53,19 @@ class SnackbarProvider extends Component {
      * We can pass Material-ui Snackbar props for individual customisation.
      * @param {string} options.variant - type of the snackbar. default value is 'default'.
      * can be: (default, success, error, warning, info)
+     * @returns generated or user defined key referencing the new snackbar
      */
-    handleEnqueueSnackbar = (message, options) => {
+    handleEnqueueSnackbar = (message, { key, ...options }) => {
+        if (key === undefined || key === null) {
+            key = new Date().getTime() + Math.random();
+        }
         this.queue.push({
-            message,
+            message, key,
             ...options,
             open: true,
-            key: new Date().getTime() + Math.random(),
         });
         this.handleDisplaySnack();
+        return key;
     };
 
     /**
@@ -152,7 +156,10 @@ class SnackbarProvider extends Component {
 
         return (
             <SnackbarContext.Provider value={this.handlePresentSnackbar}>
-                <SnackbarContextNext.Provider value={this.handleEnqueueSnackbar}>
+                <SnackbarContextNext.Provider value={{
+                    handleEnqueueSnackbar: this.handleEnqueueSnackbar,
+                    handleCloseSnackbar: this.handleCloseSnack
+                  }}>
                     <Fragment>
                         {children}
                         {snacks.map((snack, index) => (
