@@ -18,7 +18,7 @@ class SnackbarProvider extends Component {
             let index = i;
             let offset = 20;
             while (snacks[index - 1]) {
-                offset += snacks[index - 1].height + 16;
+                offset += (snacks[index - 1].height || 48) + 16;
                 index -= 1;
             }
             return offset;
@@ -53,13 +53,14 @@ class SnackbarProvider extends Component {
      * We can pass Material-ui Snackbar props for individual customisation.
      * @param {string} options.variant - type of the snackbar. default value is 'default'.
      * can be: (default, success, error, warning, info)
+     * @param {string|number} key - a unique id to allow modifying an existing snackbar notification
      */
-    handleEnqueueSnackbar = (message, options) => {
+    handleEnqueueSnackbar = (message, options, key) => {
         this.queue.push({
             message,
             ...options,
             open: true,
-            key: new Date().getTime() + Math.random(),
+            key: key || new Date().getTime() + Math.random(),
         });
         this.handleDisplaySnack();
     };
@@ -83,9 +84,11 @@ class SnackbarProvider extends Component {
     processQueue = () => {
         if (this.queue.length > 0) {
             const newOne = this.queue.shift();
-            this.setState(({ snacks }) => ({
-                snacks: [...snacks, newOne],
-            }));
+            this.setState(({ snacks }) => {
+                // remove all the snacks with the same key
+                const updated = snacks.filter(({ key }) => key !== newOne.key);
+                return { snacks: [...updated, newOne] };
+            });
         }
     };
 

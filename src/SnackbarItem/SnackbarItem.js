@@ -148,9 +148,9 @@ SnackbarItem.propTypes = {
          */
         onClickAction: PropTypes.func,
         /**
-         * Identifier of a given snakcbar.
+         * Identifier of a given snackbar.
          */
-        key: PropTypes.number.isRequired,
+        key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         /**
          * Whether or not a snackbar is visible or hidden.
          */

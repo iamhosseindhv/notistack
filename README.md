@@ -125,6 +125,11 @@ options.onClickAction   type: func          required: false       defualt: dismi
 // You can pass material-ui Snackbar props here, and they will be applied to this individual snackbar.
 // for example, this particular snackbar will be dismissed after 1sec.
 options.autoHideDuration: 1000
+
+// Provide a unique string or number to maintain a snack's content. An example
+// is when the snackbar is showing progress and you want to see progress updated
+// on a single snack, rather than many snacks indicating each step.
+key             type:string|number  required: false
 ```
 **Note**: `onPresentSnackbar` has been now deprecated. Use `enqueueSnackbar` instead:
 ```javascript
