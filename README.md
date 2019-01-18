@@ -67,7 +67,7 @@ class MyComponent extends Component {
   
 };
 
-export default withSnackbar(MyCompnent);
+export default withSnackbar(MyComponent);
 ```
 
 
