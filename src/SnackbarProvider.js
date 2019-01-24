@@ -102,16 +102,18 @@ class SnackbarProvider extends Component {
 
     /**
      * Hide a snackbar after its timeout.
+     * @param {object} event - The event source of the callback
+     * @param {string} reason - can be timeout or clickaway
      * @param {number} key - id of the snackbar we want to hide
      */
-    handleCloseSnack = (key) => {
+    handleCloseSnack = (event, reason, key) => {
         this.setState(({ snacks }) => ({
             snacks: snacks.map(item => (
                 item.key === key ? { ...item, open: false } : { ...item }
             )),
         }));
 
-        if (this.props.onClose) this.props.onClose(key);
+        if (this.props.onClose) this.props.onClose(event, reason, key);
     };
 
     /**
@@ -120,8 +122,9 @@ class SnackbarProvider extends Component {
      * gets called. We remove the hidden snackbar from state and then display notifications
      * waiting in the queue (if any).
      * @param {number} key - id of the snackbar we want to remove
+     * @param {object} event - The event source of the callback
      */
-    handleExitedSnack = (key) => {
+    handleExitedSnack = (event, key) => {
         const enterDelay = TRANSITION_DELAY + TRANSITION_DOWN_DURATION + 40;
         this.setState(
             ({ snacks }) => ({
@@ -130,7 +133,7 @@ class SnackbarProvider extends Component {
             () => setTimeout(this.handleDisplaySnack, enterDelay),
         );
 
-        if (this.props.onExited) this.props.onExited(key);
+        if (this.props.onExited) this.props.onExited(event, key);
     };
 
     /**
