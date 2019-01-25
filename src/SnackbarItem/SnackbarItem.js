@@ -150,7 +150,10 @@ SnackbarItem.propTypes = {
         /**
          * Identifier of a given snakcbar.
          */
-        key: PropTypes.number.isRequired,
+        key: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+        ]).isRequired,
         /**
          * Whether or not a snackbar is visible or hidden.
          */
