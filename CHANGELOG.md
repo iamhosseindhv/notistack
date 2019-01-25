@@ -3,7 +3,7 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@james-cordeiro**
+**@james-cordeiro @xiromoreira**
 * Add support to close snackbars programmatically [#20](https://github.com/iamhosseindhv/notistack/issues/20)
 
 
