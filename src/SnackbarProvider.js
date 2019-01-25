@@ -56,16 +56,16 @@ class SnackbarProvider extends Component {
      * @returns generated or user defined key referencing the new snackbar
      */
     handleEnqueueSnackbar = (message, { key, ...options }) => {
-        if (key === undefined || key === null) {
-            key = new Date().getTime() + Math.random();
-        }
+        const id = key || new Date().getTime() + Math.random();
         this.queue.push({
-            message, key,
+            key: id,
+            message,
             ...options,
             open: true,
         });
+
         this.handleDisplaySnack();
-        return key;
+        return id;
     };
 
     /**
@@ -159,7 +159,7 @@ class SnackbarProvider extends Component {
                 <SnackbarContextNext.Provider value={{
                     handleEnqueueSnackbar: this.handleEnqueueSnackbar,
                     handleCloseSnackbar: this.handleCloseSnack
-                  }}>
+                }}>
                     <Fragment>
                         {children}
                         {snacks.map((snack, index) => (
