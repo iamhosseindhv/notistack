@@ -161,7 +161,7 @@ class SnackbarProvider extends Component {
             <SnackbarContext.Provider value={this.handlePresentSnackbar}>
                 <SnackbarContextNext.Provider value={{
                     handleEnqueueSnackbar: this.handleEnqueueSnackbar,
-                    handleCloseSnackbar: this.handleCloseSnack
+                    handleCloseSnackbar: this.handleCloseSnack,
                 }}>
                     <Fragment>
                         {children}
