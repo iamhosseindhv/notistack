@@ -3,7 +3,8 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@james-cordeiro @xiromoreira**
+**@zsh1313 @james-cordeiro @xiromoreira**
+* Return `event` and `reason` in onClose callback [#46](https://github.com/iamhosseindhv/notistack/issues/46)
 * Add support to close snackbars programmatically [#20](https://github.com/iamhosseindhv/notistack/issues/20)
 
 
