@@ -8,6 +8,7 @@ type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
 export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
+    key?: string | number;
     variant?: VariantType;
     onClickAction?: Function;
 }
@@ -22,7 +23,8 @@ export type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
 export interface InjectedNotistackProps {
     onPresentSnackbar: (variant: VariantType, message: string) => void;
-    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => void;
+    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => string | number;
+    closeSnackbar: (key: string | number) => void
 }
 
 export function withSnackbar<P extends InjectedNotistackProps>(component: React.ComponentType<P>):

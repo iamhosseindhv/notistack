@@ -5,11 +5,12 @@ const withSnackbar = Component => props => (
     <SnackbarContext.Consumer>
         {handlePresentSnackbar => (
             <SnackbarContextNext.Consumer>
-                {handleEnqueueSnackbar => (
+                {context => (
                     <Component
                         {...props}
                         onPresentSnackbar={handlePresentSnackbar}
-                        enqueueSnackbar={handleEnqueueSnackbar}
+                        enqueueSnackbar={context.handleEnqueueSnackbar}
+                        closeSnackbar={context.handleCloseSnackbar}
                     />
                 )}
             </SnackbarContextNext.Consumer>
