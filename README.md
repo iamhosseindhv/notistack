@@ -22,6 +22,7 @@ Table of Contents
     - [`SnackbarProvider`](#snackbarprovider)
     - [`withSnackbar`](#withsnackbar)
     - [Add actions to snackbar](#add-actions-to-snackbar)
+	- [Completely Customizing Snackbar Components](#completely-customizing-snackbar-components)
     - [Redux example](#redux-example)
 - [Contribution](#contribution)
 - [Notes](#notes)
@@ -157,6 +158,35 @@ this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
 })
 ```
 Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
+
+### Completely Customizing Snackbar Components:
+You can override the component rendered by notistack snackbars by providing the `children` option when queueing a snackbar. A good starting point is to use material-ui's `SnackbarContent` component, which is a base for customizing Snackbars. 
+```javascript
+import React from 'react';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
+
+this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
+    children: (
+		<SnackbarContent
+        	message={
+			    <span>
+                    <Icon> checkbox_outlined</Icon>
+                    Some custom message
+				</span>
+                }
+			action={[
+			    <IconButton key="close" aria-label="Close" color="inherit">
+                    <Icon>close</Icon>
+                </IconButton>
+			]}
+		/>
+	)
+})
+
+
+```
 
 ### Redux example:
 You can use notistack to send snackbars from reducers. This has lots of applications but particularly useful when a network request fails. For more information check out notistack's [minimal redux example](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/redux-example).
