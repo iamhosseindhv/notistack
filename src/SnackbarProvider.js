@@ -16,7 +16,7 @@ class SnackbarProvider extends Component {
         const { snacks } = this.state;
         return snacks.map((item, i) => {
             let index = i;
-            let offset = 20;
+            let offset = (window.innerWidth < 600) ? 0 : 20;
             while (snacks[index - 1]) {
                 offset += snacks[index - 1].height + 16;
                 index -= 1;
