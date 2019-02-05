@@ -121,6 +121,14 @@ class SnackbarProvider extends Component {
     };
 
     /**
+     * Close snackbar with the given key
+     * @param {number} key - id of the snackbar we want to hide
+     */
+    handleDismissSnack = (key) => {
+        this.handleCloseSnack(null, null, key);
+    }
+
+    /**
      * When we set open attribute of a snackbar to false (i.e. after we hide a snackbar),
      * it leaves the screen and immediately after leaving animation is done, this method
      * gets called. We remove the hidden snackbar from state and then display notifications
@@ -161,7 +169,7 @@ class SnackbarProvider extends Component {
             <SnackbarContext.Provider value={this.handlePresentSnackbar}>
                 <SnackbarContextNext.Provider value={{
                     handleEnqueueSnackbar: this.handleEnqueueSnackbar,
-                    handleCloseSnackbar: this.handleCloseSnack,
+                    handleCloseSnackbar: this.handleDismissSnack,
                 }}>
                     <Fragment>
                         {children}
