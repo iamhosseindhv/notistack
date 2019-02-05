@@ -136,11 +136,11 @@ this.props.enqueueSnackbar('message', { variant: 'variant' })
 ```
 
 #### `closeSnackbar`
-Dismiss snackbar which has the given key.
+Dismiss snackbar with the given key.
 ```javascript
 this.props.closeSnackbar(key)
 
-// an id referencing a snackbar
+// id returned by enqueueSnackbar - in order to reference a snackbar
 key             type: string|number     required: true
 ```
 
