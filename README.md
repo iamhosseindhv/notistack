@@ -48,17 +48,16 @@ import { SnackbarProvider } from 'notistack';
 ```
 
 
-**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to the method `enqueueSnackbar` in your props which can be used to send snackbars.
+**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to methods `enqueueSnackbar` and `closeSnackbar`, where the former can be used to send snackbars.
 
 ```javascript
 import { withSnackbar } from 'notistack';
 
 class MyComponent extends Component {
   handleNetworkRequest = () => {
-     const { enqueueSnackbar } = this.props; 
      fetchSomeData()
-        .then(() => enqueueSnackbar('Successfully fetched the data.'))
-        .catch(() => enqueueSnackbar('Failed fetching data.'));
+        .then(() => this.props.enqueueSnackbar('Successfully fetched the data.'))
+        .catch(() => this.props.enqueueSnackbar('Failed fetching data.'));
   };
 
   render(){
@@ -106,9 +105,13 @@ classes.variantInfo:                                                    is set t
 ```
 
 ### **withSnackbar**:
-When you export your component using `withSnackbar` you'll have access to `enqueueSnackbar` method in your props which basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options`.
+When you export your component using `withSnackbar`, you'll have access to `enqueueSnackbar` and `closeSnackbar` methods in your props. 
+
+#### `enqueueSnackbar`
+Adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options` and returns a key that is used to reference that snackbar later on. (e.g. to dismiss it programmatically)
+
 ```javascript
-this.props.enqueueSnackbar(message, options)
+const key = this.props.enqueueSnackbar(message, options)
 
 // text of the snackbar
 message         type:string         required: true
@@ -119,11 +122,8 @@ options:        type:object         required: false
 // type of the snackbar
 options.variant type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
 
-// event fired when user clicks on action button (if any)
-options.onClickAction   type: func          required: false       defualt: dismisses the snackbar
-
-// You can pass material-ui Snackbar props here, and they will be applied to this individual snackbar.
-// for example, this particular snackbar will be dismissed after 1sec.
+// You can pass any material-ui Snackbar prop here, and they will be applied to this individual snackbar.
+// for example, this particular snackbar will get dismissed after 1 second.
 options.autoHideDuration: 1000
 ```
 **Note**: `onPresentSnackbar` has been now deprecated. Use `enqueueSnackbar` instead:
@@ -134,6 +134,16 @@ this.props.onPresentSnackbar('variant', 'message')
 // ✅ after:
 this.props.enqueueSnackbar('message', { variant: 'variant' })
 ```
+
+#### `closeSnackbar`
+Dismiss snackbar which has the given key.
+```javascript
+this.props.closeSnackbar(key)
+
+// an id referencing a snackbar
+key             type: string|number     required: true
+```
+
 
 ### Add actions to snackbar: 
 You can add actions to snackbars in the same manner specified in material-ui [docs](https://material-ui.com/demos/snackbars):
@@ -154,6 +164,7 @@ However, notice that by passing `action` to `SnackbarProvider`, you’ll be addi
 this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
     variant: 'default',
     action: <Button color="secondary" size="small">Undo</Button>,
+    onClickAction={() => alert('Clicked on my action button.')}
 })
 ```
 Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
