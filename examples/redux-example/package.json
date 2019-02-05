@@ -13,7 +13,7 @@
     "react-redux": "5.0.7",
     "react-scripts": "1.1.4",
     "redux": "latest",
-    "notistack": "^0.3.9",
+    "notistack": "^0.4.2",
     "@material-ui/core": "3.4.0"
   },
   "devDependencies": {},
