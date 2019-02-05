@@ -35,7 +35,7 @@ class SnackbarProvider extends Component {
     handlePresentSnackbar = (variant, message) => {
         if (process.env.NODE_ENV !== 'production') {
             /* eslint-disable no-console */
-            console.warn('DEPRECATED - notistack: method \'onPresentSnackbar\' has  been  deprecated and will be removed in future versions of notistack. Please use \'enqueueSnackbar\' method instead. see https://github.com/iamhosseindhv/notistack#withsnackbar for more info.');
+            console.warn('DEPRECATED - notistack: method \'onPresentSnackbar\' has  been  deprecated and will be removed in future versions of notistack. Please use \'enqueueSnackbar\' method instead. see https://github.com/iamhosseindhv/notistack#enqueuesnackbar for more info.');
         }
         this.queue.push({
             message,
