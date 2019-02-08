@@ -1,3 +1,13 @@
+## `notistack@0.4.3`
+###### to be published
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@mckernanin @butchmarshall**
+* Add option to `persist` a notification until dismissed [#42](https://github.com/iamhosseindhv/notistack/issues/42)
+* Add persist option and call `onClose` callback with `reason: maxsnack` when a snackbar is dismissed due to reaching maxSnack [#62](https://github.com/iamhosseindhv/notistack/pull/62)
+
+
 ## `notistack@0.4.2`
 ###### Feb 5, 2019
 
