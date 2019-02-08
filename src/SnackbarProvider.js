@@ -95,19 +95,18 @@ class SnackbarProvider extends Component {
 
     /**
      * Hide oldest snackbar on the screen because there exists a new one which we have to display.
+     * (ignoring the one with 'persist' flag. i.e. explicitly told by user not to get dismissed).
      */
     handleDismissOldest = () => {
         let popped = false;
-
         this.setState(({ snacks }) => ({
             snacks: snacks
                 .filter(item => item.open === true)
-                .map((item, i) => {
-                    if (!popped && !item.locked) {
+                .map((item) => {
+                    if (!popped && !item.persist) {
                         popped = true;
-                        if (item.onClose) {
-                            item.onClose(null, "maxsnack", item.key);
-                        }
+                        if (item.onClose) item.onClose(null, 'maxsnack', item.key);
+                        if (this.props.onClose) this.props.onClose(null, 'maxsnack', item.key);
 
                         return {
                             ...item,

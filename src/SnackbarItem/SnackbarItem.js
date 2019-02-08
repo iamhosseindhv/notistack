@@ -58,7 +58,7 @@ class SnackbarItem extends Component {
         } = this.props;
 
         const { action: contentAction, className, ...otherContentProps } = ContentProps;
-        const { key, variant = 'default', ...singleSnackProps } = snack;
+        const { key, variant = 'default', persist, ...singleSnackProps } = snack;
         const icon = iconVariant[variant];
 
         const contentProps = {
