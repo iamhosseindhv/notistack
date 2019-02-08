@@ -97,10 +97,28 @@ class SnackbarProvider extends Component {
      * Hide oldest snackbar on the screen because there exists a new one which we have to display.
      */
     handleDismissOldest = () => {
+        let popped = false;
+
         this.setState(({ snacks }) => ({
             snacks: snacks
                 .filter(item => item.open === true)
-                .map((item, i) => (i === 0 ? { ...item, open: false } : { ...item })),
+                .map((item, i) => {
+                    if (!popped && !item.locked) {
+                        popped = true;
+                        if (item.onClose) {
+                            item.onClose(null, "maxsnack", item.key);
+                        }
+
+                        return {
+                            ...item,
+                            open: false,
+                        };
+                    }
+
+                    return {
+                        ...item,
+                    };
+                }),
         }));
     };
 
