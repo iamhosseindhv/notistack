@@ -191,7 +191,18 @@ class SnackbarProvider extends Component {
 
     render() {
         const { children, maxSnack, ...props } = this.props;
-        const { snacks } = this.state;
+        // Force a snackbar to an index
+        const snacks = this.state.snacks.map((snack, index) => {
+            return {
+                ...snack,
+                index: index,
+            };
+        }).sort((a,b) => {
+            const aIndex = isNaN(a.forceIndex)? a.index : a.forceIndex,
+            bIndex = isNaN(b.forceIndex)? b.index : b.forceIndex;
+
+            return bIndex - aIndex;
+        });
 
         return (
             <SnackbarContext.Provider value={this.handlePresentSnackbar}>
