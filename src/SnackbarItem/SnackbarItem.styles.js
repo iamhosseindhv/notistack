@@ -40,10 +40,28 @@ export const styles = theme => ({
  * (when snackbars are stacked on top of eachother)
  * @returns {object}
  */
-export const getTransitionStyles = (offset, anchorOrigin) => (
-    Object.assign(
+export const getTransitionStyles = (offset, anchorOrigin) => {
+    const vertical = (anchorOrigin.vertical !== "center")? anchorOrigin.vertical : 'bottom';
+
+    return Object.assign(
         {
-            [anchorOrigin.vertical]: offset,
+            ['margin-'+vertical]: offset,
+            ...(() => {
+                if (anchorOrigin.horizontal !== 'center') {
+                    return {
+                        [anchorOrigin.horizontal]: 0,
+                    };
+                }
+                return {};
+            })(),
+            ...(() => {
+                if (anchorOrigin.vertical !== 'center') {
+                    return {
+                        [anchorOrigin.vertical]: 0,
+                    };
+                }
+                return {};
+            })(),
         },
         {
             WebKitTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
@@ -53,5 +71,5 @@ export const getTransitionStyles = (offset, anchorOrigin) => (
             transition: `all ${TRANSITION_DOWN_DURATION}ms`,
             transitionDelay: `${TRANSITION_DELAY}ms`,
         },
-    )
-);
+    );
+};
