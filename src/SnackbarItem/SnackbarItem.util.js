@@ -64,7 +64,9 @@ const defaultAnchorOrigin = {
 };
 
 const muiClasses = {
-    root: {},
+    root: {
+        position: 'relative',
+    },
     anchorOriginTopCenter: {},
     anchorOriginBottomCenter: {},
     anchorOriginTopRight: {},
@@ -85,12 +87,6 @@ const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
 };
 
 /**
- * Capitalises a piece of string
- * @param {string} text
- */
-const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
-
-/**
  * Filteres classes object and returns the keys that are allowed
  * in material-ui snackbar classes prop
  * @param {object} classes
@@ -105,7 +101,6 @@ const getMuiClasses = classes => (
 );
 
 export {
-    capitalise,
     defaultAnchorOrigin,
     getTransitionDirection,
     getMuiClasses,

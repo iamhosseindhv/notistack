@@ -7,13 +7,13 @@ import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { styles, getTransitionStyles } from './SnackbarItem.styles';
 import {
-    capitalise,
     defaultAnchorOrigin,
     getTransitionDirection,
     getMuiClasses,
     TransitionComponent,
     variantIcon,
 } from './SnackbarItem.util';
+import capitalise from '../utils/capitalise';
 
 
 class SnackbarItem extends Component {
