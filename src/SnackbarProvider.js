@@ -191,7 +191,13 @@ class SnackbarProvider extends Component {
 
     render() {
         const { children, maxSnack, ...props } = this.props;
-        const { snacks } = this.state;
+        const snacksWithIndex =  this.state.snacks.filter(i => !isNaN(i.forceIndex)).sort((a,b) => a.forceIndex - b.forceIndex);
+        let snacks = this.state.snacks.filter(i => isNaN(i.forceIndex)).reverse(); // Snacks we dont care about the index
+
+        for(var i = 0; i < snacksWithIndex.length; i++) {
+            snacks.splice(snacksWithIndex[i].forceIndex, 0, snacksWithIndex[i]);
+        }
+        snacks.reverse();
 
         return (
             <SnackbarContext.Provider value={this.handlePresentSnackbar}>
