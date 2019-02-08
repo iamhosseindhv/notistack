@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable import/no-unresolved */
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -7,14 +9,14 @@ import { removeSnackbar } from './redux/actions';
 class Notifier extends Component {
     displayed = [];
 
-    storeDisplayed = id => {
+    storeDisplayed = (id) => {
         this.displayed = [...this.displayed, id];
     };
 
     shouldComponentUpdate({ notifications: newSnacks = [] }) {
         const { notifications: currentSnacks } = this.props;
         let notExists = false;
-        for (let i = 0; i < newSnacks.length; i++) {
+        for (let i = 0; i < newSnacks.length; i += 1) {
             if (notExists) continue;
             notExists = notExists || !currentSnacks.filter(({ key }) => newSnacks[i].key === key).length;
         }
@@ -24,7 +26,7 @@ class Notifier extends Component {
     componentDidUpdate() {
         const { notifications = [] } = this.props;
 
-        notifications.forEach(notification => {
+        notifications.forEach((notification) => {
             // Do nothing if snackbar is already displayed
             if (this.displayed.includes(notification.key)) return;
             // Display snackbar using notistack
@@ -35,6 +37,7 @@ class Notifier extends Component {
             this.props.removeSnackbar(notification.key);
         });
     }
+
     render() {
         return null;
     }
