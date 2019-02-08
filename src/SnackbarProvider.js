@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION } from './utils/constants';
+import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
+import warning from './utils/warning';
 
 
 class SnackbarProvider extends Component {
@@ -33,10 +34,8 @@ class SnackbarProvider extends Component {
      * @deprecated
      */
     handlePresentSnackbar = (variant, message) => {
-        if (process.env.NODE_ENV !== 'production') {
-            /* eslint-disable no-console */
-            console.warn('DEPRECATED - notistack: method \'onPresentSnackbar\' has  been  deprecated and will be removed in future versions of notistack. Please use \'enqueueSnackbar\' method instead. see https://github.com/iamhosseindhv/notistack#enqueuesnackbar for more info.');
-        }
+        warning(MESSAGES.NO_ON_PRESENT_SNACKBAR);
+
         this.queue.push({
             message,
             variant,
@@ -106,7 +105,7 @@ class SnackbarProvider extends Component {
         ), 0);
 
         if (persistentCount === this.props.maxSnack) {
-            console.warn('WARNING: Reached maxSnack while all enqueued snackbars have \'persist\' flag. Notistack will dismiss the oldest snackbar anyway to allow other ones in the queue to be presented.');
+            warning(MESSAGES.NO_PERSIST_ALL);
             ignore = true;
         }
 
