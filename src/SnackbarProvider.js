@@ -99,11 +99,22 @@ class SnackbarProvider extends Component {
      */
     handleDismissOldest = () => {
         let popped = false;
+        let ignore = false;
+
+        const persistentCount = this.state.snacks.reduce((acc, current) => (
+            acc + (current.open && current.persist ? 1 : 0)
+        ), 0);
+
+        if (persistentCount === this.props.maxSnack) {
+            console.warn('WARNING: Reached maxSnack while all enqueued snackbars have \'persist\' flag. Notistack will dismiss the oldest snackbar anyway to allow other ones in the queue to be presented.');
+            ignore = true;
+        }
+
         this.setState(({ snacks }) => ({
             snacks: snacks
                 .filter(item => item.open === true)
                 .map((item) => {
-                    if (!popped && !item.persist) {
+                    if (!popped && (!item.persist || ignore)) {
                         popped = true;
                         if (item.onClose) item.onClose(null, 'maxsnack', item.key);
                         if (this.props.onClose) this.props.onClose(null, 'maxsnack', item.key);
