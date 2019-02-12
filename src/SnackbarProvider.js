@@ -72,11 +72,6 @@ class SnackbarProvider extends Component {
      * oldest message to start showing the new one.
      */
     handleDisplaySnack = () => {
-        const { maxSnack } = this.props;
-        const { snacks } = this.state;
-        if (snacks.length >= maxSnack) {
-            return this.handleDismissOldest();
-        }
         return this.processQueue();
     };
 
@@ -85,10 +80,20 @@ class SnackbarProvider extends Component {
      */
     processQueue = () => {
         if (this.queue.length > 0) {
-            const newOne = this.queue.shift();
-            this.setState(({ snacks }) => ({
-                snacks: [...snacks, newOne],
-            }));
+            const { maxSnack } = this.props,
+            { snacks } = this.state,
+            newOne = this.queue.shift();
+
+            if (snacks.length >= maxSnack) {
+                this.handleDismissOldest(
+                    () => {
+                        this.setState({snacks: [...this.state.snacks, newOne]});
+                    }
+                );
+            }
+            else {
+                this.setState({snacks: [...snacks, newOne]});
+            }
         }
     };
 
@@ -96,7 +101,7 @@ class SnackbarProvider extends Component {
      * Hide oldest snackbar on the screen because there exists a new one which we have to display.
      * (ignoring the one with 'persist' flag. i.e. explicitly told by user not to get dismissed).
      */
-    handleDismissOldest = () => {
+    handleDismissOldest = (callback) => {
         let popped = false;
         let ignore = false;
 
@@ -128,7 +133,7 @@ class SnackbarProvider extends Component {
                         ...item,
                     };
                 }),
-        }));
+        }), callback);
     };
 
     /**
