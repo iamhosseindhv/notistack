@@ -54,6 +54,7 @@ class SnackbarItem extends Component {
             style,
             onClickAction,
             onSetHeight,
+            transitionDirection,
             ...other
         } = this.props;
 
@@ -79,7 +80,7 @@ class SnackbarItem extends Component {
                     anchorOrigin={anchOrigin}
                     TransitionComponent={TransitionComponent}
                     TransitionProps={{
-                        direction: getTransitionDirection(anchOrigin),
+                        direction: transitionDirection || getTransitionDirection(anchOrigin),
                     }}
                     style={{
                         ...style,
