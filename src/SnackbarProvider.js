@@ -54,7 +54,12 @@ class SnackbarProvider extends Component {
      * can be: (default, success, error, warning, info)
      * @returns generated or user defined key referencing the new snackbar
      */
-    handleEnqueueSnackbar = (message, { key, ...options } = {}) => {
+    handleEnqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
+        const shouldPreventDuplicate = preventDuplicate || this.props.preventDuplicate;
+        if (shouldPreventDuplicate && this.queue.slice(-1).pop()) {
+            return null;
+        }
+
         const id = key || new Date().getTime() + Math.random();
         this.queue.push({
             key: id,
@@ -227,12 +232,14 @@ SnackbarProvider.propTypes = {
     maxSnack: PropTypes.number,
     onClose: PropTypes.func,
     onExited: PropTypes.func,
+    preventDuplicate: PropTypes.bool,
 };
 
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
     onClose: undefined,
     onExited: undefined,
+    preventDuplicate: false,
 };
 
 export default SnackbarProvider;

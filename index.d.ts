@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { TransitionActions } from 'react-transition-group/Transition';
 import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
 
@@ -11,6 +10,7 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     key?: string | number;
     variant?: VariantType;
     onClickAction?: Function;
+    preventDuplicate?: boolean;
 }
 
 type NotistackClassKey = 'variantSuccess'
@@ -23,7 +23,7 @@ export type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
 export interface InjectedNotistackProps {
     onPresentSnackbar: (variant: VariantType, message: string) => void;
-    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => string | number;
+    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => string | number | null;
     closeSnackbar: (key: string | number) => void
 }
 
@@ -40,6 +40,7 @@ export interface SnackbarProviderProps
     iconVariant?: React.ComponentType<SvgIconProps>;
     hideIconVariant?: boolean;
     onClickAction?: Function;
+    preventDuplicate?: boolean;
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
