@@ -74,7 +74,7 @@ class SnackbarProvider extends Component {
     handleDisplaySnack = () => {
         const { maxSnack } = this.props;
         const { snacks } = this.state;
-        if (snacks.length >= maxSnack) {
+        if (snacks.length > maxSnack) {
             return this.handleDismissOldest();
         }
         return this.processQueue();
