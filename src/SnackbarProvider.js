@@ -56,7 +56,9 @@ class SnackbarProvider extends Component {
      */
     handleEnqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
         const shouldPreventDuplicate = preventDuplicate || this.props.preventDuplicate;
-        if (shouldPreventDuplicate && this.queue.slice(-1).pop()) {
+        const isAlreadyInQueue = this.queue.includes(message);
+        const isAlreadyDisplayed = this.state.snacks.includes(message);
+        if (shouldPreventDuplicate && (isAlreadyInQueue || isAlreadyDisplayed)) {
             return null;
         }
 
