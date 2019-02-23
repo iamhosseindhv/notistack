@@ -52,6 +52,7 @@ class SnackbarItem extends Component {
             offset,
             snack,
             style,
+            preventDuplicate,
             onClickAction,
             onSetHeight,
             ...other
@@ -184,6 +185,7 @@ SnackbarItem.propTypes = {
      * iconVariant will not be rendered if set to `true`.
      */
     hideIconVariant: PropTypes.bool,
+    preventDuplicate: PropTypes.bool.isRequired,
     /**
      * Event fired when clicked on action button of
      * a snackbar. defaulted to dismiss the snackbar.

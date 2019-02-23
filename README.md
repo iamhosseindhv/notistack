@@ -91,9 +91,9 @@ iconVariant         type: any             required: false       default: Materia
 hideIconVariant     type: boolean         required: false       default: false
 
 // event fired when user clicks on action button (if any)
-onClickAction       type: func            required: false       default: dismisses the snackbar
+onClickAction       type: func            required: false       default: dismiss the snackbar
 
-// hide or display duplicated messages
+// Do not allow snackbars with the same message to be displayed multiple times
 preventDuplicate    type: boolean         required: false       default: false
 
 // Example of a Mui-Snackbar prop
