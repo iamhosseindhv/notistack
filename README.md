@@ -91,7 +91,10 @@ iconVariant         type: any             required: false       default: Materia
 hideIconVariant     type: boolean         required: false       default: false
 
 // event fired when user clicks on action button (if any)
-onClickAction       type: func            required: false       defualt: dismisses the snackbar
+onClickAction       type: func            required: false       default: dismiss the snackbar
+
+// Do not allow snackbars with the same message to be displayed multiple times
+preventDuplicate    type: boolean         required: false       default: false
 
 // Example of a Mui-Snackbar prop
 transitionDuration={{ exit: 380, enter: 400 }}
@@ -114,13 +117,16 @@ Adds a snackbar to the queue to be displayed to the user. It takes two arguments
 const key = this.props.enqueueSnackbar(message, options)
 
 // text of the snackbar
-message         type:string         required: true
+message                  type:string         required: true
 
 // object containing options with the following shape
-options:        type:object         required: false 
+options:                 type:object         required: false 
 
 // type of the snackbar
-options.variant type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
+options.variant          type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
+
+// hide or display this message if it's the same of the previous one
+options.preventDuplicate type:boolean        required: false
 
 // You can pass any material-ui Snackbar prop here, and they will be applied to this individual snackbar.
 // for example, this particular snackbar will get dismissed after 1 second.

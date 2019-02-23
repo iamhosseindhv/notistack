@@ -50,11 +50,22 @@ class SnackbarProvider extends Component {
      * @param {string} message - text of the notification
      * @param {object} options - additional options for the snackbar we want to enqueue.
      * We can pass Material-ui Snackbar props for individual customisation.
+     * @param {string} options.key
      * @param {string} options.variant - type of the snackbar. default value is 'default'.
      * can be: (default, success, error, warning, info)
-     * @returns generated or user defined key referencing the new snackbar
+     * @param {bool} options.persist
+     * @param {bool} options.preventDuplicate
+     * @returns generated or user defined key referencing the new snackbar or null
      */
-    handleEnqueueSnackbar = (message, { key, ...options } = {}) => {
+    handleEnqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
+        if (preventDuplicate || this.props.preventDuplicate) {
+            const inQueue = this.queue.findIndex(item => item.message === message) > -1;
+            const inView = this.state.snacks.findIndex(item => item.message === message) > -1;
+            if (inQueue || inView) {
+                return null;
+            }
+        }
+
         const id = key || new Date().getTime() + Math.random();
         const snack = {
             key: id,
@@ -233,12 +244,14 @@ SnackbarProvider.propTypes = {
     maxSnack: PropTypes.number,
     onClose: PropTypes.func,
     onExited: PropTypes.func,
+    preventDuplicate: PropTypes.bool,
 };
 
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
     onClose: undefined,
     onExited: undefined,
+    preventDuplicate: false,
 };
 
 export default SnackbarProvider;
