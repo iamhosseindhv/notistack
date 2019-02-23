@@ -5,6 +5,7 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 
 **@mckernanin @butchmarshall @VincentLanglet @oliviertassinari**
 * Move `classnames` and `prop-types` to `dependencies` [#72](https://github.com/iamhosseindhv/notistack/issues/72)
+* Add option to `preventDuplicate` snackbars from getting into the queue. [#67](https://github.com/iamhosseindhv/notistack/pull/67)
 * Add option to `persist` a notification until dismissed [#42](https://github.com/iamhosseindhv/notistack/issues/42)
 * Add persist option and call `onClose` callback with `reason: maxsnack` when a snackbar is dismissed due to reaching maxSnack [#62](https://github.com/iamhosseindhv/notistack/pull/62)
 
