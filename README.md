@@ -117,19 +117,22 @@ Adds a snackbar to the queue to be displayed to the user. It takes two arguments
 const key = this.props.enqueueSnackbar(message, options)
 
 // text of the snackbar
-message                  type:string         required: true
+message                 type:string         required: true
 
 // object containing options with the following shape
-options:                 type:object         required: false 
+options:                type:object         required: false 
 
 // type of the snackbar
-options.variant          type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
+options.variant         type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
+
+// keep a snackbar in the view and prevent auto dismissal
+options.persist         type:boolean        required: false
 
 // hide or display this message if it's the same of the previous one
 options.preventDuplicate type:boolean        required: false
 
-// You can pass any material-ui Snackbar prop here, and they will be applied to this individual snackbar.
-// for example, this particular snackbar will get dismissed after 1 second.
+// You can pass any material-ui Snackbar prop here, and they will be applied to this 
+// individual snackbar. For example, this particular snackbar will get dismissed after 1 second.
 options.autoHideDuration: 1000
 ```
 **Note**: `onPresentSnackbar` has been now deprecated. Use `enqueueSnackbar` instead:
