@@ -56,14 +56,20 @@ class SnackbarProvider extends Component {
      */
     handleEnqueueSnackbar = (message, { key, ...options } = {}) => {
         const id = key || new Date().getTime() + Math.random();
-        this.queue.push({
+        const snack = {
             key: id,
             message,
             ...options,
             open: true,
-        });
+        };
 
+        if (options.persist) {
+            snack.autoHideDuration = undefined;
+        }
+
+        this.queue.push(snack);
         this.handleDisplaySnack();
+
         return id;
     };
 

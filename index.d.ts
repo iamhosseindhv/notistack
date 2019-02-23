@@ -10,6 +10,7 @@ export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     key?: string | number;
     variant?: VariantType;
+    persist?: boolean; 
     onClickAction?: Function;
 }
 
