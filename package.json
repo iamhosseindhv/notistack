@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "description": "Highly customisable notification snackbars (Highly customizable notification snackbars (toasts) that can be stacked on top of each other) that can be stacked on top of each other",
     "main": "build/index",
     "license": "MIT",
