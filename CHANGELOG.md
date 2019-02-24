@@ -1,5 +1,14 @@
-## `notistack@0.4.3`
+## `notistack@0.5.0`
 ###### to be published
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@martinmckenna**
+* Improve performance and prevent unnecessary child re-rendering [#39](https://github.com/iamhosseindhv/notistack/issues/39)
+
+
+## `notistack@0.4.3`
+###### Feb 24, 2019
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
