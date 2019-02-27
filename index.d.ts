@@ -31,6 +31,8 @@ export interface InjectedNotistackProps {
 export function withSnackbar<P extends InjectedNotistackProps>(component: React.ComponentType<P>):
     React.ComponentClass<Omit<P, keyof InjectedNotistackProps>> & { WrappedComponent: React.ComponentType<P> };
 
+export function useSnackbar(): InjectedNotistackProps;
+
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
 /** all MUI props, including class keys for notistack and MUI with additional notistack props */
