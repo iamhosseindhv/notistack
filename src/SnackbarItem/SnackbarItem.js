@@ -59,7 +59,15 @@ class SnackbarItem extends Component {
         } = this.props;
 
         const { action: contentAction, className, ...otherContentProps } = ContentProps;
-        const { key, variant = 'default', persist, ...singleSnackProps } = snack;
+
+        const {
+            key,
+            persist,
+            variant = 'default',
+            onClickAction: singleOnClickAction,
+            ...singleSnackProps
+        } = snack;
+
         const icon = iconVariant[variant];
 
         const contentProps = {
@@ -68,7 +76,7 @@ class SnackbarItem extends Component {
             action: snack.action || contentAction || action,
         };
 
-        let onClickHandler = snack.action ? snack.onClickAction : onClickAction;
+        let onClickHandler = snack.action ? singleOnClickAction : onClickAction;
         onClickHandler = onClickHandler || this.handleClose(key);
 
         const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
