@@ -13,13 +13,21 @@ class SnackbarProvider extends Component {
 
     queue = [];
 
+    get margins() {
+        let offsets = { view: 20, snackbar: 12 };
+        if (this.props.dense) {
+            offsets = { view: 0, snackbar: 8 };
+        }
+        return offsets;
+    }
+
     get offsets() {
         const { snacks } = this.state;
         return snacks.map((item, i) => {
             let index = i;
-            let offset = 20;
+            let offset = this.margins.view;
             while (snacks[index - 1]) {
-                offset += snacks[index - 1].height + 16;
+                offset += snacks[index - 1].height + this.margins.snackbar;
                 index -= 1;
             }
             return offset;
@@ -206,7 +214,7 @@ class SnackbarProvider extends Component {
     };
 
     render() {
-        const { children, maxSnack, ...props } = this.props;
+        const { children, maxSnack, dense, ...props } = this.props;
         const { snacks } = this.state;
 
         return (
@@ -238,20 +246,21 @@ class SnackbarProvider extends Component {
 SnackbarProvider.propTypes = {
     children: PropTypes.element.isRequired,
     /**
-     * Maximum snackbars that can be stacked
-     * on top of one another
+     * Maximum snackbars that can be stacked on top of one another.
      */
+    dense: PropTypes.bool,
     maxSnack: PropTypes.number,
+    preventDuplicate: PropTypes.bool,
     onClose: PropTypes.func,
     onExited: PropTypes.func,
-    preventDuplicate: PropTypes.bool,
 };
 
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
+    dense: false,
+    preventDuplicate: false,
     onClose: undefined,
     onExited: undefined,
-    preventDuplicate: false,
 };
 
 export default SnackbarProvider;
