@@ -3,7 +3,8 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@martinmckenna**
+**@cwbuecheler @mpash @martinmckenna**
+* Rename `InjectedSnackbarProps` to `withSnackbarProps` in type defs [#59](https://github.com/iamhosseindhv/notistack/issues/59)
 * Improve performance and prevent unnecessary child re-rendering [#39](https://github.com/iamhosseindhv/notistack/issues/39)
 
 
