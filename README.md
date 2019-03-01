@@ -82,19 +82,22 @@ Or see the code for a minimal working example: [codesandbox](https://codesandbox
 All material-ui Snackbar props will get passed down to a Snackbar component. See Material-ui [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
 // Maximum number of snackbars that can be stacked on top of eachother.
-maxSnack            type: number          required: true        default: 3
+maxSnack            type: number          required: false        default: 3
 
 // The little icon that is displayed in a snackbar
 iconVariant         type: any             required: false       default: Material design icons
 
-// hide or display icon variant of a snackbar
+// Hide or display icon variant of a snackbar
 hideIconVariant     type: boolean         required: false       default: false
 
-// event fired when user clicks on action button (if any)
-onClickAction       type: func            required: false       default: dismiss the snackbar
+// Event fired when user clicks on action button (if any)
+onClickAction       type: func            required: false       default: Dismiss the snackbar
 
 // Do not allow snackbars with the same message to be displayed multiple times
 preventDuplicate    type: boolean         required: false       default: false
+
+// Denser margins for snackbars. Recommended to be used on mobile devices
+dense               type: boolean         required: false       default: false
 
 // Example of a Mui-Snackbar prop
 transitionDuration={{ exit: 380, enter: 400 }}
