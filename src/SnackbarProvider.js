@@ -13,21 +13,16 @@ class SnackbarProvider extends Component {
 
     queue = [];
 
-    get margins() {
-        let offsets = { view: 20, snackbar: 12 };
-        if (this.props.dense) {
-            offsets = { view: 0, snackbar: 8 };
-        }
-        return offsets;
-    }
-
     get offsets() {
         const { snacks } = this.state;
         return snacks.map((item, i) => {
             let index = i;
-            let offset = this.margins.view;
+            const { view: viewOffset, snackbar: snackbarOffset } = this.props.dense
+                ? { view: 0, snackbar: 8 }
+                : { view: 20, snackbar: 12 };
+            let offset = viewOffset;
             while (snacks[index - 1]) {
-                offset += snacks[index - 1].height + this.margins.snackbar;
+                offset += snacks[index - 1].height + snackbarOffset;
                 index -= 1;
             }
             return offset;
