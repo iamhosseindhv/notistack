@@ -18,7 +18,7 @@ class SnackbarProvider extends Component {
         return snacks.map((item, i) => {
             let index = i;
             const { view: viewOffset, snackbar: snackbarOffset } = this.props.dense
-                ? { view: 0, snackbar: 8 }
+                ? { view: 0, snackbar: 4 }
                 : { view: 20, snackbar: 12 };
             let offset = viewOffset;
             while (snacks[index - 1]) {
