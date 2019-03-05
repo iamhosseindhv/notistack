@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
 import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES } from './utils/constants';
@@ -7,9 +7,16 @@ import warning from './utils/warning';
 
 
 class SnackbarProvider extends Component {
-    state = {
-        snacks: [],
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            snacks: [],
+            contextValue: {
+                handleEnqueueSnackbar: this.handleEnqueueSnackbar,
+                handleCloseSnackbar: this.handleDismissSnack,
+            },
+        };
+    }
 
     queue = [];
 
@@ -210,28 +217,23 @@ class SnackbarProvider extends Component {
 
     render() {
         const { children, maxSnack, dense, ...props } = this.props;
-        const { snacks } = this.state;
+        const { contextValue, snacks } = this.state;
 
         return (
             <SnackbarContext.Provider value={this.handlePresentSnackbar}>
-                <SnackbarContextNext.Provider value={{
-                    handleEnqueueSnackbar: this.handleEnqueueSnackbar,
-                    handleCloseSnackbar: this.handleDismissSnack,
-                }}>
-                    <Fragment>
-                        {children}
-                        {snacks.map((snack, index) => (
-                            <SnackbarItem
-                                {...props}
-                                key={snack.key}
-                                snack={snack}
-                                offset={this.offsets[index]}
-                                onClose={this.handleCloseSnack}
-                                onExited={this.handleExitedSnack}
-                                onSetHeight={this.handleSetHeight}
-                            />
-                        ))}
-                    </Fragment>
+                <SnackbarContextNext.Provider value={contextValue}>
+                    {children}
+                    {snacks.map((snack, index) => (
+                        <SnackbarItem
+                            {...props}
+                            key={snack.key}
+                            snack={snack}
+                            offset={this.offsets[index]}
+                            onClose={this.handleCloseSnack}
+                            onExited={this.handleExitedSnack}
+                            onSetHeight={this.handleSetHeight}
+                        />
+                    ))}
                 </SnackbarContextNext.Provider>
             </SnackbarContext.Provider>
         );
