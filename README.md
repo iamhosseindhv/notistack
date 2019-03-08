@@ -21,8 +21,7 @@ Table of Contents
 - [Documentation](#documentation)
     - [`SnackbarProvider`](#snackbarprovider)
     - [`withSnackbar`](#withsnackbar)
-    - [Add actions to snackbar](#add-actions-to-snackbar)
-    - [Redux example](#redux-example)
+    - [Redux support](#redux-support)
 - [Contribution](#contribution)
 - [Notes](#notes)
 - [Author - Contact me](#author---contact)
@@ -156,33 +155,8 @@ this.props.closeSnackbar(key)
 key             type: string|number     required: true
 ```
 
-
-### Add actions to snackbar: 
-You can add actions to snackbars in the same manner specified in material-ui [docs](https://material-ui.com/demos/snackbars):
-```javascript
-<SnackbarProvider
-    maxSnack={3}
-    action={[
-        <Button color="secondary" size="small">My Action</Button>
-    ]}
-    onClickAction={() => alert('Clicked on my action button.')}
->
-    <App />
-</SnackbarProvider>
-```
-
-However, notice that by passing `action` to `SnackbarProvider`, you’ll be adding action to all of the snackbars. To specify action for a single snackbar, use `options` argument of `enqueueSnackbar` method instead: 
-```javascript
-this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
-    variant: 'default',
-    action: <Button color="secondary" size="small">Undo</Button>,
-    onClickAction={() => alert('Clicked on my action button.')}
-})
-```
-Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
-
-### Redux example:
-You can use notistack to send snackbars from reducers. This has lots of applications but particularly useful when a network request fails. For more information check out notistack's [minimal redux example](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/redux-example).
+### Redux support:
+You can use notistack to send snackbars from reducers. See notistack [documentation](https://iamhosseindhv.com/notistack#redux-example) for more info.
 
 ## Contribution
 Open an issue and your problem will be solved.
