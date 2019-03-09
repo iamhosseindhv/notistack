@@ -32,7 +32,7 @@ export function withSnackbar<P extends withSnackbarProps>(component: React.Compo
 export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     classes?: Partial<ClassNameMap<CombinedClassKey>>;
     maxSnack?: number;
-    iconVariant?: React.ComponentType<SvgIconProps>;
+    iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
     hideIconVariant?: boolean;
     onClickAction?: Function;
     preventDuplicate?: boolean;
