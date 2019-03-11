@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
