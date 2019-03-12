@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
@@ -32,7 +31,7 @@ export function withSnackbar<P extends withSnackbarProps>(component: React.Compo
 export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     classes?: Partial<ClassNameMap<CombinedClassKey>>;
     maxSnack?: number;
-    iconVariant?: React.ComponentType<SvgIconProps>;
+    iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
     hideIconVariant?: boolean;
     onClickAction?: Function;
     preventDuplicate?: boolean;
