@@ -1,3 +1,13 @@
+## `notistack@0.5.1`
+###### to be published
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@amakhrov**
+* Fix typing for `iconVariant` props [#91](https://github.com/iamhosseindhv/notistack/issues/91)
+
+
+
 ## `notistack@0.5.0`
 ###### Mar 5, 2019
 
