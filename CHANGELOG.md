@@ -1,5 +1,5 @@
 ## `notistack@0.5.1`
-###### to be published
+###### Mar 15, 2019
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
