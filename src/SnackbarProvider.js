@@ -241,7 +241,7 @@ class SnackbarProvider extends Component {
 }
 
 SnackbarProvider.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     /**
      * Maximum snackbars that can be stacked on top of one another.
      */
