@@ -1,13 +1,13 @@
 import React from 'react';
 import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
 
-const withSnackbar = (WrappedComponent) => {
-    const Component = props => (
+const withSnackbar = (Component) => {
+    const WrappedComponent = props => (
         <SnackbarContext.Consumer>
             {handlePresentSnackbar => (
                 <SnackbarContextNext.Consumer>
                     {context => (
-                        <WrappedComponent
+                        <Component
                             {...props}
                             onPresentSnackbar={handlePresentSnackbar}
                             enqueueSnackbar={context.handleEnqueueSnackbar}
@@ -19,9 +19,9 @@ const withSnackbar = (WrappedComponent) => {
         </SnackbarContext.Consumer>
     );
 
-    Component.displayName = `withSnackbar(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+    WrappedComponent.displayName = `withSnackbar(${Component.displayName || Component.name || 'Component'})`;
 
-    return Component;
+    return WrappedComponent;
 };
 
 export default withSnackbar;
