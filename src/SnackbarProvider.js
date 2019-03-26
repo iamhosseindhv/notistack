@@ -29,7 +29,8 @@ class SnackbarProvider extends Component {
                 : { view: 20, snackbar: 12 };
             let offset = viewOffset;
             while (snacks[index - 1]) {
-                offset += snacks[index - 1].height + snackbarOffset;
+                const snackHeight = snacks[index - 1].height || 48;
+                offset += snackHeight + snackbarOffset;
                 index -= 1;
             }
             return offset;
