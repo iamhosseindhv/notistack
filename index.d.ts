@@ -1,49 +1,46 @@
 import * as React from 'react';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
 export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     key?: string | number;
     variant?: VariantType;
-    persist?: boolean; 
+    persist?: boolean;
     onClickAction?: Function;
     preventDuplicate?: boolean;
 }
 
-type NotistackClassKey = 'variantSuccess'
-    | 'variantError'
-    | 'variantInfo'
-    | 'variantWarning';
+export type NotistackClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
 
-// class keys for both MUI and notistack
-export type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
+type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
-export interface InjectedNotistackProps {
+export interface withSnackbarProps {
     onPresentSnackbar: (variant: VariantType, message: string) => void;
     enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => string | number | null;
     closeSnackbar: (key: string | number) => void
 }
 
-export function withSnackbar<P extends InjectedNotistackProps>(component: React.ComponentType<P>):
-    React.ComponentClass<Omit<P, keyof InjectedNotistackProps>> & { WrappedComponent: React.ComponentType<P> };
+export function withSnackbar<P extends withSnackbarProps>(component: React.ComponentType<P>):
+    React.ComponentClass<Omit<P, keyof withSnackbarProps>> & { WrappedComponent: React.ComponentType<P> };
+
 
 export function useSnackbar(): InjectedNotistackProps;
 
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
-/** all MUI props, including class keys for notistack and MUI with additional notistack props */
-export interface SnackbarProviderProps
-    extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
+// all material-ui props, including class keys for notistack and material-ui with additional notistack props
+export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     classes?: Partial<ClassNameMap<CombinedClassKey>>;
-    maxSnack: number;
-    iconVariant?: React.ComponentType<SvgIconProps>;
+    maxSnack?: number;
+    iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
     hideIconVariant?: boolean;
     onClickAction?: Function;
     preventDuplicate?: boolean;
+    dense?: boolean;
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;

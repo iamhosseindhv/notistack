@@ -13,7 +13,7 @@ export const styles = theme => ({
         fontFamily: theme.typography.fontFamily,
     },
     lessPadding: {
-        paddingLeft: theme.spacing.unit * 2.5,
+        paddingLeft: 8 * 2.5,
     },
     variantSuccess: {
         backgroundColor: green[600],

@@ -21,8 +21,7 @@ Table of Contents
 - [Documentation](#documentation)
     - [`SnackbarProvider`](#snackbarprovider)
     - [`withSnackbar`](#withsnackbar)
-    - [Add actions to snackbar](#add-actions-to-snackbar)
-    - [Redux example](#redux-example)
+    - [Redux support](#redux-support)
 - [Contribution](#contribution)
 - [Notes](#notes)
 - [Author - Contact me](#author---contact)
@@ -82,19 +81,22 @@ Or see the code for a minimal working example: [codesandbox](https://codesandbox
 All material-ui Snackbar props will get passed down to a Snackbar component. See Material-ui [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
 // Maximum number of snackbars that can be stacked on top of eachother.
-maxSnack            type: number          required: true        default: 3
+maxSnack            type: number          required: false        default: 3
 
 // The little icon that is displayed in a snackbar
 iconVariant         type: any             required: false       default: Material design icons
 
-// hide or display icon variant of a snackbar
+// Hide or display icon variant of a snackbar
 hideIconVariant     type: boolean         required: false       default: false
 
-// event fired when user clicks on action button (if any)
-onClickAction       type: func            required: false       default: dismiss the snackbar
+// Event fired when user clicks on action button (if any)
+onClickAction       type: func            required: false       default: Dismiss the snackbar
 
 // Do not allow snackbars with the same message to be displayed multiple times
 preventDuplicate    type: boolean         required: false       default: false
+
+// Denser margins for snackbars. Recommended to be used on mobile devices
+dense               type: boolean         required: false       default: false
 
 // Example of a Mui-Snackbar prop
 transitionDuration={{ exit: 380, enter: 400 }}
@@ -153,33 +155,8 @@ this.props.closeSnackbar(key)
 key             type: string|number     required: true
 ```
 
-
-### Add actions to snackbar: 
-You can add actions to snackbars in the same manner specified in material-ui [docs](https://material-ui.com/demos/snackbars):
-```javascript
-<SnackbarProvider
-    maxSnack={3}
-    action={[
-        <Button color="secondary" size="small">My Action</Button>
-    ]}
-    onClickAction={() => alert('Clicked on my action button.')}
->
-    <App />
-</SnackbarProvider>
-```
-
-However, notice that by passing `action` to `SnackbarProvider`, you’ll be adding action to all of the snackbars. To specify action for a single snackbar, use `options` argument of `enqueueSnackbar` method instead: 
-```javascript
-this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
-    variant: 'default',
-    action: <Button color="secondary" size="small">Undo</Button>,
-    onClickAction={() => alert('Clicked on my action button.')}
-})
-```
-Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
-
-### Redux example:
-You can use notistack to send snackbars from reducers. This has lots of applications but particularly useful when a network request fails. For more information check out notistack's [minimal redux example](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/redux-example).
+### Redux support:
+You can use notistack to send snackbars from reducers. See notistack [documentation](https://iamhosseindhv.com/notistack#redux-example) for more info.
 
 ## Contribution
 Open an issue and your problem will be solved.

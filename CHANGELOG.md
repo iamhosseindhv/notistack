@@ -1,9 +1,30 @@
-## `notistack@0.5.0`
+## `notistack@0.5.2`
 ###### to be published
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@martinmckenna**
+**@Lukas-Kullmann**
+* Add `displayName` to components exported by `withSnackbar` HOC [#100](https://github.com/iamhosseindhv/notistack/issues/100)
+
+
+## `notistack@0.5.1`
+###### Mar 15, 2019
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@amakhrov**
+* Fix typing for `iconVariant` props [#91](https://github.com/iamhosseindhv/notistack/issues/91)
+
+
+
+## `notistack@0.5.0`
+###### Mar 5, 2019
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@cwbuecheler @mpash @khhan1993 @Fs00 @martinmckenna**
+* Rename `InjectedSnackbarProps` to `withSnackbarProps` in type definitions [#59](https://github.com/iamhosseindhv/notistack/issues/59)
+* Add new prop `dense` to allow dense margins for snackbars (suitable for mobiles) [#58](https://github.com/iamhosseindhv/notistack/issues/58)
 * Improve performance and prevent unnecessary child re-rendering [#39](https://github.com/iamhosseindhv/notistack/issues/39)
 
 

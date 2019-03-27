@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
 import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES } from './utils/constants';
@@ -7,9 +7,16 @@ import warning from './utils/warning';
 
 
 class SnackbarProvider extends Component {
-    state = {
-        snacks: [],
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            snacks: [],
+            contextValue: {
+                handleEnqueueSnackbar: this.handleEnqueueSnackbar,
+                handleCloseSnackbar: this.handleDismissSnack,
+            },
+        };
+    }
 
     queue = [];
 
@@ -17,9 +24,13 @@ class SnackbarProvider extends Component {
         const { snacks } = this.state;
         return snacks.map((item, i) => {
             let index = i;
-            let offset = 20;
+            const { view: viewOffset, snackbar: snackbarOffset } = this.props.dense
+                ? { view: 0, snackbar: 4 }
+                : { view: 20, snackbar: 12 };
+            let offset = viewOffset;
             while (snacks[index - 1]) {
-                offset += snacks[index - 1].height + 16;
+                const snackHeight = snacks[index - 1].height || 48;
+                offset += snackHeight + snackbarOffset;
                 index -= 1;
             }
             return offset;
@@ -206,29 +217,24 @@ class SnackbarProvider extends Component {
     };
 
     render() {
-        const { children, maxSnack, ...props } = this.props;
-        const { snacks } = this.state;
+        const { children, maxSnack, dense, ...props } = this.props;
+        const { contextValue, snacks } = this.state;
 
         return (
             <SnackbarContext.Provider value={this.handlePresentSnackbar}>
-                <SnackbarContextNext.Provider value={{
-                    handleEnqueueSnackbar: this.handleEnqueueSnackbar,
-                    handleCloseSnackbar: this.handleDismissSnack,
-                }}>
-                    <Fragment>
-                        {children}
-                        {snacks.map((snack, index) => (
-                            <SnackbarItem
-                                {...props}
-                                key={snack.key}
-                                snack={snack}
-                                offset={this.offsets[index]}
-                                onClose={this.handleCloseSnack}
-                                onExited={this.handleExitedSnack}
-                                onSetHeight={this.handleSetHeight}
-                            />
-                        ))}
-                    </Fragment>
+                <SnackbarContextNext.Provider value={contextValue}>
+                    {children}
+                    {snacks.map((snack, index) => (
+                        <SnackbarItem
+                            {...props}
+                            key={snack.key}
+                            snack={snack}
+                            offset={this.offsets[index]}
+                            onClose={this.handleCloseSnack}
+                            onExited={this.handleExitedSnack}
+                            onSetHeight={this.handleSetHeight}
+                        />
+                    ))}
                 </SnackbarContextNext.Provider>
             </SnackbarContext.Provider>
         );
@@ -236,22 +242,23 @@ class SnackbarProvider extends Component {
 }
 
 SnackbarProvider.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
     /**
-     * Maximum snackbars that can be stacked
-     * on top of one another
+     * Maximum snackbars that can be stacked on top of one another.
      */
+    dense: PropTypes.bool,
     maxSnack: PropTypes.number,
+    preventDuplicate: PropTypes.bool,
     onClose: PropTypes.func,
     onExited: PropTypes.func,
-    preventDuplicate: PropTypes.bool,
 };
 
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
+    dense: false,
+    preventDuplicate: false,
     onClose: undefined,
     onExited: undefined,
-    preventDuplicate: false,
 };
 
 export default SnackbarProvider;
