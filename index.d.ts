@@ -28,7 +28,7 @@ export function withSnackbar<P extends withSnackbarProps>(component: React.Compo
     React.ComponentClass<Omit<P, keyof withSnackbarProps>> & { WrappedComponent: React.ComponentType<P> };
 
 
-export function useSnackbar(): InjectedNotistackProps;
+export function useSnackbar(): withSnackbarProps;
 
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
