@@ -3,9 +3,9 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@Lukas-Kullmann**
+**@ecwyne @Lukas-Kullmann**
+* Add support for hooks `useSnackbar` [#83](https://github.com/iamhosseindhv/notistack/pull/83)
 * Add `displayName` to components exported by `withSnackbar` HOC [#100](https://github.com/iamhosseindhv/notistack/issues/100)
-
 
 ## `notistack@0.5.1`
 ###### Mar 15, 2019
