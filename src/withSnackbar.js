@@ -1,20 +1,15 @@
 import React from 'react';
-import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
+import SnackbarContext from './SnackbarContext';
 
 const withSnackbar = (Component) => {
     const WrappedComponent = props => (
         <SnackbarContext.Consumer>
-            {handlePresentSnackbar => (
-                <SnackbarContextNext.Consumer>
-                    {context => (
-                        <Component
-                            {...props}
-                            onPresentSnackbar={handlePresentSnackbar}
-                            enqueueSnackbar={context.handleEnqueueSnackbar}
-                            closeSnackbar={context.handleCloseSnackbar}
-                        />
-                    )}
-                </SnackbarContextNext.Consumer>
+            {context => (
+                <Component
+                    {...props}
+                    enqueueSnackbar={context.handleEnqueueSnackbar}
+                    closeSnackbar={context.handleCloseSnackbar}
+                />
             )}
         </SnackbarContext.Consumer>
     );

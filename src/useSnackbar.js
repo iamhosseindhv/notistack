@@ -1,17 +1,11 @@
 import { useContext } from 'react';
-import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
+import SnackbarContext from './SnackbarContext';
 
-const useSnackbar = () => {
-    const handlePresentSnackbar = useContext(SnackbarContext);
-    const {
-        handleEnqueueSnackbar,
-        handleCloseSnackbar,
-    } = useContext(SnackbarContextNext);
+export default () => {
+    const { handleEnqueueSnackbar, handleCloseSnackbar } = useContext(SnackbarContext);
+
     return {
-        onPresentSnackbar: handlePresentSnackbar,
         enqueueSnackbar: handleEnqueueSnackbar,
         closeSnackbar: handleCloseSnackbar,
     };
 };
-
-export default useSnackbar;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { SnackbarContext, SnackbarContextNext } from './SnackbarContext';
+import SnackbarContext from './SnackbarContext';
 import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import warning from './utils/warning';
@@ -36,25 +36,6 @@ class SnackbarProvider extends Component {
             return offset;
         });
     }
-
-    /**
-     * Adds a new snackbar to the queue to be presented.
-     * @param {string} variant - type of the snackbar. can be:
-     * (success, error, warning, info)
-     * @param {string} message - text of the notification
-     * @deprecated
-     */
-    handlePresentSnackbar = (variant, message) => {
-        warning(MESSAGES.NO_ON_PRESENT_SNACKBAR);
-
-        this.queue.push({
-            message,
-            variant,
-            open: true,
-            key: new Date().getTime() + Math.random(),
-        });
-        this.handleDisplaySnack();
-    };
 
     /**
      * Adds a new snackbar to the queue to be presented.
@@ -221,21 +202,19 @@ class SnackbarProvider extends Component {
         const { contextValue, snacks } = this.state;
 
         return (
-            <SnackbarContext.Provider value={this.handlePresentSnackbar}>
-                <SnackbarContextNext.Provider value={contextValue}>
-                    {children}
-                    {snacks.map((snack, index) => (
-                        <SnackbarItem
-                            {...props}
-                            key={snack.key}
-                            snack={snack}
-                            offset={this.offsets[index]}
-                            onClose={this.handleCloseSnack}
-                            onExited={this.handleExitedSnack}
-                            onSetHeight={this.handleSetHeight}
-                        />
-                    ))}
-                </SnackbarContextNext.Provider>
+            <SnackbarContext.Provider value={contextValue}>
+                {children}
+                {snacks.map((snack, index) => (
+                    <SnackbarItem
+                        {...props}
+                        key={snack.key}
+                        snack={snack}
+                        offset={this.offsets[index]}
+                        onClose={this.handleCloseSnack}
+                        onExited={this.handleExitedSnack}
+                        onSetHeight={this.handleSetHeight}
+                    />
+                ))}
             </SnackbarContext.Provider>
         );
     }

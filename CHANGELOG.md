@@ -1,9 +1,10 @@
-## `notistack@0.5.2`
+## `notistack@0.6.0`
 ###### to be published
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
 **@ecwyne @Lukas-Kullmann**
+* Completely deprecate and delete `onPresentSnackbar` method.
 * Add support for hooks `useSnackbar` [#83](https://github.com/iamhosseindhv/notistack/pull/83)
 * Add `displayName` to components exported by `withSnackbar` HOC [#100](https://github.com/iamhosseindhv/notistack/issues/100)
 
