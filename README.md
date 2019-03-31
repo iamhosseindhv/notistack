@@ -21,6 +21,7 @@ Table of Contents
 - [Documentation](#documentation)
     - [`SnackbarProvider`](#snackbarprovider)
     - [`withSnackbar`](#withsnackbar)
+    - [`useSnackbar`](#usesnackbar)
     - [Redux support](#redux-support)
 - [Contribution](#contribution)
 - [Notes](#notes)
@@ -109,6 +110,7 @@ classes.variantWarning:                                                 is set t
 classes.variantInfo:                                                    is set to 'info'.
 ```
 
+
 ### **withSnackbar**:
 When you export your component using `withSnackbar`, you'll have access to `enqueueSnackbar` and `closeSnackbar` methods in your props. 
 
@@ -153,6 +155,24 @@ this.props.closeSnackbar(key)
 
 // id returned by enqueueSnackbar - in order to reference a snackbar
 key             type: string|number     required: true
+```
+
+### **useSnackbar**:
+As an alternative to `withSnackbar` HOC, you can use `useSnackbar` [hook](https://reactjs.org/docs/hooks-intro.html).
+```javascript
+import { useSnackbar } from 'notistack';
+
+const MyButton = () => {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    
+    const handleClick = () => {
+        enqueueSnackbar('I love hooks');
+    };
+
+    return (
+        <button onClick={handleClick}>Show snackbar</button>
+    );
+}
 ```
 
 ### Redux support:
