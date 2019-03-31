@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.5.1",
+    "version": "0.6.0",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "build/index",
     "license": "MIT",
@@ -59,6 +59,7 @@
         "notistack",
         "enqueueSnackbar",
         "snackbarprovider",
+        "useSnackbar",
         "react",
         "javascript",
         "material-ui",
