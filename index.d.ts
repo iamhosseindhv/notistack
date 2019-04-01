@@ -29,8 +29,6 @@ export function withSnackbar<P extends withSnackbarProps>(component: React.Compo
 
 export function useSnackbar(): withSnackbarProps;
 
-export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
-
 // all material-ui props, including class keys for notistack and material-ui with additional notistack props
 export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     classes?: Partial<ClassNameMap<CombinedClassKey>>;
