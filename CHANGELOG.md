@@ -1,5 +1,13 @@
+## `notistack@0.6.1`
+###### Apr 1, 2019
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@Methuselah96 @VincentLanglet**
+* Remove duplicate `ClassNameMap` from `index.d.ts` [#104](https://github.com/iamhosseindhv/notistack/pull/104)
+
 ## `notistack@0.6.0`
-###### to be published
+###### Mar 30, 2019
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
