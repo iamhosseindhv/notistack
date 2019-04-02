@@ -1,0 +1,26 @@
+{
+  "name": "notistack-mobx-example",
+  "description": "Mobx example for notistack",
+  "homepage": "https://www.iamhosseindhv.com/notistack",
+  "repository": {
+    "url": "git+https://github.com/iamhosseindhv/notistack.git",
+    "type": "git"
+  },
+  "main": "src/index.js",
+  "dependencies": {
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
+    "react-scripts": "1.1.4",
+    "mobx": "^5.9.0",
+    "mobx-react": "^5.4.3",
+    "notistack": "^0.4.2",
+    "@material-ui/core": "3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
