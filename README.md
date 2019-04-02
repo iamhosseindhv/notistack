@@ -22,7 +22,7 @@ Table of Contents
     - [`SnackbarProvider`](#snackbarprovider)
     - [`withSnackbar`](#withsnackbar)
     - [`useSnackbar`](#usesnackbar)
-    - [Redux support](#redux-support)
+    - [Redux / Mobx support](#redux-and-mobx-support)
 - [Contribution](#contribution)
 - [Notes](#notes)
 - [Author - Contact me](#author---contact)
@@ -175,8 +175,8 @@ const MyButton = () => {
 }
 ```
 
-### Redux support:
-You can use notistack to send snackbars from reducers. See notistack [documentation](https://iamhosseindhv.com/notistack#redux-example) for more info.
+### Redux and Mobx support:
+notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack#redux-example) for more info.
 
 ## Contribution
 Open an issue and your problem will be solved.
