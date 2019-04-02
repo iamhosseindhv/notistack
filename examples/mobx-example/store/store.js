@@ -1,18 +1,20 @@
-import {action, extendObservable} from "mobx";
+/* eslint-disable func-names */
+import { action, extendObservable } from 'mobx';
 
 const Store = function () {
-
     extendObservable(this, {
         notifications: [],
-        addNote: action(note => {
+
+        enqueueSnackbar: action((note) => {
             this.notifications.push({
                 key: new Date().getTime() + Math.random(),
                 ...note,
             });
         }),
-        removeNote: action(note => {
-            this.notifications.remove(note)
-        })
+
+        removeSnackbar: action((note) => {
+            this.notifications.remove(note);
+        }),
     });
 };
 
