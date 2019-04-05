@@ -74,12 +74,16 @@ class SnackbarItem extends Component {
             ...otherContentProps,
             ...singleSnackProps.ContentProps,
             action: snack.action || contentAction || action,
+            getAction: snack.getAction,
         };
 
         let onClickHandler = snack.action ? singleOnClickAction : onClickAction;
         onClickHandler = onClickHandler || this.handleClose(key);
 
         const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
+
+        const actualAction = contentProps.action ||
+            (contentProps.getAction && contentProps.getAction(this.handleClose(key)));
 
         return (
             <RootRef rootRef={this.ref}>
@@ -117,11 +121,7 @@ class SnackbarItem extends Component {
                                     {snack.message}
                                 </span>
                             )}
-                            action={contentProps.action && (
-                                <span onClick={onClickHandler}>
-                                    {contentProps.action}
-                                </span>
-                            )}
+                            action={actualAction}
                         />
                     )}
                 </Snackbar>
@@ -167,6 +167,11 @@ SnackbarItem.propTypes = {
          * Whether or not a snackbar is visible or hidden.
          */
         open: PropTypes.bool.isRequired,
+
+        /**
+         * Custom action generator, which accepts `onClose` handler to close current snack.
+         */
+        getAction: PropTypes.func,
     }).isRequired,
     /**
      * Little icon that is displayed at left corner of a snackbar.

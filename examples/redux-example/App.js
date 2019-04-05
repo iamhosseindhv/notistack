@@ -10,8 +10,15 @@ const App = (props) => {
     const handleClick = () => {
         props.enqueueSnackbar({
             message: 'Failed fetching data.',
+            persist: true,
             options: {
                 variant: 'warning',
+                getAction: (onClose) => (
+                    <Fragment>
+                        <Button onClick={() => alert('These are your details')}>Details</Button>
+                        <Button onClick={onClose}>Close</Button>
+                    </Fragment>
+                )
             },
         });
     };

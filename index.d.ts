@@ -12,6 +12,7 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     persist?: boolean;
     onClickAction?: Function;
     preventDuplicate?: boolean;
+    getAction: (onClose: (event: HTMLElement, key: string) => void) => React.ReactNode;
 }
 
 export type NotistackClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
