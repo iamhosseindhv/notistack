@@ -1,3 +1,12 @@
+## `notistack@0.6.2`
+###### to be published
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**@lukejagodzinski**
+* Capitalise - Rename `withSnackbarProps` interface to `WithSnackbarProps`. [#109](https://github.com/iamhosseindhv/notistack/pull/109)
+
+
 ## `notistack@0.6.1`
 ###### Apr 1, 2019
 
