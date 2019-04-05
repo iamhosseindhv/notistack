@@ -82,8 +82,11 @@ class SnackbarItem extends Component {
 
         const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
 
-        const actualAction = contentProps.action ||
-            (contentProps.getAction && contentProps.getAction(this.handleClose(key)));
+        const actualAction = (
+            <span onClick={onClickHandler}>
+                {contentProps.action}
+            </span>
+        ) || (contentProps.getAction && contentProps.getAction(this.handleClose(key)));
 
         return (
             <RootRef rootRef={this.ref}>
