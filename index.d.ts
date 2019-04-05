@@ -18,16 +18,16 @@ export type NotistackClassKey = 'variantSuccess' | 'variantError' | 'variantInfo
 
 type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
-export interface withSnackbarProps {
+export interface WithSnackbarProps {
     enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => string | number | null;
     closeSnackbar: (key: string | number) => void
 }
 
-export function withSnackbar<P extends withSnackbarProps>(component: React.ComponentType<P>):
-    React.ComponentClass<Omit<P, keyof withSnackbarProps>> & { WrappedComponent: React.ComponentType<P> };
+export function withSnackbar<P extends WithSnackbarProps>(component: React.ComponentType<P>):
+    React.ComponentClass<Omit<P, keyof WithSnackbarProps>> & { WrappedComponent: React.ComponentType<P> };
 
 
-export function useSnackbar(): withSnackbarProps;
+export function useSnackbar(): WithSnackbarProps;
 
 // all material-ui props, including class keys for notistack and material-ui with additional notistack props
 export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
