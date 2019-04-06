@@ -176,7 +176,7 @@ const MyButton = () => {
 ```
 
 ### Redux and Mobx support:
-notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack#redux-example) for more info.
+notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack#redux-/-mobx-example) for more info.
 
 ## Contribution
 Open an issue and your problem will be solved.
