@@ -4,17 +4,18 @@ import getDisplayName from './utils/getDisplayName';
 import SnackbarContext from './SnackbarContext';
 
 const withSnackbar = (Component) => {
-    const WrappedComponent = props => (
+    const WrappedComponent = React.forwardRef((props, ref) => (
         <SnackbarContext.Consumer>
             {context => (
                 <Component
                     {...props}
+                    ref={ref}
                     enqueueSnackbar={context.handleEnqueueSnackbar}
                     closeSnackbar={context.handleCloseSnackbar}
                 />
             )}
         </SnackbarContext.Consumer>
-    );
+    ));
 
     if (process.env.NODE_ENV !== 'production') {
         WrappedComponent.displayName = `WithSnackbar(${getDisplayName(Component)})`;
