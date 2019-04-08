@@ -3,9 +3,11 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@lukejagodzinski**
+**@jhrinoa @ds009 @lukejagodzinski**
 * Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * Add support for multiple action buttons [#107](https://github.com/iamhosseindhv/notistack/issues/107)
+* Add support for `ref` using `React.forwardsRef`[#84](https://github.com/iamhosseindhv/notistack/issues/84)
+* Add `hoist-non-react-statics` [#111](https://github.com/iamhosseindhv/notistack/issues/111)
 * Capitalise - Rename `withSnackbarProps` interface to `WithSnackbarProps`. [#109](https://github.com/iamhosseindhv/notistack/pull/109)
 
 
