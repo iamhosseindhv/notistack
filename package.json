@@ -46,8 +46,10 @@
         "react-dom": "^16.8.0"
     },
     "dependencies": {
+        "classnames": "^2.2.6",
+        "hoist-non-react-statics": "^3.3.0",
         "prop-types": "^15.6.2",
-        "classnames": "^2.2.6"
+        "react-is": "^16.8.6"
     },
     "bugs": {
         "url": "https://github.com/iamhosseindhv/notistack/issues"
