@@ -90,9 +90,6 @@ iconVariant         type: any             required: false       default: Materia
 // Hide or display icon variant of a snackbar
 hideIconVariant     type: boolean         required: false       default: false
 
-// Event fired when user clicks on action button (if any)
-onClickAction       type: func            required: false       default: Dismiss the snackbar
-
 // Do not allow snackbars with the same message to be displayed multiple times
 preventDuplicate    type: boolean         required: false       default: false
 

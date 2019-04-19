@@ -53,7 +53,6 @@ class SnackbarItem extends Component {
             snack,
             style,
             preventDuplicate,
-            onClickAction,
             onSetHeight,
             ...other
         } = this.props;
@@ -64,7 +63,8 @@ class SnackbarItem extends Component {
             key,
             persist,
             variant = 'default',
-            onClickAction: singleOnClickAction,
+            action: singleAction,
+            ContentProps: singleContentProps = {},
             ...singleSnackProps
         } = snack;
 
@@ -72,14 +72,16 @@ class SnackbarItem extends Component {
 
         const contentProps = {
             ...otherContentProps,
-            ...singleSnackProps.ContentProps,
-            action: snack.action || contentAction || action,
+            ...singleContentProps,
+            action: singleAction || singleContentProps.action || contentAction || action,
         };
 
-        let onClickHandler = snack.action ? singleOnClickAction : onClickAction;
-        onClickHandler = onClickHandler || this.handleClose(key);
-
         const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
+
+        let finalAction = contentProps.action;
+        if (typeof finalAction === 'function') {
+            finalAction = contentProps.action(key);
+        }
 
         return (
             <RootRef rootRef={this.ref}>
@@ -117,11 +119,7 @@ class SnackbarItem extends Component {
                                     {snack.message}
                                 </span>
                             )}
-                            action={contentProps.action && (
-                                <span onClick={onClickHandler}>
-                                    {contentProps.action}
-                                </span>
-                            )}
+                            action={finalAction}
                         />
                     )}
                 </Snackbar>
@@ -151,11 +149,6 @@ SnackbarItem.propTypes = {
         variant: PropTypes.oneOf(
             ['default', 'error', 'success', 'warning', 'info'],
         ),
-        /**
-         * Event fired when clicked on action button of
-         * a snackbar. defaulted to dismiss the snackbar.
-         */
-        onClickAction: PropTypes.func,
         /**
          * Identifier of a given snakcbar.
          */
@@ -194,11 +187,6 @@ SnackbarItem.propTypes = {
      */
     hideIconVariant: PropTypes.bool,
     preventDuplicate: PropTypes.bool.isRequired,
-    /**
-     * Event fired when clicked on action button of
-     * a snackbar. defaulted to dismiss the snackbar.
-     */
-    onClickAction: PropTypes.func,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
     onSetHeight: PropTypes.func.isRequired,
@@ -207,7 +195,6 @@ SnackbarItem.propTypes = {
 SnackbarItem.defaultProps = {
     iconVariant: variantIcon,
     hideIconVariant: false,
-    onClickAction: undefined,
 };
 
 export default withStyles(styles)(SnackbarItem);

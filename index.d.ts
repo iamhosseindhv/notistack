@@ -10,7 +10,6 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     key?: string | number;
     variant?: VariantType;
     persist?: boolean;
-    onClickAction?: Function;
     preventDuplicate?: boolean;
 }
 
@@ -35,7 +34,6 @@ export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'mes
     maxSnack?: number;
     iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
     hideIconVariant?: boolean;
-    onClickAction?: Function;
     preventDuplicate?: boolean;
     dense?: boolean;
 }
