@@ -3,7 +3,7 @@
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**.**
+**@YBogomolov**
 * Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * Add support for multiple action buttons [#107](https://github.com/iamhosseindhv/notistack/issues/107)
 
