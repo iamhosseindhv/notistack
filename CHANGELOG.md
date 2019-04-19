@@ -1,11 +1,19 @@
+## `notistack@0.8.0`
+###### expected publish date (May 10, 2019)
+
+Thanks to all contributers who improved notistack by opening an issue/PR.
+
+**.**
+* Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+* Add support for multiple action buttons [#107](https://github.com/iamhosseindhv/notistack/issues/107)
+
+
 ## `notistack@0.7.0`
-###### expected publish date (May 1, 2019)
+###### Apr 19, 2019)
 
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
 **@jhrinoa @ds009 @lukejagodzinski**
-* Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
-* Add support for multiple action buttons [#107](https://github.com/iamhosseindhv/notistack/issues/107)
 * Add support for `ref` using `React.forwardRef`[#84](https://github.com/iamhosseindhv/notistack/issues/84)
 * Add `hoist-non-react-statics` [#111](https://github.com/iamhosseindhv/notistack/issues/111)
 * Capitalise - Rename `withSnackbarProps` interface to `WithSnackbarProps`. [#109](https://github.com/iamhosseindhv/notistack/pull/109)
