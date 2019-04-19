@@ -37,7 +37,7 @@ class SnackbarItem extends Component {
 
     componentDidMount = () => {
         const { onSetHeight, snack } = this.props;
-        const height = this.ref.current.clientHeight;
+        const height = this.ref.current && this.ref.current.clientHeight;
         onSetHeight(snack.key, height);
     };
 
