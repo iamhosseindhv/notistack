@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
+import { SnackbarContentProps } from '@material-ui/core/SnackbarContent/SnackbarContent';
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
@@ -11,6 +12,7 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     variant?: VariantType;
     persist?: boolean;
     preventDuplicate?: boolean;
+    action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
 export type NotistackClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
@@ -19,7 +21,7 @@ type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
     enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => string | number | null;
-    closeSnackbar: (key: string | number) => void
+    closeSnackbar: (key: OptionsObject['key']) => void;
 }
 
 export function withSnackbar<P extends WithSnackbarProps>(component: React.ComponentType<P>):
