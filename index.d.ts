@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { SnackbarContentProps } from '@material-ui/core/SnackbarContent/SnackbarContent';
+import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
