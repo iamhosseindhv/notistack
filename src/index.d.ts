@@ -20,7 +20,7 @@ export type NotistackClassKey = 'variantSuccess' | 'variantError' | 'variantInfo
 type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
-    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => string | number | null;
+    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => OptionsObject['key'] | null;
     closeSnackbar: (key: OptionsObject['key']) => void;
 }
 
