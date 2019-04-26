@@ -83,6 +83,11 @@ class SnackbarItem extends Component {
             finalAction = contentProps.action(key);
         }
 
+        let snackChildren = snack.children;
+        if (snackChildren && typeof snackChildren === 'function') {
+            snackChildren = snackChildren(key);
+        }
+
         return (
             <RootRef rootRef={this.ref}>
                 <Snackbar
@@ -103,7 +108,7 @@ class SnackbarItem extends Component {
                     onClose={this.handleClose(key)}
                     onExited={this.handleExited(key)}
                 >
-                    {snack.children || (
+                    {snackChildren || (
                         <SnackbarContent
                             className={classNames(
                                 classes.base,
