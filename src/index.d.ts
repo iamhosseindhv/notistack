@@ -38,6 +38,7 @@ export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'mes
     hideIconVariant?: boolean;
     preventDuplicate?: boolean;
     dense?: boolean;
+    action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
