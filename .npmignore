@@ -4,6 +4,6 @@ examples
 .babelrc
 .eslintrc
 .gitignore
-.README.md
-.CHANGELOG.md
+README.md
+CHANGELOG.md
 webpack.config.js
