@@ -1,16 +1,17 @@
-## `notistack@0.9.0`
-###### expected publish date (May 10, 2019)
-
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-**@molynerd**
-* Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+## `notistack@0.9.0`
+###### expected publish date (May 10, 2019)
+* [**@molynerd**] Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+
+
+## `notistack@0.8.2`
+###### Apr 27, 2019
+* [**@jgodi**] Allow snackbar children to be of type function [#114](https://github.com/iamhosseindhv/notistack/issues/114)
 
 
 ## `notistack@0.8.0`
 ###### Apr 26, 2019
-
-Thanks to all contributers who improved notistack by opening an issue/PR.
 
 **@YBogomolov**
 * Add support for multiple action buttons [#107](https://github.com/iamhosseindhv/notistack/issues/107)
@@ -18,8 +19,6 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 
 ## `notistack@0.7.0`
 ###### Apr 19, 2019
-
-Thanks to all contributers who improved notistack by opening an issue/PR.
 
 **@jhrinoa @ds009 @lukejagodzinski**
 * Add support for `ref` using `React.forwardRef`[#84](https://github.com/iamhosseindhv/notistack/issues/84)
