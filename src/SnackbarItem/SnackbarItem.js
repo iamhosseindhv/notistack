@@ -76,6 +76,12 @@ class SnackbarItem extends Component {
             action: singleAction || singleContentProps.action || contentAction || action,
         };
 
+        let autoHideDuration = singleSnackProps.autoHideDuration || 5000;
+
+        if(persist) {
+            autoHideDuration = undefined;
+        }
+
         const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
 
         let finalAction = contentProps.action;
@@ -91,7 +97,7 @@ class SnackbarItem extends Component {
         return (
             <RootRef rootRef={this.ref}>
                 <Snackbar
-                    autoHideDuration={5000}
+                    autoHideDuration={autoHideDuration}
                     anchorOrigin={anchOrigin}
                     TransitionComponent={TransitionComponent}
                     TransitionProps={{
