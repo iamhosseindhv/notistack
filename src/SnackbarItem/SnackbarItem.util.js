@@ -1,5 +1,5 @@
 import React from 'react';
-import Slide from '@material-ui/core/Slide';
+import Grow from '@material-ui/core/Grow';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
 const CheckIcon = props => (
@@ -36,7 +36,7 @@ const InfoIcon = props => (
     </SvgIcon>
 );
 
-const TransitionComponent = props => <Slide {...props} />;
+const TransitionComponent = props => <Grow {...props} />;
 
 const iconStyles = {
     opacity: 0.9,
