@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import RootRef from '@material-ui/core/RootRef';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { styles, getTransitionStyles } from './SnackbarItem.styles';
@@ -89,46 +88,45 @@ class SnackbarItem extends Component {
         }
 
         return (
-            <RootRef rootRef={this.ref}>
-                <Snackbar
-                    autoHideDuration={5000}
-                    anchorOrigin={anchOrigin}
-                    TransitionComponent={TransitionComponent}
-                    TransitionProps={{
-                        direction: getTransitionDirection(anchOrigin),
-                    }}
-                    style={{
-                        ...style,
-                        ...getTransitionStyles(offset, anchOrigin),
-                    }}
-                    {...other}
-                    {...singleSnackProps}
-                    open={snack.open}
-                    classes={getMuiClasses(classes)}
-                    onClose={this.handleClose(key)}
-                    onExited={this.handleExited(key)}
-                >
-                    {snackChildren || (
-                        <SnackbarContent
-                            className={classNames(
-                                classes.base,
-                                classes[`variant${capitalise(variant)}`],
-                                (!hideIconVariant && icon) ? classes.lessPadding : null,
-                                className,
-                            )}
-                            {...contentProps}
-                            aria-describedby="client-snackbar"
-                            message={(
-                                <span id="client-snackbar" className={classes.message}>
-                                    {!hideIconVariant ? icon : null}
-                                    {snack.message}
-                                </span>
-                            )}
-                            action={finalAction}
-                        />
-                    )}
-                </Snackbar>
-            </RootRef>
+            <Snackbar
+                autoHideDuration={5000}
+                anchorOrigin={anchOrigin}
+                TransitionComponent={TransitionComponent}
+                TransitionProps={{
+                    direction: getTransitionDirection(anchOrigin),
+                }}
+                style={{
+                    ...style,
+                    ...getTransitionStyles(offset, anchOrigin),
+                }}
+                {...other}
+                {...singleSnackProps}
+                ref={this.ref}
+                open={snack.open}
+                classes={getMuiClasses(classes)}
+                onClose={this.handleClose(key)}
+                onExited={this.handleExited(key)}
+            >
+                {snackChildren || (
+                    <SnackbarContent
+                        className={classNames(
+                            classes.base,
+                            classes[`variant${capitalise(variant)}`],
+                            (!hideIconVariant && icon) ? classes.lessPadding : null,
+                            className,
+                        )}
+                        {...contentProps}
+                        aria-describedby="client-snackbar"
+                        message={(
+                            <span id="client-snackbar" className={classes.message}>
+                                {!hideIconVariant ? icon : null}
+                                {snack.message}
+                            </span>
+                        )}
+                        action={finalAction}
+                    />
+                )}
+            </Snackbar>
         );
     }
 }
