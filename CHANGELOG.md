@@ -5,6 +5,11 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 
 
+## `notistack@0.8.3`
+###### Apr 27, 2019
+**@alexisab**: Add support to close all snackbars at once [#122](https://github.com/iamhosseindhv/notistack/issues/122)
+
+
 ## `notistack@0.8.2`
 ###### Apr 27, 2019
 **@jgodi**: Allow snackbar children to be of type function [#114](https://github.com/iamhosseindhv/notistack/issues/114)
