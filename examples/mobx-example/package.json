@@ -13,7 +13,7 @@
     "react-scripts": "1.1.4",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
-    "notistack": "^0.6.1",
+    "notistack": "latest",
     "@material-ui/core": "3.4.0"
   },
   "devDependencies": {},
