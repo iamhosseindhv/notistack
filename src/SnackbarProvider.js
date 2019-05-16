@@ -149,7 +149,7 @@ class SnackbarProvider extends Component {
     handleCloseSnack = (event, reason, key) => {
         this.setState(({ snacks }) => ({
             snacks: snacks.map(item => (
-                item.key === key ? { ...item, open: false } : { ...item }
+                (!key || item.key === key) ? { ...item, open: false } : { ...item }
             )),
         }));
 
