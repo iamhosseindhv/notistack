@@ -1,28 +1,32 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-## `notistack@0.9.0`
+### `notistack@0.9.0`
 ###### expected publish date (May 10, 2019)
 **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 
+<br />
 
-## `notistack@0.8.3`
-###### Apr 27, 2019
+### `notistack@0.8.3`
+###### May 15, 2019
 **@alexisab**: Add support to close all snackbars at once [#122](https://github.com/iamhosseindhv/notistack/issues/122)
 
+<br />
 
-## `notistack@0.8.2`
+### `notistack@0.8.2`
 ###### Apr 27, 2019
 **@jgodi**: Allow snackbar children to be of type function [#114](https://github.com/iamhosseindhv/notistack/issues/114)
 
+<br />
 
-## `notistack@0.8.0`
+### `notistack@0.8.0`
 ###### Apr 26, 2019
 
 **@YBogomolov**
 * Add support for multiple action buttons [#107](https://github.com/iamhosseindhv/notistack/issues/107)
 
+<br />
 
-## `notistack@0.7.0`
+### `notistack@0.7.0`
 ###### Apr 19, 2019
 
 **@jhrinoa @ds009 @lukejagodzinski**
