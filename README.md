@@ -148,13 +148,14 @@ this.props.enqueueSnackbar('message', { variant: 'variant' })
 #### `closeSnackbar`
 Dismiss snackbar with the given key. You can close all snackbars at once by not passing a key to this function.
 ```javascript
-this.props.closeSnackbar(key)
-
 // dismiss all open snackbars
 this.props.closeSnackbar()
 
+// dismiss a specific snackbar
+this.props.closeSnackbar(key)
+
 // id returned by enqueueSnackbar - in order to reference a snackbar
-key             type: string|number     required: true
+key             type: string|number     required: false
 ```
 
 ### **useSnackbar**:
