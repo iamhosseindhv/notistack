@@ -21,7 +21,7 @@ type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
     enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => OptionsObject['key'] | null;
-    closeSnackbar: (key: OptionsObject['key']) => void;
+    closeSnackbar: (key?: OptionsObject['key']) => void;
 }
 
 export function withSnackbar<P extends WithSnackbarProps>(component: React.ComponentType<P>):
