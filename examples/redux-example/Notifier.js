@@ -49,7 +49,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({ removeSnackbar }, dispatch);
 
-export default connect(
+export default withSnackbar(connect(
     mapStateToProps,
     mapDispatchToProps,
-)(withSnackbar(Notifier));
+)(Notifier));
