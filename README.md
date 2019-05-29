@@ -38,7 +38,7 @@ yarn add notistack
 ## How to use
 
 **1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](#documentation) for a full list of available props)
-```javascript
+```jsx
 import { SnackbarProvider } from 'notistack';
 
 <SnackbarProvider maxSnack={3}>
@@ -160,7 +160,7 @@ key             type: string|number     required: false
 
 ### **useSnackbar**:
 As an alternative to `withSnackbar` HOC, you can use `useSnackbar` [hook](https://reactjs.org/docs/hooks-intro.html).
-```javascript
+```jsx
 import { useSnackbar } from 'notistack';
 
 const MyButton = () => {
