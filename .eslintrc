@@ -26,6 +26,7 @@
         "react/jsx-closing-bracket-location": 0,
         "react/forbid-prop-types": 0,
         "react/sort-comp": 0,
+        "react/require-default-props": 0,
         "react/jsx-filename-extension": [
             1,
             {

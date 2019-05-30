@@ -6,14 +6,7 @@ import RootRef from '@material-ui/core/RootRef';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { styles, getTransitionStyles } from './SnackbarItem.styles';
-import {
-    capitalise,
-    defaultAnchorOrigin,
-    getTransitionDirection,
-    getMuiClasses,
-    TransitionComponent,
-    variantIcon,
-} from './SnackbarItem.util';
+import { capitalise, getMuiClasses, getTransitionDirection } from './SnackbarItem.util';
 
 
 class SnackbarItem extends Component {
@@ -45,14 +38,14 @@ class SnackbarItem extends Component {
         const {
             classes,
             action,
-            anchorOrigin = defaultAnchorOrigin,
+            anchorOrigin,
             ContentProps = {},
             hideIconVariant,
+            preventDuplicate,
             iconVariant,
             offset,
             snack,
             style,
-            preventDuplicate,
             onSetHeight,
             ...other
         } = this.props;
@@ -91,9 +84,7 @@ class SnackbarItem extends Component {
         return (
             <RootRef rootRef={this.ref}>
                 <Snackbar
-                    autoHideDuration={5000}
                     anchorOrigin={anchOrigin}
-                    TransitionComponent={TransitionComponent}
                     TransitionProps={{
                         direction: getTransitionDirection(anchOrigin),
                     }}
@@ -135,71 +126,32 @@ class SnackbarItem extends Component {
 
 SnackbarItem.propTypes = {
     classes: PropTypes.object.isRequired,
-    /**
-     * offset from top/bottom of the screen where a snakcbar should be displayed
-     * (when snackbars are stacked on top of eachother)
-     */
     offset: PropTypes.number.isRequired,
     snack: PropTypes.shape({
-        /**
-         * Text of the snackbar/notification.
-         */
         message: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.node,
         ]).isRequired,
-        /**
-         * Type of snackbar. defaulted to 'default'.
-         */
         variant: PropTypes.oneOf(
             ['default', 'error', 'success', 'warning', 'info'],
         ),
-        /**
-         * Identifier of a given snakcbar.
-         */
         key: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number,
         ]).isRequired,
-        /**
-         * Whether or not a snackbar is visible or hidden.
-         */
         open: PropTypes.bool.isRequired,
     }).isRequired,
-    /**
-     * Little icon that is displayed at left corner of a snackbar.
-     */
     iconVariant: PropTypes.shape({
-        /**
-         * Icon displayed when variant of a snackbar is set to `success`.
-         */
         success: PropTypes.any.isRequired,
-        /**
-         * Icon displayed when variant of a snackbar is set to `warning`.
-         */
         warning: PropTypes.any.isRequired,
-        /**
-         * Icon displayed when variant of a snackbar is set to `error`.
-         */
         error: PropTypes.any.isRequired,
-        /**
-         * Icon displayed when variant of a snackbar is set to `info`.
-         */
         info: PropTypes.any.isRequired,
-    }),
-    /**
-     * iconVariant will not be rendered if set to `true`.
-     */
-    hideIconVariant: PropTypes.bool,
+    }).isRequired,
+    hideIconVariant: PropTypes.bool.isRequired,
     preventDuplicate: PropTypes.bool.isRequired,
+    onSetHeight: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
-    onSetHeight: PropTypes.func.isRequired,
-};
-
-SnackbarItem.defaultProps = {
-    iconVariant: variantIcon,
-    hideIconVariant: false,
 };
 
 export default withStyles(styles)(SnackbarItem);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES } from './utils/constants';
+import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES, iconVariant, defaultAnchorOrigin } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import warning from './utils/warning';
 
@@ -221,23 +222,140 @@ class SnackbarProvider extends Component {
 }
 
 SnackbarProvider.propTypes = {
+    /**
+     * Most of the time, this is your App. every component from this point onward
+     * will be able to show snackbars.
+     */
     children: PropTypes.node.isRequired,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: PropTypes.object,
     /**
      * Maximum snackbars that can be stacked on top of one another.
      */
-    dense: PropTypes.bool,
     maxSnack: PropTypes.number,
+    /**
+     * Denser margins for snackbars. Recommended to be used on mobile devices
+     */
+    dense: PropTypes.bool,
+    /**
+     * Ignores displaying multiple snackbars with the same `message`
+     */
     preventDuplicate: PropTypes.bool,
+    /**
+     * Hides iconVariant if set to `true`.
+     */
+    hideIconVariant: PropTypes.bool,
+    /**
+     * Little icon that is displayed at left corner of a snackbar.
+     */
+    iconVariant: PropTypes.shape({
+        /**
+         * Icon displayed when variant of a snackbar is set to `success`.
+         */
+        success: PropTypes.any.isRequired,
+        /**
+         * Icon displayed when variant of a snackbar is set to `warning`.
+         */
+        warning: PropTypes.any.isRequired,
+        /**
+         * Icon displayed when variant of a snackbar is set to `error`.
+         */
+        error: PropTypes.any.isRequired,
+        /**
+         * Icon displayed when variant of a snackbar is set to `info`.
+         */
+        info: PropTypes.any.isRequired,
+    }),
+    /**
+     * Callback to get action(s). actions are mostly buttons displayed in Snackbar.
+     * @param {string|number} key key of a snackbar
+     */
+    action: PropTypes.func,
+    /**
+     * The anchor of the `Snackbar`.
+     */
+    anchorOrigin: PropTypes.shape({
+        horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
+        vertical: PropTypes.oneOf(['top', 'bottom']).isRequired,
+    }),
+    /**
+     * The number of milliseconds to wait before automatically calling the
+     * `onClose` function. `onClose` should then set the state of the `open`
+     * prop to hide the Snackbar. This behavior is disabled by default with
+     * the `null` value.
+     */
+    autoHideDuration: PropTypes.number,
+    /**
+     * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
+     */
+    disableWindowBlurListener: PropTypes.bool,
+    /**
+     * Callback fired when the component requests to be closed.
+     * The `reason` parameter can optionally be used to control the response to `onClose`,
+     * for example ignoring `clickaway`.
+     *
+     * @param {object} event The event source of the callback
+     * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
+     *  or: `"maxsnack"` (snackbar is closed because `maxSnack` has reached.)
+     * @param {string|number} key key of a Snackbar
+     */
     onClose: PropTypes.func,
+    /**
+     * Callback fired before the transition is entering.
+     */
+    onEnter: PropTypes.func,
+    /**
+     * Callback fired when the transition has entered.
+     */
+    onEntered: PropTypes.func,
+    /**
+     * Callback fired when the transition is entering.
+     */
+    onEntering: PropTypes.func,
+    /**
+     * Callback fired before the transition is exiting.
+     */
+    onExit: PropTypes.func,
+    /**
+     * Callback fired when the transition has exited.
+     */
     onExited: PropTypes.func,
+    /**
+     * Callback fired when the transition is exiting.
+     */
+    onExiting: PropTypes.func,
+    /**
+     * The number of milliseconds to wait before dismissing after user interaction.
+     * If `autoHideDuration` property isn't specified, it does nothing.
+     * If `autoHideDuration` property is specified but `resumeHideDuration` isn't,
+     * we default to `autoHideDuration / 2` ms.
+     */
+    resumeHideDuration: PropTypes.number,
+    /**
+     * The component used for the transition.
+     */
+    TransitionComponent: PropTypes.elementType,
+    /**
+     * The duration for the transition, in milliseconds.
+     * You may specify a single timeout for all transitions, or individually with an object.
+     */
+    transitionDuration: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
+    ]),
 };
 
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
     dense: false,
     preventDuplicate: false,
-    onClose: undefined,
-    onExited: undefined,
+    hideIconVariant: false,
+    iconVariant,
+    anchorOrigin: defaultAnchorOrigin,
+    autoHideDuration: 5000,
+    TransitionComponent: Slide,
 };
 
 export default SnackbarProvider;
