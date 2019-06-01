@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES, iconVariant, defaultAnchorOrigin } from './utils/constants';
+import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES, iconVariant } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import warning from './utils/warning';
 
@@ -353,7 +353,10 @@ SnackbarProvider.defaultProps = {
     preventDuplicate: false,
     hideIconVariant: false,
     iconVariant,
-    anchorOrigin: defaultAnchorOrigin,
+    anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'left',
+    },
     autoHideDuration: 5000,
     TransitionComponent: Slide,
 };
