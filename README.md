@@ -32,7 +32,7 @@ npm install notistack
 yarn add notistack 
 ```
 
-## How to use
+### How to use
 
 **1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](https://iamhosseindhv.com/notistack/api) for a full list of available props)
 ```jsx
@@ -67,27 +67,27 @@ export default withSnackbar(MyComponent);
 ```
 
 
-## Online demo
+### Online demo
 **You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack/demos).**</br>
 Or see the code for a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
 
 
-## Documentation
+### Documentation
 #### [`Visit the documentation website`](https://iamhosseindhv.com/notistack/api)
 
 
 ### Redux and Mobx support:
 notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack/demos#redux-/-mobx-example) for more info.
 
-## Contribution
+### Contribution
 Open an issue and your problem will be solved.
 
 
-### Notes
+#### Notes
 Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😁 So I made notistack. But if you'd like to stick to the guidelines, you can set `maxSnack` to `1` and just take advantage of `enqueueSnackbar` function.
 
 
-## Author - Contact
+### Author - Contact
 Hossein Dehnokhalaji
 
 <a href="https://www.facebook.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/facebook.png" alt="Hossein Dehnokhalaji Facebook profile" align="right" width="32" height="32"/></a>
