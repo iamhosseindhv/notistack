@@ -12,6 +12,7 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     variant?: VariantType;
     persist?: boolean;
     preventDuplicate?: boolean;
+    children?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
     action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
