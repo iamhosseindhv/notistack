@@ -7,7 +7,7 @@
 **Notistack** is an extention to Material-UI [Snackbar](https://material-ui.com/demos/snackbars). notistack makes it extremely easy to display snackbars (so you don't have to deal with open/close state of them), and also enables **you** to stack snackbars on top of one another. It's **highly customizable** and you can customize snackbars the same way you do for Mui-Snackbars.
 
     
-#### [`Play with online demo here`](https://iamhosseindhv.com/notistack)
+#### [`Play with online demo here`](https://iamhosseindhv.com/notistack/demos)
   
 | Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)| 
 | --- | --- |
@@ -19,10 +19,7 @@ Table of Contents
 - [How to use](#how-to-use)
 - [Online demo](#online-demo)
 - [Documentation](#documentation)
-    - [`SnackbarProvider`](#snackbarprovider)
-    - [`withSnackbar`](#withsnackbar)
-    - [`useSnackbar`](#usesnackbar)
-    - [Redux / Mobx support](#redux-and-mobx-support)
+- [Redux / Mobx support](#redux-and-mobx-support)
 - [Contribution](#contribution)
 - [Notes](#notes)
 - [Author - Contact me](#author---contact)
@@ -35,9 +32,9 @@ npm install notistack
 yarn add notistack 
 ```
 
-## How to use
+### How to use
 
-**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](#documentation) for a full list of available props)
+**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](https://iamhosseindhv.com/notistack/api) for a full list of available props)
 ```jsx
 import { SnackbarProvider } from 'notistack';
 
@@ -70,124 +67,27 @@ export default withSnackbar(MyComponent);
 ```
 
 
-## Online demo
-**You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack).**</br>
+### Online demo
+**You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack/demos).**</br>
 Or see the code for a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
 
 
-## Documentation
-#### [`See full docs here`](https://iamhosseindhv.com/notistack)
+### Documentation
+#### [`Visit the documentation website`](https://iamhosseindhv.com/notistack/api)
 
-### **SnackbarProvider**:
-All material-ui Snackbar props will get passed down to a Snackbar component. See Material-ui [docs](https://material-ui.com/api/snackbar/) for more info.
-```javascript
-// Maximum number of snackbars that can be stacked on top of eachother.
-maxSnack            type: number          required: false        default: 3
-
-// The little icon that is displayed in a snackbar
-iconVariant         type: any             required: false       default: Material design icons
-
-// Hide or display icon variant of a snackbar
-hideIconVariant     type: boolean         required: false       default: false
-
-// Do not allow snackbars with the same message to be displayed multiple times
-preventDuplicate    type: boolean         required: false       default: false
-
-// Denser margins for snackbars. Recommended to be used on mobile devices
-dense               type: boolean         required: false       default: false
-
-// Example of a Mui-Snackbar prop
-transitionDuration={{ exit: 380, enter: 400 }}
-```
-Using material-ui `classes` prop, you can override styles applied to a snackbar based on its variant. For more info see [overriding with classes](https://material-ui.com/customization/overrides/#overriding-with-classes). This accepts the following keys:
-```
-classes.variantSuccess:       Styles applied to the snackbar if variant is set to 'success'.
-classes.variantError:                                                   is set to 'error'.
-classes.variantWarning:                                                 is set to 'warning'.
-classes.variantInfo:                                                    is set to 'info'.
-```
-
-
-### **withSnackbar**:
-When you export your component using `withSnackbar`, you'll have access to `enqueueSnackbar` and `closeSnackbar` methods in your props. 
-
-#### `enqueueSnackbar`
-Adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options` and returns a key that is used to reference that snackbar later on. (e.g. to dismiss it programmatically)
-
-```javascript
-const key = this.props.enqueueSnackbar(message, options)
-
-// text of the snackbar
-message                 type:string         required: true
-
-// object containing options with the following shape
-options:                type:object         required: false 
-
-// type of the snackbar
-options.variant         type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
-
-// keep a snackbar in the view and prevent auto dismissal
-options.persist         type:boolean        required: false
-
-// hide or display this message if it's the same of the previous one
-options.preventDuplicate type:boolean        required: false
-
-// You can pass any material-ui Snackbar prop here, and they will be applied to this 
-// individual snackbar. For example, this particular snackbar will get dismissed after 1 second.
-options.autoHideDuration: 1000
-```
-**Note**: `onPresentSnackbar` has been now deprecated. Use `enqueueSnackbar` instead:
-```javascript
-// ❌ before:
-this.props.onPresentSnackbar('variant', 'message')
-
-// ✅ after:
-this.props.enqueueSnackbar('message', { variant: 'variant' })
-```
-
-#### `closeSnackbar`
-Dismiss snackbar with the given key. You can close all snackbars at once by not passing a key to this function.
-```javascript
-// dismiss all open snackbars
-this.props.closeSnackbar()
-
-// dismiss a specific snackbar
-this.props.closeSnackbar(key)
-
-// id returned by enqueueSnackbar - in order to reference a snackbar
-key             type: string|number     required: false
-```
-
-### **useSnackbar**:
-As an alternative to `withSnackbar` HOC, you can use `useSnackbar` [hook](https://reactjs.org/docs/hooks-intro.html).
-```jsx
-import { useSnackbar } from 'notistack';
-
-const MyButton = () => {
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-    
-    const handleClick = () => {
-        enqueueSnackbar('I love hooks');
-    };
-
-    return (
-        <button onClick={handleClick}>Show snackbar</button>
-    );
-}
-```
 
 ### Redux and Mobx support:
-notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack#redux-/-mobx-example) for more info.
+notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack/demos#redux-/-mobx-example) for more info.
 
-## Contribution
+### Contribution
 Open an issue and your problem will be solved.
 
 
-### Notes
+#### Notes
 Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😁 So I made notistack. But if you'd like to stick to the guidelines, you can set `maxSnack` to `1` and just take advantage of `enqueueSnackbar` function.
 
 
-## Author - Contact
+### Author - Contact
 Hossein Dehnokhalaji
 
 <a href="https://www.facebook.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/facebook.png" alt="Hossein Dehnokhalaji Facebook profile" align="right" width="32" height="32"/></a>
