@@ -4,7 +4,7 @@
 ![npm version](https://img.shields.io/npm/l/notistack.svg)
 
 
-**Notistack** is an extention to Material-UI [Snackbar](https://material-ui.com/demos/snackbars). notistack makes it extremely easy to display snackbars (so you don't have to deal with open/close state of them), and also enables **you** to stack snackbars on top of one another. It's **highly customizable** and you can customize snackbars the same way you do for Mui-Snackbars.
+**Notistack** is a Snackbar library which makes it extremely easy to display notifications on your web apps. It is **highly customizable** and enables **you** to stack snackbars/toasts on top of one another. See [demos](https://iamhosseindhv.com/notistack/demos) for more info. 
 
     
 #### [`Play with online demo here`](https://iamhosseindhv.com/notistack/demos)
