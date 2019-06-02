@@ -8,6 +8,11 @@ import { enqueueSnackbar, closeSnackbar } from './redux/actions';
 
 const App = (props) => {
     const handleClick = () => {
+
+        // NOTE:
+        // if you want to be able to dispatch a closeSnackbar action later on, 
+        // you SHOULD pass your own `key` in the options. `key` can be any sequence
+        // of number or characters, but it has to be unique to a given snackbar. 
         props.enqueueSnackbar({
             message: 'Failed fetching data.',
             options: {
