@@ -1,4 +1,4 @@
-import React, { Fragment, Children } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Typography from '@material-ui/core/Typography';
@@ -10,7 +10,7 @@ const App = (props) => {
     const handleClick = () => {
 
         // NOTE:
-        // if you want to be able to dispatch a closeSnackbar action later on, 
+        // if you want to be able to dispatch a `closeSnackbar` action later on, 
         // you SHOULD pass your own `key` in the options. `key` can be any sequence
         // of number or characters, but it has to be unique to a given snackbar. 
         props.enqueueSnackbar({
@@ -20,7 +20,7 @@ const App = (props) => {
                 variant: 'warning',
                 action: key => (
                     <Button onClick={() => props.closeSnackbar(key)}>dissmiss me</Button>
-                )
+                ),
             },
         });
     };
