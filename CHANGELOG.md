@@ -1,9 +1,14 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
 ### `notistack@0.9.0`
-###### expected publish date (Jun 10, 2019)
+###### expected publish date (Jul 1, 2019)
 **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 
+<br />
+
+### `notistack@0.8.5`
+###### Jun 6, 2019
+**@eps1lon**: Update peer dependency requirement for material-ui [#119](https://github.com/iamhosseindhv/notistack/issues/119)
 
 <br />
 
