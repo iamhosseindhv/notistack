@@ -4,7 +4,7 @@
 ![npm version](https://img.shields.io/npm/l/notistack.svg)
 
 
-**Notistack** is an extention to Material-UI [Snackbar](https://material-ui.com/demos/snackbars). notistack makes it extremely easy to display snackbars (so you don't have to deal with open/close state of them), and also enables **you** to stack snackbars on top of one another. It's **highly customizable** and you can customize snackbars the same way you do for Mui-Snackbars.
+**Notistack** is a Snackbar library which makes it extremely easy to display notifications on your web apps. It is **highly customizable** and enables **you** to stack snackbars/toasts on top of one another. See [demos](https://iamhosseindhv.com/notistack/demos) for more info. 
 
     
 #### [`Play with online demo here`](https://iamhosseindhv.com/notistack/demos)
@@ -90,7 +90,6 @@ Material Design guidelines [suggests](https://material.io/design/components/snac
 ### Author - Contact
 Hossein Dehnokhalaji
 
-<a href="https://www.facebook.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/facebook.png" alt="Hossein Dehnokhalaji Facebook profile" align="right" width="32" height="32"/></a>
 <a href="https://www.instagram.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/instagram.png" alt="Hossein Dehnokhalaji Instagram profile" align="right" width="32" height="32"/></a>
 <a href="https://www.linkedin.com/in/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/linkedin.png" alt="Hossein Dehnokhalaji Linkedin profile" align="right" width="32" height="32"/></a>
 <a href="mailto:hossein.dehnavi98@yahoo.com"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/contact.png" alt="Hossein Dehnokhalaji email address" align="right" width="32" height="32"/></a>
