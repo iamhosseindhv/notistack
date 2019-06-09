@@ -26,7 +26,7 @@ Table of Contents
 
 
 ## Getting Started
-Use your prefered package manager:
+Use your preferred package manager:
 ```
 npm install notistack
 yarn add notistack 
