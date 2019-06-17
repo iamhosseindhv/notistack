@@ -42,14 +42,13 @@
         "eslint-plugin-import": "^2.13.0",
         "eslint-plugin-jsx-a11y": "^6.1.1",
         "eslint-plugin-react": "^7.10.0",
-        "prop-types": "^15.6.2",
+        "prop-types": "^15.7.2",
         "react": "^16.8.0",
         "react-dom": "^16.8.0"
     },
     "dependencies": {
         "classnames": "^2.2.6",
         "hoist-non-react-statics": "^3.3.0",
-        "prop-types": "^15.6.2",
         "react-is": "^16.8.6"
     },
     "bugs": {
