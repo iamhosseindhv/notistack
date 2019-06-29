@@ -6,6 +6,13 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 
 <br />
 
+### `notistack@0.8.8`
+###### Jun 29, 2019
+**@dgreuel**: Bug fix - add prop-types to dependencies [#139](https://github.com/iamhosseindhv/notistack/issues/139)
+
+
+<br />
+
 ### `notistack@0.8.7`
 ###### Jun 25, 2019
 **@jhrinoa**: Update prop-types versions in package.json [#134](https://github.com/iamhosseindhv/notistack/issues/134)
