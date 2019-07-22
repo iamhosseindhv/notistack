@@ -208,10 +208,10 @@ class SnackbarProvider extends Component {
                 {snacks.map((snack, index) => (
                     <SnackbarItem
                         {...props}
-                        iconVariant={Object.assign(iconVariant, this.props.iconVariant)}
                         key={snack.key}
                         snack={snack}
                         offset={this.offsets[index]}
+                        iconVariant={Object.assign(iconVariant, this.props.iconVariant)}
                         onClose={this.handleCloseSnack}
                         onExited={this.handleExitedSnack}
                         onSetHeight={this.handleSetHeight}
