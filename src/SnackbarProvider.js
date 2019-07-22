@@ -208,6 +208,7 @@ class SnackbarProvider extends Component {
                 {snacks.map((snack, index) => (
                     <SnackbarItem
                         {...props}
+                        iconVariant={Object.assign(iconVariant, this.props.iconVariant)}
                         key={snack.key}
                         snack={snack}
                         offset={this.offsets[index]}
@@ -254,19 +255,19 @@ SnackbarProvider.propTypes = {
         /**
          * Icon displayed when variant of a snackbar is set to `success`.
          */
-        success: PropTypes.any.isRequired,
+        success: PropTypes.any,
         /**
          * Icon displayed when variant of a snackbar is set to `warning`.
          */
-        warning: PropTypes.any.isRequired,
+        warning: PropTypes.any,
         /**
          * Icon displayed when variant of a snackbar is set to `error`.
          */
-        error: PropTypes.any.isRequired,
+        error: PropTypes.any,
         /**
          * Icon displayed when variant of a snackbar is set to `info`.
          */
-        info: PropTypes.any.isRequired,
+        info: PropTypes.any,
     }),
     /**
      * Callback to get action(s). actions are mostly buttons displayed in Snackbar.
@@ -352,7 +353,7 @@ SnackbarProvider.defaultProps = {
     dense: false,
     preventDuplicate: false,
     hideIconVariant: false,
-    iconVariant,
+    iconVariant: {},
     anchorOrigin: {
         vertical: 'bottom',
         horizontal: 'left',
