@@ -1,8 +1,15 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
 ### `notistack@0.9.0`
-###### expected publish date (Jul 15, 2019)
+###### expected publish date (Aug 5, 2019)
 **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+
+<br />
+
+### `notistack@0.8.9`
+###### Jul 23, 2019
+**@YIZHUANG**: Allow overriding some of `iconVariant`s [#136](https://github.com/iamhosseindhv/notistack/issues/136)
+
 
 <br />
 
