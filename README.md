@@ -35,6 +35,8 @@ yarn add notistack
 ### How to use
 
 **1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](https://iamhosseindhv.com/notistack/api) for a full list of available props)
+<br />
+**Note:** If you're using material-ui `ThemeProvider`, make sure `SnackbarProvider` is a child of it.
 ```jsx
 import { SnackbarProvider } from 'notistack';
 
