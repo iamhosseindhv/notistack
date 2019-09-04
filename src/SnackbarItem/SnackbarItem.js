@@ -69,6 +69,7 @@ class SnackbarItem extends Component {
             action: singleAction || singleContentProps.action || contentAction || action,
         };
 
+        const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
         const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
 
         let finalAction = contentProps.action;
@@ -108,9 +109,9 @@ class SnackbarItem extends Component {
                                 className,
                             )}
                             {...contentProps}
-                            aria-describedby="client-snackbar"
+                            aria-describedby={ariaDescribedby}
                             message={(
-                                <span id="client-snackbar" className={classes.message}>
+                                <span id={ariaDescribedby} className={classes.message}>
                                     {!hideIconVariant ? icon : null}
                                     {snack.message}
                                 </span>
