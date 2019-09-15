@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES, iconVariant } from './utils/constants';
+import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES, iconVariant, RENDER_VARIANTS, SNACKBAR_INDENTS } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
+import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-
 
 class SnackbarProvider extends Component {
     constructor(props) {
@@ -26,8 +26,8 @@ class SnackbarProvider extends Component {
         return snacks.map((item, i) => {
             let index = i;
             const { view: viewOffset, snackbar: snackbarOffset } = this.props.dense
-                ? { view: 0, snackbar: 4 }
-                : { view: 20, snackbar: 12 };
+                ? SNACKBAR_INDENTS.dense
+                : SNACKBAR_INDENTS.default;
             let offset = viewOffset;
             while (snacks[index - 1]) {
                 const snackHeight = snacks[index - 1].height || 48;
@@ -199,24 +199,29 @@ class SnackbarProvider extends Component {
     };
 
     render() {
-        const { children, maxSnack, dense, ...props } = this.props;
+        const { children, maxSnack, dense, renderVariant, anchorOrigin, ...props } = this.props;
         const { contextValue, snacks } = this.state;
 
         return (
             <SnackbarContext.Provider value={contextValue}>
                 {children}
-                {snacks.map((snack, index) => (
-                    <SnackbarItem
-                        {...props}
-                        key={snack.key}
-                        snack={snack}
-                        offset={this.offsets[index]}
-                        iconVariant={Object.assign(iconVariant, this.props.iconVariant)}
-                        onClose={this.handleCloseSnack}
-                        onExited={this.handleExitedSnack}
-                        onSetHeight={this.handleSetHeight}
-                    />
-                ))}
+                <SnackbarContainer renderVariant={renderVariant} anchorOrigin={anchorOrigin}>
+                    {snacks.map((snack, index) => (
+                        <SnackbarItem
+                            {...props}
+                            anchorOrigin={anchorOrigin}
+                            key={snack.key}
+                            snack={snack}
+                            offset={this.offsets[index]}
+                            iconVariant={Object.assign(iconVariant, this.props.iconVariant)}
+                            onClose={this.handleCloseSnack}
+                            onExited={this.handleExitedSnack}
+                            onSetHeight={this.handleSetHeight}
+                            renderVariant={renderVariant}
+                            dense={dense}
+                        />
+                    ))}
+                </SnackbarContainer>
             </SnackbarContext.Provider>
         );
     }
@@ -346,6 +351,11 @@ SnackbarProvider.propTypes = {
         PropTypes.number,
         PropTypes.shape({ enter: PropTypes.number, exit: PropTypes.number }),
     ]),
+    /**
+     * "default" - render snackbars by default without wrapped (as in material-ui)
+     * "wrapped" - render snackbars in fixed wrapper
+     */
+    renderVariant: PropTypes.oneOf(RENDER_VARIANTS),
 };
 
 SnackbarProvider.defaultProps = {
@@ -360,6 +370,7 @@ SnackbarProvider.defaultProps = {
     },
     autoHideDuration: 5000,
     TransitionComponent: Slide,
+    renderVariant: RENDER_VARIANTS.default,
 };
 
 export default SnackbarProvider;

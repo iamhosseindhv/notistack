@@ -7,6 +7,8 @@ type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
+export type RenderVariants = 'default'| 'wrapped';
+
 export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     key?: string | number;
     variant?: VariantType;
@@ -40,6 +42,7 @@ export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'mes
     preventDuplicate?: boolean;
     dense?: boolean;
     action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
+    renderVariant?: RenderVariants;
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;

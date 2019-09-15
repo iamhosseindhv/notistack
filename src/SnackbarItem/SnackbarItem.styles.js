@@ -1,7 +1,7 @@
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
 import { muiClasses } from './SnackbarItem.util';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION } from '../utils/constants';
+import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, SNACKBAR_INDENTS } from '../utils/constants';
 
 
 export const styles = theme => ({
@@ -30,6 +30,38 @@ export const styles = theme => ({
     message: {
         display: 'flex',
         alignItems: 'center',
+    },
+    wrappedRenderVariant: {
+        position: 'relative',
+        transform: 'translateX(0)',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        '&:nth-last-child(1n+2)': {
+            marginBottom: SNACKBAR_INDENTS.default.snackbar,
+        },
+    },
+    wrappedRenderVariantReverseFirstChild: {
+        '&:nth-last-child(1n+2)': {
+            marginBottom: 0,
+        },
+        '&:nth-child(1n+2)': {
+            marginBottom: SNACKBAR_INDENTS.default.snackbar,
+        },
+    },
+    wrappedRenderVariantDense: {
+        '&:nth-last-child(1n+2)': {
+            marginBottom: SNACKBAR_INDENTS.dense.snackbar,
+        },
+    },
+    wrappedRenderVariantReverseFirstChildDense: {
+        '&:nth-last-child(1n+2)': {
+            marginBottom: 0,
+        },
+        '&:nth-child(1n+2)': {
+            marginBottom: SNACKBAR_INDENTS.dense.snackbar,
+        },
     },
 });
 

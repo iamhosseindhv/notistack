@@ -6,7 +6,8 @@ import RootRef from '@material-ui/core/RootRef';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { styles, getTransitionStyles } from './SnackbarItem.styles';
-import { capitalise, getMuiClasses, getTransitionDirection } from './SnackbarItem.util';
+import { capitalise, getTransitionDirection, getSnackbarClasses } from './SnackbarItem.util';
+import { RENDER_VARIANTS } from '../utils/constants';
 
 
 class SnackbarItem extends Component {
@@ -47,6 +48,8 @@ class SnackbarItem extends Component {
             snack,
             style,
             onSetHeight,
+            renderVariant,
+            dense,
             ...other
         } = this.props;
 
@@ -70,7 +73,16 @@ class SnackbarItem extends Component {
         };
 
         const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
-        const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
+
+        const anchOrigin = {
+            [RENDER_VARIANTS.default]: singleSnackProps.anchorOrigin || anchorOrigin,
+            [RENDER_VARIANTS.wrapped]: anchorOrigin,
+        }[renderVariant];
+
+        const transitionStyles = {
+            [RENDER_VARIANTS.default]: getTransitionStyles(offset, anchOrigin),
+            [RENDER_VARIANTS.wrapped]: {},
+        }[renderVariant];
 
         let finalAction = contentProps.action;
         if (typeof finalAction === 'function') {
@@ -85,18 +97,18 @@ class SnackbarItem extends Component {
         return (
             <RootRef rootRef={this.ref}>
                 <Snackbar
-                    anchorOrigin={anchOrigin}
                     TransitionProps={{
                         direction: getTransitionDirection(anchOrigin),
                     }}
                     style={{
                         ...style,
-                        ...getTransitionStyles(offset, anchOrigin),
+                        ...transitionStyles,
                     }}
                     {...other}
                     {...singleSnackProps}
+                    anchorOrigin={anchOrigin}
                     open={snack.open}
-                    classes={getMuiClasses(classes)}
+                    classes={getSnackbarClasses(classes, renderVariant, dense, anchOrigin)}
                     onClose={this.handleClose(key)}
                     onExited={this.handleExited(key)}
                 >
@@ -150,6 +162,8 @@ SnackbarItem.propTypes = {
     }).isRequired,
     hideIconVariant: PropTypes.bool.isRequired,
     preventDuplicate: PropTypes.bool.isRequired,
+    renderVariant: PropTypes.oneOf(Object.keys(RENDER_VARIANTS)).isRequired,
+    dense: PropTypes.bool.isRequired,
     onSetHeight: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,

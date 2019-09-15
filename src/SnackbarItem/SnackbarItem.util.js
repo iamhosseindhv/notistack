@@ -1,4 +1,5 @@
-import { defaultAnchorOrigin } from '../utils/constants';
+import classNames from 'classnames';
+import { defaultAnchorOrigin, RENDER_VARIANTS } from '../utils/constants';
 
 const DIRECTION = {
     right: 'left',
@@ -47,3 +48,24 @@ export const getMuiClasses = classes => (
             [key]: classes[key],
         }), {})
 );
+
+/**
+ * Add wrappedRenderVariant class to root classes of Snackbar if renderVariant is "wrapped"
+ * @param {object} classes
+ * @param {RENDER_VARIANTS} renderVariant
+ * @return {object}
+ */
+export const getSnackbarClasses = (classes, renderVariant, dense, anchOrigin) => {
+    const snackbarMuiClasses = getMuiClasses(classes);
+    const rootClasses = classNames({
+        [snackbarMuiClasses.root]: true,
+        [classes.wrappedRenderVariant]: renderVariant === RENDER_VARIANTS.wrapped,
+        [classes.wrappedRenderVariantDense]: renderVariant === RENDER_VARIANTS.wrapped && dense,
+        [classes.wrappedRenderVariantReverseFirstChild]: renderVariant === RENDER_VARIANTS.wrapped && anchOrigin.vertical === 'bottom',
+        [classes.wrappedRenderVariantReverseFirstChildDense]: renderVariant === RENDER_VARIANTS.wrapped && dense && anchOrigin.vertical === 'bottom',
+    });
+    return {
+        ...snackbarMuiClasses,
+        ...{ root: rootClasses },
+    };
+};
