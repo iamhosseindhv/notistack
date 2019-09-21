@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { defaultAnchorOrigin, RENDER_VARIANTS } from '../utils/constants';
 
 const DIRECTION = {
     right: 'left',
@@ -18,11 +17,9 @@ export const muiClasses = {
     anchorOriginBottomLeft: {},
 };
 
-/**
- * returns transition direction according the the given anchor origin
- * @param {object} anchorOrigin
- */
-export const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
+export const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
+
+export const getTransitionDirection = (anchorOrigin) => {
     if (anchorOrigin.horizontal !== 'center') {
         return DIRECTION[anchorOrigin.horizontal];
     }
@@ -30,42 +27,29 @@ export const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
 };
 
 /**
- * Capitalises a piece of string
- * @param {string} text
- */
-export const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
-
-/**
- * Filteres classes object and returns the keys that are allowed
- * in material-ui snackbar classes prop
  * @param {object} classes
+ * @param {object} anchOrigin
+ * @param {boolean} arrogant
+ * @param {boolean} dense
+ * @return {object}
  */
-export const getMuiClasses = classes => (
-    Object.keys(classes)
+export const getSnackbarClasses = (classes, anchOrigin, dense) => {
+    // filter classes object and return keys that are allowed in material-ui snackbar classes prop
+    const snackbarMuiClasses = Object.keys(classes)
         .filter(key => muiClasses[key] !== undefined)
         .reduce((obj, key) => ({
             ...obj,
             [key]: classes[key],
-        }), {})
-);
+        }), {});
 
-/**
- * Add wrappedRenderVariant class to root classes of Snackbar if renderVariant is "wrapped"
- * @param {object} classes
- * @param {RENDER_VARIANTS} renderVariant
- * @return {object}
- */
-export const getSnackbarClasses = (classes, renderVariant, dense, anchOrigin) => {
-    const snackbarMuiClasses = getMuiClasses(classes);
-    const rootClasses = classNames({
-        [snackbarMuiClasses.root]: true,
-        [classes.wrappedRenderVariant]: renderVariant === RENDER_VARIANTS.wrapped,
-        [classes.wrappedRenderVariantDense]: renderVariant === RENDER_VARIANTS.wrapped && dense,
-        [classes.wrappedRenderVariantReverseFirstChild]: renderVariant === RENDER_VARIANTS.wrapped && anchOrigin.vertical === 'bottom',
-        [classes.wrappedRenderVariantReverseFirstChildDense]: renderVariant === RENDER_VARIANTS.wrapped && dense && anchOrigin.vertical === 'bottom',
+    const rootClasses = classNames(snackbarMuiClasses.root, classes.wrappedRoot, {
+        [classes.wrappedRootDense]: dense,
+        [classes.wrappedRootReverseFirstChild]: anchOrigin.vertical === 'bottom',
+        [classes.wrappedRootReverseFirstChildDense]: dense && anchOrigin.vertical === 'bottom',
     });
+
     return {
         ...snackbarMuiClasses,
-        ...{ root: rootClasses },
+        root: rootClasses,
     };
 };

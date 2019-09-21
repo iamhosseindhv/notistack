@@ -2,20 +2,13 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import RootRef from '@material-ui/core/RootRef';
 import Snackbar from '@material-ui/core/Snackbar';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import { styles, getTransitionStyles } from './SnackbarItem.styles';
 import { capitalise, getTransitionDirection, getSnackbarClasses } from './SnackbarItem.util';
-import { RENDER_VARIANTS } from '../utils/constants';
+import styles from './SnackbarItem.styles';
 
 
 class SnackbarItem extends Component {
-    constructor(props) {
-        super(props);
-        this.ref = React.createRef();
-    }
-
     handleClose = key => (event, reason) => {
         const { onClose, snack: { onClose: singleOnClose } } = this.props;
         if (reason === 'clickaway') return;
@@ -29,26 +22,15 @@ class SnackbarItem extends Component {
         onExited(event, key);
     };
 
-    componentDidMount = () => {
-        const { onSetHeight, snack } = this.props;
-        const height = this.ref.current && this.ref.current.clientHeight;
-        onSetHeight(snack.key, height);
-    };
-
     render() {
         const {
             classes,
             action,
-            anchorOrigin,
             ContentProps = {},
             hideIconVariant,
             preventDuplicate,
             iconVariant,
-            offset,
             snack,
-            style,
-            onSetHeight,
-            renderVariant,
             dense,
             ...other
         } = this.props;
@@ -61,6 +43,7 @@ class SnackbarItem extends Component {
             variant = 'default',
             action: singleAction,
             ContentProps: singleContentProps = {},
+            anchorOrigin,
             ...singleSnackProps
         } = snack;
 
@@ -74,16 +57,6 @@ class SnackbarItem extends Component {
 
         const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
 
-        const anchOrigin = {
-            [RENDER_VARIANTS.default]: singleSnackProps.anchorOrigin || anchorOrigin,
-            [RENDER_VARIANTS.wrapped]: anchorOrigin,
-        }[renderVariant];
-
-        const transitionStyles = {
-            [RENDER_VARIANTS.default]: getTransitionStyles(offset, anchOrigin),
-            [RENDER_VARIANTS.wrapped]: {},
-        }[renderVariant];
-
         let finalAction = contentProps.action;
         if (typeof finalAction === 'function') {
             finalAction = contentProps.action(key);
@@ -95,51 +68,44 @@ class SnackbarItem extends Component {
         }
 
         return (
-            <RootRef rootRef={this.ref}>
-                <Snackbar
-                    TransitionProps={{
-                        direction: getTransitionDirection(anchOrigin),
-                    }}
-                    style={{
-                        ...style,
-                        ...transitionStyles,
-                    }}
-                    {...other}
-                    {...singleSnackProps}
-                    anchorOrigin={anchOrigin}
-                    open={snack.open}
-                    classes={getSnackbarClasses(classes, renderVariant, dense, anchOrigin)}
-                    onClose={this.handleClose(key)}
-                    onExited={this.handleExited(key)}
-                >
-                    {snackChildren || (
-                        <SnackbarContent
-                            className={classNames(
-                                classes.base,
-                                classes[`variant${capitalise(variant)}`],
-                                (!hideIconVariant && icon) ? classes.lessPadding : null,
-                                className,
-                            )}
-                            {...contentProps}
-                            aria-describedby={ariaDescribedby}
-                            message={(
-                                <span id={ariaDescribedby} className={classes.message}>
-                                    {!hideIconVariant ? icon : null}
-                                    {snack.message}
-                                </span>
-                            )}
-                            action={finalAction}
-                        />
-                    )}
-                </Snackbar>
-            </RootRef>
+            <Snackbar
+                TransitionProps={{
+                    direction: getTransitionDirection(anchorOrigin),
+                }}
+                {...other}
+                {...singleSnackProps}
+                anchorOrigin={anchorOrigin}
+                open={snack.open}
+                classes={getSnackbarClasses(classes, anchorOrigin, dense)}
+                onClose={this.handleClose(key)}
+                onExited={this.handleExited(key)}
+            >
+                {snackChildren || (
+                    <SnackbarContent
+                        className={classNames(
+                            classes.base,
+                            classes[`variant${capitalise(variant)}`],
+                            (!hideIconVariant && icon) ? classes.lessPadding : null,
+                            className,
+                        )}
+                        {...contentProps}
+                        aria-describedby={ariaDescribedby}
+                        message={(
+                            <span id={ariaDescribedby} className={classes.message}>
+                                {!hideIconVariant ? icon : null}
+                                {snack.message}
+                            </span>
+                        )}
+                        action={finalAction}
+                    />
+                )}
+            </Snackbar>
         );
     }
 }
 
 SnackbarItem.propTypes = {
     classes: PropTypes.object.isRequired,
-    offset: PropTypes.number.isRequired,
     snack: PropTypes.shape({
         message: PropTypes.oneOfType([
             PropTypes.string,
@@ -162,9 +128,7 @@ SnackbarItem.propTypes = {
     }).isRequired,
     hideIconVariant: PropTypes.bool.isRequired,
     preventDuplicate: PropTypes.bool.isRequired,
-    renderVariant: PropTypes.oneOf(Object.keys(RENDER_VARIANTS)).isRequired,
     dense: PropTypes.bool.isRequired,
-    onSetHeight: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
 };
