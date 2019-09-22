@@ -12,28 +12,36 @@ const styles = theme => ({
         maxWidth: '100%',
         position: 'fixed',
         flexDirection: 'column',
-        zIndex: 1400,
+        zIndex: theme.zIndex.snackbar,
         height: 'auto',
         width: 'auto',
         minWidth: 288,
         transition: theme.transitions.create(['top', 'right', 'bottom', 'left'], { easing: 'ease' }),
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
+            left: '0 !important',
+            right: '0 !important',
             width: '100%',
         },
     },
     reverseColumns: { flexDirection: 'column-reverse' },
 
-    top: { top: SNACKBAR_INDENTS.default.container },
-    topDense: { top: SNACKBAR_INDENTS.dense.container },
-    bottom: { bottom: (SNACKBAR_INDENTS.default.container - SNACKBAR_INDENTS.default.snackbar) },
-    bottomDense: { bottom: (SNACKBAR_INDENTS.dense.container - SNACKBAR_INDENTS.dense.snackbar) },
-    left: { left: SNACKBAR_INDENTS.default.container },
-    leftDense: { left: SNACKBAR_INDENTS.dense.container },
-    right: { right: SNACKBAR_INDENTS.default.container },
-    rightDense: { right: SNACKBAR_INDENTS.dense.container },
+    top: { top: SNACKBAR_INDENTS.view.default - SNACKBAR_INDENTS.snackbar.default },
+    topDense: { top: SNACKBAR_INDENTS.view.dense - SNACKBAR_INDENTS.snackbar.dense },
+
+    bottom: { bottom: SNACKBAR_INDENTS.view.default - SNACKBAR_INDENTS.snackbar.default },
+    bottomDense: { bottom: SNACKBAR_INDENTS.view.dense - SNACKBAR_INDENTS.snackbar.dense },
+
+    left: { left: SNACKBAR_INDENTS.view.default },
+    leftDense: { left: SNACKBAR_INDENTS.view.dense },
+
+    right: { right: SNACKBAR_INDENTS.view.default },
+    rightDense: { right: SNACKBAR_INDENTS.view.dense },
+
     center: {
-        left: '50%',
-        transform: 'translateX(-50%)',
+        [theme.breakpoints.up('md')]: {
+            left: '50%',
+            transform: 'translateX(-50%)',
+        },
     },
 });
 
@@ -50,7 +58,7 @@ const SnackbarContainer = React.memo((props) => {
     );
 
     return (
-        <div id="abbas" className={combinedClassname} {...other} />
+        <div className={combinedClassname} {...other} />
     );
 });
 

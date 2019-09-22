@@ -1,5 +1,3 @@
-import green from '@material-ui/core/colors/green';
-import amber from '@material-ui/core/colors/amber';
 import { muiClasses } from './SnackbarItem.util';
 import { SNACKBAR_INDENTS } from '../utils/constants';
 
@@ -10,21 +8,22 @@ const styles = theme => ({
         lineHeight: '1.46429em',
         fontWeight: theme.typography.fontWeightRegular,
         fontFamily: theme.typography.fontFamily,
+        borderRadius: theme.shape.borderRadius,
     },
     lessPadding: {
         paddingLeft: 8 * 2.5,
     },
     variantSuccess: {
-        backgroundColor: green[600],
+        backgroundColor: '#43a047', // green
     },
     variantError: {
-        backgroundColor: theme.palette.error.dark,
+        backgroundColor: '#d32f2f', // dark red
     },
     variantInfo: {
         backgroundColor: '#2979ff', // nice blue
     },
     variantWarning: {
-        backgroundColor: amber[700],
+        backgroundColor: '#ffa000', // amber
     },
     message: {
         display: 'flex',
@@ -39,14 +38,19 @@ const styles = theme => ({
         left: 0,
     },
     collapseContainer: {
-        transition: theme.transitions.create(['height'], { easing: 'ease' }),
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: theme.spacing.unit,
+            paddingRight: theme.spacing.unit,
+        },
     },
-    collapseWrapped: {
-        marginBottom: SNACKBAR_INDENTS.default.snackbar,
+    collapseWrapper: {
         transition: theme.transitions.create(['margin-bottom'], { easing: 'ease' }),
+        marginTop: SNACKBAR_INDENTS.snackbar.default,
+        marginBottom: SNACKBAR_INDENTS.snackbar.default,
     },
-    collapseWrappedDense: {
-        marginBottom: SNACKBAR_INDENTS.dense.snackbar,
+    collapseWrapperDense: {
+        marginTop: SNACKBAR_INDENTS.snackbar.dense,
+        marginBottom: SNACKBAR_INDENTS.snackbar.dense,
     },
 });
 

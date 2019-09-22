@@ -53,8 +53,8 @@ export const MESSAGES = {
 };
 
 export const SNACKBAR_INDENTS = {
-    default: { view: 20, snackbar: 12, container: 12 },
-    dense: { view: 0, snackbar: 4, container: 4 },
+    view: { default: 20, dense: 4 },
+    snackbar: { default: 6, dense: 2 },
 };
 
 export const originKeyExtractor = anchor => `${anchor.vertical}-${anchor.horizontal}`;
