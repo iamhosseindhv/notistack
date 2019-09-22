@@ -33,7 +33,7 @@ export const getTransitionDirection = (anchorOrigin) => {
  * @param {boolean} dense
  * @return {object}
  */
-export const getSnackbarClasses = (classes, anchOrigin, dense) => {
+export const getSnackbarClasses = (classes) => {
     // filter classes object and return keys that are allowed in material-ui snackbar classes prop
     const snackbarMuiClasses = Object.keys(classes)
         .filter(key => muiClasses[key] !== undefined)
@@ -42,14 +42,22 @@ export const getSnackbarClasses = (classes, anchOrigin, dense) => {
             [key]: classes[key],
         }), {});
 
-    const rootClasses = classNames(snackbarMuiClasses.root, classes.wrappedRoot, {
-        [classes.wrappedRootDense]: dense,
-        [classes.wrappedRootReverseFirstChild]: anchOrigin.vertical === 'bottom',
-        [classes.wrappedRootReverseFirstChildDense]: dense && anchOrigin.vertical === 'bottom',
-    });
+    const rootClasses = classNames(snackbarMuiClasses.root, classes.wrappedRoot);
 
     return {
         ...snackbarMuiClasses,
         root: rootClasses,
+    };
+};
+
+export const getCollapseClasses = (classes, dense) => {
+
+    const rootClasses = classNames(classes.collapseWrapped, {
+        [classes.collapseWrappedDense]: dense,
+    });
+
+    return {
+        container: classes.collapseContainer,
+        wrapper: rootClasses,
     };
 };

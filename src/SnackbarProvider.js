@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES, iconVariant, originKeyExtractor } from './utils/constants';
+import { MESSAGES, iconVariant, originKeyExtractor } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
@@ -158,12 +158,9 @@ class SnackbarProvider extends Component {
      * @param {object} event - The event source of the callback
      */
     handleExitedSnack = (event, key) => {
-        const enterDelay = TRANSITION_DELAY + TRANSITION_DOWN_DURATION + 40;
         this.setState(
-            ({ snacks }) => ({
-                snacks: snacks.filter(item => item.key !== key),
-            }),
-            () => setTimeout(this.handleDisplaySnack, enterDelay),
+            ({ snacks }) => ({ snacks: snacks.filter(item => item.key !== key) }),
+            () => this.handleDisplaySnack(),
         );
 
         if (this.props.onExited) this.props.onExited(event, key);

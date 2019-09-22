@@ -1,16 +1,7 @@
 import green from '@material-ui/core/colors/green';
 import amber from '@material-ui/core/colors/amber';
 import { muiClasses } from './SnackbarItem.util';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, SNACKBAR_INDENTS } from '../utils/constants';
-
-export const transitionStyles = {
-    WebKitTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-    MozTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-    msTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-    OTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-    transition: `all ${TRANSITION_DOWN_DURATION * 5}ms`,
-    transitionDelay: `${TRANSITION_DELAY}ms`,
-};
+import { SNACKBAR_INDENTS } from '../utils/constants';
 
 const styles = theme => ({
     ...muiClasses,
@@ -46,31 +37,16 @@ const styles = theme => ({
         right: 0,
         bottom: 0,
         left: 0,
-        // ...transitionStyles,
-        '&:nth-last-child(1n+2)': {
-            marginBottom: SNACKBAR_INDENTS.default.snackbar,
-        },
     },
-    wrappedRootReverseFirstChild: {
-        '&:nth-last-child(1n+2)': {
-            marginBottom: 0,
-        },
-        '&:nth-child(1n+2)': {
-            marginBottom: SNACKBAR_INDENTS.default.snackbar,
-        },
+    collapseContainer: {
+        transition: theme.transitions.create(['height'], { easing: 'ease' }),
     },
-    wrappedRootDense: {
-        '&:nth-last-child(1n+2)': {
-            marginBottom: SNACKBAR_INDENTS.dense.snackbar,
-        },
+    collapseWrapped: {
+        marginBottom: SNACKBAR_INDENTS.default.snackbar,
+        transition: theme.transitions.create(['margin-bottom'], { easing: 'ease' }),
     },
-    wrappedRootReverseFirstChildDense: {
-        '&:nth-last-child(1n+2)': {
-            marginBottom: 0,
-        },
-        '&:nth-child(1n+2)': {
-            marginBottom: SNACKBAR_INDENTS.dense.snackbar,
-        },
+    collapseWrappedDense: {
+        marginBottom: SNACKBAR_INDENTS.dense.snackbar,
     },
 });
 

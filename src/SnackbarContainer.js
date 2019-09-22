@@ -6,6 +6,7 @@ import { SNACKBAR_INDENTS } from './utils/constants';
 
 const styles = theme => ({
     root: {
+        boxSizing: 'border-box',
         display: 'flex',
         maxHeight: '100%',
         maxWidth: '100%',
@@ -15,36 +16,24 @@ const styles = theme => ({
         height: 'auto',
         width: 'auto',
         minWidth: 288,
-        transition: theme.transitions.create(['padding']),
+        transition: theme.transitions.create(['top', 'right', 'bottom', 'left'], { easing: 'ease' }),
         [theme.breakpoints.down('sm')]: {
             width: '100%',
-            paddingLeft: '0 !important',
-            paddingRight: '0 !important',
         },
     },
     reverseColumns: { flexDirection: 'column-reverse' },
 
-    topPadding: { paddingTop: SNACKBAR_INDENTS.default.view },
-    topDensePadding: { paddingTop: SNACKBAR_INDENTS.dense.view },
-
-    bottomPadding: { paddingBottom: SNACKBAR_INDENTS.default.view },
-    bottomDensePadding: { paddingBottom: SNACKBAR_INDENTS.dense.view },
-
-    leftPadding: { paddingLeft: SNACKBAR_INDENTS.default.view },
-    leftDensePadding: { paddingLeft: SNACKBAR_INDENTS.dense.view },
-
-    rightPadding: { paddingRight: SNACKBAR_INDENTS.default.view },
-    rightDensePadding: { paddingRight: SNACKBAR_INDENTS.dense.view },
-
-    top: { top: 0 },
-    bottom: { bottom: 0 },
-    left: { left: 0 },
-    right: { right: 0 },
+    top: { top: SNACKBAR_INDENTS.default.container },
+    topDense: { top: SNACKBAR_INDENTS.dense.container },
+    bottom: { bottom: (SNACKBAR_INDENTS.default.container - SNACKBAR_INDENTS.default.snackbar) },
+    bottomDense: { bottom: (SNACKBAR_INDENTS.dense.container - SNACKBAR_INDENTS.dense.snackbar) },
+    left: { left: SNACKBAR_INDENTS.default.container },
+    leftDense: { left: SNACKBAR_INDENTS.dense.container },
+    right: { right: SNACKBAR_INDENTS.default.container },
+    rightDense: { right: SNACKBAR_INDENTS.dense.container },
     center: {
-        [theme.breakpoints.up('md')]: {
-            left: '50%',
-            transform: 'translateX(-50%)',
-        },
+        left: '50%',
+        transform: 'translateX(-50%)',
     },
 });
 
@@ -55,8 +44,8 @@ const SnackbarContainer = React.memo((props) => {
         classes.root,
         classes[anchorOrigin.vertical],
         classes[anchorOrigin.horizontal],
-        classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}Padding`],
-        classes[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}Padding`],
+        classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
+        classes[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
         { [classes.reverseColumns]: anchorOrigin.vertical === 'bottom' },
     );
 
