@@ -3,12 +3,20 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
+import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import { capitalise, getTransitionDirection, getSnackbarClasses } from './SnackbarItem.util';
+import { capitalise, getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
 import styles from './SnackbarItem.styles';
 
 
 class SnackbarItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            collapsed: true,
+        };
+    }
+
     handleClose = key => (event, reason) => {
         const { onClose, snack: { onClose: singleOnClose } } = this.props;
         if (reason === 'clickaway') return;
@@ -68,38 +76,45 @@ class SnackbarItem extends Component {
         }
 
         return (
-            <Snackbar
-                TransitionProps={{
-                    direction: getTransitionDirection(anchorOrigin),
-                }}
-                {...other}
-                {...singleSnackProps}
-                anchorOrigin={anchorOrigin}
-                open={snack.open}
-                classes={getSnackbarClasses(classes, anchorOrigin, dense)}
-                onClose={this.handleClose(key)}
+            <Collapse
+                unmountOnExit
+                in={this.state.collapsed}
                 onExited={this.handleExited(key)}
+                classes={getCollapseClasses(classes, dense)}
             >
-                {snackChildren || (
-                    <SnackbarContent
-                        className={classNames(
-                            classes.base,
-                            classes[`variant${capitalise(variant)}`],
-                            (!hideIconVariant && icon) ? classes.lessPadding : null,
-                            className,
-                        )}
-                        {...contentProps}
-                        aria-describedby={ariaDescribedby}
-                        message={(
-                            <span id={ariaDescribedby} className={classes.message}>
-                                {!hideIconVariant ? icon : null}
-                                {snack.message}
-                            </span>
-                        )}
-                        action={finalAction}
-                    />
-                )}
-            </Snackbar>
+                <Snackbar
+                    TransitionProps={{
+                        direction: getTransitionDirection(anchorOrigin),
+                        onExited: () => this.setState(({ collapsed }) => ({ collapsed: !collapsed })),
+                    }}
+                    {...other}
+                    {...singleSnackProps}
+                    anchorOrigin={anchorOrigin}
+                    open={snack.open}
+                    classes={getSnackbarClasses(classes)}
+                    onClose={this.handleClose(key)}
+                >
+                    {snackChildren || (
+                        <SnackbarContent
+                            className={classNames(
+                                classes.base,
+                                classes[`variant${capitalise(variant)}`],
+                                (!hideIconVariant && icon) ? classes.lessPadding : null,
+                                className,
+                            )}
+                            {...contentProps}
+                            aria-describedby={ariaDescribedby}
+                            message={(
+                                <span id={ariaDescribedby} className={classes.message}>
+                                    {!hideIconVariant ? icon : null}
+                                    {snack.message}
+                                </span>
+                            )}
+                            action={finalAction}
+                        />
+                    )}
+                </Snackbar>
+            </Collapse>
         );
     }
 }
