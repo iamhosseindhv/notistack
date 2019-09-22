@@ -10,11 +10,12 @@ import styles from './SnackbarItem.styles';
 
 
 class SnackbarItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            collapsed: true,
-        };
+    state = {
+        collapsed: true,
+    };
+
+    componentWillUnmount = () => {
+        clearTimeout(this.timeout);
     }
 
     handleClose = key => (event, reason) => {
@@ -29,6 +30,12 @@ class SnackbarItem extends Component {
         if (singleOnExited) singleOnExited(event, key);
         onExited(event, key);
     };
+
+    handleExitedScreen = () => {
+        this.timeout = setTimeout(() => {
+            this.setState(({ collapsed }) => ({ collapsed: !collapsed }));
+        }, 125);
+    }
 
     render() {
         const {
@@ -78,14 +85,15 @@ class SnackbarItem extends Component {
         return (
             <Collapse
                 unmountOnExit
+                timeout={175}
                 in={this.state.collapsed}
-                onExited={this.handleExited(key)}
                 classes={getCollapseClasses(classes, dense)}
+                onExited={this.handleExited(key)}
             >
                 <Snackbar
                     TransitionProps={{
                         direction: getTransitionDirection(anchorOrigin),
-                        onExited: () => this.setState(({ collapsed }) => ({ collapsed: !collapsed })),
+                        onExited: this.handleExitedScreen,
                     }}
                     {...other}
                     {...singleSnackProps}

@@ -158,10 +158,9 @@ class SnackbarProvider extends Component {
      * @param {object} event - The event source of the callback
      */
     handleExitedSnack = (event, key) => {
-        this.setState(
-            ({ snacks }) => ({ snacks: snacks.filter(item => item.key !== key) }),
-            () => this.handleDisplaySnack(),
-        );
+        this.setState(({ snacks }) => ({
+            snacks: snacks.filter(item => item.key !== key),
+        }), this.handleDisplaySnack);
 
         if (this.props.onExited) this.props.onExited(event, key);
     };

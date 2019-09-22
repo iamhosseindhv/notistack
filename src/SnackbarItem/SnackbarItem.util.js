@@ -42,22 +42,13 @@ export const getSnackbarClasses = (classes) => {
             [key]: classes[key],
         }), {});
 
-    const rootClasses = classNames(snackbarMuiClasses.root, classes.wrappedRoot);
-
     return {
         ...snackbarMuiClasses,
-        root: rootClasses,
+        root: classNames(snackbarMuiClasses.root, classes.wrappedRoot),
     };
 };
 
-export const getCollapseClasses = (classes, dense) => {
-
-    const rootClasses = classNames(classes.collapseWrapped, {
-        [classes.collapseWrappedDense]: dense,
-    });
-
-    return {
-        container: classes.collapseContainer,
-        wrapper: rootClasses,
-    };
-};
+export const getCollapseClasses = (classes, dense) => ({
+    container: classes.collapseContainer,
+    wrapper: classNames(classes.collapseWrapper, { [classes.collapseWrapperDense]: dense }),
+});
