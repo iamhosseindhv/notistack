@@ -39,8 +39,8 @@ const styles = theme => ({
     },
     collapseContainer: {
         [theme.breakpoints.down('xs')]: {
-            paddingLeft: theme.spacing.unit,
-            paddingRight: theme.spacing.unit,
+            paddingLeft: typeof theme.spacing === 'function' ? theme.spacing(1) : theme.spacing.unit,
+            paddingRight: typeof theme.spacing === 'function' ? theme.spacing(1) : theme.spacing.unit,
         },
     },
     collapseWrapper: {
