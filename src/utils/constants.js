@@ -41,7 +41,7 @@ const iconStyles = {
     marginRight: 8,
 };
 
-export const iconVariant = {
+export const defaultIconVariant = {
     success: <CheckIcon style={iconStyles} />,
     warning: <WarningIcon style={iconStyles} />,
     error: <ErrorIcon style={iconStyles} />,

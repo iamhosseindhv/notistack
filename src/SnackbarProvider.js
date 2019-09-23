@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, iconVariant, originKeyExtractor } from './utils/constants';
+import { MESSAGES, defaultIconVariant, originKeyExtractor } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
@@ -178,6 +178,8 @@ class SnackbarProvider extends Component {
             };
         }, {});
 
+        const iconVariant = Object.assign({ ...defaultIconVariant }, { ...this.props.iconVariant });
+
         return (
             <SnackbarContext.Provider value={contextValue}>
                 {children}
@@ -189,7 +191,7 @@ class SnackbarProvider extends Component {
                                 key={snack.key}
                                 dense={dense}
                                 snack={snack}
-                                iconVariant={Object.assign(iconVariant, this.props.iconVariant)}
+                                iconVariant={iconVariant}
                                 onClose={this.handleCloseSnack}
                                 onExited={this.handleExitedSnack}
                             />

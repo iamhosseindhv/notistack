@@ -38,7 +38,7 @@ const styles = theme => ({
         left: 0,
     },
     collapseContainer: {
-        [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('xs')]: {
             paddingLeft: theme.spacing.unit,
             paddingRight: theme.spacing.unit,
         },
