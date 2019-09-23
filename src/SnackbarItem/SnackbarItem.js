@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import RootRef from '@material-ui/core/RootRef';
 import Snackbar from '@material-ui/core/Snackbar';
+import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import { styles, getTransitionStyles } from './SnackbarItem.styles';
-import { capitalise, getMuiClasses, getTransitionDirection } from './SnackbarItem.util';
+import { capitalise, getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
+import styles from './SnackbarItem.styles';
 
 
 class SnackbarItem extends Component {
-    constructor(props) {
-        super(props);
-        this.ref = React.createRef();
+    state = {
+        collapsed: true,
+    };
+
+    componentWillUnmount = () => {
+        clearTimeout(this.timeout);
     }
 
     handleClose = key => (event, reason) => {
@@ -28,25 +31,22 @@ class SnackbarItem extends Component {
         onExited(event, key);
     };
 
-    componentDidMount = () => {
-        const { onSetHeight, snack } = this.props;
-        const height = this.ref.current && this.ref.current.clientHeight;
-        onSetHeight(snack.key, height);
-    };
+    handleExitedScreen = () => {
+        this.timeout = setTimeout(() => {
+            this.setState(({ collapsed }) => ({ collapsed: !collapsed }));
+        }, 125);
+    }
 
     render() {
         const {
             classes,
             action,
-            anchorOrigin,
             ContentProps = {},
             hideIconVariant,
             preventDuplicate,
             iconVariant,
-            offset,
             snack,
-            style,
-            onSetHeight,
+            dense,
             ...other
         } = this.props;
 
@@ -58,6 +58,7 @@ class SnackbarItem extends Component {
             variant = 'default',
             action: singleAction,
             ContentProps: singleContentProps = {},
+            anchorOrigin,
             ...singleSnackProps
         } = snack;
 
@@ -70,7 +71,6 @@ class SnackbarItem extends Component {
         };
 
         const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
-        const anchOrigin = singleSnackProps.anchorOrigin || anchorOrigin;
 
         let finalAction = contentProps.action;
         if (typeof finalAction === 'function') {
@@ -83,22 +83,24 @@ class SnackbarItem extends Component {
         }
 
         return (
-            <RootRef rootRef={this.ref}>
+            <Collapse
+                unmountOnExit
+                timeout={175}
+                in={this.state.collapsed}
+                classes={getCollapseClasses(classes, dense)}
+                onExited={this.handleExited(key)}
+            >
                 <Snackbar
-                    anchorOrigin={anchOrigin}
                     TransitionProps={{
-                        direction: getTransitionDirection(anchOrigin),
-                    }}
-                    style={{
-                        ...style,
-                        ...getTransitionStyles(offset, anchOrigin),
+                        direction: getTransitionDirection(anchorOrigin),
+                        onExited: this.handleExitedScreen,
                     }}
                     {...other}
                     {...singleSnackProps}
+                    anchorOrigin={anchorOrigin}
                     open={snack.open}
-                    classes={getMuiClasses(classes)}
+                    classes={getSnackbarClasses(classes)}
                     onClose={this.handleClose(key)}
-                    onExited={this.handleExited(key)}
                 >
                     {snackChildren || (
                         <SnackbarContent
@@ -120,14 +122,13 @@ class SnackbarItem extends Component {
                         />
                     )}
                 </Snackbar>
-            </RootRef>
+            </Collapse>
         );
     }
 }
 
 SnackbarItem.propTypes = {
     classes: PropTypes.object.isRequired,
-    offset: PropTypes.number.isRequired,
     snack: PropTypes.shape({
         message: PropTypes.oneOfType([
             PropTypes.string,
@@ -150,7 +151,7 @@ SnackbarItem.propTypes = {
     }).isRequired,
     hideIconVariant: PropTypes.bool.isRequired,
     preventDuplicate: PropTypes.bool.isRequired,
-    onSetHeight: PropTypes.func.isRequired,
+    dense: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
 };

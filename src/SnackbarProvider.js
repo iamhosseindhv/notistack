@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION, MESSAGES, iconVariant } from './utils/constants';
+import { MESSAGES, defaultIconVariant, originKeyExtractor } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
+import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-
 
 class SnackbarProvider extends Component {
     constructor(props) {
@@ -20,23 +20,6 @@ class SnackbarProvider extends Component {
     }
 
     queue = [];
-
-    get offsets() {
-        const { snacks } = this.state;
-        return snacks.map((item, i) => {
-            let index = i;
-            const { view: viewOffset, snackbar: snackbarOffset } = this.props.dense
-                ? { view: 0, snackbar: 4 }
-                : { view: 20, snackbar: 12 };
-            let offset = viewOffset;
-            while (snacks[index - 1]) {
-                const snackHeight = snacks[index - 1].height || 48;
-                offset += snackHeight + snackbarOffset;
-                index -= 1;
-            }
-            return offset;
-        });
-    }
 
     /**
      * Adds a new snackbar to the queue to be presented.
@@ -62,9 +45,10 @@ class SnackbarProvider extends Component {
         const id = key || new Date().getTime() + Math.random();
         const snack = {
             key: id,
-            message,
             ...options,
             open: true,
+            message,
+            anchorOrigin: options.anchorOrigin || this.props.anchorOrigin,
         };
 
         if (options.persist) {
@@ -174,48 +158,45 @@ class SnackbarProvider extends Component {
      * @param {object} event - The event source of the callback
      */
     handleExitedSnack = (event, key) => {
-        const enterDelay = TRANSITION_DELAY + TRANSITION_DOWN_DURATION + 40;
-        this.setState(
-            ({ snacks }) => ({
-                snacks: snacks.filter(item => item.key !== key),
-            }),
-            () => setTimeout(this.handleDisplaySnack, enterDelay),
-        );
+        this.setState(({ snacks }) => ({
+            snacks: snacks.filter(item => item.key !== key),
+        }), this.handleDisplaySnack);
 
         if (this.props.onExited) this.props.onExited(event, key);
     };
 
-    /**
-     * Sets height for a given snackbar
-     * @param {number} height - height of snackbar after it's been rendered
-     * @param {number} key - id of the snackbar we want to remove
-     */
-    handleSetHeight = (key, height) => {
-        this.setState(({ snacks }) => ({
-            snacks: snacks.map(item => (
-                item.key === key ? { ...item, height } : { ...item }
-            )),
-        }));
-    };
-
     render() {
         const { children, maxSnack, dense, ...props } = this.props;
-        const { contextValue, snacks } = this.state;
+        const { contextValue } = this.state;
+
+        const categ = this.state.snacks.reduce((acc, current) => {
+            const category = originKeyExtractor(current.anchorOrigin);
+            const existingOfCategory = acc[category] || [];
+            return {
+                ...acc,
+                [category]: [...existingOfCategory, current],
+            };
+        }, {});
+
+        const iconVariant = Object.assign({ ...defaultIconVariant }, { ...this.props.iconVariant });
 
         return (
             <SnackbarContext.Provider value={contextValue}>
                 {children}
-                {snacks.map((snack, index) => (
-                    <SnackbarItem
-                        {...props}
-                        key={snack.key}
-                        snack={snack}
-                        offset={this.offsets[index]}
-                        iconVariant={Object.assign(iconVariant, this.props.iconVariant)}
-                        onClose={this.handleCloseSnack}
-                        onExited={this.handleExitedSnack}
-                        onSetHeight={this.handleSetHeight}
-                    />
+                {Object.entries(categ).map(([origin, snacks]) => (
+                    <SnackbarContainer key={origin} dense={dense} anchorOrigin={snacks[0].anchorOrigin}>
+                        {snacks.map(snack => (
+                            <SnackbarItem
+                                {...props}
+                                key={snack.key}
+                                dense={dense}
+                                snack={snack}
+                                iconVariant={iconVariant}
+                                onClose={this.handleCloseSnack}
+                                onExited={this.handleExitedSnack}
+                            />
+                        ))}
+                    </SnackbarContainer>
                 ))}
             </SnackbarContext.Provider>
         );

@@ -1,57 +1,57 @@
-import green from '@material-ui/core/colors/green';
-import amber from '@material-ui/core/colors/amber';
 import { muiClasses } from './SnackbarItem.util';
-import { TRANSITION_DELAY, TRANSITION_DOWN_DURATION } from '../utils/constants';
+import { SNACKBAR_INDENTS } from '../utils/constants';
 
-
-export const styles = theme => ({
+const styles = theme => ({
     ...muiClasses,
     base: {
         fontSize: '0.875rem',
         lineHeight: '1.46429em',
         fontWeight: theme.typography.fontWeightRegular,
         fontFamily: theme.typography.fontFamily,
+        borderRadius: theme.shape.borderRadius,
     },
     lessPadding: {
         paddingLeft: 8 * 2.5,
     },
     variantSuccess: {
-        backgroundColor: green[600],
+        backgroundColor: '#43a047', // green
     },
     variantError: {
-        backgroundColor: theme.palette.error.dark,
+        backgroundColor: '#d32f2f', // dark red
     },
     variantInfo: {
         backgroundColor: '#2979ff', // nice blue
     },
     variantWarning: {
-        backgroundColor: amber[700],
+        backgroundColor: '#ffa000', // amber
     },
     message: {
         display: 'flex',
         alignItems: 'center',
     },
+    wrappedRoot: {
+        position: 'relative',
+        transform: 'translateX(0)',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+    },
+    collapseContainer: {
+        [theme.breakpoints.down('xs')]: {
+            paddingLeft: theme.spacing.unit,
+            paddingRight: theme.spacing.unit,
+        },
+    },
+    collapseWrapper: {
+        transition: theme.transitions.create(['margin-bottom'], { easing: 'ease' }),
+        marginTop: SNACKBAR_INDENTS.snackbar.default,
+        marginBottom: SNACKBAR_INDENTS.snackbar.default,
+    },
+    collapseWrapperDense: {
+        marginTop: SNACKBAR_INDENTS.snackbar.dense,
+        marginBottom: SNACKBAR_INDENTS.snackbar.dense,
+    },
 });
 
-/**
- * @param {object} anchorOrigin - how snack is postioned. e.g.
- * { vertical: 'bottom', horizontal: 'left' }
- * @param {number} level - Level on which snakcbar should be displayed
- * (when snackbars are stacked on top of eachother)
- * @returns {object}
- */
-export const getTransitionStyles = (offset, anchorOrigin) => (
-    Object.assign(
-        {
-            [anchorOrigin.vertical]: offset,
-        },
-        {
-            WebKitTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-            MozTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-            msTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-            OTransition: `all ${TRANSITION_DOWN_DURATION}ms`,
-            transition: `all ${TRANSITION_DOWN_DURATION}ms`,
-            transitionDelay: `${TRANSITION_DELAY}ms`,
-        },
-    )
-);
+export default styles;

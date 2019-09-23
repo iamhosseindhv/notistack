@@ -1,4 +1,4 @@
-import { defaultAnchorOrigin } from '../utils/constants';
+import classNames from 'classnames';
 
 const DIRECTION = {
     right: 'left',
@@ -17,11 +17,9 @@ export const muiClasses = {
     anchorOriginBottomLeft: {},
 };
 
-/**
- * returns transition direction according the the given anchor origin
- * @param {object} anchorOrigin
- */
-export const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
+export const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
+
+export const getTransitionDirection = (anchorOrigin) => {
     if (anchorOrigin.horizontal !== 'center') {
         return DIRECTION[anchorOrigin.horizontal];
     }
@@ -29,21 +27,28 @@ export const getTransitionDirection = (anchorOrigin = defaultAnchorOrigin) => {
 };
 
 /**
- * Capitalises a piece of string
- * @param {string} text
- */
-export const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
-
-/**
- * Filteres classes object and returns the keys that are allowed
- * in material-ui snackbar classes prop
  * @param {object} classes
+ * @param {object} anchOrigin
+ * @param {boolean} arrogant
+ * @param {boolean} dense
+ * @return {object}
  */
-export const getMuiClasses = classes => (
-    Object.keys(classes)
+export const getSnackbarClasses = (classes) => {
+    // filter classes object and return keys that are allowed in material-ui snackbar classes prop
+    const snackbarMuiClasses = Object.keys(classes)
         .filter(key => muiClasses[key] !== undefined)
         .reduce((obj, key) => ({
             ...obj,
             [key]: classes[key],
-        }), {})
-);
+        }), {});
+
+    return {
+        ...snackbarMuiClasses,
+        root: classNames(snackbarMuiClasses.root, classes.wrappedRoot),
+    };
+};
+
+export const getCollapseClasses = (classes, dense) => ({
+    container: classes.collapseContainer,
+    wrapper: classNames(classes.collapseWrapper, { [classes.collapseWrapperDense]: dense }),
+});

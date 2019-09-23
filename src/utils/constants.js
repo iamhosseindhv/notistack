@@ -41,22 +41,20 @@ const iconStyles = {
     marginRight: 8,
 };
 
-export const iconVariant = {
+export const defaultIconVariant = {
     success: <CheckIcon style={iconStyles} />,
     warning: <WarningIcon style={iconStyles} />,
     error: <ErrorIcon style={iconStyles} />,
     info: <InfoIcon style={iconStyles} />,
 };
 
-export const defaultAnchorOrigin = {
-    vertical: 'bottom',
-    horizontal: 'left',
-};
-
-export const TRANSITION_DELAY = 150;
-
-export const TRANSITION_DOWN_DURATION = 200;
-
 export const MESSAGES = {
     NO_PERSIST_ALL: 'WARNING - notistack: Reached maxSnack while all enqueued snackbars have \'persist\' flag. Notistack will dismiss the oldest snackbar anyway to allow other ones in the queue to be presented.',
 };
+
+export const SNACKBAR_INDENTS = {
+    view: { default: 20, dense: 4 },
+    snackbar: { default: 6, dense: 2 },
+};
+
+export const originKeyExtractor = anchor => `${anchor.vertical}-${anchor.horizontal}`;
