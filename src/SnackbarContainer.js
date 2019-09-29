@@ -67,7 +67,7 @@ const SnackbarContainer = React.memo((props) => {
 
 SnackbarContainer.propTypes = {
     classes: PropTypes.object.isRequired,
-    className: PropTypes.string.isRequired,
+    className: PropTypes.string,
     dense: PropTypes.bool.isRequired,
     anchorOrigin: PropTypes.shape({
         horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,

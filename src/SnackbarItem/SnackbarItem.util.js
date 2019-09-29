@@ -8,8 +8,6 @@ const DIRECTION = {
     top: 'down',
 };
 
-export const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
-
 export const getTransitionDirection = (anchorOrigin) => {
     if (anchorOrigin.horizontal !== 'center') {
         return DIRECTION[anchorOrigin.horizontal];

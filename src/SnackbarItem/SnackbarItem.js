@@ -5,8 +5,9 @@ import { withStyles } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
-import { capitalise, getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
+import { getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
 import styles from './SnackbarItem.styles';
+import { capitalise } from '../utils/constants';
 
 
 class SnackbarItem extends Component {

@@ -6,7 +6,6 @@ import { MESSAGES, defaultIconVariant, originKeyExtractor, allClasses } from './
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { capitalise } from './SnackbarItem/SnackbarItem.util';
 
 
 /**
@@ -195,31 +194,27 @@ class SnackbarProvider extends Component {
         return (
             <SnackbarContext.Provider value={contextValue}>
                 {children}
-                {Object.entries(categ).map(([origin, snacks]) => {
-                    const nomineeAnchor = snacks[0].anchorOrigin;
-                    const { vertical, horizontal } = nomineeAnchor;
-                    return (
-                        <SnackbarContainer
-                            key={origin}
-                            dense={dense}
-                            anchorOrigin={nomineeAnchor}
-                            className={classes[`containerAnchorOrigin${capitalise(vertical)}${capitalise(horizontal)}`]}
-                        >
-                            {snacks.map(snack => (
-                                <SnackbarItem
-                                    {...props}
-                                    key={snack.key}
-                                    dense={dense}
-                                    snack={snack}
-                                    iconVariant={iconVariant}
-                                    classes={getClasses(classes)}
-                                    onClose={this.handleCloseSnack}
-                                    onExited={this.handleExitedSnack}
-                                />
-                            ))}
-                        </SnackbarContainer>
-                    );
-                })}
+                {Object.entries(categ).map(([origin, snacks]) => (
+                    <SnackbarContainer
+                        key={origin}
+                        dense={dense}
+                        anchorOrigin={snacks[0].anchorOrigin}
+                        className={classes[`containerAnchorOrigin${origin}`]}
+                    >
+                        {snacks.map(snack => (
+                            <SnackbarItem
+                                {...props}
+                                key={snack.key}
+                                dense={dense}
+                                snack={snack}
+                                iconVariant={iconVariant}
+                                classes={getClasses(classes)}
+                                onClose={this.handleCloseSnack}
+                                onExited={this.handleExitedSnack}
+                            />
+                        ))}
+                    </SnackbarContainer>
+                ))}
             </SnackbarContext.Provider>
         );
     }

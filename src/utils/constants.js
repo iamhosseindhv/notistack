@@ -77,4 +77,6 @@ export const SNACKBAR_INDENTS = {
     snackbar: { default: 6, dense: 2 },
 };
 
-export const originKeyExtractor = anchor => `${anchor.vertical}-${anchor.horizontal}`;
+export const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
+
+export const originKeyExtractor = anchor => `${capitalise(anchor.vertical)}${capitalise(anchor.horizontal)}`;

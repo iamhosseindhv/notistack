@@ -24,7 +24,7 @@ export type ContainerClassKey =
     | 'containerAnchorOriginTopLeft'
     | 'containerAnchorOriginBottomLeft';
 
-export type VariantClassKey = | 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
+export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
 export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
