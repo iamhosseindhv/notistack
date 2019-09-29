@@ -2,10 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, defaultIconVariant, originKeyExtractor } from './utils/constants';
+import { MESSAGES, defaultIconVariant, originKeyExtractor, allClasses } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
+import { capitalise } from './SnackbarItem/SnackbarItem.util';
+
+
+/**
+ * Omit SnackbarContainer class keys that are not needed for SnakcbarItem
+ */
+const getClasses = classes => (
+    Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({
+        ...obj,
+        [key]: classes[key],
+    }), {})
+);
 
 class SnackbarProvider extends Component {
     constructor(props) {
@@ -166,7 +178,7 @@ class SnackbarProvider extends Component {
     };
 
     render() {
-        const { children, maxSnack, dense, ...props } = this.props;
+        const { classes, children, maxSnack, dense, ...props } = this.props;
         const { contextValue } = this.state;
 
         const categ = this.state.snacks.reduce((acc, current) => {
@@ -183,21 +195,31 @@ class SnackbarProvider extends Component {
         return (
             <SnackbarContext.Provider value={contextValue}>
                 {children}
-                {Object.entries(categ).map(([origin, snacks]) => (
-                    <SnackbarContainer key={origin} dense={dense} anchorOrigin={snacks[0].anchorOrigin}>
-                        {snacks.map(snack => (
-                            <SnackbarItem
-                                {...props}
-                                key={snack.key}
-                                dense={dense}
-                                snack={snack}
-                                iconVariant={iconVariant}
-                                onClose={this.handleCloseSnack}
-                                onExited={this.handleExitedSnack}
-                            />
-                        ))}
-                    </SnackbarContainer>
-                ))}
+                {Object.entries(categ).map(([origin, snacks]) => {
+                    const nomineeAnchor = snacks[0].anchorOrigin;
+                    const { vertical, horizontal } = nomineeAnchor;
+                    return (
+                        <SnackbarContainer
+                            key={origin}
+                            dense={dense}
+                            anchorOrigin={nomineeAnchor}
+                            className={classes[`containerAnchorOrigin${capitalise(vertical)}${capitalise(horizontal)}`]}
+                        >
+                            {snacks.map(snack => (
+                                <SnackbarItem
+                                    {...props}
+                                    key={snack.key}
+                                    dense={dense}
+                                    snack={snack}
+                                    iconVariant={iconVariant}
+                                    classes={getClasses(classes)}
+                                    onClose={this.handleCloseSnack}
+                                    onExited={this.handleExitedSnack}
+                                />
+                            ))}
+                        </SnackbarContainer>
+                    );
+                })}
             </SnackbarContext.Provider>
         );
     }
@@ -334,6 +356,7 @@ SnackbarProvider.defaultProps = {
     dense: false,
     preventDuplicate: false,
     hideIconVariant: false,
+    classes: {},
     iconVariant: {},
     anchorOrigin: {
         vertical: 'bottom',

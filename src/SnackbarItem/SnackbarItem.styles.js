@@ -1,8 +1,7 @@
-import { muiClasses } from './SnackbarItem.util';
-import { SNACKBAR_INDENTS } from '../utils/constants';
+import { SNACKBAR_INDENTS, allClasses } from '../utils/constants';
 
 const styles = theme => ({
-    ...muiClasses,
+    ...allClasses.mui,
     base: {
         fontSize: '0.875rem',
         lineHeight: '1.46429em',

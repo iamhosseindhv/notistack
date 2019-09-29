@@ -35,6 +35,26 @@ const InfoIcon = props => (
     </SvgIcon>
 );
 
+export const allClasses = {
+    mui: {
+        root: {},
+        anchorOriginTopCenter: {},
+        anchorOriginBottomCenter: {},
+        anchorOriginTopRight: {},
+        anchorOriginBottomRight: {},
+        anchorOriginTopLeft: {},
+        anchorOriginBottomLeft: {},
+    },
+    container: {
+        containerAnchorOriginTopCenter: {},
+        containerAnchorOriginBottomCenter: {},
+        containerAnchorOriginTopRight: {},
+        containerAnchorOriginBottomRight: {},
+        containerAnchorOriginTopLeft: {},
+        containerAnchorOriginBottomLeft: {},
+    },
+};
+
 const iconStyles = {
     opacity: 0.9,
     fontSize: 20,

@@ -1,20 +1,11 @@
 import classNames from 'classnames';
+import { allClasses } from '../utils/constants';
 
 const DIRECTION = {
     right: 'left',
     left: 'right',
     bottom: 'up',
     top: 'down',
-};
-
-export const muiClasses = {
-    root: {},
-    anchorOriginTopCenter: {},
-    anchorOriginBottomCenter: {},
-    anchorOriginTopRight: {},
-    anchorOriginBottomRight: {},
-    anchorOriginTopLeft: {},
-    anchorOriginBottomLeft: {},
 };
 
 export const capitalise = text => text.charAt(0).toUpperCase() + text.slice(1);
@@ -27,16 +18,11 @@ export const getTransitionDirection = (anchorOrigin) => {
 };
 
 /**
- * @param {object} classes
- * @param {object} anchOrigin
- * @param {boolean} arrogant
- * @param {boolean} dense
- * @return {object}
+ * Filter classes object and return keys that are allowed in material-ui snackbar classes prop
  */
 export const getSnackbarClasses = (classes) => {
-    // filter classes object and return keys that are allowed in material-ui snackbar classes prop
     const snackbarMuiClasses = Object.keys(classes)
-        .filter(key => muiClasses[key] !== undefined)
+        .filter(key => allClasses.mui[key] !== undefined)
         .reduce((obj, key) => ({
             ...obj,
             [key]: classes[key],
