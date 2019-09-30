@@ -21,6 +21,10 @@ class SnackbarProvider extends Component {
 
     queue = [];
 
+    componentWillUnmount() {
+        this.queue = []
+    }
+
     /**
      * Adds a new snackbar to the queue to be presented.
      * @param {string} message - text of the notification
