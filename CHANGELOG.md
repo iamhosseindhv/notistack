@@ -3,13 +3,11 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 
 ### `notistack@0.9.3`
 ###### to be published
-**@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
-
-**@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
-
-**@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
-
-**@FredyC**: Prevent snackbar processing on `SnackbarProvider` unmount [#173](https://github.com/iamhosseindhv/notistack/pull/173)
+* **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
+* **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+* **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
+* **@FredyC**: Prevent snackbar processing on `SnackbarProvider` unmount [#173](https://github.com/iamhosseindhv/notistack/pull/173)
+* **@nick-cromwell**: Allow customising snackbar container styles [#172](https://github.com/iamhosseindhv/notistack/pull/172)
 
 <br />
 
