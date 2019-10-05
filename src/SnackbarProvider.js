@@ -32,8 +32,8 @@ class SnackbarProvider extends Component {
 
     queue = [];
 
-    componentWillUnmount() {
-        this.queue = []
+    componentWillUnmount = () => {
+        this.queue = [];
     }
 
     /**
@@ -231,7 +231,7 @@ SnackbarProvider.propTypes = {
      */
     children: PropTypes.node.isRequired,
     /**
-     * Override or extend the styles applied to the component.
+     * Override or extend the styles applied to the container component or Snackbars.
      */
     classes: PropTypes.object,
     /**
