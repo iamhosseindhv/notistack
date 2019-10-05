@@ -16,9 +16,16 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
-export type NotistackClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
+export type ContainerClassKey =
+    | 'containerAnchorOriginTopCenter'
+    | 'containerAnchorOriginBottomCenter'
+    | 'containerAnchorOriginTopRight'
+    | 'containerAnchorOriginBottomRight'
+    | 'containerAnchorOriginTopLeft'
+    | 'containerAnchorOriginBottomLeft';
 
-type CombinedClassKey = NotistackClassKey | SnackbarClassKey;
+export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
+export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
     enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => OptionsObject['key'] | null;

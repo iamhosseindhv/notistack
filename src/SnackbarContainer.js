@@ -46,7 +46,9 @@ const styles = theme => ({
 });
 
 const SnackbarContainer = React.memo((props) => {
-    const { classes, anchorOrigin, dense, ...other } = props;
+    const {
+        classes, className, anchorOrigin, dense, ...other
+    } = props;
 
     const combinedClassname = classNames(
         classes.root,
@@ -55,6 +57,7 @@ const SnackbarContainer = React.memo((props) => {
         classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
         classes[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
         { [classes.reverseColumns]: anchorOrigin.vertical === 'bottom' },
+        className,
     );
 
     return (
@@ -64,6 +67,7 @@ const SnackbarContainer = React.memo((props) => {
 
 SnackbarContainer.propTypes = {
     classes: PropTypes.object.isRequired,
+    className: PropTypes.string,
     dense: PropTypes.bool.isRequired,
     anchorOrigin: PropTypes.shape({
         horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,

@@ -2,10 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, defaultIconVariant, originKeyExtractor } from './utils/constants';
+import { MESSAGES, defaultIconVariant, originKeyExtractor, allClasses } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
+
+
+/**
+ * Omit SnackbarContainer class keys that are not needed for SnakcbarItem
+ */
+const getClasses = classes => (
+    Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({
+        ...obj,
+        [key]: classes[key],
+    }), {})
+);
 
 class SnackbarProvider extends Component {
     constructor(props) {
@@ -21,8 +32,8 @@ class SnackbarProvider extends Component {
 
     queue = [];
 
-    componentWillUnmount() {
-        this.queue = []
+    componentWillUnmount = () => {
+        this.queue = [];
     }
 
     /**
@@ -170,7 +181,7 @@ class SnackbarProvider extends Component {
     };
 
     render() {
-        const { children, maxSnack, dense, ...props } = this.props;
+        const { classes, children, maxSnack, dense, ...props } = this.props;
         const { contextValue } = this.state;
 
         const categ = this.state.snacks.reduce((acc, current) => {
@@ -188,7 +199,12 @@ class SnackbarProvider extends Component {
             <SnackbarContext.Provider value={contextValue}>
                 {children}
                 {Object.entries(categ).map(([origin, snacks]) => (
-                    <SnackbarContainer key={origin} dense={dense} anchorOrigin={snacks[0].anchorOrigin}>
+                    <SnackbarContainer
+                        key={origin}
+                        dense={dense}
+                        anchorOrigin={snacks[0].anchorOrigin}
+                        className={classes[`containerAnchorOrigin${origin}`]}
+                    >
                         {snacks.map(snack => (
                             <SnackbarItem
                                 {...props}
@@ -196,6 +212,7 @@ class SnackbarProvider extends Component {
                                 dense={dense}
                                 snack={snack}
                                 iconVariant={iconVariant}
+                                classes={getClasses(classes)}
                                 onClose={this.handleCloseSnack}
                                 onExited={this.handleExitedSnack}
                             />
@@ -214,7 +231,7 @@ SnackbarProvider.propTypes = {
      */
     children: PropTypes.node.isRequired,
     /**
-     * Override or extend the styles applied to the component.
+     * Override or extend the styles applied to the container component or Snackbars.
      */
     classes: PropTypes.object,
     /**
@@ -338,6 +355,7 @@ SnackbarProvider.defaultProps = {
     dense: false,
     preventDuplicate: false,
     hideIconVariant: false,
+    classes: {},
     iconVariant: {},
     anchorOrigin: {
         vertical: 'bottom',
