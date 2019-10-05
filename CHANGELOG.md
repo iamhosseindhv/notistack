@@ -9,6 +9,8 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 
 **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 
+**@FredyC**: Prevent snackbar processing on `SnackbarProvider` unmount [#173](https://github.com/iamhosseindhv/notistack/pull/173)
+
 <br />
 
 ### `notistack@0.9.2`
