@@ -147,13 +147,17 @@ class SnackbarProvider extends Component {
      * @param {number} key - id of the snackbar we want to hide
      */
     handleCloseSnack = (event, reason, key) => {
+        if (this.props.onClose) {
+            this.props.onClose(event, reason, key);
+        }
+
+        if (reason === 'clickaway') return;
+
         this.setState(({ snacks }) => ({
             snacks: snacks.map(item => (
                 (!key || item.key === key) ? { ...item, open: false } : { ...item }
             )),
         }));
-
-        if (this.props.onClose) this.props.onClose(event, reason, key);
     };
 
     /**

@@ -20,10 +20,11 @@ class SnackbarItem extends Component {
     }
 
     handleClose = key => (event, reason) => {
-        const { onClose, snack: { onClose: singleOnClose } } = this.props;
-        if (reason === 'clickaway') return;
-        if (singleOnClose) singleOnClose(event, reason, key);
-        onClose(event, reason, key);
+        const { snack } = this.props;
+        if (snack.onClose) {
+            snack.onClose(event, reason, key);
+        }
+        this.props.onClose(event, reason, key);
     };
 
     handleExited = key => (event) => {
