@@ -24,8 +24,8 @@ class SnackbarProvider extends Component {
         this.state = {
             snacks: [],
             contextValue: {
-                handleEnqueueSnackbar: this.handleEnqueueSnackbar,
-                handleCloseSnackbar: this.handleDismissSnack,
+                enqueueSnackbar: this.enqueueSnackbar,
+                closeSnackbar: this.closeSnackbar,
             },
         };
     }
@@ -48,7 +48,7 @@ class SnackbarProvider extends Component {
      * @param {bool} options.preventDuplicate
      * @returns generated or user defined key referencing the new snackbar or null
      */
-    handleEnqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
+    enqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
         if (preventDuplicate || this.props.preventDuplicate) {
             const inQueue = this.queue.findIndex(item => item.message === message) > -1;
             const inView = this.state.snacks.findIndex(item => item.message === message) > -1;
@@ -164,7 +164,7 @@ class SnackbarProvider extends Component {
      * Close snackbar with the given key
      * @param {number} key - id of the snackbar we want to hide
      */
-    handleDismissSnack = (key) => {
+    closeSnackbar = (key) => {
         this.handleCloseSnack(null, null, key);
     }
 
