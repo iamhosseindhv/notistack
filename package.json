@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.9.3",
+    "version": "0.9.4",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "build/index.js",
     "types": "build/index.d.ts",
@@ -70,6 +70,9 @@
         "snackbar",
         "stacked",
         "notification",
-        "material design"
+        "material design",
+        "hossein",
+        "dehnokhalaji",
+        "iamhosseindhv"
     ]
 }
