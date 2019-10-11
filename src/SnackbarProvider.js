@@ -276,10 +276,15 @@ SnackbarProvider.propTypes = {
         info: PropTypes.any,
     }),
     /**
-     * Callback to get action(s). actions are mostly buttons displayed in Snackbar.
+     * Callback used for getting action(s). actions are mostly buttons displayed in Snackbar.
      * @param {string|number} key key of a snackbar
      */
-    action: PropTypes.func,
+    action: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    /**
+     * Replace the snackbar. Callback used for displaying entirely customized snackbar.
+     * @param {string|number} key key of a snackbar
+     */
+    content: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     /**
      * The anchor of the `Snackbar`.
      */

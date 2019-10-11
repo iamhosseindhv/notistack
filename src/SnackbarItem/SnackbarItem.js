@@ -7,7 +7,8 @@ import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
 import styles from './SnackbarItem.styles';
-import { capitalise } from '../utils/constants';
+import { capitalise, MESSAGES } from '../utils/constants';
+import warning from '../utils/warning';
 
 
 class SnackbarItem extends Component {
@@ -43,6 +44,7 @@ class SnackbarItem extends Component {
         const {
             classes,
             action,
+            content,
             ContentProps = {},
             hideIconVariant,
             preventDuplicate,
@@ -57,6 +59,8 @@ class SnackbarItem extends Component {
         const {
             key,
             persist,
+            children,
+            content: singleContent,
             variant = 'default',
             action: singleAction,
             ContentProps: singleContentProps = {},
@@ -79,9 +83,17 @@ class SnackbarItem extends Component {
             finalAction = contentProps.action(key);
         }
 
-        let snackChildren = snack.children;
-        if (snackChildren && typeof snackChildren === 'function') {
-            snackChildren = snackChildren(key);
+        let snackContent;
+        if (snack.children) {
+            snackContent = snack.children;
+            warning(MESSAGES.NO_CHILDREN_OPTION);
+        }
+        if (singleContent) {
+            snackContent = singleContent;
+        }
+        snackContent = snackContent || content;
+        if (snackContent && typeof snackContent === 'function') {
+            snackContent = snackContent(key);
         }
 
         return (
@@ -104,7 +116,7 @@ class SnackbarItem extends Component {
                     classes={getSnackbarClasses(classes)}
                     onClose={this.handleClose(key)}
                 >
-                    {snackChildren || (
+                    {snackContent || (
                         <SnackbarContent
                             className={classNames(
                                 classes.base,
