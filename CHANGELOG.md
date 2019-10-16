@@ -1,10 +1,18 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.5`
+
+### `notistack@0.9.6`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
+
+<br />
+
+### `notistack@0.9.5`
+###### Oct 16, 2019
+* **@mehmetkose @oliviertassinari**: Improve bundle size [#163](https://github.com/iamhosseindhv/notistack/issues/163)
+* **@Grabauskas**: Make sure published package is free of trash [#185](https://github.com/iamhosseindhv/notistack/issues/185)
 
 <br />
 
