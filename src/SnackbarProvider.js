@@ -57,7 +57,7 @@ class SnackbarProvider extends Component {
             }
         }
 
-        const id = typeof key !== 'undefined' ? key : new Date().getTime() + Math.random();
+        const id = key || key === 0 ? key : new Date().getTime() + Math.random();
         const snack = {
             key: id,
             ...options,
