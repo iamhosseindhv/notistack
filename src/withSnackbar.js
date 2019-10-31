@@ -10,8 +10,8 @@ const withSnackbar = (Component) => {
                 <Component
                     {...props}
                     ref={ref}
-                    enqueueSnackbar={context.handleEnqueueSnackbar}
-                    closeSnackbar={context.handleCloseSnackbar}
+                    enqueueSnackbar={context.enqueueSnackbar}
+                    closeSnackbar={context.closeSnackbar}
                 />
             )}
         </SnackbarContext.Consumer>

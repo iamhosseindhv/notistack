@@ -13,6 +13,7 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     persist?: boolean;
     preventDuplicate?: boolean;
     children?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
+    content?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
     action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
@@ -48,6 +49,7 @@ export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'mes
     dense?: boolean;
     action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
     container: HTMLElement;
+    content?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;

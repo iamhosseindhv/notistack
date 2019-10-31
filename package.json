@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.9.3",
+    "version": "0.9.5",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "build/index.js",
     "types": "build/index.d.ts",
@@ -16,8 +16,9 @@
         "type": "git"
     },
     "scripts": {
-        "transpile": "babel src -d build --copy-files",
-        "prepublishOnly": "npm run transpile",
+        "build": "NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files",
+        "prebuild": "rimraf build",
+        "prepublishOnly": "npm run build",
         "eslint": "eslint . --ext .js,.jsx"
     },
     "peerDependencies": {
@@ -33,6 +34,7 @@
         "babel-loader": "^7.1.4",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-plugin-transform-react-jsx": "^6.24.1",
+        "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.5.0",
         "babel-preset-stage-2": "^6.5.0",
@@ -43,7 +45,8 @@
         "eslint-plugin-jsx-a11y": "^6.1.1",
         "eslint-plugin-react": "^7.10.0",
         "react": "^16.8.0",
-        "react-dom": "^16.8.0"
+        "react-dom": "^16.8.0",
+        "rimraf": "^3.0.0"
     },
     "dependencies": {
         "classnames": "^2.2.6",
@@ -70,6 +73,9 @@
         "snackbar",
         "stacked",
         "notification",
-        "material design"
+        "material design",
+        "hossein",
+        "dehnokhalaji",
+        "iamhosseindhv"
     ]
 }

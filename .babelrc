@@ -7,5 +7,17 @@
   "plugins": [
     "transform-object-rest-spread",
     "transform-react-jsx"
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-transform-react-remove-prop-types",
+          {
+            "mode": "unsafe-wrap"
+          }
+        ]
+      ]
+    }
+  }
 }

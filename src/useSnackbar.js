@@ -2,10 +2,10 @@ import { useContext } from 'react';
 import SnackbarContext from './SnackbarContext';
 
 export default () => {
-    const { handleEnqueueSnackbar, handleCloseSnackbar } = useContext(SnackbarContext);
+    const { enqueueSnackbar, closeSnackbar } = useContext(SnackbarContext);
 
     return {
-        enqueueSnackbar: handleEnqueueSnackbar,
-        closeSnackbar: handleCloseSnackbar,
+        enqueueSnackbar,
+        closeSnackbar,
     };
 };

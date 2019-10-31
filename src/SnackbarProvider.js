@@ -25,8 +25,8 @@ class SnackbarProvider extends Component {
         this.state = {
             snacks: [],
             contextValue: {
-                handleEnqueueSnackbar: this.handleEnqueueSnackbar,
-                handleCloseSnackbar: this.handleDismissSnack,
+                enqueueSnackbar: this.enqueueSnackbar,
+                closeSnackbar: this.closeSnackbar,
             },
         };
     }
@@ -49,7 +49,7 @@ class SnackbarProvider extends Component {
      * @param {bool} options.preventDuplicate
      * @returns generated or user defined key referencing the new snackbar or null
      */
-    handleEnqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
+    enqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
         if (preventDuplicate || this.props.preventDuplicate) {
             const inQueue = this.queue.findIndex(item => item.message === message) > -1;
             const inView = this.state.snacks.findIndex(item => item.message === message) > -1;
@@ -58,7 +58,7 @@ class SnackbarProvider extends Component {
             }
         }
 
-        const id = key || new Date().getTime() + Math.random();
+        const id = (key || key === 0) ? key : new Date().getTime() + Math.random();
         const snack = {
             key: id,
             ...options,
@@ -148,20 +148,24 @@ class SnackbarProvider extends Component {
      * @param {number} key - id of the snackbar we want to hide
      */
     handleCloseSnack = (event, reason, key) => {
+        if (this.props.onClose) {
+            this.props.onClose(event, reason, key);
+        }
+
+        if (reason === 'clickaway') return;
+
         this.setState(({ snacks }) => ({
             snacks: snacks.map(item => (
                 (!key || item.key === key) ? { ...item, open: false } : { ...item }
             )),
         }));
-
-        if (this.props.onClose) this.props.onClose(event, reason, key);
     };
 
     /**
      * Close snackbar with the given key
      * @param {number} key - id of the snackbar we want to hide
      */
-    handleDismissSnack = (key) => {
+    closeSnackbar = (key) => {
         this.handleCloseSnack(null, null, key);
     }
 
@@ -274,10 +278,15 @@ SnackbarProvider.propTypes = {
         info: PropTypes.any,
     }),
     /**
-     * Callback to get action(s). actions are mostly buttons displayed in Snackbar.
+     * Callback used for getting action(s). actions are mostly buttons displayed in Snackbar.
      * @param {string|number} key key of a snackbar
      */
-    action: PropTypes.func,
+    action: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+    /**
+     * Replace the snackbar. Callback used for displaying entirely customized snackbar.
+     * @param {string|number} key key of a snackbar
+     */
+    content: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
     /**
      * The anchor of the `Snackbar`.
      */
