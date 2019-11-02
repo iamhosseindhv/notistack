@@ -28,6 +28,14 @@ class SnackbarItem extends Component {
         this.props.onClose(event, reason, key);
     };
 
+    handleEntered = key => () => {
+        const { snack } = this.props;
+        if (snack.requestClose)
+            this.props.onClose(null, null, key)
+        else
+            this.props.onEntered(key);
+    }
+
     handleExited = key => (event) => {
         const { onExited, snack: { onExited: singleOnExited } } = this.props;
         if (singleOnExited) singleOnExited(event, key);
@@ -65,6 +73,8 @@ class SnackbarItem extends Component {
             action: singleAction,
             ContentProps: singleContentProps = {},
             anchorOrigin,
+            requestClose,
+            entered,
             ...singleSnackProps
         } = snack;
 
@@ -115,6 +125,7 @@ class SnackbarItem extends Component {
                     open={snack.open}
                     classes={getSnackbarClasses(classes)}
                     onClose={this.handleClose(key)}
+                    onEntered={this.handleEntered(key)}
                 >
                     {snackContent || (
                         <SnackbarContent
@@ -156,6 +167,8 @@ SnackbarItem.propTypes = {
             PropTypes.number,
         ]).isRequired,
         open: PropTypes.bool.isRequired,
+        requestClose: PropTypes.bool.isRequired,
+        entered: PropTypes.bool.isRequired,
     }).isRequired,
     iconVariant: PropTypes.shape({
         success: PropTypes.any.isRequired,

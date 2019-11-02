@@ -23,17 +23,12 @@ class SnackbarProvider extends Component {
         super(props);
         this.state = {
             snacks: [],
+            queue: [],
             contextValue: {
                 enqueueSnackbar: this.enqueueSnackbar,
                 closeSnackbar: this.closeSnackbar,
             },
         };
-    }
-
-    queue = [];
-
-    componentWillUnmount = () => {
-        this.queue = [];
     }
 
     /**
@@ -49,14 +44,6 @@ class SnackbarProvider extends Component {
      * @returns generated or user defined key referencing the new snackbar or null
      */
     enqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
-        if (preventDuplicate || this.props.preventDuplicate) {
-            const inQueue = this.queue.findIndex(item => item.message === message) > -1;
-            const inView = this.state.snacks.findIndex(item => item.message === message) > -1;
-            if (inQueue || inView) {
-                return null;
-            }
-        }
-
         const id = (key || key === 0) ? key : new Date().getTime() + Math.random();
         const snack = {
             key: id,
@@ -64,14 +51,27 @@ class SnackbarProvider extends Component {
             open: true,
             message,
             anchorOrigin: options.anchorOrigin || this.props.anchorOrigin,
+            requestClose: false,
+            entered: false,
         };
 
         if (options.persist) {
             snack.autoHideDuration = undefined;
         }
 
-        this.queue.push(snack);
-        this.handleDisplaySnack();
+        this.setState((state, props) => {
+            if (preventDuplicate || props.preventDuplicate) {
+                const inQueue = state.queue.findIndex(item => item.message === message) > -1;
+                const inView = state.snacks.findIndex(item => item.message === message) > -1;
+                if (inQueue || inView) {
+                    return state;
+                }
+            }
+            return this.handleDisplaySnack({
+                ...state,
+                queue: [...state.queue, snack]
+            }, props);
+        });
 
         return id;
     };
@@ -79,71 +79,114 @@ class SnackbarProvider extends Component {
     /**
      * Display snack if there's space for it. Otherwise, immediately begin dismissing the
      * oldest message to start showing the new one.
+     *
+     * Note: this function is a reducer, i.e. it returns an updated state based on the
+     * current state and current props.
+     * @param {object} state - current state
+     * @param {object} props - current props
      */
-    handleDisplaySnack = () => {
-        const { maxSnack } = this.props;
-        const { snacks } = this.state;
+    handleDisplaySnack = (state, props) => {
+        const { maxSnack } = props;
+        const { snacks } = state;
         if (snacks.length >= maxSnack) {
-            return this.handleDismissOldest();
+            return this.handleDismissOldest(state, props);
         }
-        return this.processQueue();
+        return this.processQueue(state, props);
     };
 
     /**
      * Display items (notifications) in the queue if there's space for them.
+     *
+     * Note: this function is a reducer, i.e. it returns an updated state based on the
+     * current state and current props.
+     * @param {object} state - current state
+     * @param {object} props - current props
      */
-    processQueue = () => {
-        if (this.queue.length > 0) {
-            const newOne = this.queue.shift();
-            this.setState(({ snacks }) => ({
-                snacks: [...snacks, newOne],
-            }));
+    processQueue = (state, props) => {
+        const { queue, snacks } = state;
+        if (queue.length > 0) {
+            return {
+                ...state,
+                snacks: [...snacks, queue[0]],
+                queue: queue.slice(1, queue.length),
+            }
         }
+        return state;
     };
 
     /**
      * Hide oldest snackbar on the screen because there exists a new one which we have to display.
      * (ignoring the one with 'persist' flag. i.e. explicitly told by user not to get dismissed).
+     *
+     * Note 1: this function is a reducer, i.e. it returns an updated state based on the
+     * current state and current props.
+     * Note 2: If there is already a message leaving the screen, no new messages are dismissed.
+     * Note 3: If the oldest message has not yet entered the screen, only a request to close the
+     *         snackbar is made. Once it entered the screen, it will be immediately dismissed.
+     *
+     * @param {object} state - current state
+     * @param {object} props - current props
      */
-    handleDismissOldest = () => {
+    handleDismissOldest = (state, props) => {
+        if (state.snacks.some((item) => {return !item.open || item.requestClose})) {
+            return state;
+        }
         let popped = false;
         let ignore = false;
 
-        const persistentCount = this.state.snacks.reduce((acc, current) => (
+        const persistentCount = state.snacks.reduce((acc, current) => (
             acc + (current.open && current.persist ? 1 : 0)
         ), 0);
 
-        if (persistentCount === this.props.maxSnack) {
+        if (persistentCount === props.maxSnack) {
             warning(MESSAGES.NO_PERSIST_ALL);
             ignore = true;
         }
 
-        this.setState(({ snacks }) => ({
-            snacks: snacks
-                .filter(item => item.open === true)
+        return {
+            ...state,
+            snacks: state.snacks
                 .map((item) => {
                     if (!popped && (!item.persist || ignore)) {
                         popped = true;
-                        if (item.onClose) item.onClose(null, 'maxsnack', item.key);
-                        if (this.props.onClose) this.props.onClose(null, 'maxsnack', item.key);
 
-                        return {
-                            ...item,
-                            open: false,
-                        };
+                        if (!item.entered) {
+                            return {
+                                ...item,
+                                requestClose: true,
+                            };
+                        } else {
+                            if (item.onClose) item.onClose(null, 'maxsnack', item.key);
+                            if (props.onClose) props.onClose(null, 'maxsnack', item.key);
+                            return {
+                                ...item,
+                                open: false
+                            };
+                        }
                     }
-
                     return {
                         ...item,
                     };
                 }),
-        }));
+        };
     };
+
+    /**
+     * Set the entered state of the snackbar with the given key.
+     * @param {number} key - id of the snackbar that entered.
+     */
+    handleEnteredSnack = (key) => {
+        this.setState(({ snacks }) => ({
+            snacks: snacks.map(item => (
+                item.key === key ? { ...item, entered: true } : { ...item }
+            )),
+        }));
+    }
 
     /**
      * Hide a snackbar after its timeout.
      * @param {object} event - The event source of the callback
-     * @param {string} reason - can be timeout or clickaway
+     * @param {string} reason - can be timeout, clickaway
      * @param {number} key - id of the snackbar we want to hide
      */
     handleCloseSnack = (event, reason, key) => {
@@ -153,10 +196,11 @@ class SnackbarProvider extends Component {
 
         if (reason === 'clickaway') return;
 
-        this.setState(({ snacks }) => ({
+        this.setState(({ snacks, queue }) => ({
             snacks: snacks.map(item => (
                 (!key || item.key === key) ? { ...item, open: false } : { ...item }
             )),
+            queue: queue.filter(item => item.key !== key),
         }));
     };
 
@@ -172,15 +216,22 @@ class SnackbarProvider extends Component {
      * When we set open attribute of a snackbar to false (i.e. after we hide a snackbar),
      * it leaves the screen and immediately after leaving animation is done, this method
      * gets called. We remove the hidden snackbar from state and then display notifications
-     * waiting in the queue (if any).
+     * waiting in the queue (if any). If after this process the queue is not empty, the
+     * oldest message is dismissed.
      * @param {number} key - id of the snackbar we want to remove
      * @param {object} event - The event source of the callback
      */
     handleExitedSnack = (event, key) => {
-        this.setState(({ snacks }) => ({
-            snacks: snacks.filter(item => item.key !== key),
-        }), this.handleDisplaySnack);
-
+        this.setState((state, props) => {
+            const newState = this.processQueue({
+                ...state,
+                snacks: state.snacks.filter(item => item.key !== key),
+            }, props);
+            if (newState.queue.length == 0)
+                return newState;
+            else
+                return this.handleDismissOldest(newState, props);
+        });
         if (this.props.onExited) this.props.onExited(event, key);
     };
 
@@ -219,6 +270,7 @@ class SnackbarProvider extends Component {
                                 classes={getClasses(classes)}
                                 onClose={this.handleCloseSnack}
                                 onExited={this.handleExitedSnack}
+                                onEntered={this.handleEnteredSnack}
                             />
                         ))}
                     </SnackbarContainer>
