@@ -60,13 +60,18 @@ class SnackbarProvider extends Component {
         }
 
         this.setState((state, props) => {
-            if (preventDuplicate || props.preventDuplicate) {
-                const inQueue = state.queue.findIndex(item => item.message === message) > -1;
-                const inView = state.snacks.findIndex(item => item.message === message) > -1;
+            if ((preventDuplicate === undefined && this.props.preventDuplicate) || preventDuplicate) {
+                const compareFunction = item => (
+                    (key || key === 0) ? item.key === key : item.message === message
+                );
+    
+                const inQueue = this.queue.findIndex(compareFunction) > -1;
+                const inView = this.state.snacks.findIndex(compareFunction) > -1;
                 if (inQueue || inView) {
-                    return state;
+                    return null;
                 }
             }
+
             return this.handleDisplaySnack({
                 ...state,
                 queue: [...state.queue, snack]
