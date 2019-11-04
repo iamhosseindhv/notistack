@@ -50,8 +50,12 @@ class SnackbarProvider extends Component {
      */
     enqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
         if ((preventDuplicate === undefined && this.props.preventDuplicate) || preventDuplicate) {
-            const inQueue = this.queue.findIndex(item => key ? item.key === key : item.message === message) > -1;
-            const inView = this.state.snacks.findIndex(item => key ? item.key === key : item.message === message) > -1;
+            const compareFunction = (item) => (
+                (key || key === 0) ? item.key === key : item.message === message
+            )
+
+            const inQueue = this.queue.findIndex(compareFunction) > -1;
+            const inView = this.state.snacks.findIndex(compareFunction) > -1;
             if (inQueue || inView) {
                 return null;
             }
