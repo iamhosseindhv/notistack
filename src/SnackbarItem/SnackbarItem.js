@@ -7,7 +7,7 @@ import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
 import styles from './SnackbarItem.styles';
-import { capitalise, MESSAGES } from '../utils/constants';
+import { capitalise, MESSAGES, REASONS } from '../utils/constants';
 import warning from '../utils/warning';
 
 
@@ -28,12 +28,16 @@ class SnackbarItem extends Component {
         this.props.onClose(event, reason, key);
     };
 
-    handleEntered = key => () => {
+    handleEntered = key => (node, isAppearing) => {
         const { snack } = this.props;
-        if (snack.requestClose)
-            this.props.onClose(null, null, key)
-        else
-            this.props.onEntered(key);
+        if (snack.requestClose) {
+            this.handleClose(key)(null, REASONS.MAXSNACK);
+        } else {
+            if (snack.onEntered) {
+                snack.onEntered(node, isAppearing, key);
+            }
+            this.props.onEntered(node, isAppearing, key);
+        }
     }
 
     handleExited = key => (event) => {
