@@ -66,10 +66,10 @@ class SnackbarProvider extends Component {
                     userSpecifiedKey ? item.key === key : item.message === message
                 );
 
-                const inQueue = this.queue.findIndex(compareFunction) > -1;
-                const inView = this.state.snacks.findIndex(compareFunction) > -1;
+                const inQueue = state.queue.findIndex(compareFunction) > -1;
+                const inView = state.snacks.findIndex(compareFunction) > -1;
                 if (inQueue || inView) {
-                    return null;
+                    return state;
                 }
             }
 
