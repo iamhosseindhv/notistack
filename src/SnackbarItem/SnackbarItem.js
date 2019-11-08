@@ -34,6 +34,7 @@ class SnackbarItem extends Component {
             snack.onEntered(node, isAppearing, key);
         }
         this.props.onEntered(node, isAppearing, key);
+
         if (snack.requestClose) {
             this.handleClose(key)(null, REASONS.MAXSNACK);
         }
@@ -184,6 +185,7 @@ SnackbarItem.propTypes = {
     dense: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
+    onEntered: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(SnackbarItem);

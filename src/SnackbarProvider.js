@@ -23,7 +23,7 @@ class SnackbarProvider extends Component {
         super(props);
         this.state = {
             snacks: [],
-            queue: [],
+            queue: [], // eslint-disable-line react/no-unused-state
             contextValue: {
                 enqueueSnackbar: this.enqueueSnackbar,
                 closeSnackbar: this.closeSnackbar,
@@ -75,7 +75,7 @@ class SnackbarProvider extends Component {
 
             return this.handleDisplaySnack({
                 ...state,
-                queue: [...state.queue, snack]
+                queue: [...state.queue, snack],
             });
         });
 
@@ -83,7 +83,7 @@ class SnackbarProvider extends Component {
     };
 
     /**
-     * Reducer: Display snack if there's space for it. Otherwise, immediately 
+     * Reducer: Display snack if there's space for it. Otherwise, immediately
      * begin dismissing the oldest message to start showing the new one.
      */
     handleDisplaySnack = (state) => {
@@ -104,7 +104,7 @@ class SnackbarProvider extends Component {
                 ...state,
                 snacks: [...snacks, queue[0]],
                 queue: queue.slice(1, queue.length),
-            }
+            };
         }
         return state;
     };
@@ -143,14 +143,15 @@ class SnackbarProvider extends Component {
                         ...item,
                         requestClose: true,
                     };
-                } else {
-                    if (item.onClose) item.onClose(null, REASONS.MAXSNACK, item.key);
-                    if (this.props.onClose) this.props.onClose(null, REASONS.MAXSNACK, item.key);
-                    return {
-                        ...item,
-                        open: false,
-                    };
                 }
+
+                if (item.onClose) item.onClose(null, REASONS.MAXSNACK, item.key);
+                if (this.props.onClose) this.props.onClose(null, REASONS.MAXSNACK, item.key);
+
+                return {
+                    ...item,
+                    open: false,
+                };
             }
 
             return { ...item };
@@ -186,16 +187,18 @@ class SnackbarProvider extends Component {
         }
 
         if (reason === REASONS.CLICKAWAY) return;
-        const shouldRemoveAll = key === undefined;
+        const shouldCloseAll = key === undefined;
 
         this.setState(({ snacks, queue }) => ({
-            snacks: snacks.map(item => (
-                shouldRemoveAll || item.key === key
-                  ? item.entered
+            snacks: snacks.map((item) => {
+                if (!shouldCloseAll && item.key !== key) {
+                    return { ...item };
+                }
+
+                return item.entered
                     ? { ...item, open: false }
-                    : { ...item, requestClose: true }
-                  : { ...item }
-            )),
+                    : { ...item, requestClose: true };
+            }),
             queue: queue.filter(item => item.key !== key), // eslint-disable-line react/no-unused-state
         }));
     };
