@@ -186,12 +186,17 @@ class SnackbarProvider extends Component {
         }
 
         if (reason === REASONS.CLICKAWAY) return;
+        const shouldRemoveAll = key === undefined;
 
         this.setState(({ snacks, queue }) => ({
             snacks: snacks.map(item => (
-                (!key || item.key === key) ? { ...item, open: false } : { ...item }
+                shouldRemoveAll || item.key === key
+                  ? item.entered
+                    ? { ...item, open: false }
+                    : { ...item, requestClose: true }
+                  : { ...item }
             )),
-            queue: queue.filter(item => item.key !== key),
+            queue: queue.filter(item => item.key !== key), // eslint-disable-line react/no-unused-state
         }));
     };
 

@@ -30,13 +30,12 @@ class SnackbarItem extends Component {
 
     handleEntered = key => (node, isAppearing) => {
         const { snack } = this.props;
+        if (snack.onEntered) {
+            snack.onEntered(node, isAppearing, key);
+        }
+        this.props.onEntered(node, isAppearing, key);
         if (snack.requestClose) {
             this.handleClose(key)(null, REASONS.MAXSNACK);
-        } else {
-            if (snack.onEntered) {
-                snack.onEntered(node, isAppearing, key);
-            }
-            this.props.onEntered(node, isAppearing, key);
         }
     }
 
