@@ -7,7 +7,7 @@ import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
 import styles from './SnackbarItem.styles';
-import { capitalise, MESSAGES } from '../utils/constants';
+import { capitalise, MESSAGES, REASONS } from '../utils/constants';
 import warning from '../utils/warning';
 
 
@@ -27,6 +27,18 @@ class SnackbarItem extends Component {
         }
         this.props.onClose(event, reason, key);
     };
+
+    handleEntered = key => (node, isAppearing) => {
+        const { snack } = this.props;
+        if (snack.onEntered) {
+            snack.onEntered(node, isAppearing, key);
+        }
+        this.props.onEntered(node, isAppearing, key);
+
+        if (snack.requestClose) {
+            this.handleClose(key)(null, REASONS.MAXSNACK);
+        }
+    }
 
     handleExited = key => (event) => {
         const { onExited, snack: { onExited: singleOnExited } } = this.props;
@@ -65,6 +77,8 @@ class SnackbarItem extends Component {
             action: singleAction,
             ContentProps: singleContentProps = {},
             anchorOrigin,
+            requestClose,
+            entered,
             ...singleSnackProps
         } = snack;
 
@@ -115,6 +129,7 @@ class SnackbarItem extends Component {
                     open={snack.open}
                     classes={getSnackbarClasses(classes)}
                     onClose={this.handleClose(key)}
+                    onEntered={this.handleEntered(key)}
                 >
                     {snackContent || (
                         <SnackbarContent
@@ -156,6 +171,8 @@ SnackbarItem.propTypes = {
             PropTypes.number,
         ]).isRequired,
         open: PropTypes.bool.isRequired,
+        requestClose: PropTypes.bool.isRequired,
+        entered: PropTypes.bool.isRequired,
     }).isRequired,
     iconVariant: PropTypes.shape({
         success: PropTypes.any.isRequired,
@@ -168,6 +185,7 @@ SnackbarItem.propTypes = {
     dense: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
     onExited: PropTypes.func.isRequired,
+    onEntered: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(SnackbarItem);
