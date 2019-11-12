@@ -287,6 +287,9 @@ class SnackbarProvider extends Component {
     }
 }
 
+// polyfill for Node
+const Element = typeof Element === 'undefined' ? function () { } : Element;
+
 SnackbarProvider.propTypes = {
     /**
      * Most of the time, this is your App. every component from this point onward
