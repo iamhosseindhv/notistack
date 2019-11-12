@@ -1,16 +1,21 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-
-### `notistack@0.9.6`
+### `notistack@0.9.7`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
+
+
+<br />
+
+
+### `notistack@0.9.6`
+###### Nov 12, 2019
 * **@JimmyMultani**: Allow snackbar key `0` to be passed [#187](https://github.com/iamhosseindhv/notistack/pull/187)
 * **@williammetcalf**: Allow preventDuplicate prop to be overridden by individual snackbar [#188](https://github.com/iamhosseindhv/notistack/pull/188)
 * **@simonbos**: Fix `setState` race condition [#189](https://github.com/iamhosseindhv/notistack/pull/189)
 * **@kriim**: `preventDuplicate` by comparing keys (if specified) [#190](https://github.com/iamhosseindhv/notistack/pull/190)
-
 
 
 <br />
