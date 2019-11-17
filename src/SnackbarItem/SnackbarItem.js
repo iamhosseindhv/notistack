@@ -63,6 +63,7 @@ class SnackbarItem extends Component {
             iconVariant,
             snack,
             dense,
+            TransitionProps: otherTransitionProps = {},
             ...other
         } = this.props;
 
@@ -79,6 +80,7 @@ class SnackbarItem extends Component {
             anchorOrigin,
             requestClose,
             entered,
+            TransitionProps: singleTransitionProps = {},
             ...singleSnackProps
         } = snack;
 
@@ -88,6 +90,13 @@ class SnackbarItem extends Component {
             ...otherContentProps,
             ...singleContentProps,
             action: singleAction || singleContentProps.action || contentAction || action,
+        };
+
+        const transitionProps = {
+            ...otherTransitionProps,
+            ...singleTransitionProps,
+            direction: getTransitionDirection(anchorOrigin),
+            onExited: this.handleExitedScreen,
         };
 
         const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
@@ -119,10 +128,7 @@ class SnackbarItem extends Component {
                 onExited={this.handleExited(key)}
             >
                 <Snackbar
-                    TransitionProps={{
-                        direction: getTransitionDirection(anchorOrigin),
-                        onExited: this.handleExitedScreen,
-                    }}
+                    TransitionProps={transitionProps}
                     {...other}
                     {...singleSnackProps}
                     anchorOrigin={anchorOrigin}
