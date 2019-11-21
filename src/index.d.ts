@@ -1,20 +1,26 @@
 import * as React from 'react';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
 import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
+import { ExitHandler } from 'react-transition-group/Transition'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
+export type Key = string | number;
+
+export type KeyedExitHandler = (...event: Parameters<ExitHandler>, key: Key) => void
+
 export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
-    key?: string | number;
+    key?: Key;
     variant?: VariantType;
     persist?: boolean;
     preventDuplicate?: boolean;
     children?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
     content?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
     action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
+    onExited?: KeyedExitHandler;
 }
 
 export type ContainerClassKey =
