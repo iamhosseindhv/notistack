@@ -93,9 +93,9 @@ class SnackbarItem extends Component {
         };
 
         const transitionProps = {
+            direction: getTransitionDirection(anchorOrigin),
             ...otherTransitionProps,
             ...singleTransitionProps,
-            direction: getTransitionDirection(anchorOrigin),
             onExited: this.handleExitedScreen,
         };
 
@@ -128,11 +128,11 @@ class SnackbarItem extends Component {
                 onExited={this.handleExited(key)}
             >
                 <Snackbar
-                    TransitionProps={transitionProps}
                     {...other}
                     {...singleSnackProps}
-                    anchorOrigin={anchorOrigin}
                     open={snack.open}
+                    anchorOrigin={anchorOrigin}
+                    TransitionProps={transitionProps}
                     classes={getSnackbarClasses(classes)}
                     onClose={this.handleClose(key)}
                     onEntered={this.handleEntered(key)}
