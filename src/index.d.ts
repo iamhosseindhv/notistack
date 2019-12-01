@@ -48,6 +48,7 @@ export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'mes
     preventDuplicate?: boolean;
     dense?: boolean;
     action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
+    domRoot?: HTMLElement;
     content?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
