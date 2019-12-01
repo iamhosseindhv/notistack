@@ -6,6 +6,7 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 * **@PeterMK85**: Add support for React portals [#179](https://github.com/iamhosseindhv/notistack/pull/179)
+* **@ly-vo**: Pass `message` (as well `key`) in `content` prop callback [#198](https://github.com/iamhosseindhv/notistack/issues/198)
 
 
 <br />
