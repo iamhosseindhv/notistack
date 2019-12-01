@@ -7,14 +7,18 @@ type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
+export type SnackbarMessage = string | React.ReactNode;
+export type SnackbarAction = SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
+export type SnackbarContent = React.ReactNode | ((key: OptionsObject['key'], message: SnackbarMessage) => React.ReactNode);
+
 export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     key?: string | number;
     variant?: VariantType;
     persist?: boolean;
     preventDuplicate?: boolean;
-    children?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
-    content?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
-    action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
+    children?: SnackbarContent; // To be deprecated
+    content?: SnackbarContent;
+    action?: SnackbarAction;
 }
 
 export type ContainerClassKey =
@@ -29,7 +33,7 @@ export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' 
 export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
-    enqueueSnackbar: (message: string | React.ReactNode, options?: OptionsObject) => OptionsObject['key'] | null;
+    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => OptionsObject['key'] | null;
     closeSnackbar: (key?: OptionsObject['key']) => void;
 }
 
@@ -47,9 +51,9 @@ export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'mes
     hideIconVariant?: boolean;
     preventDuplicate?: boolean;
     dense?: boolean;
-    action?: SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
+    action?: SnackbarAction;
+    content?: SnackbarContent;
     domRoot?: HTMLElement;
-    content?: React.ReactNode | ((key: OptionsObject['key']) => React.ReactNode);
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;

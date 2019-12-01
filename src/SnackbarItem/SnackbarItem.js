@@ -107,7 +107,7 @@ class SnackbarItem extends Component {
         }
         snackContent = snackContent || content;
         if (snackContent && typeof snackContent === 'function') {
-            snackContent = snackContent(key);
+            snackContent = snackContent(key, snack.message);
         }
 
         return (
