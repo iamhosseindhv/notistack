@@ -1,13 +1,18 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.7`
+### `notistack@0.9.8`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
-* **@PeterMK85**: Add support for React portals [#179](https://github.com/iamhosseindhv/notistack/pull/179)
-* **@ly-vo**: Pass `message` (as well `key`) in `content` prop callback [#198](https://github.com/iamhosseindhv/notistack/issues/198)
 
+<br />
+
+### `notistack@0.9.7`
+###### Dec 1, 2019
+* **@PeterMK85**: Add support for React portals [#179](https://github.com/iamhosseindhv/notistack/pull/179)
+* **@ly-vo**: Pass `message` (as well as `key`) in `content` prop callback [#198](https://github.com/iamhosseindhv/notistack/issues/198)
+* **@simonbos**: Allow safe override of `TransitionProps` [#194](https://github.com/iamhosseindhv/notistack/pull/194)
 
 <br />
 
