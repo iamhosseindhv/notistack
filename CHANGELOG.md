@@ -5,6 +5,8 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
+* **@madaz**: Add higher priority to Snackbar styles [#202](https://github.com/iamhosseindhv/notistack/issues/202)
+
 
 <br />
 
