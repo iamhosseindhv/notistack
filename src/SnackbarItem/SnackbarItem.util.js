@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'clsx';
 import { allClasses } from '../utils/constants';
 
 const DIRECTION = {

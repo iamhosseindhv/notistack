@@ -29,6 +29,7 @@
     "dependencies": {
         "@material-ui/core": "3.4.0",
         "notistack": "latest",
+        "clsx": "^1.0.4",
         "prop-types": "15.6.2",
         "react": "16.4.2",
         "react-dom": "16.4.2"
