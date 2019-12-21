@@ -3,6 +3,7 @@
     "version": "0.9.7",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "build/index.js",
+    "module": "build/esm/index.js",
     "types": "build/index.d.ts",
     "license": "MIT",
     "author": {
@@ -16,7 +17,9 @@
         "type": "git"
     },
     "scripts": {
-        "build": "cross-env NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files",
+        "build-cjs": "cross-env NODE_ENV=production BABEL_ENV=production ESM=false babel src -d build --copy-files",
+        "build-esm": "cross-env NODE_ENV=production BABEL_ENV=production ESM=true babel src -d build/esm --copy-files",
+        "build": "npm run build-cjs && npm run build-esm",
         "prebuild": "rimraf build",
         "prepublishOnly": "npm run build",
         "eslint": "eslint . --ext .js,.jsx"
