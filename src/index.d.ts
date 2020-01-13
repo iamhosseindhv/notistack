@@ -9,7 +9,7 @@ export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
 export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
-export type SnackbarContent = React.ReactNode | ((key: OptionsObject['key'], message: SnackbarMessage) => React.ReactNode);
+export type SnackbarContent = React.ReactNode | ((key: OptionsObject['key'], message: SnackbarMessage, variant: OptionsObject['variant']) => React.ReactNode);
 
 export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
     key?: string | number;
