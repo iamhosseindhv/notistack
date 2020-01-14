@@ -10,9 +10,9 @@
         "email": "hossein.dehnavi98@yahoo.com",
         "url": "https://github.com/iamhosseindhv/notistack"
     },
-    "homepage": "https://www.iamhosseindhv.com/notistack",
+    "homepage": "https://github.com/charlieTrigonal/notistack.git",
     "repository": {
-        "url": "git+https://github.com/iamhosseindhv/notistack.git",
+        "url": "git+https://github.com/charlieTrigonal/notistack.git",
         "type": "git"
     },
     "scripts": {
