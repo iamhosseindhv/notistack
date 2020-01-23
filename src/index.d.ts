@@ -33,7 +33,7 @@ export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' 
 export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
-    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => OptionsObject['key'] | null;
+    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => OptionsObject['key'];
     closeSnackbar: (key?: OptionsObject['key']) => void;
 }
 
