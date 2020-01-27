@@ -7,6 +7,7 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 * **@madaz**: Add higher priority to Snackbar styles [#202](https://github.com/iamhosseindhv/notistack/issues/202)
 * **@svish**: Correct enqueueSnackbar typing [#217](https://github.com/iamhosseindhv/notistack/issues/217)
+* **@dgczhh**: Make sure `onClose` callback that's been passed through options parameter of `enqueueSnackbar` gets called when snackbar is closed using `closeSnackbar` function [#220](https://github.com/iamhosseindhv/notistack/issues/220)
 
 
 <br />

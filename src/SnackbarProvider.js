@@ -209,6 +209,12 @@ class SnackbarProvider extends Component {
      * @param {number} key - id of the snackbar we want to hide
      */
     closeSnackbar = (key) => {
+        // call individual snackbar onClose callback passed through options parameter
+        const toBeClosed = this.state.snacks.find(item => item.key === key);
+        if (toBeClosed && toBeClosed.onClose) {
+            toBeClosed.onClose(null, null, key);
+        }
+
         this.handleCloseSnack(null, null, key);
     }
 
