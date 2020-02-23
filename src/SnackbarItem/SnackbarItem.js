@@ -210,4 +210,4 @@ SnackbarItem.propTypes = {
     onEntered: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles, { index: 1 })(SnackbarItem);
+export default withStyles(styles)(SnackbarItem);
