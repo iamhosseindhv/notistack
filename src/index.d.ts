@@ -15,17 +15,17 @@ export type SnackbarAction = SnackbarContentProps['action'] | ((key: SnackbarKey
 export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
 export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | null;
-export type TransitionCloseHandler = (event: React.SyntheticEvent<any>, reason: CloseReason, key: SnackbarKey) => void;
+export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
-export type TransitionExitHandler = (node: HTMLElement, key: SnackbarKey) => void;
+export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
 export type TransitionHandlerProps = {
     onClose?: TransitionCloseHandler;
-    onEnter?: TransitionEnterHandler;
-    onEntering?: TransitionEnterHandler;
+    onEnter?: TransitionHandler;
+    onEntering?: TransitionHandler;
     onEntered?: TransitionEnterHandler;
-    onExit?: TransitionExitHandler;
-    onExiting?: TransitionExitHandler;
-    onExited?: TransitionExitHandler;
+    onExit?: TransitionHandler;
+    onExiting?: TransitionHandler;
+    onExited?: TransitionHandler;
 }
 
 export interface OptionsObject extends Modify<Omit<SnackbarProps, RemovedAttributes>, TransitionHandlerProps> {
