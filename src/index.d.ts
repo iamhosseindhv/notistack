@@ -11,7 +11,11 @@ export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
 export type SnackbarContent = React.ReactNode | ((key: OptionsObject['key'], message: SnackbarMessage) => React.ReactNode);
 
-export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
+type ExitHandler = (node: HTMLElement, key: OptionsObject['key']) => void;
+type EnterHandler = (node: HTMLElement, isAppearing: boolean, key: OptionsObject['key']) => void;
+type CloseHandler = (event: React.SyntheticEvent, reason: string, key: OptionsObject['key']) => void;
+
+export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes' | 'onExited' | 'onEntered' | 'onClose'> {
     key?: string | number;
     variant?: VariantType;
     persist?: boolean;
@@ -19,6 +23,9 @@ export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 
     children?: SnackbarContent; // To be deprecated
     content?: SnackbarContent;
     action?: SnackbarAction;
+    onExited?: ExitHandler;
+    onEntered?: EnterHandler;
+    onClose?: CloseHandler;
 }
 
 export type ContainerClassKey =
