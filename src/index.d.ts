@@ -5,27 +5,22 @@ import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
+type RemovedAttributes = 'open' | 'message' | 'classes';
+export type SnackbarKey = string | number;
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
 export type SnackbarMessage = string | React.ReactNode;
-export type SnackbarAction = SnackbarContentProps['action'] | ((key: OptionsObject['key']) => React.ReactNode);
-export type SnackbarContent = React.ReactNode | ((key: OptionsObject['key'], message: SnackbarMessage) => React.ReactNode);
+export type SnackbarAction = SnackbarContentProps['action'] | ((key: SnackbarKey) => React.ReactNode);
+export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
-type ExitHandler = (node: HTMLElement, key: OptionsObject['key']) => void;
-type EnterHandler = (node: HTMLElement, isAppearing: boolean, key: OptionsObject['key']) => void;
-type CloseHandler = (event: React.SyntheticEvent, reason: string, key: OptionsObject['key']) => void;
-
-export interface OptionsObject extends Omit<SnackbarProps, 'open' | 'message' | 'classes' | 'onExited' | 'onEntered' | 'onClose'> {
-    key?: string | number;
+export interface OptionsObject extends Omit<SnackbarProps, RemovedAttributes> {
+    key?: SnackbarKey;
     variant?: VariantType;
     persist?: boolean;
     preventDuplicate?: boolean;
     children?: SnackbarContent; // To be deprecated
     content?: SnackbarContent;
     action?: SnackbarAction;
-    onExited?: ExitHandler;
-    onEntered?: EnterHandler;
-    onClose?: CloseHandler;
 }
 
 export type ContainerClassKey =
@@ -40,8 +35,8 @@ export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' 
 export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
-    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => OptionsObject['key'];
-    closeSnackbar: (key?: OptionsObject['key']) => void;
+    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
+    closeSnackbar: (key?: SnackbarKey) => void;
 }
 
 export function withSnackbar<P extends WithSnackbarProps>(component: React.ComponentType<P>):
@@ -51,7 +46,7 @@ export function withSnackbar<P extends WithSnackbarProps>(component: React.Compo
 export function useSnackbar(): WithSnackbarProps;
 
 // all material-ui props, including class keys for notistack and material-ui with additional notistack props
-export interface SnackbarProviderProps extends Omit<SnackbarProps, 'open' | 'message' | 'classes'> {
+export interface SnackbarProviderProps extends Omit<SnackbarProps, RemovedAttributes> {
     classes?: Partial<ClassNameMap<CombinedClassKey>>;
     maxSnack?: number;
     iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
