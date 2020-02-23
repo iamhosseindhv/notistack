@@ -14,7 +14,7 @@ export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = SnackbarContentProps['action'] | ((key: SnackbarKey) => React.ReactNode);
 export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
-export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | null;
+export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
 export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
