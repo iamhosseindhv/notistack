@@ -85,4 +85,5 @@ export const originKeyExtractor = anchor => `${capitalise(anchor.vertical)}${cap
 export const REASONS = {
     CLICKAWAY: 'clickaway',
     MAXSNACK: 'maxsnack',
+    INSTRUCTED: 'instructed',
 };

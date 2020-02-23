@@ -1,13 +1,20 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.8`
+### `notistack@0.9.9`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
-* **@madaz**: Add higher priority to Snackbar styles [#202](https://github.com/iamhosseindhv/notistack/issues/202)
+
+
+<br />
+
+
+### `notistack@0.9.8`
+###### Feb 23, 2020
 * **@svish**: Correct enqueueSnackbar typing [#217](https://github.com/iamhosseindhv/notistack/issues/217)
 * **@dgczhh**: Make sure `onClose` callback that's been passed through options parameter of `enqueueSnackbar` gets called when snackbar is closed using `closeSnackbar` function [#220](https://github.com/iamhosseindhv/notistack/issues/220)
+* **@JoseLion**: Add snackbar key to transition handler parameters. Fix transition handler callback types [#214](https://github.com/iamhosseindhv/notistack/issues/214)
 
 
 <br />

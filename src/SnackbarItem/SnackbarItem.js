@@ -52,6 +52,21 @@ class SnackbarItem extends Component {
         }, 125);
     }
 
+    get unusedCallbacks() {
+        return ['onEnter', 'onEntering', 'onExit', 'onExiting'].reduce((acc, cbName) => ({
+            ...acc,
+            [cbName]: (...args) => {
+                const { snack } = this.props;
+                if (typeof snack[cbName] === 'function') {
+                    snack[cbName](...args, snack.key);
+                }
+                if (typeof this.props[cbName] === 'function') {
+                    this.props[cbName](...args, snack.key);
+                }
+            },
+        }), {});
+    }
+
     render() {
         const {
             classes,
@@ -136,6 +151,7 @@ class SnackbarItem extends Component {
                     classes={getSnackbarClasses(classes)}
                     onClose={this.handleClose(key)}
                     onEntered={this.handleEntered(key)}
+                    {...this.unusedCallbacks}
                 >
                     {snackContent || (
                         <SnackbarContent

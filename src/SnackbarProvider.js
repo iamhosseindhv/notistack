@@ -212,10 +212,10 @@ class SnackbarProvider extends Component {
         // call individual snackbar onClose callback passed through options parameter
         const toBeClosed = this.state.snacks.find(item => item.key === key);
         if (toBeClosed && toBeClosed.onClose) {
-            toBeClosed.onClose(null, null, key);
+            toBeClosed.onClose(null, REASONS.INSTRUCTED, key);
         }
 
-        this.handleCloseSnack(null, null, key);
+        this.handleCloseSnack(null, REASONS.INSTRUCTED, key);
     }
 
     /**
@@ -378,7 +378,8 @@ SnackbarProvider.propTypes = {
      *
      * @param {object} event The event source of the callback
      * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
-     *  or: `"maxsnack"` (snackbar is closed because `maxSnack` has reached.)
+     *  or: `"maxsnack"` (snackbar was closed because `maxSnack` has reached) or: `"instructed"`
+     * (snackbar was closed programmatically)
      * @param {string|number} key key of a Snackbar
      */
     onClose: PropTypes.func,
