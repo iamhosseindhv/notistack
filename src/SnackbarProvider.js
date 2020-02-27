@@ -362,9 +362,9 @@ SnackbarProvider.propTypes = {
     }),
     /**
      * The number of milliseconds to wait before automatically calling the
-     * `onClose` function. `onClose` should then set the state of the `open`
-     * prop to hide the Snackbar. This behavior is disabled by default with
-     * the `null` value.
+     * `onClose` function. By default snackbars get closed after 5000 milliseconds.
+     * Set autoHideDuration to 'undefined' if you don't want snackbars to automatically close.
+     * Alternatively pass `persist: true` in the options parameter of enqueueSnackbar.
      */
     autoHideDuration: PropTypes.number,
     /**
@@ -372,9 +372,8 @@ SnackbarProvider.propTypes = {
      */
     disableWindowBlurListener: PropTypes.bool,
     /**
-     * Callback fired when the component requests to be closed.
-     * The `reason` parameter can optionally be used to control the response to `onClose`,
-     * for example ignoring `clickaway`.
+     * Callback fired when the component is gets closed.
+     * The `reason` parameter can optionally be used to control the response to `onClose`.
      *
      * @param {object} event The event source of the callback
      * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
