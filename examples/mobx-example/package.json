@@ -8,8 +8,8 @@
   },
   "main": "src/index.js",
   "dependencies": {
-    "react": "16.8.0",
-    "react-dom": "16.8.0",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "1.1.4",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",

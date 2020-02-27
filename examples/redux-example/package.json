@@ -14,7 +14,7 @@
     "react-scripts": "latest",
     "redux": "latest",
     "notistack": "latest",
-    "@material-ui/core": "latest"
+    "@material-ui/core": "3.4.0"
   },
   "devDependencies": {},
   "scripts": {
