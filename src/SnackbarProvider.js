@@ -320,7 +320,8 @@ SnackbarProvider.propTypes = {
      */
     dense: PropTypes.bool,
     /**
-     * Used to easily display different variants of snackbars.
+     * Used to easily display different variant of snackbars. When passed to `SnackbarProvider`
+     * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
      */
     variant: PropTypes.oneOf(
         ['default', 'error', 'success', 'warning', 'info'],

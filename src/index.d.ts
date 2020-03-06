@@ -33,7 +33,6 @@ export interface OptionsObject extends Modify<Omit<SnackbarProps, RemovedAttribu
     variant?: VariantType;
     persist?: boolean;
     preventDuplicate?: boolean;
-    children?: SnackbarContent; // To be deprecated
     content?: SnackbarContent;
     action?: SnackbarAction;
 }

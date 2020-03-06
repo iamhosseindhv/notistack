@@ -7,8 +7,7 @@ import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, getSnackbarClasses, getCollapseClasses } from './SnackbarItem.util';
 import styles from './SnackbarItem.styles';
-import { capitalise, MESSAGES, REASONS } from '../utils/constants';
-import warning from '../utils/warning';
+import { capitalise, REASONS } from '../utils/constants';
 
 
 class SnackbarItem extends Component {
@@ -88,7 +87,6 @@ class SnackbarItem extends Component {
             key,
             persist,
             variant,
-            children,
             content: singleContent,
             action: singleAction,
             ContentProps: singleContentProps = {},
@@ -121,15 +119,7 @@ class SnackbarItem extends Component {
             finalAction = contentProps.action(key);
         }
 
-        let snackContent;
-        if (snack.children) {
-            snackContent = snack.children;
-            warning(MESSAGES.NO_CHILDREN_OPTION);
-        }
-        if (singleContent) {
-            snackContent = singleContent;
-        }
-        snackContent = snackContent || content;
+        let snackContent = singleContent || content;
         if (snackContent && typeof snackContent === 'function') {
             snackContent = snackContent(key, snack.message);
         }
