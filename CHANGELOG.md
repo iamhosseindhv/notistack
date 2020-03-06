@@ -1,11 +1,20 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.9`
+### `notistack@0.9.10`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 
+
+<br />
+
+
+### `notistack@0.9.9`
+###### March 6, 2020
+* **DASPRiD** Directly return snackbar context in useSnackbar [#223](https://github.com/iamhosseindhv/notistack/pull/223)
+* **dalborgo** Add support to set default variant on SnackbarProvider [#180](https://github.com/iamhosseindhv/notistack/issues/180)
+* **dalborgo** Deprecate support for `children` in `enqueueSnackbar` options.
 
 <br />
 
