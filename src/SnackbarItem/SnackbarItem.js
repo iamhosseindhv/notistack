@@ -87,9 +87,9 @@ class SnackbarItem extends Component {
         const {
             key,
             persist,
+            variant,
             children,
             content: singleContent,
-            variant = 'default',
             action: singleAction,
             ContentProps: singleContentProps = {},
             anchorOrigin,

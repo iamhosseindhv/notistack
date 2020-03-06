@@ -54,6 +54,7 @@ class SnackbarProvider extends Component {
             open: true,
             entered: false,
             requestClose: false,
+            variant: options.variant || this.props.variant,
             anchorOrigin: options.anchorOrigin || this.props.anchorOrigin,
         };
 
@@ -247,7 +248,7 @@ class SnackbarProvider extends Component {
     };
 
     render() {
-        const { classes, children, maxSnack, dense, domRoot, ...props } = this.props;
+        const { classes, children, maxSnack, dense, variant, domRoot, ...props } = this.props;
         const { contextValue } = this.state;
 
         const categ = this.state.snacks.reduce((acc, current) => {
@@ -259,7 +260,10 @@ class SnackbarProvider extends Component {
             };
         }, {});
 
-        const iconVariant = Object.assign({ ...defaultIconVariant }, { ...this.props.iconVariant });
+        const iconVariant = {
+            ...defaultIconVariant,
+            ...this.props.iconVariant,
+        };
 
         const snackbars = Object.entries(categ).map(([origin, snacks]) => (
             <SnackbarContainer
@@ -294,6 +298,7 @@ class SnackbarProvider extends Component {
 }
 
 // polyfill for Node
+// eslint-disable-next-line
 const Element = typeof Element === 'undefined' ? function () { } : Element;
 
 SnackbarProvider.propTypes = {
@@ -311,9 +316,15 @@ SnackbarProvider.propTypes = {
      */
     maxSnack: PropTypes.number,
     /**
-     * Denser margins for snackbars. Recommended to be used on mobile devices
+     * Denser margins for snackbars. Recommended to be used on mobile devices.
      */
     dense: PropTypes.bool,
+    /**
+     * Used to easily display different variants of snackbars.
+     */
+    variant: PropTypes.oneOf(
+        ['default', 'error', 'success', 'warning', 'info'],
+    ),
     /**
      * Ignores displaying multiple snackbars with the same `message`
      */
@@ -434,6 +445,7 @@ SnackbarProvider.propTypes = {
 SnackbarProvider.defaultProps = {
     maxSnack: 3,
     dense: false,
+    variant: 'default',
     preventDuplicate: false,
     hideIconVariant: false,
     classes: {},

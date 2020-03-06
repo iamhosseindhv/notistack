@@ -66,6 +66,7 @@ export interface SnackbarProviderProps extends Modify<Omit<SnackbarProps, Remove
     maxSnack?: number;
     iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
     hideIconVariant?: boolean;
+    variant?: VariantType;
     preventDuplicate?: boolean;
     dense?: boolean;
     action?: SnackbarAction;
