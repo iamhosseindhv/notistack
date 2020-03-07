@@ -1,13 +1,14 @@
 {
   "presets": [
-    "env",
-    "react",
-    "stage-2"
+    "@babel/preset-typescript",
+    "@babel/preset-env",
+    "@babel/preset-react"
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-react-jsx"
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
   ],
+  "ignore": ["src/index.d.ts"],
   "env": {
     "production": {
       "plugins": [
