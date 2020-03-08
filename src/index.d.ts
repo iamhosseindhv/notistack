@@ -2,11 +2,12 @@ import * as React from 'react';
 import { SnackbarProps, SnackbarClassKey } from '@material-ui/core/Snackbar';
 import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
 
+export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 type Modify<T, R> = Pick<T, Exclude<keyof T, keyof R>> & R
 
-type RemovedAttributes = 'open' | 'message' | 'classes';
+export type RemovedAttributes = 'open' | 'message' | 'classes';
 export type SnackbarKey = string | number;
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 
@@ -28,15 +29,6 @@ export type TransitionHandlerProps = {
     onExited?: TransitionHandler;
 }
 
-export interface OptionsObject extends Modify<Omit<SnackbarProps, RemovedAttributes>, TransitionHandlerProps> {
-    key?: SnackbarKey;
-    variant?: VariantType;
-    persist?: boolean;
-    preventDuplicate?: boolean;
-    content?: SnackbarContent;
-    action?: SnackbarAction;
-}
-
 export type ContainerClassKey =
     | 'containerAnchorOriginTopCenter'
     | 'containerAnchorOriginBottomCenter'
@@ -48,29 +40,40 @@ export type ContainerClassKey =
 export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
 export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
-export interface WithSnackbarProps {
+export interface ProviderContext {
     enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
     closeSnackbar: (key?: SnackbarKey) => void;
 }
 
-export function withSnackbar<P extends WithSnackbarProps>(component: React.ComponentType<P>):
-    React.ComponentClass<Omit<P, keyof WithSnackbarProps>> & { WrappedComponent: React.ComponentType<P> };
+export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
+    React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
 
 
-export function useSnackbar(): WithSnackbarProps;
+export function useSnackbar(): ProviderContext;
 
-// all material-ui props, including class keys for notistack and material-ui with additional notistack props
-export interface SnackbarProviderProps extends Modify<Omit<SnackbarProps, RemovedAttributes>, TransitionHandlerProps> {
-    classes?: Partial<ClassNameMap<CombinedClassKey>>;
-    maxSnack?: number;
-    iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
-    hideIconVariant?: boolean;
+// backwards compatibility
+export type WithSnackbarProps = ProviderContext;
+
+export interface SharedProps extends Modify<Omit<SnackbarProps, RemovedAttributes>, TransitionHandlerProps> {
     variant?: VariantType;
     preventDuplicate?: boolean;
-    dense?: boolean;
-    action?: SnackbarAction;
     content?: SnackbarContent;
+    action?: SnackbarAction;
+}
+
+export interface OptionsObject extends SharedProps {
+    key?: SnackbarKey;
+    persist?: boolean;
+}
+
+// all material-ui props, including class keys for notistack and material-ui with additional notistack props
+export interface SnackbarProviderProps extends SharedProps {
+    dense?: boolean;
+    maxSnack?: number;
+    hideIconVariant?: boolean;
     domRoot?: HTMLElement;
+    classes?: Partial<ClassNameMap<CombinedClassKey>>;
+    iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;

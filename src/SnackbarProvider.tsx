@@ -3,24 +3,43 @@ import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import Slide from '@material-ui/core/Slide';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, defaultIconVariant, originKeyExtractor, allClasses, REASONS } from './utils/constants';
+import { MESSAGES, originKeyExtractor, allClasses, REASONS } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
+import defaultIconVariants from './utils/defaultIconVariants';
+import { SnackbarProviderProps, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext } from '.';
 
 
 /**
- * Omit SnackbarContainer class keys that are not needed for SnakcbarItem
+ * Omit SnackbarContainer class keys that are not needed for SnackbarItem
  */
-const getClasses = classes => (
+const getClasses = (classes: { [key: string]: string }): { [key: string]: string } => (
+    // @ts-ignore
     Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({
         ...obj,
         [key]: classes[key],
     }), {})
 );
 
-class SnackbarProvider extends Component {
-    constructor(props) {
+type Reducer = (state: State) => State
+type SnacksByPosition = { [key: string]: Snack[] }
+
+export interface Snack extends RequiredBy<OptionsObject, 'key' | 'variant' | 'anchorOrigin'> {
+    message: SnackbarMessage;
+    open: boolean;
+    entered: boolean;
+    requestClose: boolean;
+}
+
+interface State {
+    snacks: Snack[];
+    queue: Snack[];
+    contextValue: ProviderContext;
+}
+
+class SnackbarProvider extends Component<SnackbarProviderProps, State> {
+    constructor(props: SnackbarProviderProps) {
         super(props);
         this.state = {
             snacks: [],
@@ -34,20 +53,12 @@ class SnackbarProvider extends Component {
 
     /**
      * Adds a new snackbar to the queue to be presented.
-     * @param {string} message - text of the notification
-     * @param {object} options - additional options for the snackbar we want to enqueue.
-     * We can pass Material-ui Snackbar props for individual customisation.
-     * @param {string} options.key
-     * @param {string} options.variant - type of the snackbar. default value is 'default'.
-     * can be: (default, success, error, warning, info)
-     * @param {bool} options.persist
-     * @param {bool} options.preventDuplicate
-     * @returns generated or user defined key referencing the new snackbar or null
+     * Returns generated or user defined key referencing the new snackbar or null
      */
-    enqueueSnackbar = (message, { key, preventDuplicate, ...options } = {}) => {
-        const userSpecifiedKey = key || key === 0;
-        const id = userSpecifiedKey ? key : new Date().getTime() + Math.random();
-        const snack = {
+    enqueueSnackbar = (message: SnackbarMessage, { key, preventDuplicate, ...options }: OptionsObject = {}): SnackbarKey => {
+        const hasSpecifiedKey = key || key === 0;
+        const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
+        const snack: Snack = {
             key: id,
             ...options,
             message,
@@ -64,8 +75,8 @@ class SnackbarProvider extends Component {
 
         this.setState((state) => {
             if ((preventDuplicate === undefined && this.props.preventDuplicate) || preventDuplicate) {
-                const compareFunction = item => (
-                    userSpecifiedKey ? item.key === key : item.message === message
+                const compareFunction = (item: Snack): boolean => (
+                    hasSpecifiedKey ? item.key === key : item.message === message
                 );
 
                 const inQueue = state.queue.findIndex(compareFunction) > -1;
@@ -88,7 +99,7 @@ class SnackbarProvider extends Component {
      * Reducer: Display snack if there's space for it. Otherwise, immediately
      * begin dismissing the oldest message to start showing the new one.
      */
-    handleDisplaySnack = (state) => {
+    handleDisplaySnack: Reducer = (state) => {
         const { snacks } = state;
         if (snacks.length >= this.props.maxSnack) {
             return this.handleDismissOldest(state);
@@ -99,7 +110,7 @@ class SnackbarProvider extends Component {
     /**
      * Reducer: Display items (notifications) in the queue if there's space for them.
      */
-    processQueue = (state) => {
+    processQueue: Reducer = (state) => {
         const { queue, snacks } = state;
         if (queue.length > 0) {
             return {
@@ -119,7 +130,7 @@ class SnackbarProvider extends Component {
      * Note 2: If the oldest message has not yet entered the screen, only a request to close the
      *         snackbar is made. Once it entered the screen, it will be immediately dismissed.
      */
-    handleDismissOldest = (state) => {
+    handleDismissOldest: Reducer = (state) => {
         if (state.snacks.some(item => !item.open || item.requestClose)) {
             return state;
         }
@@ -165,7 +176,7 @@ class SnackbarProvider extends Component {
     /**
      * Set the entered state of the snackbar with the given key.
      */
-    handleEnteredSnack = (node, isAppearing, key) => {
+    handleEnteredSnack: SnackbarProviderProps['onEntered'] = (node, isAppearing, key) => {
         if (this.props.onEntered) {
             this.props.onEntered(node, isAppearing, key);
         }
@@ -179,11 +190,8 @@ class SnackbarProvider extends Component {
 
     /**
      * Hide a snackbar after its timeout.
-     * @param {object} event - The event source of the callback
-     * @param {string} reason - can be timeout, clickaway
-     * @param {number} key - id of the snackbar we want to hide
      */
-    handleCloseSnack = (event, reason, key) => {
+    handleCloseSnack: SnackbarProviderProps['onClose'] = (event, reason, key) => {
         if (this.props.onClose) {
             this.props.onClose(event, reason, key);
         }
@@ -207,12 +215,11 @@ class SnackbarProvider extends Component {
 
     /**
      * Close snackbar with the given key
-     * @param {number} key - id of the snackbar we want to hide
      */
-    closeSnackbar = (key) => {
+    closeSnackbar: ProviderContext['closeSnackbar'] = (key) => {
         // call individual snackbar onClose callback passed through options parameter
         const toBeClosed = this.state.snacks.find(item => item.key === key);
-        if (toBeClosed && toBeClosed.onClose) {
+        if (key && toBeClosed && toBeClosed.onClose) {
             toBeClosed.onClose(null, REASONS.INSTRUCTED, key);
         }
 
@@ -225,10 +232,8 @@ class SnackbarProvider extends Component {
      * gets called. We remove the hidden snackbar from state and then display notifications
      * waiting in the queue (if any). If after this process the queue is not empty, the
      * oldest message is dismissed.
-     * @param {number} key - id of the snackbar we want to remove
-     * @param {object} event - The event source of the callback
      */
-    handleExitedSnack = (event, key) => {
+    handleExitedSnack: SnackbarProviderProps['onExited'] = (event, key) => {
         this.setState((state) => {
             const newState = this.processQueue({
                 ...state,
@@ -247,11 +252,11 @@ class SnackbarProvider extends Component {
         }
     };
 
-    render() {
-        const { classes, children, maxSnack, dense, variant, domRoot, ...props } = this.props;
+    render(): JSX.Element {
+        const { classes, children, dense, domRoot, maxSnack, variant, ...props } = this.props;
         const { contextValue } = this.state;
 
-        const categ = this.state.snacks.reduce((acc, current) => {
+        const categ = this.state.snacks.reduce<SnacksByPosition>((acc, current) => {
             const category = originKeyExtractor(current.anchorOrigin);
             const existingOfCategory = acc[category] || [];
             return {
@@ -261,7 +266,7 @@ class SnackbarProvider extends Component {
         }, {});
 
         const iconVariant = {
-            ...defaultIconVariant,
+            ...defaultIconVariants,
             ...this.props.iconVariant,
         };
 
@@ -301,6 +306,7 @@ class SnackbarProvider extends Component {
 // eslint-disable-next-line
 const Element = typeof Element === 'undefined' ? function () { } : Element;
 
+
 SnackbarProvider.propTypes = {
     /**
      * Most of the time, this is your App. every component from this point onward
@@ -323,9 +329,7 @@ SnackbarProvider.propTypes = {
      * Used to easily display different variant of snackbars. When passed to `SnackbarProvider`
      * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
      */
-    variant: PropTypes.oneOf(
-        ['default', 'error', 'success', 'warning', 'info'],
-    ),
+    variant: PropTypes.oneOf(['default', 'error', 'success', 'warning', 'info']),
     /**
      * Ignores displaying multiple snackbars with the same `message`
      */

@@ -23,9 +23,11 @@
         ],
         "max-len": 0,
         "object-curly-newline": 0,
+        "import/extensions": 0,
+        "react/prop-types": 0,
         "react/destructuring-assignment": 0,
-        "react/jsx-closing-bracket-location": 0,
         "react/forbid-prop-types": 0,
+        "react/jsx-closing-bracket-location": 0,
         "react/sort-comp": 0,
         "react/require-default-props": 0,
         "react/jsx-filename-extension": [
@@ -33,7 +35,9 @@
             {
                 "extensions": [
                     ".js",
-                    ".jsx"
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
                 ]
             }
         ],
@@ -60,7 +64,21 @@
             "parserOptions": {
                 "sourceType": "module",
                 "project": "./tsconfig.json"
+            },
+            "rules": {
+                "@typescript-eslint/ban-ts-ignore": "off"
             }
         }
-    ]
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".js",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        }
+    }
 }
