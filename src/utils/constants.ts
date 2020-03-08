@@ -1,7 +1,12 @@
-import { CloseReason } from '../index';
+import { SnackbarClassKey } from '@material-ui/core/Snackbar';
+import { CloseReason, ContainerClassKey, SnackbarProviderProps } from '../index';
+import { SnackbarItemProps } from '../SnackbarItem';
 import { Snack } from '../SnackbarProvider';
 
-export const allClasses = {
+export const allClasses: {
+    mui: Record<SnackbarClassKey, {}>;
+    container: Record<ContainerClassKey, {}>;
+} = {
     mui: {
         root: {},
         anchorOriginTopCenter: {},
@@ -34,6 +39,14 @@ export const capitalise = (text: string): string => text.charAt(0).toUpperCase()
 
 export const originKeyExtractor = (anchor: Snack['anchorOrigin']): string => (
     `${capitalise(anchor.vertical)}${capitalise(anchor.horizontal)}`
+);
+
+/**
+ * Omit SnackbarContainer class keys that are not needed for SnackbarItem
+ */
+export const omitContainerKeys = (classes: SnackbarProviderProps['classes'] = {}): SnackbarItemProps['classes'] => (
+    // @ts-ignore
+    Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
 );
 
 export const REASONS: { [key: string]: CloseReason } = {

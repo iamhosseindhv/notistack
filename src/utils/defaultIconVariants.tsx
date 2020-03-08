@@ -1,6 +1,6 @@
 import React from 'react';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
-import { VariantType } from '../index';
+import { IconVariant } from '../index';
 
 type Icon = (props: SvgIconProps) => JSX.Element;
 
@@ -44,7 +44,7 @@ const iconStyles = {
     marginRight: 8,
 };
 
-const defaultIconVariants: Partial<{ [key in VariantType]: JSX.Element }> = {
+const defaultIconVariants: Omit<IconVariant, 'default'> = {
     success: <CheckIcon style={iconStyles} />,
     warning: <WarningIcon style={iconStyles} />,
     error: <ErrorIcon style={iconStyles} />,
