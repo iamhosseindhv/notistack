@@ -44,7 +44,6 @@
         "@typescript-eslint/eslint-plugin": "^2.22.0",
         "@typescript-eslint/parser": "^2.22.0",
         "babel-eslint": "^8.2.6",
-        "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
         "babel-runtime": "^6.26.0",
         "eslint": "^6.1.0",
         "eslint-config-airbnb": "~16.1.0",
@@ -59,7 +58,6 @@
     "dependencies": {
         "classnames": "^2.2.6",
         "hoist-non-react-statics": "^3.3.0",
-        "prop-types": "^15.7.2",
         "react-is": "^16.8.6"
     },
     "bugs": {
