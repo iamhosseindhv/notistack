@@ -1,7 +1,6 @@
 /**
  * Part of the following typing and documentation is from material-ui/src/Snackbar/Snackbar.d.ts
  */
-
 import * as React from 'react';
 import { SnackbarClassKey, SnackbarOrigin } from '@material-ui/core/Snackbar';
 import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
@@ -27,6 +26,41 @@ export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: Sna
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
 export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
+
+export type ContainerClassKey =
+    | 'containerAnchorOriginTopCenter'
+    | 'containerAnchorOriginBottomCenter'
+    | 'containerAnchorOriginTopRight'
+    | 'containerAnchorOriginBottomRight'
+    | 'containerAnchorOriginTopLeft'
+    | 'containerAnchorOriginBottomLeft';
+
+export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
+export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
+
+export interface IconVariant {
+    /**
+     * Icon displayed when variant of a snackbar is set to `default`.
+     */
+    default: React.ReactNode;
+    /**
+     * Icon displayed when variant of a snackbar is set to `error`.
+     */
+    error: React.ReactNode;
+    /**
+     * Icon displayed when variant of a snackbar is set to `success`.
+     */
+    success: React.ReactNode;
+    /**
+     * Icon displayed when variant of a snackbar is set to `warning`.
+     */
+    warning: React.ReactNode;
+    /**
+     * Icon displayed when variant of a snackbar is set to `info`.
+     */
+    info: React.ReactNode;
+}
+
 export interface TransitionHandlerProps {
     /**
      * Callback fired before snackbar requests to get closed.
@@ -64,54 +98,6 @@ export interface TransitionHandlerProps {
      */
     onExited: TransitionHandler;
 }
-
-export type ContainerClassKey =
-    | 'containerAnchorOriginTopCenter'
-    | 'containerAnchorOriginBottomCenter'
-    | 'containerAnchorOriginTopRight'
-    | 'containerAnchorOriginBottomRight'
-    | 'containerAnchorOriginTopLeft'
-    | 'containerAnchorOriginBottomLeft';
-
-export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
-export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
-
-export interface IconVariant {
-    /**
-     * Icon displayed when variant of a snackbar is set to `default`.
-     */
-    default: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `error`.
-     */
-    error: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `success`.
-     */
-    success: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `warning`.
-     */
-    warning: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `info`.
-     */
-    info: React.ReactNode;
-}
-
-export interface ProviderContext {
-    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
-    closeSnackbar: (key?: SnackbarKey) => void;
-}
-
-export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
-    React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
-
-
-export function useSnackbar(): ProviderContext;
-
-// backwards compatibility
-export type WithSnackbarProps = ProviderContext;
 
 export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDivElement>, SnackbarClassKey> {
     /**
@@ -226,3 +212,17 @@ export interface SnackbarProviderProps extends SharedProps {
 }
 
 export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
+
+export interface ProviderContext {
+    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
+    closeSnackbar: (key?: SnackbarKey) => void;
+}
+
+export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
+    React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
+
+
+export function useSnackbar(): ProviderContext;
+
+// backwards compatibility
+export type WithSnackbarProps = ProviderContext;
