@@ -46,12 +46,12 @@ const useStyle = makeStyles(theme => ({
 }));
 
 
-type SnackbarContainerProps = Required<{
-    className: string;
+interface SnackbarContainerProps {
     children: JSX.Element | JSX.Element[];
+    className?: string;
     dense: SnackbarProviderProps['dense'];
-    anchorOrigin: SnackbarProviderProps['anchorOrigin'];
-}>
+    anchorOrigin: NonNullable<SnackbarProviderProps['anchorOrigin']>;
+}
 
 const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
     const classes = useStyle();
@@ -61,7 +61,9 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
         classes.root,
         classes[anchorOrigin.vertical],
         classes[anchorOrigin.horizontal],
+        // @ts-ignore
         classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
+        // @ts-ignore
         classes[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
         { [classes.reverseColumns]: anchorOrigin.vertical === 'bottom' },
         className,
