@@ -4,8 +4,9 @@
 import * as React from 'react';
 import { SnackbarClassKey, SnackbarOrigin } from '@material-ui/core/Snackbar';
 import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
-import { StandardProps, ClickAwayListenerProps } from '@material-ui/core';
+import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
+import { StandardProps } from '@material-ui/core';
 
 export type OptionalBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
@@ -61,6 +62,9 @@ export interface IconVariant {
     info: React.ReactNode;
 }
 
+/**
+ * @category Shared
+ */
 export interface TransitionHandlerProps {
     /**
      * Callback fired before snackbar requests to get closed.
@@ -99,6 +103,9 @@ export interface TransitionHandlerProps {
     onExited: TransitionHandler;
 }
 
+/**
+ * @category Shared
+ */
 export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDivElement>, SnackbarClassKey> {
     /**
      * The anchor of the `Snackbar`.
@@ -109,6 +116,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      * `onClose` function. By default snackbars get closed after 5000 milliseconds.
      * Set autoHideDuration to 'undefined' if you don't want snackbars to automatically close.
      * Alternatively pass `persist: true` in the options parameter of enqueueSnackbar.
+     * @default 5000
      */
     autoHideDuration?: number | null;
     /**
@@ -131,7 +139,8 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      */
     resumeHideDuration?: number;
     /**
-     * The component used for the transition.
+     * The component used for the transition. (e.g. Slide, Grow, Zoom, etc.)
+     * @default Slide
      */
     TransitionComponent?: React.ComponentType<TransitionProps>;
     /**
@@ -145,14 +154,19 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
     TransitionProps?: TransitionProps;
 }
 
+/**
+ * @category Shared
+ */
 export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<TransitionHandlerProps> {
     /**
      * Used to easily display different variant of snackbars. When passed to `SnackbarProvider`
      * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
+     * @default default
      */
     variant?: VariantType;
     /**
      * Ignores displaying multiple snackbars with the same `message`
+     * @default false
      */
     preventDuplicate?: boolean;
     /**
@@ -167,6 +181,9 @@ export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<Tra
     action?: SnackbarAction;
 }
 
+/**
+ * @category Enqueue
+ */
 export interface OptionsObject extends SharedProps {
     /**
      * Unique identifier to reference a snackbar.
@@ -174,11 +191,15 @@ export interface OptionsObject extends SharedProps {
     key?: SnackbarKey;
     /**
      * Snackbar stays on the screen, unless it is dismissed (programmatically or through user interaction).
+     * @default false
      */
     persist?: boolean;
 }
 
-// all material-ui props, including class keys for notistack and material-ui with additional notistack props
+/**
+ * All material-ui props, including class keys for notistack and material-ui with additional notistack props
+ * @category Provider
+ */
 export interface SnackbarProviderProps extends SharedProps {
     /**
      * Most of the time, this is your App. every component from this point onward
@@ -191,10 +212,12 @@ export interface SnackbarProviderProps extends SharedProps {
     dense?: boolean;
     /**
      * Maximum snackbars that can be stacked on top of one another.
+     * @default 3
      */
     maxSnack?: number;
     /**
      * Hides iconVariant if set to `true`.
+     * @default false
      */
     hideIconVariant?: boolean;
     /**

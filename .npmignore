@@ -8,3 +8,4 @@ examples
 README.md
 CHANGELOG.md
 webpack.config.js
+typedoc.json

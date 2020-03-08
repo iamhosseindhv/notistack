@@ -27,5 +27,14 @@
     "./node_modules/*",
     "build",
     "./*.d.ts"
-  ]
+  ],
+  "typedocOptions": {
+    "inputFiles": ["./src/index.d.ts"],
+    "mode": "file",
+    "json": "typedoc.json",
+    "excludeExternals": true,
+    "externalPattern": "**/node_modules/**",
+    "ignoreCompilerErrors": true,
+    "includeDeclarations": true,
+  }
 }

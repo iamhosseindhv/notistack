@@ -20,6 +20,7 @@
         "build": "NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files --extensions \".js,.ts,.tsx\"",
         "prebuild": "rimraf build",
         "prepublishOnly": "npm run build",
+        "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "peerDependencies": {
@@ -53,6 +54,7 @@
         "react": "^16.8.0",
         "react-dom": "^16.8.0",
         "rimraf": "^3.0.0",
+        "typedoc": "^0.16.11",
         "typescript": "^3.8.3"
     },
     "dependencies": {
