@@ -2,7 +2,7 @@
  * Part of the following typing and documentation is from material-ui/src/Snackbar/Snackbar.d.ts
  */
 import * as React from 'react';
-import { SnackbarClassKey, SnackbarOrigin } from '@material-ui/core/Snackbar';
+import { SnackbarClassKey } from '@material-ui/core/Snackbar';
 import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
 import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
@@ -38,6 +38,11 @@ export type ContainerClassKey =
 
 export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
 export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
+
+export interface SnackbarOrigin {
+    vertical: 'top' | 'bottom';
+    horizontal: 'left' | 'center' | 'right';
+}
 
 export interface IconVariant {
     /**
@@ -129,13 +134,15 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
     ContentProps?: Partial<SnackbarContentProps>;
     /**
      * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
+     * @default false
      */
     disableWindowBlurListener?: boolean;
     /**
      * The number of milliseconds to wait before dismissing after user interaction.
      * If `autoHideDuration` property isn't specified, it does nothing.
      * If `autoHideDuration` property is specified but `resumeHideDuration` isn't,
-     * we default to `autoHideDuration / 2` ms.
+     * we use the default value.
+     * @default `autoHideDuration / 2` ms.
      */
     resumeHideDuration?: number;
     /**
@@ -145,7 +152,19 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
     TransitionComponent?: React.ComponentType<TransitionProps>;
     /**
      * The duration for the transition, in milliseconds.
-     * You may specify a single timeout for all transitions, or individually with an object.
+     * You may specify a single timeout for all transitions, or individually with an object
+     * in the following shape:
+     * ```js
+     *   timeout={500}
+     * ```
+     * or individually:
+     * ```js
+     * timeout={{
+     *  enter: 300,
+     *  exit: 500,
+     * }}
+     * ```
+     * @default { enter: 225, exit: 195 }
      */
     transitionDuration?: TransitionProps['timeout'];
     /**
@@ -187,6 +206,7 @@ export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<Tra
 export interface OptionsObject extends SharedProps {
     /**
      * Unique identifier to reference a snackbar.
+     * @default randomly generated unique string
      */
     key?: SnackbarKey;
     /**
