@@ -299,7 +299,7 @@ class SnackbarProvider extends Component {
 
 // polyfill for Node
 // eslint-disable-next-line
-const Element = typeof Element === 'undefined' ? function () { } : Element;
+const ElementType = typeof Element === 'undefined' ? function () { } : Element;
 
 SnackbarProvider.propTypes = {
     /**
@@ -440,7 +440,7 @@ SnackbarProvider.propTypes = {
     /**
      * Valid and exist HTML Node element, used to target `ReactDOM.createPortal`
      */
-    domRoot: PropTypes.instanceOf(Element),
+    domRoot: PropTypes.instanceOf(ElementType),
 };
 
 SnackbarProvider.defaultProps = {
