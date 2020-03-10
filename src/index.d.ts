@@ -45,8 +45,9 @@ export type ContainerClassKey =
     | 'containerAnchorOriginTopLeft'
     | 'containerAnchorOriginBottomLeft';
 
+export type RootClassKey = 'base'
 export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
-export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
+export type CombinedClassKey = RootClassKey | VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
 export interface WithSnackbarProps {
     enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
