@@ -58,7 +58,7 @@ export const allClasses = {
 const iconStyles = {
     opacity: 0.9,
     fontSize: 20,
-    marginRight: 8,
+    marginInlineEnd: 8,
 };
 
 export const defaultIconVariant = {
