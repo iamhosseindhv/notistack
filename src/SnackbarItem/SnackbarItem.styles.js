@@ -1,3 +1,5 @@
+import { green, red, blue, amber } from '@material-ui/core/colors';
+
 import { SNACKBAR_INDENTS, allClasses } from '../utils/constants';
 
 const styles = theme => ({
@@ -13,16 +15,20 @@ const styles = theme => ({
         paddingLeft: 8 * 2.5,
     },
     variantSuccess: {
-        backgroundColor: '#43a047', // green
+        backgroundColor: green[600], // green
+        color: '#fff',
     },
     variantError: {
-        backgroundColor: '#d32f2f', // dark red
+        backgroundColor: red[700], // dark red
+        color: '#fff',
     },
     variantInfo: {
-        backgroundColor: '#2979ff', // nice blue
+        backgroundColor: blue.A400, // nice blue
+        color: '#fff',
     },
     variantWarning: {
-        backgroundColor: '#ffa000', // amber
+        backgroundColor: amber[700], // amber
+        color: rgba(0, 0, 0, 0.87),
     },
     message: {
         display: 'flex',
