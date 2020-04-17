@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "esnext",
+    "target": "es5",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "outDir": "build",
+    "skipLibCheck": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+  },
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules/*",
+    "./node_modules/*",
+    "build",
+    "./*.d.ts"
+  ],
+  "typedocOptions": {
+    "inputFiles": ["./src/index.d.ts"],
+    "mode": "file",
+    "json": "typedoc.json",
+    "excludeExternals": true,
+    "externalPattern": "**/node_modules/**",
+    "ignoreCompilerErrors": true,
+    "includeDeclarations": true,
+  }
+}

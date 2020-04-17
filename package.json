@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.9.9",
+    "version": "0.9.10",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "build/index.js",
     "types": "build/index.d.ts",
@@ -16,10 +16,12 @@
         "type": "git"
     },
     "scripts": {
-        "build": "NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files",
-        "prebuild": "rimraf build",
+        "types": "tsc",
+        "build": "NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files --extensions \".js,.ts,.tsx\"",
+        "prebuild": "rimraf build && npm run docs",
         "prepublishOnly": "npm run build",
-        "eslint": "eslint . --ext .js,.jsx"
+        "docs": "rimraf typedoc.json && typedoc --tsconfig",
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "peerDependencies": {
         "react": "^16.8.0",
@@ -27,31 +29,37 @@
         "@material-ui/core": "^3.2.0 || ^4.0.0"
     },
     "devDependencies": {
-        "@material-ui/core": "^3.2.0",
-        "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.3",
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.7",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+        "@babel/preset-env": "^7.8.7",
+        "@babel/preset-react": "^7.8.3",
+        "@babel/preset-typescript": "^7.8.3",
+        "@material-ui/core": "^4.9.5",
+        "@types/classnames": "^2.2.10",
+        "@types/node": "^13.9.0",
+        "@types/react": "^16.9.23",
+        "@types/react-dom": "^16.9.5",
+        "@types/react-is": "^16.7.1",
+        "@typescript-eslint/eslint-plugin": "^2.22.0",
+        "@typescript-eslint/parser": "^2.22.0",
         "babel-eslint": "^8.2.6",
-        "babel-loader": "^7.1.4",
-        "babel-plugin-transform-object-rest-spread": "^6.26.0",
-        "babel-plugin-transform-react-jsx": "^6.24.1",
-        "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.5.0",
-        "babel-preset-stage-2": "^6.5.0",
         "babel-runtime": "^6.26.0",
-        "eslint": "^5.3.0",
-        "eslint-config-airbnb": "^17.0.0",
-        "eslint-plugin-import": "^2.13.0",
+        "eslint": "^6.1.0",
+        "eslint-config-airbnb": "~16.1.0",
+        "eslint-plugin-import": "~2.9.0",
         "eslint-plugin-jsx-a11y": "^6.1.1",
         "eslint-plugin-react": "^7.10.0",
         "react": "^16.8.0",
         "react-dom": "^16.8.0",
-        "rimraf": "^3.0.0"
+        "rimraf": "^3.0.0",
+        "typedoc": "^0.16.11",
+        "typescript": "^3.8.3"
     },
     "dependencies": {
         "classnames": "^2.2.6",
         "hoist-non-react-statics": "^3.3.0",
-        "prop-types": "^15.7.2",
         "react-is": "^16.8.6"
     },
     "bugs": {

@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { SNACKBAR_INDENTS } from './utils/constants';
+import { SnackbarProviderProps } from '.';
 
-const styles = theme => ({
+const useStyle = makeStyles(theme => ({
     root: {
         boxSizing: 'border-box',
         display: 'flex',
@@ -43,18 +43,27 @@ const styles = theme => ({
             transform: 'translateX(-50%)',
         },
     },
-});
+}));
 
-const SnackbarContainer = React.memo((props) => {
-    const {
-        classes, className, anchorOrigin, dense, ...other
-    } = props;
+
+interface SnackbarContainerProps {
+    children: JSX.Element | JSX.Element[];
+    className?: string;
+    dense: SnackbarProviderProps['dense'];
+    anchorOrigin: NonNullable<SnackbarProviderProps['anchorOrigin']>;
+}
+
+const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
+    const classes = useStyle();
+    const { className, anchorOrigin, dense, ...other } = props;
 
     const combinedClassname = classNames(
         classes.root,
         classes[anchorOrigin.vertical],
         classes[anchorOrigin.horizontal],
+        // @ts-ignore
         classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
+        // @ts-ignore
         classes[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
         { [classes.reverseColumns]: anchorOrigin.vertical === 'bottom' },
         className,
@@ -63,16 +72,6 @@ const SnackbarContainer = React.memo((props) => {
     return (
         <div className={combinedClassname} {...other} />
     );
-});
-
-SnackbarContainer.propTypes = {
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
-    dense: PropTypes.bool.isRequired,
-    anchorOrigin: PropTypes.shape({
-        horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
-        vertical: PropTypes.oneOf(['top', 'bottom']).isRequired,
-    }),
 };
 
-export default withStyles(styles)(SnackbarContainer);
+export default React.memo(SnackbarContainer);
