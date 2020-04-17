@@ -18,7 +18,7 @@
     "scripts": {
         "types": "tsc",
         "build": "NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files --extensions \".js,.ts,.tsx\"",
-        "prebuild": "rimraf build",
+        "prebuild": "rimraf build && npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"

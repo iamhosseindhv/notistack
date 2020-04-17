@@ -96,12 +96,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     }, []);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleClose = (key: SnackbarKey) => (event: React.SyntheticEvent<any> | null, reason: CloseReason): void => {
-        const { snack } = props;
-        if (snack.onClose) {
-            snack.onClose(event, reason, key);
+    const handleClose = (key: SnackbarKey) => (event: React.SyntheticEvent<any> | null, reason: string): void => {
+        const cause = reason as CloseReason;
+        if (props.snack.onClose) {
+            props.snack.onClose(event, cause, key);
         }
-        props.onClose(event, reason, key);
+        props.onClose(event, cause, key);
     };
 
     const handleEntered = (key: SnackbarKey) => (node: HTMLElement, isAppearing: boolean): void => {
@@ -131,7 +131,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const getUnusedCallbacks = () => (
         ['onEnter', 'onEntering', 'onExit', 'onExiting'].reduce((acc, cbName) => ({
             ...acc,
-            [cbName]: (...args): void => {
+            [cbName]: (...args: any[]): void => {
                 const { snack } = props;
                 if (typeof snack[cbName] === 'function') {
                     snack[cbName](...args, snack.key);

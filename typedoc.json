@@ -249,7 +249,7 @@
 						"tags": [
 							{
 								"tag": "default",
-								"text": "randomly generated unique string\n"
+								"text": "random unique string\n"
 							}
 						]
 					},
@@ -443,7 +443,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 261,
+							"line": 262,
 							"character": 17
 						}
 					],
@@ -492,7 +492,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 261,
+									"line": 262,
 									"character": 18
 								}
 							]
@@ -510,7 +510,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 260,
+							"line": 261,
 							"character": 19
 						}
 					],
@@ -574,7 +574,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 260,
+									"line": 261,
 									"character": 20
 								}
 							]
@@ -595,7 +595,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 259,
+					"line": 260,
 					"character": 32
 				}
 			]
@@ -922,66 +922,6 @@
 			"comment": {},
 			"children": [
 				{
-					"id": 21,
-					"name": "ClickAwayListenerProps",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"comment": {
-						"shortText": "Properties applied to ClickAwayListener component"
-					},
-					"sources": [
-						{
-							"fileName": "src/index.d.ts",
-							"line": 130,
-							"character": 26
-						}
-					],
-					"type": {
-						"type": "reference",
-						"typeArguments": [
-							{
-								"type": "reference",
-								"name": "ClickAwayListenerProps"
-							}
-						],
-						"name": "Partial"
-					}
-				},
-				{
-					"id": 22,
-					"name": "ContentProps",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"comment": {
-						"shortText": "Properties applied to SnackbarContent component"
-					},
-					"sources": [
-						{
-							"fileName": "src/index.d.ts",
-							"line": 134,
-							"character": 16
-						}
-					],
-					"type": {
-						"type": "reference",
-						"typeArguments": [
-							{
-								"type": "reference",
-								"name": "SnackbarContentProps"
-							}
-						],
-						"name": "Partial"
-					}
-				},
-				{
 					"id": 25,
 					"name": "TransitionComponent",
 					"kind": 1024,
@@ -1002,7 +942,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 152,
+							"line": 155,
 							"character": 23
 						}
 					],
@@ -1052,12 +992,18 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "The anchor of the `Snackbar`."
+						"shortText": "The anchor of the `Snackbar`.",
+						"tags": [
+							{
+								"tag": "default",
+								"text": "{ horizontal: left, vertical: bottom }\n"
+							}
+						]
 					},
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 118,
+							"line": 119,
 							"character": 16
 						}
 					],
@@ -1088,7 +1034,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 126,
+							"line": 127,
 							"character": 20
 						}
 					],
@@ -1210,7 +1156,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 139,
+							"line": 142,
 							"character": 29
 						}
 					],
@@ -1372,14 +1318,14 @@
 						"tags": [
 							{
 								"tag": "default",
-								"text": "`autoHideDuration / 2` ms.\n"
+								"text": "autoHideDuration / 2 ms.\n"
 							}
 						]
 					},
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 147,
+							"line": 150,
 							"character": 22
 						}
 					],
@@ -1433,7 +1379,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object\nin the following shape:\n```js\n  timeout={500}\n```\nor individually:\n```js\ntimeout={{\n enter: 300,\n exit: 500,\n}}\n```",
+						"shortText": "The duration for the transition, in milliseconds.\nYou may specify a single timeout for all transitions, or individually with an object\nin the following shape:\n```js\n  timeout={500}\n```\nor individually:\n```js\ntimeout={{ enter: 300, exit: 500 }}\n```",
 						"tags": [
 							{
 								"tag": "default",
@@ -1466,8 +1412,6 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						21,
-						22,
 						25,
 						27,
 						19,
@@ -1772,7 +1716,7 @@
 						"isExported": true
 					},
 					"comment": {
-						"shortText": "Most of the time, this is your App. every component from this point onward\nwill be able to show snackbars."
+						"shortText": "Most of the time this is your App. every component from this point onward\nwill be able to show snackbars."
 					},
 					"sources": [
 						{
@@ -1782,8 +1726,20 @@
 						}
 					],
 					"type": {
-						"type": "reference",
-						"name": "React.ReactNode"
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"name": "React.ReactNode"
+							},
+							{
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"name": "React.ReactNode"
+								}
+							}
+						]
 					}
 				},
 				{
@@ -1801,7 +1757,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 250,
+							"line": 251,
 							"character": 11
 						}
 					],
@@ -1871,12 +1827,18 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "Denser margins for snackbars. Recommended to be used on mobile devices."
+						"shortText": "Denser margins for snackbars. Recommended to be used on mobile devices.",
+						"tags": [
+							{
+								"tag": "default",
+								"text": "false\n"
+							}
+						]
 					},
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 232,
+							"line": 233,
 							"character": 9
 						}
 					],
@@ -1913,7 +1875,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 246,
+							"line": 247,
 							"character": 11
 						}
 					],
@@ -1943,7 +1905,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 242,
+							"line": 243,
 							"character": 19
 						}
 					],
@@ -1980,7 +1942,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 254,
+							"line": 255,
 							"character": 15
 						}
 					],
@@ -2017,7 +1979,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 237,
+							"line": 238,
 							"character": 12
 						}
 					],
@@ -3493,7 +3455,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 271,
+					"line": 272,
 					"character": 29
 				}
 			],
@@ -3515,7 +3477,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 257,
+					"line": 258,
 					"character": 29
 				}
 			],
@@ -3558,7 +3520,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 268,
+					"line": 269,
 					"character": 27
 				}
 			]
@@ -3678,7 +3640,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 265,
+													"line": 266,
 													"character": 77
 												}
 											],
@@ -3711,7 +3673,7 @@
 									"sources": [
 										{
 											"fileName": "src/index.d.ts",
-											"line": 265,
+											"line": 266,
 											"character": 58
 										}
 									]
@@ -3724,7 +3686,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 264,
+					"line": 265,
 					"character": 28
 				}
 			]

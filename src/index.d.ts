@@ -114,6 +114,7 @@ export interface TransitionHandlerProps {
 export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDivElement>, SnackbarClassKey> {
     /**
      * The anchor of the `Snackbar`.
+     * @default { horizontal: left, vertical: bottom }
      */
     anchorOrigin?: SnackbarOrigin;
     /**
@@ -125,10 +126,12 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      */
     autoHideDuration?: number | null;
     /**
+     * @ignore
      * Properties applied to ClickAwayListener component
      */
     ClickAwayListenerProps?: Partial<ClickAwayListenerProps>;
     /**
+     * @ignore
      * Properties applied to SnackbarContent component
      */
     ContentProps?: Partial<SnackbarContentProps>;
@@ -142,7 +145,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      * If `autoHideDuration` property isn't specified, it does nothing.
      * If `autoHideDuration` property is specified but `resumeHideDuration` isn't,
      * we use the default value.
-     * @default `autoHideDuration / 2` ms.
+     * @default autoHideDuration / 2 ms.
      */
     resumeHideDuration?: number;
     /**
@@ -159,10 +162,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      * ```
      * or individually:
      * ```js
-     * timeout={{
-     *  enter: 300,
-     *  exit: 500,
-     * }}
+     * timeout={{ enter: 300, exit: 500 }}
      * ```
      * @default { enter: 225, exit: 195 }
      */
@@ -206,7 +206,7 @@ export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<Tra
 export interface OptionsObject extends SharedProps {
     /**
      * Unique identifier to reference a snackbar.
-     * @default randomly generated unique string
+     * @default random unique string
      */
     key?: SnackbarKey;
     /**
@@ -222,12 +222,13 @@ export interface OptionsObject extends SharedProps {
  */
 export interface SnackbarProviderProps extends SharedProps {
     /**
-     * Most of the time, this is your App. every component from this point onward
+     * Most of the time this is your App. every component from this point onward
      * will be able to show snackbars.
      */
-    children: React.ReactNode;
+    children: React.ReactNode | React.ReactNode[];
     /**
      * Denser margins for snackbars. Recommended to be used on mobile devices.
+     * @default false
      */
     dense?: boolean;
     /**
