@@ -41,7 +41,7 @@ const InfoIcon: Icon = props => (
 const iconStyles = {
     opacity: 0.9,
     fontSize: 20,
-    marginRight: 8,
+    marginInlineEnd: 8,
 };
 
 const defaultIconVariants: Omit<IconVariant, 'default'> = {
