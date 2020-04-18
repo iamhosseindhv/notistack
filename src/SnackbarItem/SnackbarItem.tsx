@@ -49,10 +49,8 @@ const useStyle = makeStyles(theme => ({
     },
     collapseContainer: {
         [theme.breakpoints.down('xs')]: {
-            // @ts-ignore support for material-ui v3. soon to be removed
-            paddingLeft: typeof theme.spacing === 'function' ? theme.spacing(1) : theme.spacing.unit,
-            // @ts-ignore
-            paddingRight: typeof theme.spacing === 'function' ? theme.spacing(1) : theme.spacing.unit,
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
         },
     },
     collapseWrapper: {
