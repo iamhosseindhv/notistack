@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Snackbar, { SnackbarClassKey } from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
@@ -221,10 +221,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             >
                 {snackContent || (
                     <SnackbarContent
-                        className={classNames(
+                        className={clsx(
                             classes.base,
                             classes[`variant${capitalise(variant)}` as VariantClassKey],
-                            (!hideIconVariant && icon) ? classes.lessPadding : null,
+                            { [classes.lessPadding]: !hideIconVariant && icon },
                             className,
                         )}
                         {...contentProps}
