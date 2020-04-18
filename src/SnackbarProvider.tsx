@@ -306,7 +306,4 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     }
 }
 
-// @ts-ignore // polyfill for Node
-const Element = typeof Element === 'undefined' ? function () { } : Element; // eslint-disable-line 
-
 export default SnackbarProvider;
