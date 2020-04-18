@@ -19,7 +19,7 @@ export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
 
 export type SnackbarMessage = string | React.ReactNode;
-export type SnackbarAction = SnackbarContentProps['action'] | ((key: SnackbarKey) => React.ReactNode);
+export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
 export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
 
@@ -166,7 +166,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      * ```
      * @default { enter: 225, exit: 195 }
      */
-    transitionDuration?: TransitionProps['timeout'];
+    transitionDuration?: number | { appear?: number; enter?: number; exit?: number };
     /**
      * Properties applied to Transition component (e.g. Slide, Grow, Zoom, etc.)
      */
