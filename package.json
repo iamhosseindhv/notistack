@@ -17,7 +17,7 @@
     },
     "scripts": {
         "types": "tsc",
-        "build": "NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files --extensions \".js,.ts,.tsx\"",
+        "build": "cross-env NODE_ENV=production BABEL_ENV=production babel src -d build --copy-files --extensions \".js,.ts,.tsx\"",
         "prebuild": "rimraf build && npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
@@ -26,7 +26,7 @@
     "peerDependencies": {
         "react": "^16.8.0",
         "react-dom": "^16.8.0",
-        "@material-ui/core": "^3.2.0 || ^4.0.0"
+        "@material-ui/core": "^4.0.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.8.4",
@@ -37,7 +37,6 @@
         "@babel/preset-react": "^7.8.3",
         "@babel/preset-typescript": "^7.8.3",
         "@material-ui/core": "^4.9.5",
-        "@types/classnames": "^2.2.10",
         "@types/node": "^13.9.0",
         "@types/react": "^16.9.23",
         "@types/react-dom": "^16.9.5",
@@ -45,7 +44,9 @@
         "@typescript-eslint/eslint-plugin": "^2.22.0",
         "@typescript-eslint/parser": "^2.22.0",
         "babel-eslint": "^8.2.6",
+        "babel-plugin-optimize-clsx": "^2.6.0",
         "babel-runtime": "^6.26.0",
+        "cross-env": "^7.0.2",
         "eslint": "^6.1.0",
         "eslint-config-airbnb": "~16.1.0",
         "eslint-plugin-import": "~2.9.0",
@@ -58,7 +59,7 @@
         "typescript": "^3.8.3"
     },
     "dependencies": {
-        "classnames": "^2.2.6",
+        "clsx": "^1.1.0",
         "hoist-non-react-statics": "^3.3.0",
         "react-is": "^16.8.6"
     },

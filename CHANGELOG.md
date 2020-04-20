@@ -1,10 +1,26 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.10`
+### `notistack@0.9.12`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
+
+<br />
+
+### `notistack@0.9.11`
+###### April 20, 2020
+* **@mehmetkose @andrewmclagan @oliviertassinari @merceyz**: Reduce Bundle size by using `clsx` instead of `classnames`, Use `babel-plugin-optimize-clsx` [#163](https://github.com/iamhosseindhv/notistack/issues/163)
+* **@kikoanis** Fix bug with custom variant `classes` [#251](https://github.com/iamhosseindhv/notistack/issues/251)
+* Drop support for Material UI v3
+
+
+
+<br />
+
+### `notistack@0.9.10`
+###### April 17, 2020
+* Migrate codebase to typescript.
 
 
 <br />

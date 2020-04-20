@@ -5,6 +5,7 @@
     "@babel/preset-react"
   ],
   "plugins": [
+    "babel-plugin-optimize-clsx",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-object-rest-spread"
   ],

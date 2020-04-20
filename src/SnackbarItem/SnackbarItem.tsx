@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef, memo } from 'react';
-import classNames from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
-import Snackbar, { SnackbarClassKey } from '@material-ui/core/Snackbar';
+import React, { useState, useEffect, useRef } from 'react';
+import clsx from 'clsx';
+import { withStyles, WithStyles, createStyles, Theme } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, omitNonMuiKeys, omitNonCollapseKeys } from './SnackbarItem.util';
 import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/constants';
-import { SnackbarProviderProps, OptionalBy, SnackbarKey, CloseReason, SharedProps, RequiredBy, IconVariant, ClassNameMap, VariantClassKey } from '../index';
+import { SnackbarProviderProps, OptionalBy, SnackbarKey, CloseReason, SharedProps, RequiredBy, IconVariant, VariantClassKey } from '../index';
 import { Snack } from '../SnackbarProvider';
 
-
-const useStyle = makeStyles(theme => ({
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const styles = (theme: Theme) => createStyles({
     ...allClasses.mui,
     base: {
         fontSize: '0.875rem',
@@ -49,10 +49,8 @@ const useStyle = makeStyles(theme => ({
     },
     collapseContainer: {
         [theme.breakpoints.down('xs')]: {
-            // @ts-ignore support for material-ui v3. soon to be removed
-            paddingLeft: typeof theme.spacing === 'function' ? theme.spacing(1) : theme.spacing.unit,
-            // @ts-ignore
-            paddingRight: typeof theme.spacing === 'function' ? theme.spacing(1) : theme.spacing.unit,
+            paddingLeft: theme.spacing(1),
+            paddingRight: theme.spacing(1),
         },
     },
     collapseWrapper: {
@@ -64,7 +62,7 @@ const useStyle = makeStyles(theme => ({
         marginTop: SNACKBAR_INDENTS.snackbar.dense,
         marginBottom: SNACKBAR_INDENTS.snackbar.dense,
     },
-}));
+});
 
 
 type RemovedProps =
@@ -76,18 +74,16 @@ type RemovedProps =
     | 'preventDuplicate'
 
 
-export interface SnackbarItemProps extends RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
+export interface SnackbarItemProps extends WithStyles<typeof styles>, RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
     snack: Snack;
-    classes: Partial<ClassNameMap<VariantClassKey | SnackbarClassKey>>;
     dense: SnackbarProviderProps['dense'];
     iconVariant: OptionalBy<IconVariant, 'default'>;
     hideIconVariant: SnackbarProviderProps['hideIconVariant'];
 }
 
-const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
+const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
-    const classes = useStyle();
 
     useEffect(() => (): void => {
         if (timeout.current) {
@@ -221,10 +217,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             >
                 {snackContent || (
                     <SnackbarContent
-                        className={classNames(
+                        className={clsx(
                             classes.base,
                             classes[`variant${capitalise(variant)}` as VariantClassKey],
-                            (!hideIconVariant && icon) ? classes.lessPadding : null,
+                            { [classes.lessPadding]: !hideIconVariant && icon },
                             className,
                         )}
                         {...contentProps}
@@ -243,4 +239,4 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     );
 };
 
-export default memo(SnackbarItem);
+export default withStyles(styles)(SnackbarItem);
