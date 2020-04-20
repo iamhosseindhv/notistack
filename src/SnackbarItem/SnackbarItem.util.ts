@@ -36,7 +36,7 @@ export const omitNonMuiKeys: (classes: { wrappedRoot: string } & SnackbarProps['
 /**
  * Omit all class keys except what we need for collapse component
  */
-export const omitNonCollapseKeys = (classes: { collapseContainer: string; collapseWrapper: string; collapseWrapperDense: string }, dense: SnackbarItemProps['dense']): { container: string; wrapper: string } => ({
+export const omitNonCollapseKeys = (classes: SnackbarItemProps['classes'], dense: SnackbarItemProps['dense']): { container: string; wrapper: string } => ({
     container: classes.collapseContainer,
     wrapper: clsx(classes.collapseWrapper, { [classes.collapseWrapperDense]: dense }),
 });
