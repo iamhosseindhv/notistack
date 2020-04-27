@@ -260,6 +260,7 @@ export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
 export interface ProviderContext {
     enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
     closeSnackbar: (key?: SnackbarKey) => void;
+    replaceContent: (key: SnackbarKey, content: React.ReactNode) => void;
 }
 
 export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
