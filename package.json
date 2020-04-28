@@ -21,7 +21,8 @@
         "prebuild": "rimraf build && npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
-        "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "postinstall": "cd node_modules/notistack && npm install && npm run build"
     },
     "peerDependencies": {
         "react": "^16.8.0",
@@ -52,8 +53,8 @@
         "eslint-plugin-import": "~2.9.0",
         "eslint-plugin-jsx-a11y": "^6.1.1",
         "eslint-plugin-react": "^7.10.0",
-        "react": "^16.8.0",
-        "react-dom": "^16.8.0",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
         "rimraf": "^3.0.0",
         "typedoc": "^0.16.11",
         "typescript": "^3.8.3"
