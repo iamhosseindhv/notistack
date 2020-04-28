@@ -22,7 +22,7 @@
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "postinstall": "cd node_modules/notistack && npm install && npm run build"
+        "postinstall": "cd ./node_modules/notistack && npm install && npm run build"
     },
     "peerDependencies": {
         "react": "^16.8.0",
