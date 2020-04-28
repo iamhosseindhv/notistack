@@ -34,6 +34,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             contextValue: {
                 enqueueSnackbar: this.enqueueSnackbar,
                 closeSnackbar: this.closeSnackbar,
+                replaceContent: this.replaceContent
             },
         };
     }
@@ -86,6 +87,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
         return id;
     };
+
+    replaceContent = (key: SnackbarKey, content: React.ReactNode) => {
+        return this.handleUpdateSnack(key, content);
+    }
 
     /**
      * Reducer: Display snack if there's space for it. Otherwise, immediately
@@ -176,6 +181,17 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         this.setState(({ snacks }) => ({
             snacks: snacks.map(item => (
                 item.key === key ? { ...item, entered: true } : { ...item }
+            )),
+        }));
+    }
+
+    /**
+     * Update the content of the snackbar with the given key.
+     */
+    handleUpdateSnack = (key: SnackbarKey, content: React.ReactNode) => {
+        this.setState(({ snacks }) => ({
+            snacks: snacks.map(item => (
+                item.key === key ? { ...item, content: content } : { ...item }
             )),
         }));
     }
