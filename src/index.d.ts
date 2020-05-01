@@ -17,10 +17,10 @@ type Modify<T, R> = Pick<T, Exclude<keyof T, keyof R>> & R
 export type SnackbarKey = string | number;
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
-
+export type CustomContentProps = {[prop:string]: any};
 export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
-export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
+export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage, ContentProps?: Partial<SnackbarContentProps> | CustomContentProps ) => React.ReactNode);
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

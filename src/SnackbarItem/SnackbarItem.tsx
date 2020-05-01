@@ -192,7 +192,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
 
     let snackContent = singleContent || content;
     if (snackContent && typeof snackContent === 'function') {
-        snackContent = snackContent(key, snack.message);
+        snackContent = snackContent(key, snack.message, contentProps);
     }
 
     return (
