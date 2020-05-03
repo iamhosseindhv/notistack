@@ -8,13 +8,13 @@
   },
   "main": "src/index.js",
   "dependencies": {
+    "@material-ui/core": "^4.0.0",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "1.1.4",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
-    "notistack": "latest",
-    "@material-ui/core": "3.4.0"
+    "notistack": "latest"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from 'react';
+import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -79,7 +78,7 @@ class MessageButtons extends Component {
                     <Button
                         key={button.variant}
                         variant="contained"
-                        className={classNames(classes.button, classes[button.variant])}
+                        className={clsx(classes.button, classes[button.variant])}
                         onClick={this.handleClick(button)}
                     >
                         {button.variant}
@@ -97,11 +96,4 @@ class MessageButtons extends Component {
     }
 }
 
-MessageButtons.propTypes = {
-    classes: PropTypes.object.isRequired,
-    enqueueSnackbar: PropTypes.func.isRequired,
-};
-
-export default withStyles(styles)(
-    withSnackbar(MessageButtons),
-);
+export default withStyles(styles)(withSnackbar(MessageButtons));

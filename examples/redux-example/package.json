@@ -8,13 +8,13 @@
   },
   "main": "src/index.js",
   "dependencies": {
+    "@material-ui/core": "^4.0.0",
+    "notistack": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-redux": "latest",
     "react-scripts": "latest",
-    "redux": "latest",
-    "notistack": "latest",
-    "@material-ui/core": "3.4.0"
+    "redux": "latest"
   },
   "devDependencies": {},
   "scripts": {
