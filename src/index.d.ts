@@ -214,6 +214,10 @@ export interface OptionsObject extends SharedProps {
      * @default false
      */
     persist?: boolean;
+    /**
+     * Allow html data-* attributes. Will be passed down to the MuiSnackbar-root
+     */
+    [key?: string]: string;
 }
 
 /**
