@@ -4,12 +4,12 @@
 ![npm version](https://img.shields.io/npm/l/notistack.svg)
 
 
-**Notistack** is a Snackbar library which makes it extremely easy to display notifications on your web apps. It is **highly customizable** and enables **you** to stack snackbars/toasts on top of one another. See [demos](https://iamhosseindhv.com/notistack/demos) for more info. 
+**Notistack** is a Snackbar library which makes it extremely easy to display notifications on your web apps. It is **highly customizable** and enables **you** to stack snackbars/toasts on top of one another. See [demos](https://iamhosseindhv.com/notistack/demos) for more info.
 
-    
+
 #### [`Play with online demo here`](https://iamhosseindhv.com/notistack/demos)
-  
-| Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)| 
+
+| Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)|
 | --- | --- |
 | <img width="400" src="https://i.imgur.com/MtijvAK.gif"/>    | <img width="400" src="https://i.imgur.com/urX47Wn.gif"/>|
 
@@ -29,7 +29,7 @@ Table of Contents
 Use your preferred package manager:
 ```
 npm install notistack
-yarn add notistack 
+yarn add notistack
 ```
 
 ### How to use
@@ -62,12 +62,29 @@ class MyComponent extends Component {
   render(){
      //...
   };
-  
+
 };
 
 export default withSnackbar(MyComponent);
 ```
 
+**2 (alternative):** You can use `useSnackbar` hook in your functional components as well.
+
+```javascript
+import { useSnackbar } from 'notistack';
+
+const MyButton = () => {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    const handleClick = () => {
+        enqueueSnackbar('I love hooks');
+    };
+
+    return (
+        <Button onClick={handleClick}>Show snackbar</Button>
+    );
+}
+```
 
 ### Online demo
 **You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack/demos).**</br>
