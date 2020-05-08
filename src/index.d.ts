@@ -217,7 +217,7 @@ export interface OptionsObject extends SharedProps {
     /**
      * Allow custom (e.g. html data-*) attributes. These will be passed down to the Snackbar component.
      */
-    [key?: string]: string;
+    [key?: string]: any;
 }
 
 /**
