@@ -215,7 +215,7 @@ export interface OptionsObject extends SharedProps {
      */
     persist?: boolean;
     /**
-     * Allow html data-* attributes. Will be passed down to the MuiSnackbar-root
+     * Allow custom (e.g. html data-*) attributes. These will be passed down to the Snackbar component.
      */
     [key?: string]: string;
 }
