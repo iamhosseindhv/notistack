@@ -36,6 +36,7 @@
         "@babel/core": "^7.8.7",
         "@babel/plugin-proposal-class-properties": "^7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.9.6",
         "@babel/preset-env": "^7.8.7",
         "@babel/preset-react": "^7.8.3",
         "@babel/preset-typescript": "^7.8.3",
@@ -62,9 +63,9 @@
         "typescript": "^3.8.3"
     },
     "dependencies": {
-        "@babel/runtime": "^7.7.7",
-        "core-js": "^3.6.0",
+        "@babel/runtime": "^7.9.6",
         "clsx": "^1.1.0",
+        "core-js": "^3.6.5",
         "hoist-non-react-statics": "^3.3.0",
         "react-is": "^16.8.6"
     },

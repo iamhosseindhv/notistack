@@ -5,7 +5,7 @@ module.exports = {
     [
       "@babel/preset-env",
       {
-        corejs: 3,
+        corejs: require('core-js/package.json').version,
         useBuiltIns: "usage",
         modules: process.env.ESM === "true" ? false : "commonjs"
       }
