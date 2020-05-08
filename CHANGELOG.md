@@ -7,6 +7,7 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 * **@iinitz**: Enforce white text for dark theme [#241](https://github.com/iamhosseindhv/notistack/pull/241)
 * **@fbarbare**: Let Mat UI handle the font and border-radius [#262](https://github.com/iamhosseindhv/notistack/pull/262)
+* **@tomohiro-iwana @JuanmaMenendez**: Fix bug with snackbar not being centered on `xs` screens [#232](https://github.com/iamhosseindhv/notistack/issues/232)
 
 <br />
 

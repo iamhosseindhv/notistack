@@ -38,9 +38,10 @@ const useStyle = makeStyles(theme => ({
     rightDense: { right: SNACKBAR_INDENTS.view.dense },
 
     center: {
-        [theme.breakpoints.up('md')]: {
-            left: '50%',
-            transform: 'translateX(-50%)',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        [theme.breakpoints.down('xs')]: {
+            transform: 'translateX(0)',
         },
     },
 }));
