@@ -26,7 +26,7 @@ export default (state = defaultState, action) => {
                         ? { ...notification, dismissed: true }
                         : { ...notification }
                 )),
-            }
+            };
 
         case REMOVE_SNACKBAR:
             return {

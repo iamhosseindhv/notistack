@@ -3,7 +3,9 @@ examples
 .github
 .babelrc
 .eslintrc
+.eslintignore
 .gitignore
 README.md
 CHANGELOG.md
 webpack.config.js
+typedoc.json

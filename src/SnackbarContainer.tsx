@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
 import { SNACKBAR_INDENTS } from './utils/constants';
+import { SnackbarProviderProps } from '.';
 
-const styles = theme => ({
+const useStyle = makeStyles(theme => ({
     root: {
         boxSizing: 'border-box',
         display: 'flex',
@@ -38,23 +38,33 @@ const styles = theme => ({
     rightDense: { right: SNACKBAR_INDENTS.view.dense },
 
     center: {
-        [theme.breakpoints.up('md')]: {
-            left: '50%',
-            transform: 'translateX(-50%)',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        [theme.breakpoints.down('xs')]: {
+            transform: 'translateX(0)',
         },
     },
-});
+}));
 
-const SnackbarContainer = React.memo((props) => {
-    const {
-        classes, className, anchorOrigin, dense, ...other
-    } = props;
 
-    const combinedClassname = classNames(
+interface SnackbarContainerProps {
+    children: JSX.Element | JSX.Element[];
+    className?: string;
+    dense: SnackbarProviderProps['dense'];
+    anchorOrigin: NonNullable<SnackbarProviderProps['anchorOrigin']>;
+}
+
+const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
+    const classes = useStyle();
+    const { className, anchorOrigin, dense, ...other } = props;
+
+    const combinedClassname = clsx(
         classes.root,
         classes[anchorOrigin.vertical],
         classes[anchorOrigin.horizontal],
+        // @ts-ignore
         classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
+        // @ts-ignore
         classes[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
         { [classes.reverseColumns]: anchorOrigin.vertical === 'bottom' },
         className,
@@ -63,16 +73,6 @@ const SnackbarContainer = React.memo((props) => {
     return (
         <div className={combinedClassname} {...other} />
     );
-});
-
-SnackbarContainer.propTypes = {
-    classes: PropTypes.object.isRequired,
-    className: PropTypes.string,
-    dense: PropTypes.bool.isRequired,
-    anchorOrigin: PropTypes.shape({
-        horizontal: PropTypes.oneOf(['left', 'center', 'right']).isRequired,
-        vertical: PropTypes.oneOf(['top', 'bottom']).isRequired,
-    }),
 };
 
-export default withStyles(styles)(SnackbarContainer);
+export default React.memo(SnackbarContainer);

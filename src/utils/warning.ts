@@ -1,7 +1,7 @@
 /* eslint-disable */
 const __DEV__ = process.env.NODE_ENV !== 'production';
 
-export default (message) => {
+export default (message: string) => {
     if (!__DEV__) return;
 
     if (typeof console !== 'undefined') {

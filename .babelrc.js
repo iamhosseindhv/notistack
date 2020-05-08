@@ -1,5 +1,7 @@
 module.exports = {
   presets: [
+    "@babel/preset-typescript",
+    "@babel/preset-react",
     [
       "@babel/preset-env",
       {
@@ -7,12 +9,12 @@ module.exports = {
         useBuiltIns: "usage",
         modules: process.env.ESM === "true" ? false : "commonjs"
       }
-    ],
-    "@babel/preset-react"
+    ]    
   ],
   plugins: [
     "babel-plugin-optimize-clsx",
     "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",    
     [
       "@babel/plugin-transform-runtime",
       {
@@ -21,16 +23,5 @@ module.exports = {
       }
     ]
   ],
-  env: {
-    production: {
-      plugins: [
-        [
-          "babel-plugin-transform-react-remove-prop-types",
-          {
-            mode: "unsafe-wrap"
-          }
-        ]
-      ]
-    }
-  }
+  ignore: ["src/index.d.ts"]
 };
