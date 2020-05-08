@@ -13,13 +13,6 @@ import { Snack } from '../SnackbarProvider';
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const styles = (theme: Theme) => createStyles({
     ...allClasses.mui,
-    base: {
-        fontSize: '0.875rem',
-        lineHeight: '1.46429em',
-        fontWeight: theme.typography.fontWeightRegular,
-        fontFamily: theme.typography.fontFamily,
-        borderRadius: theme.shape.borderRadius,
-    },
     lessPadding: {
         paddingLeft: 8 * 2.5,
     },
@@ -222,7 +215,6 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                 {snackContent || (
                     <SnackbarContent
                         className={clsx(
-                            classes.base,
                             classes[`variant${capitalise(variant)}` as VariantClassKey],
                             { [classes.lessPadding]: !hideIconVariant && icon },
                             className,
