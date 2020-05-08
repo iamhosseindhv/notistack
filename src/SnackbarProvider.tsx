@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
+import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
 import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
@@ -278,7 +279,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                 key={origin}
                 dense={dense}
                 anchorOrigin={snacks[0].anchorOrigin}
-                className={classes[`containerAnchorOrigin${origin}` as ContainerClassKey]}
+                className={clsx(
+                    classes.containerRoot,
+                    classes[`containerAnchorOrigin${origin}` as ContainerClassKey],
+                )}
             >
                 {snacks.map(snack => (
                     <SnackbarItem
