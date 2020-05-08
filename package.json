@@ -17,11 +17,11 @@
         "type": "git"
     },
     "scripts": {
+        "types": "tsc",
         "build-cjs": "cross-env NODE_ENV=production BABEL_ENV=production ESM=false babel src -d build --copy-files --extensions \".js,.ts,.tsx\"",
         "build-esm": "cross-env NODE_ENV=production BABEL_ENV=production ESM=true babel src -d build/esm --copy-files --extensions \".js,.ts,.tsx\"",
         "build": "npm run build-cjs && npm run build-esm",
-        "prebuild": "rimraf build",
-        "types": "tsc",
+        "prebuild": "rimraf build && npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
