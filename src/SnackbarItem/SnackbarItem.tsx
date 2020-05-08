@@ -25,15 +25,19 @@ const styles = (theme: Theme) => createStyles({
     },
     variantSuccess: {
         backgroundColor: '#43a047', // green
+        color: '#fff',
     },
     variantError: {
         backgroundColor: '#d32f2f', // dark red
+        color: '#fff',
     },
     variantInfo: {
-        backgroundColor: '#2979ff', // nice blue
+        backgroundColor: '#2196f3', // nice blue
+        color: '#fff',
     },
     variantWarning: {
-        backgroundColor: '#ffa000', // amber
+        backgroundColor: '#ff9800', // amber
+        color: '#fff',
     },
     message: {
         display: 'flex',
