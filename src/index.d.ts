@@ -29,6 +29,7 @@ export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, k
 export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
 
 export type ContainerClassKey =
+    | 'containerRoot'
     | 'containerAnchorOriginTopCenter'
     | 'containerAnchorOriginBottomCenter'
     | 'containerAnchorOriginTopRight'
