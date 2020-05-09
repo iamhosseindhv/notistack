@@ -6,11 +6,11 @@ import Slide from '@material-ui/core/Slide';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, omitNonCollapseKeys } from './SnackbarItem.util';
-import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/constants';
+import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS, DEFAULTS } from '../utils/constants';
 import { SharedProps, RequiredBy, VariantClassKey, TransitionHandlerProps, SnackbarProviderProps } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
 import createChainedFunction from '../utils/createChainedFunction';
-import { Snack, DEFAULTS } from '../SnackbarProvider';
+import { Snack } from '../SnackbarProvider';
 import Snackbar from './Snackbar';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -205,10 +205,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                     appear
                     in={snack.open}
                     {...callbacks}
+                    {...transitionProps}
                     timeout={transitionDuration}
                     onExited={handleExitedScreen}
                     onEntered={createChainedFunction([handleEntered, callbacks.onEntered], key)}
-                    {...transitionProps}
                 >
                     {snackContent || (
                         <SnackbarContent

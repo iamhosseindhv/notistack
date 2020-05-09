@@ -1,5 +1,5 @@
 import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { CloseReason, ContainerClassKey, SnackbarProviderProps } from '../index';
+import { CloseReason, ContainerClassKey, SnackbarProviderProps, VariantType, SnackbarOrigin } from '../index';
 import { SnackbarItemProps } from '../SnackbarItem';
 import { Snack } from '../SnackbarProvider';
 
@@ -34,6 +34,19 @@ export const MESSAGES = {
 export const SNACKBAR_INDENTS = {
     view: { default: 20, dense: 4 },
     snackbar: { default: 6, dense: 2 },
+};
+
+export const DEFAULTS = {
+    maxSnack: 3,
+    dense: false,
+    hideIconVariant: false,
+    variant: 'default' as VariantType,
+    autoHideDuration: 5000,
+    anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
+    transitionDuration: {
+        enter: 225,
+        exit: 195,
+    },
 };
 
 export const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);

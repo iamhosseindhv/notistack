@@ -2,26 +2,12 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys } from './utils/constants';
+import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps, VariantType, SnackbarOrigin } from '.';
+import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps } from '.';
 import createChainedFunction from './utils/createChainedFunction';
-
-
-export const DEFAULTS = {
-    maxSnack: 3,
-    dense: false,
-    hideIconVariant: false,
-    variant: 'default' as VariantType,
-    autoHideDuration: 5000,
-    anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
-    transitionDuration: {
-        enter: 225,
-        exit: 195,
-    },
-};
 
 type Reducer = (state: State) => State;
 type SnacksByPosition = { [key: string]: Snack[] };
