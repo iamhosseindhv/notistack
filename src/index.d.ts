@@ -3,7 +3,6 @@
  */
 import * as React from 'react';
 import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
 import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { StandardProps } from '@material-ui/core';
@@ -107,6 +106,8 @@ export interface TransitionHandlerProps {
      */
     onExited: TransitionHandler;
 }
+
+export type SnackbarContentProps = React.HTMLAttributes<HTMLDivElement>
 
 /**
  * @category Shared

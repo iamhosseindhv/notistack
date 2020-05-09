@@ -106,14 +106,13 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         action,
         content,
         className,
+        style,
         ContentProps = {},
         snack,
         TransitionComponent = Slide,
         TransitionProps: otherTransitionProps = {},
         ...other
     } = props;
-
-    const { ...otherContentProps } = ContentProps;
 
     const {
         persist: dontspead1,
@@ -138,16 +137,16 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         ...iconVariant,
     }[variant];
 
-    const contentProps = {
-        ...otherContentProps,
-        ...singleContentProps,
-        action: singleAction || singleContentProps.action || otherContentProps.action || action,
-    };
-
     const transitionProps = {
         direction: getTransitionDirection(anchorOrigin),
         ...otherTransitionProps,
         ...singleTransitionProps,
+    };
+
+    const contentProps = {
+        ...ContentProps,
+        ...singleContentProps,
+        action: singleAction || action,
     };
 
     const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
@@ -199,12 +198,14 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                 {snackContent || (
                     <SnackbarContent
                         role="alert"
-                        aria-describedby={ariaDescribedby}
+                        {...contentProps}
                         className={clsx(
                             classes[`variant${capitalise(variant)}` as VariantClassKey],
                             { [classes.lessPadding]: !hideIconVariant && icon },
                             className,
                         )}
+                        style={style}
+                        aria-describedby={ariaDescribedby}
                         message={(
                             <span id={ariaDescribedby} className={classes.message}>
                                 {!hideIconVariant ? icon : null}
