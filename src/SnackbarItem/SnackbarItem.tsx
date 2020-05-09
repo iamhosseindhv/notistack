@@ -205,11 +205,14 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                 <TransitionComponent
                     appear
                     in={snack.open}
-                    {...callbacks}
-                    {...transitionProps}
                     timeout={transitionDuration}
-                    onExited={handleExitedScreen}
+                    {...transitionProps}
+                    onEnter={callbacks.onEnter}
+                    onEntering={callbacks.onEntering}
                     onEntered={createChainedFunction([handleEntered, callbacks.onEntered], key)}
+                    onExit={callbacks.onExit}
+                    onExiting={callbacks.onExiting}
+                    onExited={handleExitedScreen}
                 >
                     {snackContent || (
                         <SnackbarContent
