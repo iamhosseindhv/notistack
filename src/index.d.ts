@@ -132,8 +132,8 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      */
     ClickAwayListenerProps?: Partial<ClickAwayListenerProps>;
     /**
-     * @ignore
-     * Properties applied to SnackbarContent component
+     * Properties applied to SnackbarContent component.
+     * If `content` property is specified (i.e. you're passing a custom snackbar), it does nothing.
      */
     ContentProps?: Partial<SnackbarContentProps>;
     /**
