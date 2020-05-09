@@ -7,7 +7,7 @@ import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, omitNonCollapseKeys } from './SnackbarItem.util';
 import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/constants';
-import { SharedProps, RequiredBy, VariantClassKey, TransitionHandlerProps } from '../index';
+import { SharedProps, RequiredBy, VariantClassKey, TransitionHandlerProps, SnackbarProviderProps } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
 import createChainedFunction from '../utils/createChainedFunction';
 import { Snack } from '../SnackbarProvider';
@@ -77,6 +77,9 @@ type RemovedProps =
 
 export interface SnackbarItemProps extends WithStyles<typeof styles>, RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
     snack: Snack;
+    dense: SnackbarProviderProps['dense'];
+    iconVariant: SnackbarProviderProps['iconVariant'];
+    hideIconVariant: SnackbarProviderProps['hideIconVariant'];
 }
 
 const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
@@ -108,6 +111,9 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         content,
         className,
         style,
+        dense,
+        hideIconVariant,
+        iconVariant,
         ContentProps = {},
         snack,
         TransitionComponent = Slide,
@@ -118,10 +124,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
     const {
         persist: dontspead1,
         key,
-        dense,
         message: snackMessage,
-        hideIconVariant,
-        iconVariant,
         entered,
         requestClose,
         variant,

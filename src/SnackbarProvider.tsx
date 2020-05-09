@@ -27,10 +27,6 @@ export interface Snack extends RequiredBy<OptionsObject, 'key' | 'variant' | 'an
     open: boolean;
     entered: boolean;
     requestClose: boolean;
-    // append
-    iconVariant: SnackbarProviderProps['iconVariant'];
-    dense: SnackbarProviderProps['dense'];
-    hideIconVariant: SnackbarProviderProps['hideIconVariant'];
 }
 
 interface State {
@@ -80,9 +76,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             open: true,
             entered: false,
             requestClose: false,
-            iconVariant: this.props.iconVariant,
-            dense: merge('dense'),
-            hideIconVariant: merge('hideIconVariant'),
             variant: merge('variant'),
             autoHideDuration: merge('autoHideDuration'),
             anchorOrigin: merge('anchorOrigin'),
@@ -270,11 +263,11 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         const {
             maxSnack: dontspread1,
             preventDuplicate: dontspread2,
-            dense: dontspread3,
-            hideIconVariant: dontspread4,
-            iconVariant: dontspread5,
-            variant: dontspread6,
-            anchorOrigin: dontspread7,
+            variant: dontspread3,
+            anchorOrigin: dontspread4,
+            iconVariant,
+            dense = DEFAULTS.dense,
+            hideIconVariant = DEFAULTS.hideIconVariant,
             domRoot,
             children,
             classes = {},
@@ -293,7 +286,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         const snackbars = Object.entries(categ).map(([origin, snacks]) => (
             <SnackbarContainer
                 key={origin}
-                dense={snacks[0].dense}
+                dense={dense}
                 anchorOrigin={snacks[0].anchorOrigin}
                 className={clsx(
                     classes.containerRoot,
@@ -305,6 +298,9 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                         {...props}
                         key={snack.key}
                         snack={snack}
+                        dense={dense}
+                        iconVariant={iconVariant}
+                        hideIconVariant={hideIconVariant}
                         classes={omitContainerKeys(classes)}
                         onClose={this.handleCloseSnack}
                         onExited={createChainedFunction([this.handleExitedSnack, this.props.onExited])}
