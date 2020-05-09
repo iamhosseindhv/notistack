@@ -17,6 +17,7 @@ export const allClasses: {
         anchorOriginBottomLeft: {},
     },
     container: {
+        containerRoot: {},
         containerAnchorOriginTopCenter: {},
         containerAnchorOriginBottomCenter: {},
         containerAnchorOriginTopRight: {},
@@ -44,7 +45,7 @@ export const originKeyExtractor = (anchor: Snack['anchorOrigin']): string => (
 /**
  * Omit SnackbarContainer class keys that are not needed for SnackbarItem
  */
-export const omitContainerKeys = (classes: SnackbarProviderProps['classes'] = {}): SnackbarItemProps['classes'] => (
+export const omitContainerKeys = (classes: SnackbarProviderProps['classes']): SnackbarItemProps['classes'] => (
     // @ts-ignore
     Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
 );
