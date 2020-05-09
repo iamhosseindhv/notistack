@@ -2,35 +2,7 @@
 import * as React from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { REASONS } from '../utils/constants';
-
-const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
-
-function useEventCallback(fn) {
-    const ref = React.useRef(fn);
-    useEnhancedEffect(() => {
-        ref.current = fn;
-    });
-    return React.useCallback((...args) => (0, ref.current)(...args), []);
-}
-
-export function createChainedFunction(funcs, extraArg) {
-    return funcs.reduce((acc, func) => {
-        if (func == null) return acc;
-
-        if (process.env.NODE_ENV !== 'production') {
-            if (typeof func !== 'function') {
-                console.error('Material-UI: Invalid Argument Type, must only provide functions, undefined, or null.');
-            }
-        }
-
-        return function chainedFunction(...args) {
-            const argums = [...args];
-            if (extraArg) argums.push(extraArg);
-            acc.apply(this, argums);
-            func.apply(this, argums);
-        };
-    }, () => { });
-}
+import useEventCallback from '../utils/useEventCallback';
 
 const Snackbar = React.forwardRef((props, ref) => {
     const {

@@ -9,8 +9,9 @@ import { getTransitionDirection, omitNonCollapseKeys } from './SnackbarItem.util
 import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/constants';
 import { SharedProps, RequiredBy, VariantClassKey, TransitionHandlerProps } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
+import createChainedFunction from '../utils/createChainedFunction';
 import { Snack } from '../SnackbarProvider';
-import Snackbar, { createChainedFunction } from './Snackbar';
+import Snackbar from './Snackbar';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const styles = (theme: Theme) => createStyles({

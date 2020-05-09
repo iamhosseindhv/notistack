@@ -7,7 +7,7 @@ import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
 import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps, VariantType, SnackbarOrigin } from '.';
-import { createChainedFunction } from './SnackbarItem/Snackbar';
+import createChainedFunction from './utils/createChainedFunction';
 
 
 const DEFAULTS = {
