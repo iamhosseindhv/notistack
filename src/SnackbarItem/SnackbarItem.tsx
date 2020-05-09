@@ -10,7 +10,7 @@ import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/cons
 import { SharedProps, RequiredBy, VariantClassKey, TransitionHandlerProps, SnackbarProviderProps } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
 import createChainedFunction from '../utils/createChainedFunction';
-import { Snack } from '../SnackbarProvider';
+import { Snack, DEFAULTS } from '../SnackbarProvider';
 import Snackbar from './Snackbar';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -118,6 +118,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         snack,
         TransitionComponent = Slide,
         TransitionProps: otherTransitionProps = {},
+        transitionDuration: otherTransitionDuration = {},
         ...other
     } = props;
 
@@ -128,11 +129,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         entered,
         requestClose,
         variant,
-        content: singleContent,
-        action: singleAction,
-        ContentProps: singleContentProps = {},
         anchorOrigin,
+        action: singleAction,
+        content: singleContent,
+        ContentProps: singleContentProps = {},
         TransitionProps: singleTransitionProps = {},
+        transitionDuration: singleTransitionDuration = {},
         ...singleSnackProps
     } = snack;
 
@@ -151,6 +153,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         ...ContentProps,
         ...singleContentProps,
         action: singleAction || action,
+    };
+
+    const transitionDuration = {
+        ...DEFAULTS.transitionDuration,
+        ...otherTransitionDuration,
+        ...singleTransitionDuration,
     };
 
     const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
@@ -183,42 +191,46 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             onExited={callbacks.onExited}
         >
             <Snackbar
-                TransitionComponent={TransitionComponent}
                 {...other}
                 {...singleSnackProps}
                 open={snack.open}
-                anchorOrigin={anchorOrigin}
-                TransitionProps={transitionProps}
                 className={clsx(
                     classes.root,
                     classes.wrappedRoot,
                     classes[anchorOriginClass as SnackbarClassKey],
                 )}
-                {...callbacks}
-                onExited={handleExitedScreen}
-                onEntered={createChainedFunction([handleEntered, callbacks.onEntered], key)}
                 onClose={handleClose}
             >
-                {snackContent || (
-                    <SnackbarContent
-                        role="alert"
-                        {...contentProps}
-                        className={clsx(
-                            classes[`variant${capitalise(variant)}` as VariantClassKey],
-                            { [classes.lessPadding]: !hideIconVariant && icon },
-                            className,
-                        )}
-                        style={style}
-                        aria-describedby={ariaDescribedby}
-                        message={(
-                            <span id={ariaDescribedby} className={classes.message}>
-                                {!hideIconVariant ? icon : null}
-                                {snackMessage}
-                            </span>
-                        )}
-                        action={finalAction}
-                    />
-                )}
+                <TransitionComponent
+                    appear
+                    in={snack.open}
+                    {...callbacks}
+                    timeout={transitionDuration}
+                    onExited={handleExitedScreen}
+                    onEntered={createChainedFunction([handleEntered, callbacks.onEntered], key)}
+                    {...transitionProps}
+                >
+                    {snackContent || (
+                        <SnackbarContent
+                            role="alert"
+                            {...contentProps}
+                            className={clsx(
+                                classes[`variant${capitalise(variant)}` as VariantClassKey],
+                                { [classes.lessPadding]: !hideIconVariant && icon },
+                                className,
+                            )}
+                            style={style}
+                            aria-describedby={ariaDescribedby}
+                            message={(
+                                <span id={ariaDescribedby} className={classes.message}>
+                                    {!hideIconVariant ? icon : null}
+                                    {snackMessage}
+                                </span>
+                            )}
+                            action={finalAction}
+                        />
+                    )}
+                </TransitionComponent>
             </Snackbar>
         </Collapse>
     );

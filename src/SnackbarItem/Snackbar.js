@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import * as React from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { REASONS } from '../utils/constants';
@@ -6,28 +5,15 @@ import useEventCallback from '../utils/useEventCallback';
 
 const Snackbar = React.forwardRef((props, ref) => {
     const {
-        anchorOrigin: dontspread1,
-        autoHideDuration,
         children,
+        autoHideDuration,
         ClickAwayListenerProps,
         disableWindowBlurListener = false,
         onClose,
-        onEnter,
-        onEntered,
-        onEntering,
-        onExit,
-        onExited,
-        onExiting,
         onMouseEnter,
         onMouseLeave,
         open,
         resumeHideDuration,
-        TransitionComponent,
-        transitionDuration = {
-            enter: 225,
-            exit: 195,
-        },
-        TransitionProps,
         ...other
     } = props;
 
@@ -115,20 +101,7 @@ const Snackbar = React.forwardRef((props, ref) => {
     return (
         <ClickAwayListener onClickAway={handleClickAway} {...ClickAwayListenerProps}>
             <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={ref} {...other}>
-                <TransitionComponent
-                    appear
-                    in={open}
-                    onEnter={onEnter}
-                    onEntered={onEntered}
-                    onEntering={onEntering}
-                    onExit={onExit}
-                    onExited={onExited}
-                    onExiting={onExiting}
-                    timeout={transitionDuration}
-                    {...TransitionProps}
-                >
-                    {children}
-                </TransitionComponent>
+                {children}
             </div>
         </ClickAwayListener>
     );

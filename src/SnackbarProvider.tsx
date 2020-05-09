@@ -10,13 +10,17 @@ import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage,
 import createChainedFunction from './utils/createChainedFunction';
 
 
-const DEFAULTS = {
+export const DEFAULTS = {
     maxSnack: 3,
     dense: false,
     hideIconVariant: false,
     variant: 'default' as VariantType,
     autoHideDuration: 5000,
     anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
+    transitionDuration: {
+        enter: 225,
+        exit: 195,
+    },
 };
 
 type Reducer = (state: State) => State;
