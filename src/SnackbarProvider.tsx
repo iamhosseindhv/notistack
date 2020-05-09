@@ -6,9 +6,18 @@ import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys } from './util
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps } from '.';
+import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps, VariantType, SnackbarOrigin } from '.';
 import { createChainedFunction } from './SnackbarItem/Snackbar';
 
+
+const DEFAULTS = {
+    maxSnack: 3,
+    dense: false,
+    hideIconVariant: false,
+    variant: 'default' as VariantType,
+    autoHideDuration: 5000,
+    anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
+};
 
 type Reducer = (state: State) => State;
 type SnacksByPosition = { [key: string]: Snack[] };
@@ -18,6 +27,10 @@ export interface Snack extends RequiredBy<OptionsObject, 'key' | 'variant' | 'an
     open: boolean;
     entered: boolean;
     requestClose: boolean;
+    // append
+    iconVariant: SnackbarProviderProps['iconVariant'];
+    dense: SnackbarProviderProps['dense'];
+    hideIconVariant: SnackbarProviderProps['hideIconVariant'];
 }
 
 interface State {
@@ -40,16 +53,26 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     }
 
     get maxSnack(): number {
-        return this.props.maxSnack || 3;
+        return this.props.maxSnack || DEFAULTS.maxSnack;
     }
 
     /**
      * Adds a new snackbar to the queue to be presented.
      * Returns generated or user defined key referencing the new snackbar or null
      */
-    enqueueSnackbar = (message: SnackbarMessage, { key, preventDuplicate, ...options }: OptionsObject = {}): SnackbarKey => {
+    enqueueSnackbar = (message: SnackbarMessage, opts: OptionsObject = {}): SnackbarKey => {
+        const {
+            key,
+            preventDuplicate,
+            ...options
+        } = opts;
+
         const hasSpecifiedKey = key || key === 0;
         const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
+
+        // @ts-ignore
+        const merge = (name: string): any => options[name] || this.props[name] || DEFAULTS[name];
+
         const snack: Snack = {
             key: id,
             ...options,
@@ -57,9 +80,12 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             open: true,
             entered: false,
             requestClose: false,
-            variant: options.variant || this.props.variant || 'default',
-            autoHideDuration: options.autoHideDuration || this.props.autoHideDuration || 5000,
-            anchorOrigin: options.anchorOrigin || this.props.anchorOrigin || { vertical: 'bottom', horizontal: 'left' },
+            iconVariant: this.props.iconVariant,
+            dense: merge('dense'),
+            hideIconVariant: merge('hideIconVariant'),
+            variant: merge('variant'),
+            autoHideDuration: merge('autoHideDuration'),
+            anchorOrigin: merge('anchorOrigin'),
         };
 
         if (options.persist) {
@@ -242,15 +268,16 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     render(): JSX.Element {
         const { contextValue } = this.state;
         const {
-            variant,
-            maxSnack,
-            anchorOrigin,
-            preventDuplicate,
+            maxSnack: dontspread1,
+            preventDuplicate: dontspread2,
+            dense: dontspread3,
+            hideIconVariant: dontspread4,
+            iconVariant: dontspread5,
+            variant: dontspread6,
+            anchorOrigin: dontspread7,
             domRoot,
             children,
             classes = {},
-            dense = false,
-            hideIconVariant = false,
             ...props
         } = this.props;
 
@@ -266,7 +293,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         const snackbars = Object.entries(categ).map(([origin, snacks]) => (
             <SnackbarContainer
                 key={origin}
-                dense={dense}
+                dense={snacks[0].dense}
                 anchorOrigin={snacks[0].anchorOrigin}
                 className={clsx(
                     classes.containerRoot,
@@ -277,9 +304,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                     <SnackbarItem
                         {...props}
                         key={snack.key}
-                        dense={dense}
                         snack={snack}
-                        hideIconVariant={hideIconVariant}
                         classes={omitContainerKeys(classes)}
                         onClose={this.handleCloseSnack}
                         onExited={createChainedFunction([this.handleExitedSnack, this.props.onExited])}

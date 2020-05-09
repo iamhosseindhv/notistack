@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
+import { SnackbarClassKey } from '@material-ui/core/Snackbar';
 import { withStyles, WithStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Slide from '@material-ui/core/Slide';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, omitNonCollapseKeys } from './SnackbarItem.util';
 import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/constants';
-import { SnackbarProviderProps, SharedProps, RequiredBy, VariantClassKey, TransitionHandlerProps } from '../index';
+import { SharedProps, RequiredBy, VariantClassKey, TransitionHandlerProps } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
 import { Snack } from '../SnackbarProvider';
 import Snackbar, { createChainedFunction } from './Snackbar';
@@ -44,10 +45,7 @@ const styles = (theme: Theme) => createStyles({
         right: 0,
         bottom: 0,
         left: 0,
-        zIndex: theme.zIndex.snackbar,
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
+        display: 'flex',
     },
     collapseContainer: {
         [theme.breakpoints.down('xs')]: {
@@ -78,9 +76,6 @@ type RemovedProps =
 
 export interface SnackbarItemProps extends WithStyles<typeof styles>, RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
     snack: Snack;
-    dense: SnackbarProviderProps['dense'];
-    iconVariant?: SnackbarProviderProps['iconVariant'];
-    hideIconVariant: SnackbarProviderProps['hideIconVariant'];
 }
 
 const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
@@ -110,26 +105,23 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
     const {
         action,
         content,
+        className,
         ContentProps = {},
-        hideIconVariant,
-        iconVariant: iVariant,
         snack,
-        dense,
         TransitionComponent = Slide,
         TransitionProps: otherTransitionProps = {},
         ...other
     } = props;
 
-    const iconVariant = {
-        ...defaultIconVariants,
-        ...iVariant,
-    };
-
-    const { className, ...otherContentProps } = ContentProps;
+    const { ...otherContentProps } = ContentProps;
 
     const {
+        persist: dontspead1,
         key,
-        persist,
+        dense,
+        message: snackMessage,
+        hideIconVariant,
+        iconVariant,
         entered,
         requestClose,
         variant,
@@ -141,7 +133,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         ...singleSnackProps
     } = snack;
 
-    const icon = iconVariant[variant];
+    const icon = {
+        ...defaultIconVariants,
+        ...iconVariant,
+    }[variant];
 
     const contentProps = {
         ...otherContentProps,
@@ -174,6 +169,8 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             [cbName]: createChainedFunction([props.snack[cbName], props[cbName]], props.snack.key),
         }), {});
 
+    const anchorOriginClass = `anchorOrigin${capitalise(anchorOrigin.vertical)}${capitalise(anchorOrigin.horizontal)}`;
+
     return (
         <Collapse
             unmountOnExit
@@ -190,10 +187,9 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                 anchorOrigin={anchorOrigin}
                 TransitionProps={transitionProps}
                 className={clsx(
+                    classes.root,
                     classes.wrappedRoot,
-                    // @ts-ignore
-                    classes[`anchorOrigin${capitalise(anchorOrigin.vertical)}${capitalise(anchorOrigin.horizontal)}`],
-                    // className, // FIXme get the right classname for this
+                    classes[anchorOriginClass as SnackbarClassKey],
                 )}
                 {...callbacks}
                 onExited={handleExitedScreen}
@@ -202,17 +198,17 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             >
                 {snackContent || (
                     <SnackbarContent
+                        role="alert"
+                        aria-describedby={ariaDescribedby}
                         className={clsx(
                             classes[`variant${capitalise(variant)}` as VariantClassKey],
                             { [classes.lessPadding]: !hideIconVariant && icon },
                             className,
                         )}
-                        {...contentProps}
-                        aria-describedby={ariaDescribedby}
                         message={(
                             <span id={ariaDescribedby} className={classes.message}>
                                 {!hideIconVariant ? icon : null}
-                                {snack.message}
+                                {snackMessage}
                             </span>
                         )}
                         action={finalAction}
