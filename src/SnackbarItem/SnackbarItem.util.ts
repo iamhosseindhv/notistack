@@ -1,8 +1,7 @@
 import clsx from 'clsx';
-import { SnackbarProps } from '@material-ui/core/Snackbar';
-import { allClasses } from '../utils/constants';
 import { SnackbarItemProps } from './SnackbarItem';
 import { Snack } from '../SnackbarProvider';
+import { SnackbarProviderProps } from '..';
 
 const DIRECTION = {
     right: 'left',
@@ -22,7 +21,7 @@ export const getTransitionDirection = (anchorOrigin: Snack['anchorOrigin']): Dir
 /**
  * Omit all class keys except what we need for collapse component
  */
-export const omitNonCollapseKeys = (classes: SnackbarItemProps['classes'], dense: SnackbarItemProps['dense']): { container: string; wrapper: string } => ({
+export const omitNonCollapseKeys = (classes: SnackbarItemProps['classes'], dense: SnackbarProviderProps['dense']): { container: string; wrapper: string } => ({
     container: classes.collapseContainer,
     wrapper: clsx(classes.collapseWrapper, { [classes.collapseWrapperDense]: dense }),
 });

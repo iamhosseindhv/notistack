@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import * as React from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import { REASONS } from 'src/utils/constants';
+import { REASONS } from '../utils/constants';
 
 const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
@@ -37,7 +37,6 @@ const Snackbar = React.forwardRef((props, ref) => {
         anchorOrigin: dontspread1,
         autoHideDuration,
         children,
-        className,
         ClickAwayListenerProps,
         disableWindowBlurListener = false,
         onClose,
