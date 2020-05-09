@@ -181,6 +181,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         }), {});
 
     const anchorOriginClass = `anchorOrigin${capitalise(anchorOrigin.vertical)}${capitalise(anchorOrigin.horizontal)}`;
+    const variantClass = `variant${capitalise(variant)}`;
 
     return (
         <Collapse
@@ -215,7 +216,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                             role="alert"
                             {...contentProps}
                             className={clsx(
-                                classes[`variant${capitalise(variant)}` as VariantClassKey],
+                                classes[variantClass as VariantClassKey],
                                 { [classes.lessPadding]: !hideIconVariant && icon },
                                 className,
                             )}
