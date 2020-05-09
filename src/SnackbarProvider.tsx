@@ -6,8 +6,8 @@ import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys } from './util
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import defaultIconVariants from './utils/defaultIconVariants';
 import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps } from '.';
+import { createChainedFunction } from './SnackbarItem/Snackbar';
 
 
 type Reducer = (state: State) => State;
@@ -170,10 +170,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Set the entered state of the snackbar with the given key.
      */
     handleEnteredSnack: TransitionHandlerProps['onEntered'] = (node, isAppearing, key) => {
-        if (this.props.onEntered) {
-            this.props.onEntered(node, isAppearing, key);
-        }
-
         this.setState(({ snacks }) => ({
             snacks: snacks.map(item => (
                 item.key === key ? { ...item, entered: true } : { ...item }
@@ -185,6 +181,8 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Hide a snackbar after its timeout.
      */
     handleCloseSnack: TransitionHandlerProps['onClose'] = (event, reason, key) => {
+        // should not use createChainedFunction for onClose.
+        // because this.closeSnackbar called this function
         if (this.props.onClose) {
             this.props.onClose(event, reason, key);
         }
@@ -239,10 +237,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
             return this.handleDismissOldest(newState);
         });
-
-        if (this.props.onExited) {
-            this.props.onExited(event, key);
-        }
     };
 
     render(): JSX.Element {
@@ -269,11 +263,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             };
         }, {});
 
-        const iconVariant = {
-            ...defaultIconVariants,
-            ...this.props.iconVariant,
-        };
-
         const snackbars = Object.entries(categ).map(([origin, snacks]) => (
             <SnackbarContainer
                 key={origin}
@@ -291,11 +280,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                         dense={dense}
                         snack={snack}
                         hideIconVariant={hideIconVariant}
-                        iconVariant={iconVariant}
                         classes={omitContainerKeys(classes)}
                         onClose={this.handleCloseSnack}
-                        onExited={this.handleExitedSnack}
-                        onEntered={this.handleEnteredSnack}
+                        onExited={createChainedFunction([this.handleExitedSnack, this.props.onExited])}
+                        onEntered={createChainedFunction([this.handleEnteredSnack, this.props.onEntered])}
                     />
                 ))}
             </SnackbarContainer>

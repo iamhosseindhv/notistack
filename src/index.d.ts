@@ -8,7 +8,6 @@ import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { StandardProps } from '@material-ui/core';
 
-export type OptionalBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>

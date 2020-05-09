@@ -51,6 +51,7 @@ export const omitContainerKeys = (classes: SnackbarProviderProps['classes']): Sn
 );
 
 export const REASONS: { [key: string]: CloseReason } = {
+    TIMEOUT: 'timeout',
     CLICKAWAY: 'clickaway',
     MAXSNACK: 'maxsnack',
     INSTRUCTED: 'instructed',
