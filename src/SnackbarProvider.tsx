@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS } from './utils/constants';
+import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, merge } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
@@ -56,9 +56,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         const hasSpecifiedKey = key || key === 0;
         const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
 
-        // @ts-ignore
-        const merge = (name: string): any => options[name] || this.props[name] || DEFAULTS[name];
-
+        const merger = merge(options, this.props, DEFAULTS);
         const snack: Snack = {
             key: id,
             ...options,
@@ -66,9 +64,9 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             open: true,
             entered: false,
             requestClose: false,
-            variant: merge('variant'),
-            autoHideDuration: merge('autoHideDuration'),
-            anchorOrigin: merge('anchorOrigin'),
+            variant: merger('variant'),
+            anchorOrigin: merger('anchorOrigin'),
+            autoHideDuration: merger('autoHideDuration'),
         };
 
         if (options.persist) {

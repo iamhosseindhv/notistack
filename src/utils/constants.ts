@@ -1,5 +1,6 @@
+import Slide from '@material-ui/core/Slide';
 import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { CloseReason, ContainerClassKey, SnackbarProviderProps, VariantType, SnackbarOrigin } from '../index';
+import { CloseReason, ContainerClassKey, SnackbarProviderProps, VariantType, SnackbarOrigin, VariantClassKey } from '../index';
 import { SnackbarItemProps } from '../SnackbarItem';
 import { Snack } from '../SnackbarProvider';
 
@@ -43,6 +44,7 @@ export const DEFAULTS = {
     variant: 'default' as VariantType,
     autoHideDuration: 5000,
     anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
+    TransitionComponent: Slide,
     transitionDuration: {
         enter: 225,
         exit: 195,
@@ -69,3 +71,25 @@ export const REASONS: { [key: string]: CloseReason } = {
     MAXSNACK: 'maxsnack',
     INSTRUCTED: 'instructed',
 };
+
+/**
+ * Tranforms classes name
+ */
+export const transformer = {
+    toAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
+        `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
+    ),
+    toVariant: (variant: VariantType) => `variant${capitalise(variant)}` as VariantClassKey,
+};
+
+
+// @ts-ignore
+export const merge = (options, props, defaults) => (name: string): any => options[name] || props[name] || defaults[name];
+
+export function objectMerge(options = {}, props = {}, defaults = {}) {
+    return {
+        ...defaults,
+        ...props,
+        ...options,
+    };
+}
