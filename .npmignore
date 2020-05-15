@@ -2,7 +2,7 @@ src
 examples
 .github
 .babelrc
-.eslintrc
+.eslintrc.js
 .eslintignore
 .gitignore
 webpack.config.js
