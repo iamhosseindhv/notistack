@@ -24,7 +24,7 @@ export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: Sna
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key: SnackbarKey) => void;
+export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
 export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
 
@@ -80,7 +80,8 @@ export interface TransitionHandlerProps {
      * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
      *  or: `"maxsnack"` (snackbar was closed because `maxSnack` has reached) or: `"instructed"`
      * (snackbar was closed programmatically)
-     * @param {string|number} key key of a Snackbar
+     * @param {string|number|undefined} key key of a Snackbar. key will be `undefined` if closeSnackbar
+     * is called with no key (user requested all the snackbars to be closed)
      */
     onClose: TransitionCloseHandler;
     /**

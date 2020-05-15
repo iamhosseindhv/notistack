@@ -7,8 +7,9 @@ import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '@material-ui/core/SnackbarContent';
 import { getTransitionDirection, omitNonMuiKeys, omitNonCollapseKeys } from './SnackbarItem.util';
 import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/constants';
-import { SnackbarProviderProps, OptionalBy, SnackbarKey, CloseReason, SharedProps, RequiredBy, IconVariant, VariantClassKey } from '../index';
+import { SnackbarProviderProps, OptionalBy, SharedProps, RequiredBy, IconVariant, VariantClassKey, TransitionHandlerProps } from '../index';
 import { Snack } from '../SnackbarProvider';
+import createChainedFunction from '../utils/createChainedFunction';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const styles = (theme: Theme) => createStyles({
@@ -88,31 +89,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         }
     }, []);
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const handleClose = (key: SnackbarKey) => (event: React.SyntheticEvent<any> | null, reason: string): void => {
-        const cause = reason as CloseReason;
-        if (props.snack.onClose) {
-            props.snack.onClose(event, cause, key);
-        }
-        props.onClose(event, cause, key);
-    };
+    const handleClose = createChainedFunction([props.snack.onClose, props.onClose], props.snack.key);
 
-    const handleEntered = (key: SnackbarKey) => (node: HTMLElement, isAppearing: boolean): void => {
-        const { snack } = props;
-        if (snack.onEntered) {
-            snack.onEntered(node, isAppearing, key);
+    const handleEntered: TransitionHandlerProps['onEntered'] = () => {
+        if (props.snack.requestClose) {
+            handleClose(null, REASONS.MAXSNACK);
         }
-        props.onEntered(node, isAppearing, key);
-
-        if (snack.requestClose) {
-            handleClose(key)(null, REASONS.MAXSNACK);
-        }
-    };
-
-    const handleExited = (key: SnackbarKey) => (node: HTMLElement): void => {
-        const { onExited, snack: { onExited: singleOnExited } } = props;
-        if (singleOnExited) singleOnExited(node, key);
-        onExited(node, key);
     };
 
     const handleExitedScreen = (): void => {
@@ -121,20 +103,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         }, 125);
     };
 
-    const getUnusedCallbacks = () => (
-        ['onEnter', 'onEntering', 'onExit', 'onExiting'].reduce((acc, cbName) => ({
+    const callbacks: { [key in keyof TransitionHandlerProps]?: any } =
+        ['onEnter', 'onEntering', 'onEntered', 'onExit', 'onExiting', 'onExited'].reduce((acc, cbName) => ({
             ...acc,
-            [cbName]: (...args: any[]): void => {
-                const { snack } = props;
-                if (typeof snack[cbName] === 'function') {
-                    snack[cbName](...args, snack.key);
-                }
-                if (typeof props[cbName] === 'function') {
-                    props[cbName](...args, snack.key);
-                }
-            },
-        }), {})
-    );
+            // @ts-ignore
+            [cbName]: createChainedFunction([props.snack[cbName], props[cbName]], props.snack.key),
+        }), {});
 
     const {
         action,
@@ -184,6 +158,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
 
     let finalAction = contentProps.action;
     if (typeof finalAction === 'function') {
+        // @ts-ignore
         finalAction = contentProps.action(key);
     }
 
@@ -198,9 +173,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             timeout={175}
             in={collapsed}
             classes={omitNonCollapseKeys(classes, dense)}
-            onExited={handleExited(key)}
+            onExited={callbacks.onExited}
         >
             <Snackbar
+                // @ts-ignore
                 TransitionComponent={TransitionComponent}
                 {...other}
                 {...singleSnackProps}
@@ -208,9 +184,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                 anchorOrigin={anchorOrigin}
                 TransitionProps={transitionProps}
                 classes={omitNonMuiKeys(classes)}
-                onClose={handleClose(key)}
-                onEntered={handleEntered(key)}
-                {...getUnusedCallbacks()}
+                onClose={handleClose}
+                onExit={callbacks.onExit}
+                onExiting={callbacks.onExiting}
+                onEnter={callbacks.onEnter}
+                onEntering={callbacks.onEntering}
+                onEntered={createChainedFunction([handleEntered, callbacks.onEntered])}
             >
                 {snackContent || (
                     <SnackbarContent

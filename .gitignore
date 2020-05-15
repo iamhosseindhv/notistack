@@ -59,6 +59,7 @@ typings/
 
 coverage
 build
+dist
 node_modules
 stats.json
 

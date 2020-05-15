@@ -1,13 +1,4 @@
 {
-  "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-env",
-    "@babel/preset-react"
-  ],
-  "plugins": [
-    "babel-plugin-optimize-clsx",
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-object-rest-spread"
-  ],
-  "ignore": ["src/index.d.ts"]
+  "presets": ["@babel/preset-react"],
+  "plugins": ["babel-plugin-optimize-clsx"]
 }

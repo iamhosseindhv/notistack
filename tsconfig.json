@@ -1,4 +1,5 @@
 {
+  "include": ["src"],
   "compilerOptions": {
     "strict": true,
     "module": "esnext",
@@ -6,28 +7,24 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "baseUrl": "./",
-    "outDir": "build",
     "skipLibCheck": true,
-    "emitDeclarationOnly": true,
-    "declaration": true,
-    "lib": [
-      "es6",
-      "dom"
-    ],
-    "jsx": "preserve",
+    "declaration": false,
+    "lib": ["esnext","dom"],
+    "jsx": "react",
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
   },
-  "include": [
-    "src/**/*",
-  ],
-  "exclude": [
-    "node_modules/*",
-    "./node_modules/*",
-    "build",
-    "./*.d.ts"
-  ],
   "typedocOptions": {
     "inputFiles": ["./src/index.d.ts"],
     "mode": "file",
