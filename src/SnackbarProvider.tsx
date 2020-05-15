@@ -213,7 +213,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             toBeClosed.onClose(null, REASONS.INSTRUCTED, key);
         }
 
-        // @ts-ignore
         this.handleCloseSnack(null, REASONS.INSTRUCTED, key);
     }
 
