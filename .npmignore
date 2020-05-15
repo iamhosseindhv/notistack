@@ -2,9 +2,10 @@ src
 examples
 .github
 .babelrc
-.eslintrc
+.eslintrc.js
 .eslintignore
 .gitignore
+tsdx.config.js
 webpack.config.js
 typedoc.json
 tsconfig.json

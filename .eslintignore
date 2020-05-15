@@ -1,2 +1,3 @@
-build/
+dist/
 typedoc.json
+tsdx.config.js

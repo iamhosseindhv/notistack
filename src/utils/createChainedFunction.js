@@ -8,13 +8,15 @@ export default function createChainedFunction(funcs, extraArg) {
         if (process.env.NODE_ENV !== 'production') {
             if (typeof func !== 'function') {
                 // eslint-disable-next-line no-console
-                console.error('Material-UI: Invalid Argument Type, must only provide functions, undefined, or null.');
+                console.error('Invalid Argument Type. must only provide functions, undefined, or null.');
             }
         }
 
         return function chainedFunction(...args) {
             const argums = [...args];
-            if (extraArg) argums.push(extraArg);
+            if (extraArg && argums.indexOf(extraArg) === -1) {
+                argums.push(extraArg);
+            }
             acc.apply(this, argums);
             func.apply(this, argums);
         };

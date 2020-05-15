@@ -178,6 +178,8 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             classes={omitNonCollapseKeys(classes, dense)}
             onExited={callbacks.onExited}
         >
+            {/*
+            // @ts-ignore */}
             <Snackbar
                 {...other}
                 {...singleSnackProps}
