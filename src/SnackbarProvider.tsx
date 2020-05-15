@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, merge } from './utils/constants';
+import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, merge, transformer } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { SnackbarProviderProps, ContainerClassKey, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps } from '.';
+import { SnackbarProviderProps, SnackbarKey, SnackbarMessage, OptionsObject, RequiredBy, ProviderContext, TransitionHandlerProps } from '.';
 import createChainedFunction from './utils/createChainedFunction';
 
 type Reducer = (state: State) => State;
@@ -278,7 +278,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                 anchorOrigin={snacks[0].anchorOrigin}
                 className={clsx(
                     classes.containerRoot,
-                    classes[`containerAnchorOrigin${origin}` as ContainerClassKey],
+                    classes[transformer.toContainerAnchorOrigin(origin)],
                 )}
             >
                 {snacks.map(snack => (

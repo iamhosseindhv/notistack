@@ -72,10 +72,9 @@ export const REASONS: { [key: string]: CloseReason } = {
     INSTRUCTED: 'instructed',
 };
 
-/**
- * Tranforms classes name
- */
+/** Tranforms classes name */
 export const transformer = {
+    toContainerAnchorOrigin: (origin: string) => `anchorOrigin${origin}` as ContainerClassKey,
     toAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
         `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
     ),
