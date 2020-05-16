@@ -181,6 +181,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             {/*
             // @ts-ignore */}
             <Snackbar
+                // don't spread callbacks to snackbar component
                 {...other}
                 {...singleSnackProps}
                 open={snack.open}
