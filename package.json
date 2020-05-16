@@ -17,7 +17,7 @@
         "type": "git"
     },
     "scripts": {
-        "build": "tsdx build --entry ./src/index.js && cp src/index.d.ts dist/index.d.ts",
+        "build": "tsdx build --entry ./src/index.js",
         "prebuild": "npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
@@ -47,6 +47,7 @@
         "react-dom": "^16.8.0",
         "rimraf": "^3.0.2",
         "rollup-plugin-bundle-size": "^1.0.3",
+        "rollup-plugin-copy": "^3.3.0",
         "tsdx": "^0.13.2",
         "typedoc": "^0.16.11",
         "typescript": "^3.8.3"
