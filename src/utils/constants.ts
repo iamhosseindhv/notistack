@@ -50,6 +50,30 @@ export const omitContainerKeys = (classes: SnackbarProviderProps['classes']): Sn
     Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
 );
 
+export const DEFAULTS = {
+    variant: 'default',
+    autoHideDuration: 5000,
+    anchorOrigin: {
+        vertical: 'bottom',
+        horizontal: 'left',
+    },
+};
+
+const numberOrNull = (numberish?: number | null) => (
+    typeof numberish === 'number' || numberish === null
+);
+
+// @ts-ignore
+export const merge = (options, props, defaults) => (name: keyof Snack): any => {
+    if (name === 'autoHideDuration') {
+        if (numberOrNull(options.autoHideDuration)) return options.autoHideDuration;
+        if (numberOrNull(props.autoHideDuration)) return props.autoHideDuration;
+        return DEFAULTS.autoHideDuration;
+    }
+
+    return options[name] || props[name] || defaults[name];
+};
+
 export const REASONS: { [key: string]: CloseReason } = {
     CLICKAWAY: 'clickaway',
     MAXSNACK: 'maxsnack',

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys } from './utils/constants';
+import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, merge, DEFAULTS } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
@@ -51,6 +51,8 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     enqueueSnackbar = (message: SnackbarMessage, { key, preventDuplicate, ...options }: OptionsObject = {}): SnackbarKey => {
         const hasSpecifiedKey = key || key === 0;
         const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
+
+        const merger = merge(options, this.props, DEFAULTS);
         const snack: Snack = {
             key: id,
             ...options,
@@ -58,9 +60,9 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             open: true,
             entered: false,
             requestClose: false,
-            variant: options.variant || this.props.variant || 'default',
-            autoHideDuration: options.autoHideDuration || this.props.autoHideDuration || 5000,
-            anchorOrigin: options.anchorOrigin || this.props.anchorOrigin || { vertical: 'bottom', horizontal: 'left' },
+            variant: merger('variant'),
+            anchorOrigin: merger('anchorOrigin'),
+            autoHideDuration: merger('autoHideDuration'),
         };
 
         if (options.persist) {
