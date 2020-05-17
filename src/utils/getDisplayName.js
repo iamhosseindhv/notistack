@@ -1,5 +1,3 @@
-import { ForwardRef } from 'react-is';
-
 // https://github.com/JamesMGreene/Function.name/blob/58b314d4a983110c3682f1228f845d39ccca1817/Function.name.js#L3
 const fnNameMatchRegex = /^\s*function(?:\s|\s*\/\*.*\*\/\s*)+([^(\s/]*)\s*/;
 const getFunctionName = (fn) => {
@@ -24,6 +22,15 @@ const getWrappedName = (outerType, innerType, wrapperName) => {
     );
 };
 
+/** 
+ * From react-is
+ * @link https://github.com/facebook/react/blob/master/packages/shared/ReactSymbols.js
+ */
+const ForwardRef = () => {
+    const symbolFor = typeof Symbol === 'function' && Symbol.for;
+    return symbolFor ? symbolFor('react.forward_ref') : 0xead0
+}
+
 /**
  * https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/shared/getComponentName.js
  *
@@ -45,7 +52,7 @@ export default (Component) => {
 
     if (typeof Component === 'object') {
         switch (Component.$$typeof) {
-            case ForwardRef:
+            case ForwardRef():
                 return getWrappedName(Component, Component.render, 'ForwardRef');
             default:
                 return undefined;

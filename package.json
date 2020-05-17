@@ -54,8 +54,7 @@
     },
     "dependencies": {
         "clsx": "^1.1.0",
-        "hoist-non-react-statics": "^3.3.0",
-        "react-is": "^16.8.6"
+        "hoist-non-react-statics": "^3.3.0"
     },
     "bugs": {
         "url": "https://github.com/iamhosseindhv/notistack/issues"
