@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "0.9.14",
+    "version": "0.9.15",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "dist/index.js",
     "module": "dist/notistack.esm.js",
@@ -54,8 +54,7 @@
     },
     "dependencies": {
         "clsx": "^1.1.0",
-        "hoist-non-react-statics": "^3.3.0",
-        "react-is": "^16.8.6"
+        "hoist-non-react-statics": "^3.3.0"
     },
     "bugs": {
         "url": "https://github.com/iamhosseindhv/notistack/issues"
