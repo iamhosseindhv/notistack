@@ -14,7 +14,7 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 ### `notistack@0.9.15`
 ###### May 17, 2020
 * **@nebojsanb**: Fix bug with displaying snackbars [#270](https://github.com/iamhosseindhv/notistack/issues/270) 
-
+* **@nebojsanb**: Improve bundle size by removing `react-is` dependency [#272](https://github.com/iamhosseindhv/notistack/pull/272)
 
 <br />
 
