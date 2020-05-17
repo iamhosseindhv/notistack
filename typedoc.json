@@ -1023,7 +1023,7 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "The number of milliseconds to wait before automatically calling the\n`onClose` function. By default snackbars get closed after 5000 milliseconds.\nSet autoHideDuration to 'undefined' if you don't want snackbars to automatically close.\nAlternatively pass `persist: true` in the options parameter of enqueueSnackbar.",
+						"shortText": "The number of milliseconds to wait before automatically calling the\n`onClose` function. By default snackbars get closed after 5000 milliseconds.\nSet autoHideDuration to 'null' if you don't want snackbars to automatically close.\nAlternatively pass `persist: true` in the options parameter of enqueueSnackbar.",
 						"tags": [
 							{
 								"tag": "default",

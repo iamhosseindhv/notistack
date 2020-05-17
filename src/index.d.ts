@@ -122,7 +122,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
     /**
      * The number of milliseconds to wait before automatically calling the
      * `onClose` function. By default snackbars get closed after 5000 milliseconds.
-     * Set autoHideDuration to 'undefined' if you don't want snackbars to automatically close.
+     * Set autoHideDuration to 'null' if you don't want snackbars to automatically close.
      * Alternatively pass `persist: true` in the options parameter of enqueueSnackbar.
      * @default 5000
      */
