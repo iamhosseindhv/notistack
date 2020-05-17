@@ -1,13 +1,24 @@
-# notistack
-![npm downloads](https://img.shields.io/npm/dm/notistack.svg)
-![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)
-![npm version](https://img.shields.io/npm/l/notistack.svg)
+<p align="center">
+  <a href="https://iamhosseindhv.com/" rel="noopener" target="_blank"><img width="450" src="https://iamhosseindhv.com/static/projects/notistack.png" alt="notistack logo"></a></p>
+</p>
+
+<div align="center">
+
+[**notistack**](https://iamhosseindhv.com/notistack) is a notification library which makes it extremely easy to display notifications on your web apps. It is **highly customizable** and enables **you** to stack snackbars/toasts on top of one another. 
+
+[![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)](https://www.npmjs.com/package/notistack)
+[![npm downloads](https://img.shields.io/npm/dm/notistack.svg)](https://www.npmjs.com/package/notistack)
+[![package license](https://img.shields.io/npm/l/notistack.svg)](https://www.npmjs.com/package/notistack)
 
 
-**Notistack** is a Snackbar library which makes it extremely easy to display notifications on your web apps. It is **highly customizable** and enables **you** to stack snackbars/toasts on top of one another. See [demos](https://iamhosseindhv.com/notistack/demos) for more info.
+</div>
 
 
-#### [`Play with online demo here`](https://iamhosseindhv.com/notistack/demos)
+</br>
+
+#### Visit [documentation website](https://iamhosseindhv.com/notistack/demos)
+
+
 
 | Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)|
 | --- | --- |
