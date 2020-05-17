@@ -1,13 +1,21 @@
-# notistack
-![npm downloads](https://img.shields.io/npm/dm/notistack.svg)
-![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)
-![npm version](https://img.shields.io/npm/l/notistack.svg)
+<p align="center">
+  <a href="https://iamhosseindhv.com/" rel="noopener" target="_blank"><img width="756" src="https://iamhosseindhv.com/static/projects/notistack-banner.png" alt="notistack logo"></a></p>
+</p>
+
+<div align="center">
+
+[**Notistack**](https://iamhosseindhv.com/notistack) is a notification library which makes it extremely easy to display notifications on your web apps. It is highly customizable and enables you to stack snackbars/toasts on top of one another.
+</br>
+**Visit [documentation website](https://iamhosseindhv.com/notistack/demos) for demos**.
+
+[![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)](https://www.npmjs.com/package/notistack)
+[![npm downloads](https://img.shields.io/npm/dm/notistack.svg)](https://www.npmjs.com/package/notistack)
+[![package license](https://img.shields.io/npm/l/notistack.svg)](https://www.npmjs.com/package/notistack)
 
 
-**Notistack** is a Snackbar library which makes it extremely easy to display notifications on your web apps. It is **highly customizable** and enables **you** to stack snackbars/toasts on top of one another. See [demos](https://iamhosseindhv.com/notistack/demos) for more info.
+</div>
 
 
-#### [`Play with online demo here`](https://iamhosseindhv.com/notistack/demos)
 
 | Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)|
 | --- | --- |
@@ -18,11 +26,8 @@ Table of Contents
 --
 - [How to use](#how-to-use)
 - [Online demo](#online-demo)
-- [Documentation](#documentation)
+- [Documentation](https://iamhosseindhv.com/notistack/api)
 - [Redux / Mobx support](#redux-and-mobx-support)
-- [Contribution](#contribution)
-- [Notes](#notes)
-- [Author - Contact me](#author---contact)
 
 
 ## Getting Started
@@ -87,12 +92,8 @@ const MyButton = () => {
 ```
 
 ### Online demo
-**You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack/demos).**</br>
-Or see the code for a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
-
-
-### Documentation
-#### [`Visit the documentation website`](https://iamhosseindhv.com/notistack/api)
+**Visit [`documentation website`](https://iamhosseindhv.com/notistack/demos) to see all the demos.**</br>
+Or play with a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
 
 
 ### Redux and Mobx support:
