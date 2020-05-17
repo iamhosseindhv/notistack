@@ -171,6 +171,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Set the entered state of the snackbar with the given key.
      */
     handleEnteredSnack: TransitionHandlerProps['onEntered'] = (node, isAppearing, key) => {
+        if (!key) {
+            throw new Error('handleEnteredSnack Cannot be called with undefined key');
+        }
+
         this.setState(({ snacks }) => ({
             snacks: snacks.map(item => (
                 item.key === key ? { ...item, entered: true } : { ...item }
@@ -223,7 +227,13 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * waiting in the queue (if any). If after this process the queue is not empty, the
      * oldest message is dismissed.
      */
-    handleExitedSnack: TransitionHandlerProps['onExited'] = (event, key) => {
+    // @ts-ignore
+    handleExitedSnack: TransitionHandlerProps['onExited'] = (event, key1, key2) => {
+        const key = key1 || key2;
+        if (!key) {
+            throw new Error('handleExitedSnack Cannot be called with undefined key');
+        }
+
         this.setState((state) => {
             const newState = this.processQueue({
                 ...state,
