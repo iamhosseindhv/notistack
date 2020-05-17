@@ -1,11 +1,18 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.16`
+### `notistack@0.9.17`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 
+
+
+<br />
+
+### `notistack@0.9.16`
+###### May 17, 2020
+* **@lukawsk**: Allow autoHideDuration be null [#273](https://github.com/iamhosseindhv/notistack/pull/273) 
 
 
 <br />

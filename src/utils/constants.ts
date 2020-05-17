@@ -82,8 +82,20 @@ export const transformer = {
 };
 
 
+const numberOrNull = (numberish?: number | null) => (
+    typeof numberish === 'number' || numberish === null
+);
+
 // @ts-ignore
-export const merge = (options, props, defaults) => (name: string): any => options[name] || props[name] || defaults[name];
+export const merge = (options, props, defaults) => (name: keyof Snack): any => {
+    if (name === 'autoHideDuration') {
+        if (numberOrNull(options.autoHideDuration)) return options.autoHideDuration;
+        if (numberOrNull(props.autoHideDuration)) return props.autoHideDuration;
+        return DEFAULTS.autoHideDuration;
+    }
+
+    return options[name] || props[name] || defaults[name];
+};
 
 export function objectMerge(options = {}, props = {}, defaults = {}) {
     return {
