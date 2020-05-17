@@ -1,11 +1,19 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.15`
+### `notistack@0.9.16`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 
+
+
+<br />
+
+
+### `notistack@0.9.15`
+###### May 17, 2020
+* **@nebojsanb**: Fix bug with displaying snackbars [#270](https://github.com/iamhosseindhv/notistack/issues/270) 
 
 
 <br />
