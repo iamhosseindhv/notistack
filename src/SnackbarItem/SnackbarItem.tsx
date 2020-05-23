@@ -93,7 +93,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
-            handleClose(null, REASONS.MAXSNACK);
+            handleClose(null, REASONS.INSTRCUTED);
         }
     };
 
@@ -202,7 +202,9 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                     onExited={handleExitedScreen}
                     onEnter={callbacks.onEnter}
                     onEntering={callbacks.onEntering}
-                    onEntered={createChainedFunction([handleEntered, callbacks.onEntered], key)}
+                    // order matters. first callbacks.onEntered to set entered: true,
+                    // then handleEntered to check if there's a request for closing
+                    onEntered={createChainedFunction([callbacks.onEntered, handleEntered])}
                 >
                     {content || (
                         <SnackbarContent
