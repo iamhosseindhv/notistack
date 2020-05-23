@@ -59,6 +59,10 @@
     "bugs": {
         "url": "https://github.com/iamhosseindhv/notistack/issues"
     },
+    "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/notistack"
+    },
     "contributors": [
         "Hossein Dehnokhalaji (https://www.iamhosseindhv.com/)"
     ],
