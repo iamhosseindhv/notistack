@@ -281,32 +281,35 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             };
         }, {});
 
-        const snackbars = Object.entries(categ).map(([origin, snacks]) => (
-            <SnackbarContainer
-                key={origin}
-                dense={dense}
-                anchorOrigin={snacks[0].anchorOrigin}
-                className={clsx(
-                    classes.containerRoot,
-                    classes[transformer.toContainerAnchorOrigin(origin)],
-                )}
-            >
-                {snacks.map(snack => (
-                    <SnackbarItem
-                        {...props}
-                        key={snack.key}
-                        snack={snack}
-                        dense={dense}
-                        iconVariant={iconVariant}
-                        hideIconVariant={hideIconVariant}
-                        classes={omitContainerKeys(classes)}
-                        onClose={this.handleCloseSnack}
-                        onExited={createChainedFunction([this.handleExitedSnack, this.props.onExited])}
-                        onEntered={createChainedFunction([this.handleEnteredSnack, this.props.onEntered])}
-                    />
-                ))}
-            </SnackbarContainer>
-        ));
+        const snackbars = Object.keys(categ).map((origin) => {
+            const snacks = categ[origin];
+            return (
+                <SnackbarContainer
+                    key={origin}
+                    dense={dense}
+                    anchorOrigin={snacks[0].anchorOrigin}
+                    className={clsx(
+                        classes.containerRoot,
+                        classes[transformer.toContainerAnchorOrigin(origin)],
+                    )}
+                >
+                    {snacks.map(snack => (
+                        <SnackbarItem
+                            {...props}
+                            key={snack.key}
+                            snack={snack}
+                            dense={dense}
+                            iconVariant={iconVariant}
+                            hideIconVariant={hideIconVariant}
+                            classes={omitContainerKeys(classes)}
+                            onClose={this.handleCloseSnack}
+                            onExited={createChainedFunction([this.handleExitedSnack, this.props.onExited])}
+                            onEntered={createChainedFunction([this.handleEnteredSnack, this.props.onEntered])}
+                        />
+                    ))}
+                </SnackbarContainer>
+            );
+        });
 
         return (
             <SnackbarContext.Provider value={contextValue}>
