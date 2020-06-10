@@ -1,11 +1,18 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.17`
+### `notistack@0.9.18`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 * **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 
+
+<br />
+
+### `notistack@0.9.17`
+###### June 10, 2020
+* Bug fix and improvments [#277](https://github.com/iamhosseindhv/notistack/issues/277) 
+* Alternative for Object.entries to better support IE 11 compat [#284](https://github.com/iamhosseindhv/notistack/pull/284)
 
 
 <br />
