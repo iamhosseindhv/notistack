@@ -17,6 +17,10 @@ const styles = (theme: Theme) => createStyles({
     lessPadding: {
         paddingLeft: 8 * 2.5,
     },
+    variantDefault: {
+        backgroundColor: '#313131', // light black
+        color: '#fff',
+    },
     variantSuccess: {
         backgroundColor: '#43a047', // green
         color: '#fff',
