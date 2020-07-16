@@ -173,6 +173,9 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Set the entered state of the snackbar with the given key.
      */
     handleEnteredSnack: TransitionHandlerProps['onEntered'] = (node, isAppearing, key) => {
+        // newer versions of @material-ui/core won't pass isAppearing argument for handleEntered
+        key = key === undefined ? ((isAppearing as unknown) as SnackbarKey) : key;
+
         if (!key) {
             throw new Error('handleEnteredSnack Cannot be called with undefined key');
         }
