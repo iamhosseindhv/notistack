@@ -1,11 +1,57 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@0.9.18`
+### `notistack@1.0.1`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
-* **@david-chau**: Allow `asc`, `desc` or custom sort order of snackbars [#160](https://github.com/iamhosseindhv/notistack/issues/160)
 
+
+<br />
+
+### `notistack@1.0.0`
+###### August 22, 2020
+* Drop `SnackbarContent` component and `ContentProps` props [#297](https://github.com/iamhosseindhv/notistack/pull/297)
+#### Breaking Changes
+* `className` prop is now used to customise styles applied to the _content_ of snackbar (e.g. backgroundColor).
+* If you were using `className` to apply styles to `Snackbar` component, you should now do so using `classes.root`.
+```diff
+<SnackbarProvider
+-  className={classes.snackbar}
++  classes={{
++    root: classes.snackbar
++  }}
+>
+```
+
+* `ContentProps` prop is not supported anymore. Here are alternative ways to pass the same data to snackbar component. For any other
+scenario, you should pass you own [custom content](https://iamhosseindhv.com/notistack/demos#custom-snackbar).
+```diff
+<SnackbarProvider
+-  ContentProps={{
+-    action: () => <button>dismiss</button>,
+-    'aria-describedby': 'some-value',
+-  }}
++  action={() => <button>dismiss</button>}
++  ariaAttributes={{
++    'aria-describedby': 'some-value'
++  }}
+>
+```
+* If you have customised `MuiSnackbarContent` through Material-UI `theme` object, these changes won't automatically
+reflect within notistack. You can however, use `className` prop to apply your customisations.
+
+```js
+const theme = createMuiTheme({
+  overrides: {
+    // no effect within notistack
+    MuiSnackbarContent: {
+      root: {
+        fontSize: '1rem',
+      },
+    },
+  },
+});
+```
 
 <br />
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { withStyles, WithStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { withStyles, WithStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
 import Snackbar from '@material-ui/core/Snackbar';
 import Slide from '@material-ui/core/Slide';
 import Collapse from '@material-ui/core/Collapse';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
+import SnackbarContent from '../SnackbarContent';
 import { getTransitionDirection, omitNonMuiKeys, omitNonCollapseKeys } from './SnackbarItem.util';
 import { capitalise, allClasses, REASONS, SNACKBAR_INDENTS } from '../utils/constants';
 import { SnackbarProviderProps, OptionalBy, SharedProps, RequiredBy, IconVariant, VariantClassKey, TransitionHandlerProps } from '../index';
@@ -12,55 +12,75 @@ import { Snack } from '../SnackbarProvider';
 import createChainedFunction from '../utils/createChainedFunction';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const styles = (theme: Theme) => createStyles({
-    ...allClasses.mui,
-    lessPadding: {
-        paddingLeft: 8 * 2.5,
-    },
-    variantSuccess: {
-        backgroundColor: '#43a047', // green
-        color: '#fff',
-    },
-    variantError: {
-        backgroundColor: '#d32f2f', // dark red
-        color: '#fff',
-    },
-    variantInfo: {
-        backgroundColor: '#2196f3', // nice blue
-        color: '#fff',
-    },
-    variantWarning: {
-        backgroundColor: '#ff9800', // amber
-        color: '#fff',
-    },
-    message: {
-        display: 'flex',
-        alignItems: 'center',
-    },
-    wrappedRoot: {
-        position: 'relative',
-        transform: 'translateX(0)',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-    },
-    collapseContainer: {
-        [theme.breakpoints.down('xs')]: {
-            paddingLeft: theme.spacing(1),
-            paddingRight: theme.spacing(1),
+const styles = (theme: Theme) => {
+    const backgroundColor = emphasize(theme.palette.background.default, theme.palette.type === 'light' ? 0.8 : 0.98);
+    return createStyles({
+        ...allClasses.mui,
+        lessPadding: {
+            paddingLeft: 8 * 2.5,
         },
-    },
-    collapseWrapper: {
-        transition: theme.transitions.create(['margin-bottom'], { easing: 'ease' }),
-        marginTop: SNACKBAR_INDENTS.snackbar.default,
-        marginBottom: SNACKBAR_INDENTS.snackbar.default,
-    },
-    collapseWrapperDense: {
-        marginTop: SNACKBAR_INDENTS.snackbar.dense,
-        marginBottom: SNACKBAR_INDENTS.snackbar.dense,
-    },
-});
+        variantSuccess: {
+            backgroundColor: '#43a047 !important', // green
+            color: '#fff !important',
+        },
+        variantError: {
+            backgroundColor: '#d32f2f !important', // dark red
+            color: '#fff !important',
+        },
+        variantInfo: {
+            backgroundColor: '#2196f3 !important', // nice blue
+            color: '#fff !important',
+        },
+        variantWarning: {
+            backgroundColor: '#ff9800 !important', // amber
+            color: '#fff !important',
+        },
+        contentRoot: {
+            ...theme.typography.body2,
+            backgroundColor,
+            color: theme.palette.getContrastText(backgroundColor),
+            alignItems: 'center',
+            padding: '6px 16px',
+            borderRadius: '4px',
+            boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
+        },
+        message: {
+            display: 'flex',
+            alignItems: 'center',
+            padding: '8px 0',
+        },
+        action: {
+            display: 'flex',
+            alignItems: 'center',
+            marginLeft: 'auto',
+            paddingLeft: 16,
+            marginRight: -8,
+        },
+        wrappedRoot: {
+            position: 'relative',
+            transform: 'translateX(0)',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+        },
+        collapseContainer: {
+            [theme.breakpoints.down('xs')]: {
+                paddingLeft: theme.spacing(1),
+                paddingRight: theme.spacing(1),
+            },
+        },
+        collapseWrapper: {
+            transition: theme.transitions.create(['margin-bottom'], { easing: 'ease' }),
+            marginTop: SNACKBAR_INDENTS.snackbar.default,
+            marginBottom: SNACKBAR_INDENTS.snackbar.default,
+        },
+        collapseWrapperDense: {
+            marginTop: SNACKBAR_INDENTS.snackbar.dense,
+            marginBottom: SNACKBAR_INDENTS.snackbar.dense,
+        },
+    });
+}
 
 
 type RemovedProps =
@@ -113,7 +133,8 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
     const {
         action,
         content,
-        ContentProps = {},
+        ariaAttributes: otherAriaAttributes,
+        className: otherClassName,
         hideIconVariant,
         iconVariant,
         snack,
@@ -123,17 +144,16 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         ...other
     } = props;
 
-    const { action: contentAction, className, ...otherContentProps } = ContentProps;
-
     const {
         key,
         persist,
         entered,
         requestClose,
+        className: singleClassName,
         variant,
         content: singleContent,
         action: singleAction,
-        ContentProps: singleContentProps = {},
+        ariaAttributes: singleAriaAttributes,
         anchorOrigin,
         TransitionProps: singleTransitionProps = {},
         ...singleSnackProps
@@ -141,10 +161,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
 
     const icon = iconVariant[variant];
 
-    const contentProps = {
-        ...otherContentProps,
-        ...singleContentProps,
-        action: singleAction || singleContentProps.action || contentAction || action,
+    const ariaAttributes = {
+        'aria-describedby': 'client-snackbar',
+        ...otherAriaAttributes,
+        ...singleAriaAttributes,
     };
 
     const transitionProps = {
@@ -154,12 +174,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         onExited: handleExitedScreen,
     };
 
-    const ariaDescribedby = contentProps['aria-describedby'] || 'client-snackbar';
-
-    let finalAction = contentProps.action;
+    let finalAction = singleAction || action;
     if (typeof finalAction === 'function') {
         // @ts-ignore
-        finalAction = contentProps.action(key);
+        finalAction = finalAction(key);
     }
 
     let snackContent = singleContent || content;
@@ -193,23 +211,27 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                 // then handleEntered to check if there's a request for closing
                 onEntered={createChainedFunction([callbacks.onEntered, handleEntered])}
             >
+                {/* @ts-ignore */}
                 {snackContent || (
                     <SnackbarContent
+                        {...ariaAttributes}
+                        role="alert"
                         className={clsx(
-                            classes[`variant${capitalise(variant)}` as VariantClassKey],
+                            classes.contentRoot,
                             { [classes.lessPadding]: !hideIconVariant && icon },
-                            className,
+                            classes[`variant${capitalise(variant)}` as VariantClassKey],
+                            otherClassName,
+                            singleClassName
                         )}
-                        {...contentProps}
-                        aria-describedby={ariaDescribedby}
-                        message={(
-                            <span id={ariaDescribedby} className={classes.message}>
-                                {!hideIconVariant ? icon : null}
-                                {snack.message}
-                            </span>
+                    >
+                        <div id={ariaAttributes['aria-describedby']} className={classes.message}>
+                            {!hideIconVariant ? icon : null}
+                            {snack.message}
+                        </div>
+                        {finalAction && (
+                            <div className={classes.action}>{finalAction}</div>
                         )}
-                        action={finalAction}
-                    />
+                    </SnackbarContent>
                 )}
             </Snackbar>
         </Collapse>
