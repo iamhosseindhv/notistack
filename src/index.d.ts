@@ -3,7 +3,6 @@
  */
 import * as React from 'react';
 import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { SnackbarContentProps } from '@material-ui/core/SnackbarContent';
 import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { StandardProps } from '@material-ui/core';
@@ -133,10 +132,9 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      */
     ClickAwayListenerProps?: Partial<ClickAwayListenerProps>;
     /**
-     * @ignore
-     * Properties applied to SnackbarContent component
+     * Aria attributes applied to snackbar's content component
      */
-    ContentProps?: Partial<SnackbarContentProps>;
+    ariaAttributes?: React.AriaAttributes;
     /**
      * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
      * @default false
