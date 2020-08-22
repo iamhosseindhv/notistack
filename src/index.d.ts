@@ -133,10 +133,9 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      */
     ClickAwayListenerProps?: Partial<ClickAwayListenerProps>;
     /**
-     * Properties applied to SnackbarContent component.
-     * If `content` property is specified (i.e. you're passing a custom snackbar), it does nothing.
+     * Aria attributes applied to snackbar's content component
      */
-    ContentProps?: Partial<SnackbarContentProps>;
+    ariaAttributes?: React.AriaAttributes;
     /**
      * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
      * @default false
