@@ -36,8 +36,9 @@ export type ContainerClassKey =
     | 'containerAnchorOriginTopLeft'
     | 'containerAnchorOriginBottomLeft';
 
+export type ItemClassKey = 'contentRoot' | 'lessPadding' | 'message' | 'action';
 export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
-export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
+export type CombinedClassKey = ItemClassKey | VariantClassKey | ContainerClassKey | SnackbarClassKey;
 
 export interface SnackbarOrigin {
     vertical: 'top' | 'bottom';
@@ -253,9 +254,14 @@ export interface SnackbarProviderProps extends SharedProps {
      * Little icon that is displayed at left corner of a snackbar.
      */
     iconVariant?: Partial<IconVariant>;
+
+    ref?: React.Ref<SnackbarProvider>;
 }
 
-export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
+export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
+  enqueueSnackbar: ProviderContext['enqueueSnackbar'];
+  closeSnackbar: ProviderContext['closeSnackbar'];
+}
 
 export interface ProviderContext {
     enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
