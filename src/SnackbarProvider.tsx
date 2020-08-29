@@ -70,15 +70,28 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         }
 
         this.setState((state) => {
-            if ((preventDuplicate === undefined && this.props.preventDuplicate) || preventDuplicate) {
-                const compareFunction = (item: Snack): boolean => (
-                    hasSpecifiedKey ? item.key === key : item.message === message
-                );
+            const compareFunction = (item: Snack): boolean => (
+                hasSpecifiedKey ? item.key === key : item.message === message
+            );
 
-                const inQueue = state.queue.findIndex(compareFunction) > -1;
-                const inView = state.snacks.findIndex(compareFunction) > -1;
-                if (inQueue || inView) {
+            const inQueueIndex = state.queue.findIndex(compareFunction);
+            const inQueue = inQueueIndex > -1;
+            const inViewIndex = state.snacks.findIndex(compareFunction);
+            const inView = inViewIndex > -1;
+
+            if (inQueue || inView) {
+                if ((preventDuplicate === undefined && this.props.preventDuplicate) || preventDuplicate) {
                     return state;
+                }
+                if (inView) {
+                    return this.handleUpdateSnack({
+                        ...state,
+                    }, inViewIndex, snack);
+                }
+                if (inQueue) {
+                    return this.handleUpdateQueue({
+                        ...state,
+                    }, inQueueIndex, snack);
                 }
             }
 
@@ -249,6 +262,34 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             return this.handleDismissOldest(newState);
         });
     };
+
+    /**
+    * Update the content of a visible snackbar with the given index.
+    */
+    handleUpdateSnack = (state: State, index: number, item: Snack) => {
+        const { snacks } = state;
+        const prevItem = snacks[index];
+        item.entered = prevItem.entered;
+        snacks[index] = item;
+        return {
+            ...state,
+            snacks,
+        };
+    }
+
+    /**
+     * Update the content of a queued snackbar with the given index.
+     */
+    handleUpdateQueue = (state: State, index: number, item: Snack) => {
+        const { queue } = state;
+        const prevItem = queue[index];
+        item.entered = prevItem.entered;
+        queue[index] = item;
+        return {
+            ...state,
+            queue,
+        };
+    }
 
     render(): JSX.Element {
         const { contextValue } = this.state;
