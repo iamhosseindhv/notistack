@@ -4,7 +4,7 @@ Thanks to all contributers who improved notistack by opening an issue/PR.
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
-* **@primal100**: A new snackbars now replaces any previous snackbar with the same key if preventDuplicate is not enabled
+* **@primal100**: A new snackbar now replaces any previous snackbar with the same key if preventDuplicate is not enabled
 
 <br />
 
