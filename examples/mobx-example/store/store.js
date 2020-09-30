@@ -12,8 +12,8 @@ const Store = function () {
             });
         }),
 
-        removeSnackbar: action((note) => {
-            this.notifications.remove(note);
+        removeSnackbar: action((key) => {
+            this.notifications = this.notifications.filter(notification => notification.key !== key);
         }),
     });
 };
