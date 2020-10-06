@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, merge, DEFAULTS } from './utils/constants';
+import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, merge, DEFAULTS, isDefined } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
@@ -49,7 +49,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Returns generated or user defined key referencing the new snackbar or null
      */
     enqueueSnackbar = (message: SnackbarMessage, { key, preventDuplicate, ...options }: OptionsObject = {}): SnackbarKey => {
-        const hasSpecifiedKey = key || key === 0;
+        const hasSpecifiedKey = isDefined(key);
         const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
 
         const merger = merge(options, this.props, DEFAULTS);
@@ -173,7 +173,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Set the entered state of the snackbar with the given key.
      */
     handleEnteredSnack: TransitionHandlerProps['onEntered'] = (node, isAppearing, key) => {
-        if (typeof key === 'undefined') {
+        if (!isDefined(key)) {
             throw new Error('handleEnteredSnack Cannot be called with undefined key');
         }
 
@@ -215,7 +215,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     closeSnackbar: ProviderContext['closeSnackbar'] = (key) => {
         // call individual snackbar onClose callback passed through options parameter
         const toBeClosed = this.state.snacks.find(item => item.key === key);
-        if (key && toBeClosed && toBeClosed.onClose) {
+        if (isDefined(key) && toBeClosed && toBeClosed.onClose) {
             toBeClosed.onClose(null, REASONS.INSTRUCTED, key);
         }
 
@@ -232,7 +232,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     // @ts-ignore
     handleExitedSnack: TransitionHandlerProps['onExited'] = (event, key1, key2) => {
         const key = key1 || key2;
-        if (typeof key === 'undefined') {
+        if (!isDefined(key)) {
             throw new Error('handleExitedSnack Cannot be called with undefined key');
         }
 
