@@ -1,9 +1,18 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@1.0.1`
+### `notistack@1.0.2`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+
+
+<br />
+
+
+### `notistack@1.0.1`
+###### October 6, 2020
+* **@thierrysantos**: EnqueueSnackbar supports snackbar with key zero [#318](https://github.com/iamhosseindhv/notistack/pull/318)
+* Fix various typescript inconsistencies [#319](https://github.com/iamhosseindhv/notistack/pull/319) 
 
 
 <br />
