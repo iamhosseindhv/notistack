@@ -81,6 +81,7 @@ export const transformer = {
     toVariant: (variant: VariantType) => `variant${capitalise(variant)}` as VariantClassKey,
 };
 
+export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);
 
 const numberOrNull = (numberish?: number | null) => (
     typeof numberish === 'number' || numberish === null

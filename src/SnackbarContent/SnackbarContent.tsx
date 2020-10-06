@@ -14,9 +14,9 @@ const styles = (theme: Theme) => createStyles({
     }
 });
 
-export interface SnackbarContent extends WithStyles<typeof styles>, React.HTMLAttributes<HTMLDivElement> { }
+interface SnackbarContentProps extends WithStyles<typeof styles>, React.HTMLAttributes<HTMLDivElement> { }
 
-const SnackbarContent: React.FC<SnackbarContent> = forwardRef<HTMLDivElement, SnackbarContent>(({ classes, className, ...props }, ref) => (
+const SnackbarContent = forwardRef<HTMLDivElement, SnackbarContentProps>(({ classes, className, ...props }, ref) => (
     <div ref={ref} className={clsx(classes.root, className)}  {...props} />
 ))
 
