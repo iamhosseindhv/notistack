@@ -50,7 +50,7 @@ export const omitContainerKeys = (classes: SnackbarProviderProps['classes']): Sn
     Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
 );
 
-export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);
+export const isDefined = (value: string | null | undefined | number | boolean): boolean => (!!value || value === 0);
 
 export const DEFAULTS = {
     variant: 'default',
