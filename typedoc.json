@@ -2191,7 +2191,7 @@
 					"type": {
 						"type": "reference",
 						"id": 191,
-						"name": "SnackbarContent"
+						"name": "SnackbarContentCallback"
 					},
 					"inheritedFrom": {
 						"type": "reference",
@@ -2635,7 +2635,7 @@
 					"type": {
 						"type": "reference",
 						"id": 191,
-						"name": "SnackbarContent"
+						"name": "SnackbarContentCallback"
 					}
 				},
 				{
@@ -3918,7 +3918,7 @@
 					"type": {
 						"type": "reference",
 						"id": 191,
-						"name": "SnackbarContent"
+						"name": "SnackbarContentCallback"
 					},
 					"inheritedFrom": {
 						"type": "reference",
@@ -5080,7 +5080,7 @@
 		},
 		{
 			"id": 191,
-			"name": "SnackbarContent",
+			"name": "SnackbarContentCallback",
 			"kind": 4194304,
 			"kindString": "Type alias",
 			"flags": {
@@ -5090,7 +5090,7 @@
 				{
 					"fileName": "src/index.d.ts",
 					"line": 22,
-					"character": 27
+					"character": 35
 				}
 			],
 			"type": {
@@ -5159,7 +5159,7 @@
 								{
 									"fileName": "src/index.d.ts",
 									"line": 22,
-									"character": 47
+									"character": 55
 								}
 							]
 						}
