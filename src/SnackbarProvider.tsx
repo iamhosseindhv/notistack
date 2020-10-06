@@ -172,9 +172,9 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     /**
      * Set the entered state of the snackbar with the given key.
      */
-    handleEnteredSnack: TransitionHandlerProps['onEntered'] = (node, isApearingOrKey1, key2) => {
+    handleEnteredSnack: TransitionHandlerProps['onEntered'] = (node, isApearing, key1) => {
         // newer versions of mui/core won't pass isAppearing argument for handleEntered
-        const key = isApearingOrKey1 || key2;
+        const key = !isDefined(key1) ? isApearing : key1;
         if (!isDefined(key)) {
             throw new Error('handleEnteredSnack Cannot be called with undefined key');
         }
