@@ -19,7 +19,7 @@ export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
 
 export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
-export type SnackbarContent = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
+export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -192,7 +192,7 @@ export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<Tra
      * Replace the snackbar. Callback used for displaying entirely customized snackbar.
      * @param {string|number} key key of a snackbar
      */
-    content?: SnackbarContent;
+    content?: SnackbarContentCallback;
     /**
      * Callback used for getting action(s). actions are mostly buttons displayed in Snackbar.
      * @param {string|number} key key of a snackbar
@@ -253,9 +253,16 @@ export interface SnackbarProviderProps extends SharedProps {
      * Little icon that is displayed at left corner of a snackbar.
      */
     iconVariant?: Partial<IconVariant>;
+    /**
+     * SnackbarProvider's ref
+     */
+    ref?: React.Ref<SnackbarProvider>;
 }
 
-export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
+export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
+    enqueueSnackbar: ProviderContext['enqueueSnackbar'];
+    closeSnackbar: ProviderContext['closeSnackbar'];
+}
 
 export interface ProviderContext {
     enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
