@@ -253,9 +253,16 @@ export interface SnackbarProviderProps extends SharedProps {
      * Little icon that is displayed at left corner of a snackbar.
      */
     iconVariant?: Partial<IconVariant>;
+    /**
+     * SnackbarProvider's ref
+     */
+    ref?: React.Ref<SnackbarProvider>;
 }
 
-export const SnackbarProvider: React.ComponentType<SnackbarProviderProps>;
+export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
+    enqueueSnackbar: ProviderContext['enqueueSnackbar'];
+    closeSnackbar: ProviderContext['closeSnackbar'];
+}
 
 export interface ProviderContext {
     enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
