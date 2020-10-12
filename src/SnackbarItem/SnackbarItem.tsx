@@ -48,6 +48,7 @@ const styles = (theme: Theme) => {
             display: 'flex',
             alignItems: 'center',
             padding: '8px 0',
+	    flex: 1,
         },
         action: {
             display: 'flex',
