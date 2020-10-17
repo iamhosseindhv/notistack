@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import { removeSnackbar } from './redux/actions';
 
-let displayed = [];
-
 const Notifier = () => {
+    const [displayed, setDisplayed] = useState([]);
     const dispatch = useDispatch();
     const notifications = useSelector(store => store.app.notifications || []);
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const storeDisplayed = (id) => {
-        displayed = [...displayed, id];
+        setDisplayed([...displayed, id]);
     };
 
     const removeDisplayed = (id) => {
-        displayed = [...displayed.filter(key => id !== key)];
+        setDisplayed([...displayed.filter(key => id !== key)]);
     };
 
     React.useEffect(() => {
