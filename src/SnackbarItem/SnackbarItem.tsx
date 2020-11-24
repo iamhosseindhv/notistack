@@ -11,9 +11,9 @@ import createChainedFunction from '../utils/createChainedFunction';
 import { Snack } from '../SnackbarProvider';
 import Snackbar from './Snackbar';
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const styles = (theme: Theme) => {
-    const backgroundColor = emphasize(theme.palette.background.default, theme.palette.type === 'light' ? 0.8 : 0.98);
+    const mode = theme.palette.mode || theme.palette.type;
+    const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
     return createStyles({
         ...allClasses.mui,
         lessPadding: {
@@ -84,12 +84,10 @@ const styles = (theme: Theme) => {
 
 
 type RemovedProps =
-    /** the one received from Provider is processed and passed to snack prop */
-    | 'variant'
-    /** same as above */
-    | 'anchorOrigin'
-    /** the one recevied from enqueueSnackbar is processed in provider, therefore shouldn't be passed to SnackbarItem */
-    | 'preventDuplicate'
+    | 'variant' // the one received from Provider is processed and passed to snack prop 
+    | 'anchorOrigin' // same as above
+    | 'autoHideDuration' // same as above
+    | 'preventDuplicate' // the one recevied from enqueueSnackbar is processed in provider, therefore shouldn't be passed to SnackbarItem */
 
 
 export interface SnackbarItemProps extends WithStyles<typeof styles>, RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
@@ -136,12 +134,19 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         TransitionComponent: otherTranComponent,
         TransitionProps: otherTranProps,
         transitionDuration: otherTranDuration,
+        onEnter: ignoredOnEnter,
+        onEntered: ignoredOnEntered,
+        onEntering: ignoredOnEntering,
+        onExit: ignoredOnExit,
+        onExited: ignoredOnExited,
+        onExiting: ignoredOnExiting,
         ...other
     } = props;
 
     const {
         persist,
         key,
+        open,
         entered,
         requestClose,
         className: singleClassName,
@@ -154,6 +159,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         TransitionComponent: singleTranComponent,
         TransitionProps: singleTranProps,
         transitionDuration: singleTranDuration,
+        onEnter,
+        onEntered,
+        onEntering,
+        onExit,
+        onExited,
+        onExiting,
         ...singleSnackProps
     } = snack;
 
@@ -201,10 +212,9 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
         >
             {/* @ts-ignore */}
             <Snackbar
-                // don't spread callbacks to snackbar component
                 {...other}
                 {...singleSnackProps}
-                open={snack.open}
+                open={open}
                 className={clsx(
                     classes.root,
                     classes.wrappedRoot,
@@ -215,7 +225,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                 {/* @ts-ignore */}
                 <TransitionComponent
                     appear
-                    in={snack.open}
+                    in={open}
                     timeout={transitionDuration}
                     {...transitionProps}
                     onExit={callbacks.onExit}
@@ -252,7 +262,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                     )}
                 </TransitionComponent>
             </Snackbar>
-        </Collapse >
+        </Collapse>
     );
 };
 
