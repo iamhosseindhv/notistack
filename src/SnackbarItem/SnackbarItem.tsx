@@ -12,6 +12,7 @@ import { Snack } from '../SnackbarProvider';
 import Snackbar from './Snackbar';
 
 const styles = (theme: Theme) => {
+    // @ts-ignore
     const mode = theme.palette.mode || theme.palette.type;
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
     return createStyles({
