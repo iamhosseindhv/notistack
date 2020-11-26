@@ -17,7 +17,7 @@
         "type": "git"
     },
     "scripts": {
-        "build": "tsdx build --entry ./src/index.js",
+        "build": "tsdx build --transpileOnly --entry ./src/index.js",
         "prebuild": "npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",

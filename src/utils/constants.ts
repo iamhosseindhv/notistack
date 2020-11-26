@@ -1,5 +1,6 @@
+import Slide from '@material-ui/core/Slide';
 import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { CloseReason, ContainerClassKey, SnackbarProviderProps } from '../index';
+import { CloseReason, ContainerClassKey, SnackbarProviderProps, VariantType, SnackbarOrigin, VariantClassKey } from '../index';
 import { SnackbarItemProps } from '../SnackbarItem';
 import { Snack } from '../SnackbarProvider';
 
@@ -36,6 +37,20 @@ export const SNACKBAR_INDENTS = {
     snackbar: { default: 6, dense: 2 },
 };
 
+export const DEFAULTS = {
+    maxSnack: 3,
+    dense: false,
+    hideIconVariant: false,
+    variant: 'default' as VariantType,
+    autoHideDuration: 5000,
+    anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
+    TransitionComponent: Slide,
+    transitionDuration: {
+        enter: 225,
+        exit: 195,
+    },
+};
+
 export const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
 
 export const originKeyExtractor = (anchor: Snack['anchorOrigin']): string => (
@@ -50,16 +65,23 @@ export const omitContainerKeys = (classes: SnackbarProviderProps['classes']): Sn
     Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
 );
 
-export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);
-
-export const DEFAULTS = {
-    variant: 'default',
-    autoHideDuration: 5000,
-    anchorOrigin: {
-        vertical: 'bottom',
-        horizontal: 'left',
-    },
+export const REASONS: { [key: string]: CloseReason } = {
+    TIMEOUT: 'timeout',
+    CLICKAWAY: 'clickaway',
+    MAXSNACK: 'maxsnack',
+    INSTRUCTED: 'instructed',
 };
+
+/** Tranforms classes name */
+export const transformer = {
+    toContainerAnchorOrigin: (origin: string) => `anchorOrigin${origin}` as ContainerClassKey,
+    toAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
+        `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
+    ),
+    toVariant: (variant: VariantType) => `variant${capitalise(variant)}` as VariantClassKey,
+};
+
+export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);
 
 const numberOrNull = (numberish?: number | null) => (
     typeof numberish === 'number' || numberish === null
@@ -76,8 +98,10 @@ export const merge = (options, props, defaults) => (name: keyof Snack): any => {
     return options[name] || props[name] || defaults[name];
 };
 
-export const REASONS: { [key: string]: CloseReason } = {
-    CLICKAWAY: 'clickaway',
-    MAXSNACK: 'maxsnack',
-    INSTRUCTED: 'instructed',
-};
+export function objectMerge(options = {}, props = {}, defaults = {}) {
+    return {
+        ...defaults,
+        ...props,
+        ...options,
+    };
+}

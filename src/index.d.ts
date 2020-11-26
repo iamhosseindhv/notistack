@@ -7,7 +7,6 @@ import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 import { StandardProps } from '@material-ui/core';
 
-export type OptionalBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
 export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
@@ -109,6 +108,8 @@ export interface TransitionHandlerProps {
     onExited: TransitionHandler;
 }
 
+export type SnackbarContentProps = React.HTMLAttributes<HTMLDivElement>
+
 /**
  * @category Shared
  */
@@ -155,18 +156,13 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
     TransitionComponent?: React.ComponentType<TransitionProps>;
     /**
      * The duration for the transition, in milliseconds.
-     * You may specify a single timeout for all transitions, or individually with an object
-     * in the following shape:
+     * You may specify the duration with an object in the following shape:
      * ```js
-     *   timeout={500}
-     * ```
-     * or individually:
-     * ```js
-     * timeout={{ enter: 300, exit: 500 }}
+     * transitionDuration={{ enter: 300, exit: 500 }}
      * ```
      * @default { enter: 225, exit: 195 }
      */
-    transitionDuration?: number | { appear?: number; enter?: number; exit?: number };
+    transitionDuration?: { appear?: number; enter?: number; exit?: number };
     /**
      * Properties applied to Transition component (e.g. Slide, Grow, Zoom, etc.)
      */

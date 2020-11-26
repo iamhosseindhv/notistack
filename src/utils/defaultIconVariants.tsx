@@ -37,7 +37,8 @@ const iconStyles = {
     marginInlineEnd: 8,
 };
 
-const defaultIconVariants: Omit<IconVariant, 'default'> = {
+const defaultIconVariants: IconVariant = {
+    default: undefined,
     success: <CheckIcon style={iconStyles} />,
     warning: <WarningIcon style={iconStyles} />,
     error: <ErrorIcon style={iconStyles} />,
