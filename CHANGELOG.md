@@ -1,9 +1,17 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@1.0.2`
+### `notistack@1.0.3`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+
+
+<br />
+
+
+### `notistack@1.0.2`
+###### November 26, 2020
+* Add support MUI v5 [#333](https://github.com/iamhosseindhv/notistack/pull/333) 
 
 
 <br />
