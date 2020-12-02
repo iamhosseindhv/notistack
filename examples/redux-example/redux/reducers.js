@@ -12,7 +12,7 @@ export default (state = defaultState, action) => {
                 notifications: [
                     ...state.notifications,
                     {
-                        key: action.key,
+                        key: action.notification.key,
                         ...action.notification,
                     },
                 ],
