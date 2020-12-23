@@ -208,7 +208,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 260,
+							"line": 261,
 							"character": 17
 						}
 					],
@@ -270,7 +270,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 259,
+							"line": 260,
 							"character": 19
 						}
 					],
@@ -1951,7 +1951,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 258,
+					"line": 259,
 					"character": 29
 				}
 			],
@@ -2407,7 +2407,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 265,
+							"line": 266,
 							"character": 17
 						}
 					],
@@ -2456,7 +2456,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 265,
+									"line": 266,
 									"character": 18
 								}
 							]
@@ -2474,7 +2474,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 264,
+							"line": 265,
 							"character": 19
 						}
 					],
@@ -2538,7 +2538,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 264,
+									"line": 265,
 									"character": 20
 								}
 							]
@@ -2559,7 +2559,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 263,
+					"line": 264,
 					"character": 32
 				}
 			]
@@ -4148,37 +4148,6 @@
 					}
 				},
 				{
-					"id": 68,
-					"name": "ref",
-					"kind": 1024,
-					"kindString": "Property",
-					"flags": {
-						"isExported": true,
-						"isOptional": true
-					},
-					"comment": {
-						"shortText": "SnackbarProvider's ref"
-					},
-					"sources": [
-						{
-							"fileName": "src/index.d.ts",
-							"line": 255,
-							"character": 7
-						}
-					],
-					"type": {
-						"type": "reference",
-						"typeArguments": [
-							{
-								"type": "reference",
-								"id": 73,
-								"name": "SnackbarProvider"
-							}
-						],
-						"name": "React.Ref"
-					}
-				},
-				{
 					"id": 69,
 					"name": "variant",
 					"kind": 1024,
@@ -4230,7 +4199,6 @@
 						67,
 						63,
 						70,
-						68,
 						69
 					]
 				}
@@ -5513,7 +5481,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 275,
+					"line": 276,
 					"character": 29
 				}
 			],
@@ -5550,7 +5518,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 272,
+					"line": 273,
 					"character": 27
 				}
 			]
@@ -5670,7 +5638,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 269,
+													"line": 270,
 													"character": 77
 												}
 											],
@@ -5703,7 +5671,7 @@
 									"sources": [
 										{
 											"fileName": "src/index.d.ts",
-											"line": 269,
+											"line": 270,
 											"character": 58
 										}
 									]
@@ -5716,7 +5684,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 268,
+					"line": 269,
 					"character": 28
 				}
 			]
