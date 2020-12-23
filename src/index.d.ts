@@ -250,6 +250,7 @@ export interface SnackbarProviderProps extends SharedProps {
      */
     iconVariant?: Partial<IconVariant>;
     /**
+     * @ignore
      * SnackbarProvider's ref
      */
     ref?: React.Ref<SnackbarProvider>;
