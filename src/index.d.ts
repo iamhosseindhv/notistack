@@ -19,7 +19,7 @@ export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
 export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
 export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
-
+export type SnackbarContent = React.ReactNode;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
