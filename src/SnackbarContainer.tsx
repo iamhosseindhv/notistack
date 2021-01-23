@@ -44,7 +44,7 @@ const useStyle = makeStyles(theme => ({
             transform: 'translateX(0)',
         },
     },
-}));
+}), { name: 'notistack' });
 
 
 interface SnackbarContainerProps {
