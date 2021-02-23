@@ -108,7 +108,7 @@ export interface TransitionHandlerProps {
     onExited: TransitionHandler;
 }
 
-export type SnackbarContentProps = React.HTMLAttributes<HTMLDivElement>
+export type SnackbarContentProps = React.HTMLAttributes<HTMLDivElement>;
 
 /**
  * @category Shared
@@ -269,6 +269,7 @@ export interface ProviderContext {
 export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
     React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
 
+export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
 
 export function useSnackbar(): ProviderContext;
 
