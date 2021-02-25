@@ -1,10 +1,17 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@1.0.4`
+### `notistack@1.0.5`
 ###### to be published
 * **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
 * **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
 
+
+<br />
+
+
+### `notistack@1.0.4`
+###### February 23, 2021
+* **@tarazena**: Export missing SnackbarContent for TypeScript [#354](https://github.com/iamhosseindhv/notistack/pull/354) 
 
 <br />
 

@@ -5471,7 +5471,7 @@
 			}
 		},
 		{
-			"id": 222,
+			"id": 223,
 			"name": "WithSnackbarProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5481,7 +5481,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 276,
+					"line": 277,
 					"character": 29
 				}
 			],
@@ -5493,6 +5493,49 @@
 		},
 		{
 			"id": 220,
+			"name": "SnackbarContent",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"sources": [
+				{
+					"fileName": "src/index.d.ts",
+					"line": 272,
+					"character": 36
+				}
+			],
+			"type": {
+				"type": "reference",
+				"typeArguments": [
+					{
+						"type": "intersection",
+						"types": [
+							{
+								"type": "reference",
+								"id": 213,
+								"name": "SnackbarContentProps"
+							},
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "reference",
+										"name": "HTMLDivElement"
+									}
+								],
+								"name": "RefAttributes"
+							}
+						]
+					}
+				],
+				"name": "React.ComponentType"
+			}
+		},
+		{
+			"id": 221,
 			"name": "useSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -5501,7 +5544,7 @@
 			},
 			"signatures": [
 				{
-					"id": 221,
+					"id": 222,
 					"name": "useSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -5518,7 +5561,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 273,
+					"line": 274,
 					"character": 27
 				}
 			]
@@ -5763,14 +5806,21 @@
 				205,
 				211,
 				181,
-				222
+				223
+			]
+		},
+		{
+			"title": "Variables",
+			"kind": 32,
+			"children": [
+				220
 			]
 		},
 		{
 			"title": "Functions",
 			"kind": 64,
 			"children": [
-				220,
+				221,
 				214
 			]
 		}
