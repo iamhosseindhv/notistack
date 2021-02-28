@@ -26,11 +26,11 @@
     "peerDependencies": {
         "react": "^16.8.0 || ^17.0.0",
         "react-dom": "^16.8.0 || ^17.0.0",
-        "@material-ui/core": "^4.0.0"
+        "@material-ui/core": "^5.0.0-alpha.15"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.8.3",
-        "@material-ui/core": "^4.9.5",
+        "@material-ui/core": "^5.0.0-alpha.15",
         "@types/node": "^13.9.0",
         "@types/react": "^16.9.23",
         "@types/react-dom": "^16.9.5",
