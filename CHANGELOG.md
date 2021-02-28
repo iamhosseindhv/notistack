@@ -1,9 +1,8 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
 ### `notistack@1.0.5`
-###### to be published
-* **@pctestjfarz**: Add swipe to dismiss feature [#138](https://github.com/iamhosseindhv/notistack/issues/138) 
-* **@molynerd**: Add support to update content of snackbar in place [#50](https://github.com/iamhosseindhv/notistack/issues/50)
+###### February 28, 2021
+* Prevent snackbars from having the same width [#356](https://github.com/iamhosseindhv/notistack/pull/356) 
 
 
 <br />
