@@ -80,6 +80,9 @@ const styles = (theme: Theme) => {
             marginTop: SNACKBAR_INDENTS.snackbar.dense,
             marginBottom: SNACKBAR_INDENTS.snackbar.dense,
         },
+        collapseWrapperInner: {
+            width: 'auto',
+        },
     });
 }
 
