@@ -21,7 +21,8 @@ export const getTransitionDirection = (anchorOrigin: Snack['anchorOrigin']): Dir
 /**
  * Omit all class keys except what we need for collapse component
  */
-export const omitNonCollapseKeys = (classes: SnackbarItemProps['classes'], dense: SnackbarProviderProps['dense']): { container: string; wrapper: string } => ({
+export const omitNonCollapseKeys = (classes: SnackbarItemProps['classes'], dense: SnackbarProviderProps['dense']): { container: string; wrapper: string; wrapperInner: string; } => ({
     container: classes.collapseContainer,
     wrapper: clsx(classes.collapseWrapper, { [classes.collapseWrapperDense]: dense }),
+    wrapperInner: classes.collapseWrapperInner,
 });
