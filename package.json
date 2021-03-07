@@ -54,6 +54,7 @@
     },
     "dependencies": {
         "clsx": "^1.1.0",
+        "goober": "^2.0.33",
         "hoist-non-react-statics": "^3.3.0"
     },
     "bugs": {
