@@ -1,24 +1,23 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import clsx from 'clsx';
-import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
 import { SnackbarContentProps } from '../index';
+import { breakpoints } from '../utils/constants';
+import makeStyles from '../utils/makeStyles';
 
-const styles = (theme: Theme) => createStyles({
+const classes = makeStyles({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
         flexGrow: 1,
-        [theme.breakpoints.up('sm')]: {
+        [breakpoints.upSm]: {
             flexGrow: 'initial',
-            minWidth: 288,
+            minWidth: '288px',
         },
     }
 });
 
-interface Props extends WithStyles<typeof styles>, SnackbarContentProps { }
+const SnackbarContent = forwardRef<HTMLDivElement, SnackbarContentProps>(({ className, ...props }, ref) => (
+    <div ref={ref} className={clsx(classes.root, className)} {...props} />
+));
 
-const SnackbarContent = forwardRef<HTMLDivElement, Props>(({ classes, className, ...props }, ref) => (
-    <div ref={ref} className={clsx(classes.root, className)}  {...props} />
-))
-
-export default withStyles(styles)(SnackbarContent);
+export default memo(SnackbarContent);
