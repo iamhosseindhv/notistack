@@ -5,35 +5,42 @@ import * as React from 'react';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { REASONS } from '../utils/constants';
 import useEventCallback from '../utils/useEventCallback';
+import { SharedProps } from '../index';
 
-const Snackbar = React.forwardRef((props, ref) => {
+interface SnackbarProps extends Required<Pick<SharedProps, | 'disableWindowBlurListener' | 'onClose'>> {
+    open: boolean;
+    className: string;
+    children: JSX.Element;
+    autoHideDuration: number | null | undefined;
+    SnackbarProps: SharedProps['SnackbarProps'];
+}
+
+const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) => {
     const {
         children,
+        className,
         autoHideDuration,
-        ClickAwayListenerProps,
         disableWindowBlurListener = false,
         onClose,
-        onMouseEnter,
-        onMouseLeave,
         open,
-        resumeHideDuration,
-        ...other
+        SnackbarProps = {}
     } = props;
 
-    const timerAutoHide = React.useRef();
+    const timerAutoHide = React.useRef<ReturnType<typeof setTimeout>>();
 
-    const handleClose = useEventCallback((...args) => {
-        if (onClose) {
-            onClose(...args);
-        }
+    const handleClose = useEventCallback((...args: any[]) => {
+        // @ts-ignore
+        if (onClose) onClose(...args);
     });
 
-    const setAutoHideTimer = useEventCallback((autoHideDurationParam) => {
+    const setAutoHideTimer = useEventCallback((autoHideDurationParam: number | null) => {
         if (!onClose || autoHideDurationParam == null) {
             return;
         }
 
-        clearTimeout(timerAutoHide.current);
+        if (timerAutoHide.current) {
+            clearTimeout(timerAutoHide.current);
+        }
         timerAutoHide.current = setTimeout(() => {
             handleClose(null, REASONS.TIMEOUT);
         }, autoHideDurationParam);
@@ -45,7 +52,9 @@ const Snackbar = React.forwardRef((props, ref) => {
         }
 
         return () => {
-            clearTimeout(timerAutoHide.current);
+            if (timerAutoHide.current) {
+                clearTimeout(timerAutoHide.current);
+            }
         };
     }, [open, autoHideDuration, setAutoHideTimer]);
 
@@ -54,7 +63,9 @@ const Snackbar = React.forwardRef((props, ref) => {
      * or when the user hide the window.
      */
     const handlePause = () => {
-        clearTimeout(timerAutoHide.current);
+        if (timerAutoHide.current) {
+            clearTimeout(timerAutoHide.current);
+        }
     };
 
     /**
@@ -63,25 +74,25 @@ const Snackbar = React.forwardRef((props, ref) => {
      */
     const handleResume = React.useCallback(() => {
         if (autoHideDuration != null) {
-            setAutoHideTimer(resumeHideDuration != null ? resumeHideDuration : autoHideDuration * 0.5);
+            setAutoHideTimer(autoHideDuration * 0.5);
         }
-    }, [autoHideDuration, resumeHideDuration, setAutoHideTimer]);
+    }, [autoHideDuration, setAutoHideTimer]);
 
-    const handleMouseEnter = (event) => {
-        if (onMouseEnter) {
-            onMouseEnter(event);
+    const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = (event) => {
+        if (SnackbarProps.onMouseEnter) {
+            SnackbarProps.onMouseEnter(event);
         }
         handlePause();
     };
 
-    const handleMouseLeave = (event) => {
-        if (onMouseLeave) {
-            onMouseLeave(event);
+    const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = (event) => {
+        if (SnackbarProps.onMouseLeave) {
+            SnackbarProps.onMouseLeave(event);
         }
         handleResume();
     };
 
-    const handleClickAway = (event) => {
+    const handleClickAway = (event: React.MouseEvent<Document>) => {
         if (onClose) {
             onClose(event, REASONS.CLICKAWAY);
         }
@@ -102,8 +113,8 @@ const Snackbar = React.forwardRef((props, ref) => {
     }, [disableWindowBlurListener, handleResume, open]);
 
     return (
-        <ClickAwayListener onClickAway={handleClickAway} {...ClickAwayListenerProps}>
-            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={ref} {...other}>
+        <ClickAwayListener onClickAway={handleClickAway}>
+            <div ref={ref} {...SnackbarProps} className={className} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 {children}
             </div>
         </ClickAwayListener>
