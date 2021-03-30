@@ -54,7 +54,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Adds a new snackbar to the queue to be presented.
      * Returns generated or user defined key referencing the new snackbar or null
      */
-    enqueueSnackbar = (message: SnackbarMessage, opts: OptionsObject = {}): SnackbarKey => {
+    enqueueSnackbar: ProviderContext['enqueueSnackbar'] = (message, opts = {}) => {
         const {
             key,
             preventDuplicate,
