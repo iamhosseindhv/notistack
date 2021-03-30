@@ -133,7 +133,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         if (queue.length > 0) {
             return {
                 ...state,
-                // @ts-ignore
                 snacks: [...snacks, queue[0]],
                 queue: queue.slice(1, queue.length),
             };
