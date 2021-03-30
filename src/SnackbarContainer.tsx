@@ -57,7 +57,7 @@ interface SnackbarContainerProps {
 }
 
 const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
-    const { className, anchorOrigin, dense, ...other } = props;
+    const { className, anchorOrigin, dense } = props;
 
     const combinedClassname = clsx(
         classes.root,
@@ -71,7 +71,7 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
     );
 
     return (
-        <div className={combinedClassname} {...other} />
+        <div className={combinedClassname} />
     );
 };
 
