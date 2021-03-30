@@ -1,32 +1,8 @@
 import Slide from '@material-ui/core/Slide';
-import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { CloseReason, ContainerClassKey, SnackbarProviderProps, VariantType, SnackbarOrigin, VariantClassKey } from '../index';
+import { CloseReason, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey } from '../index';
 import { SnackbarItemProps } from '../SnackbarItem';
 import { Snack } from '../SnackbarProvider';
-
-export const allClasses: {
-    mui: Record<SnackbarClassKey, {}>;
-    container: Record<ContainerClassKey, {}>;
-} = {
-    mui: {
-        root: {},
-        anchorOriginTopCenter: {},
-        anchorOriginBottomCenter: {},
-        anchorOriginTopRight: {},
-        anchorOriginBottomRight: {},
-        anchorOriginTopLeft: {},
-        anchorOriginBottomLeft: {},
-    },
-    container: {
-        containerRoot: {},
-        containerAnchorOriginTopCenter: {},
-        containerAnchorOriginBottomCenter: {},
-        containerAnchorOriginTopRight: {},
-        containerAnchorOriginBottomRight: {},
-        containerAnchorOriginTopLeft: {},
-        containerAnchorOriginBottomLeft: {},
-    },
-};
+import defaultIconVariants from './defaultIconVariants';
 
 export const breakpoints = {
     downXs: '@media (max-width:599.95px)',
@@ -44,10 +20,11 @@ export const SNACKBAR_INDENTS = {
 
 export const DEFAULTS = {
     maxSnack: 3,
-    dense: false,
     hideIconVariant: false,
+    disableWindowBlurListener: false,
     variant: 'default' as VariantType,
     autoHideDuration: 5000,
+    iconVariant: defaultIconVariants,
     anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
     TransitionComponent: Slide,
     transitionDuration: {
@@ -65,10 +42,19 @@ export const originKeyExtractor = (anchor: Snack['anchorOrigin']): string => (
 /**
  * Omit SnackbarContainer class keys that are not needed for SnackbarItem
  */
-export const omitContainerKeys = (classes: SnackbarProviderProps['classes']): SnackbarItemProps['classes'] => (
+export const omitContainerKeys = (classes: Partial<ClassNameMap<CombinedClassKey>>): SnackbarItemProps['classes'] => {
+    const containerClasses: ClassNameMap<ContainerClassKey> = {
+        containerRoot: '',
+        containerAnchorOriginTopCenter: '',
+        containerAnchorOriginBottomCenter: '',
+        containerAnchorOriginTopRight: '',
+        containerAnchorOriginBottomRight: '',
+        containerAnchorOriginTopLeft: '',
+        containerAnchorOriginBottomLeft: '',
+    };
     // @ts-ignore
-    Object.keys(classes).filter(key => !allClasses.container[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
-);
+    return Object.keys(classes).filter(key => !containerClasses[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
+};
 
 export const REASONS: { [key: string]: CloseReason } = {
     TIMEOUT: 'timeout',
@@ -80,10 +66,9 @@ export const REASONS: { [key: string]: CloseReason } = {
 /** Tranforms classes name */
 export const transformer = {
     toContainerAnchorOrigin: (origin: string) => `anchorOrigin${origin}` as ContainerClassKey,
-    toAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
+    toSnackbarAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
         `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
     ),
-    toVariant: (variant: VariantType) => `variant${capitalise(variant)}` as VariantClassKey,
 };
 
 export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);
@@ -93,7 +78,15 @@ const numberOrNull = (numberish?: number | null) => (
 );
 
 // @ts-ignore
-export const merge = (options, props, defaults) => (name: keyof Snack): any => {
+export const merge = (options, props, defaults) => (name: keyof Snack, shouldObjectMerge = false): any => {
+    if (shouldObjectMerge) {
+        return {
+            ...defaults[name],
+            ...props[name],
+            ...options[name],
+        };
+    }
+
     if (name === 'autoHideDuration') {
         if (numberOrNull(options.autoHideDuration)) return options.autoHideDuration;
         if (numberOrNull(props.autoHideDuration)) return props.autoHideDuration;
@@ -102,11 +95,3 @@ export const merge = (options, props, defaults) => (name: keyof Snack): any => {
 
     return options[name] || props[name] || defaults[name];
 };
-
-export function objectMerge(options = {}, props = {}, defaults = {}) {
-    return {
-        ...defaults,
-        ...props,
-        ...options,
-    };
-}

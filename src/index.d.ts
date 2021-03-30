@@ -2,15 +2,11 @@
  * Part of the following typing and documentation is from material-ui/src/Snackbar/Snackbar.d.ts
  */
 import * as React from 'react';
-import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
-import { StandardProps } from '@material-ui/core';
+import { InternalSnackAttributes, Snack } from './SnackbarProvider';
 
 export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-type Modify<T, R> = Pick<T, Exclude<keyof T, keyof R>> & R
 
 export type SnackbarKey = string | number;
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
@@ -20,11 +16,18 @@ export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
 export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
 export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
+
+export type SnackbarClassKey =
+    | 'root'
+    | 'anchorOriginTopCenter'
+    | 'anchorOriginBottomCenter'
+    | 'anchorOriginTopRight'
+    | 'anchorOriginBottomRight'
+    | 'anchorOriginTopLeft'
+    | 'anchorOriginBottomLeft';
 
 export type ContainerClassKey =
     | 'containerRoot'
@@ -35,8 +38,7 @@ export type ContainerClassKey =
     | 'containerAnchorOriginTopLeft'
     | 'containerAnchorOriginBottomLeft';
 
-export type VariantClassKey = 'variantSuccess' | 'variantError' | 'variantInfo' | 'variantWarning';
-export type CombinedClassKey = VariantClassKey | ContainerClassKey | SnackbarClassKey;
+export type CombinedClassKey = ContainerClassKey | SnackbarClassKey;
 
 export interface SnackbarOrigin {
     vertical: 'top' | 'bottom';
@@ -87,10 +89,6 @@ export interface TransitionHandlerProps {
      */
     onEnter: TransitionHandler;
     /**
-     * Callback fired when the transition is entering.
-     */
-    onEntering: TransitionHandler;
-    /**
      * Callback fired when the transition has entered.
      */
     onEntered: TransitionEnterHandler;
@@ -98,10 +96,6 @@ export interface TransitionHandlerProps {
      * Callback fired before the transition is exiting.
      */
     onExit: TransitionHandler;
-    /**
-     * Callback fired when the transition is exiting.
-     */
-    onExiting: TransitionHandler;
     /**
      * Callback fired when the transition has exited.
      */
@@ -113,7 +107,9 @@ export type SnackbarContentProps = React.HTMLAttributes<HTMLDivElement>;
 /**
  * @category Shared
  */
-export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDivElement>, SnackbarClassKey> {
+export interface SharedProps extends Partial<TransitionHandlerProps> {
+    className?: string;
+    style?: React.CSSProperties;
     /**
      * The anchor of the `Snackbar`.
      * @default { horizontal: left, vertical: bottom }
@@ -128,27 +124,10 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      */
     autoHideDuration?: number | null;
     /**
-     * @ignore
-     * Properties applied to ClickAwayListener component
-     */
-    ClickAwayListenerProps?: Partial<ClickAwayListenerProps>;
-    /**
-     * Aria attributes applied to snackbar's content component
-     */
-    ariaAttributes?: React.AriaAttributes;
-    /**
      * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
      * @default false
      */
     disableWindowBlurListener?: boolean;
-    /**
-     * The number of milliseconds to wait before dismissing after user interaction.
-     * If `autoHideDuration` property isn't specified, it does nothing.
-     * If `autoHideDuration` property is specified but `resumeHideDuration` isn't,
-     * we use the default value.
-     * @default autoHideDuration / 2 ms.
-     */
-    resumeHideDuration?: number;
     /**
      * The component used for the transition. (e.g. Slide, Grow, Zoom, etc.)
      * @default Slide
@@ -167,12 +146,6 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      * Properties applied to Transition component (e.g. Slide, Grow, Zoom, etc.)
      */
     TransitionProps?: TransitionProps;
-}
-
-/**
- * @category Shared
- */
-export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<TransitionHandlerProps> {
     /**
      * Used to easily display different variant of snackbars. When passed to `SnackbarProvider`
      * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
@@ -185,15 +158,20 @@ export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<Tra
      */
     preventDuplicate?: boolean;
     /**
-     * Replace the snackbar. Callback used for displaying entirely customized snackbar.
-     * @param {string|number} key key of a snackbar
-     */
-    content?: SnackbarContentCallback;
-    /**
      * Callback used for getting action(s). actions are mostly buttons displayed in Snackbar.
      * @param {string|number} key key of a snackbar
      */
     action?: SnackbarAction;
+    /**
+     * Hides iconVariant if set to `true`.
+     * @default false
+     */
+    hideIconVariant?: boolean;
+    /** 
+     * Properties applied to the Snackbar root element. You'd only want to use
+     * this prop to apply html attributes for accessibility or data-* attributes.
+     */
+    SnackbarProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 /**
@@ -202,7 +180,7 @@ export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<Tra
 export interface OptionsObject extends SharedProps {
     /**
      * Unique identifier to reference a snackbar.
-     * @default random unique string
+     * @default string random unique string
      */
     key?: SnackbarKey;
     /**
@@ -210,10 +188,25 @@ export interface OptionsObject extends SharedProps {
      * @default false
      */
     persist?: boolean;
+    /**
+     * Replace the snackbar. Callback used for displaying entirely customized snackbars.
+     * If you find yourself using this prop quite often, consider defining your own custom 
+     * variant/content using `Components` prop of `SnackbarProvider`.
+     * @param {string|number} key key of a snackbar
+     */
+    content?: SnackbarContentCallback;
+}
+
+type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
+
+/**
+ * Props that we be passed to a custom component in `SnackbarProvider` `Components` prop
+ */
+export interface CustomContentProps extends Omit<Snack, NotNeededByCustomSnackbar> {
+
 }
 
 /**
- * All material-ui props, including class keys for notistack and material-ui with additional notistack props
  * @category Provider
  */
 export interface SnackbarProviderProps extends SharedProps {
@@ -233,11 +226,6 @@ export interface SnackbarProviderProps extends SharedProps {
      */
     maxSnack?: number;
     /**
-     * Hides iconVariant if set to `true`.
-     * @default false
-     */
-    hideIconVariant?: boolean;
-    /**
      * Valid and exist HTML Node element, used to target `ReactDOM.createPortal`
      */
     domRoot?: HTMLElement;
@@ -254,6 +242,12 @@ export interface SnackbarProviderProps extends SharedProps {
      * SnackbarProvider's ref
      */
     ref?: React.Ref<SnackbarProvider>;
+    /**
+     * Mapping between variants and a custom component.
+     */
+    Components?: {
+        [key in VariantType]?: React.ComponentType<CustomContentProps>;
+    };
 }
 
 export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
@@ -272,6 +266,3 @@ export function withSnackbar<P extends ProviderContext>(component: React.Compone
 export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
 
 export function useSnackbar(): ProviderContext;
-
-// backwards compatibility
-export type WithSnackbarProps = ProviderContext;
