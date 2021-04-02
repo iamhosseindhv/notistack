@@ -60,8 +60,6 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
 
     const combinedClassname = clsx(
         classes.root,
-        classes[anchorOrigin.vertical],
-        classes[anchorOrigin.horizontal],
         // @ts-ignore
         classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
         // @ts-ignore

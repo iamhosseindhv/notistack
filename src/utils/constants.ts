@@ -74,7 +74,7 @@ export const REASONS: { [key: string]: CloseReason } = {
 
 /** Tranforms classes name */
 export const transformer = {
-    toContainerAnchorOrigin: (origin: string) => `anchorOrigin${origin}` as ContainerClassKey,
+    toContainerAnchorOrigin: (origin: string) => `containerAnchorOrigin${origin}` as ContainerClassKey,
     toAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
         `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
     ),
