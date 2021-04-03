@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import clsx from 'clsx';
 import Collapse from '@material-ui/core/Collapse';
-import { getTransitionDirection, omitNonCollapseKeys } from './SnackbarItem.util';
+import { getTransitionDirection } from './SnackbarItem.util';
 import { breakpoints, REASONS, SNACKBAR_INDENTS, transformer } from '../utils/constants';
 import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap } from '../index';
 import createChainedFunction from '../utils/createChainedFunction';
@@ -34,7 +34,7 @@ const styles = makeStyles({
         marginBottom: `${SNACKBAR_INDENTS.snackbar.dense}px`,
     },
     collapseWrapperInner: {
-        width: 'auto',
+        width: 'auto !important',
         [breakpoints.downXs]: {
             width: '100%',
         },
@@ -83,11 +83,11 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const {
         open,
         SnackbarProps,
-        content: singleContent,
         TransitionComponent,
         TransitionProps,
         transitionDuration,
         disableWindowBlurListener,
+        content: componentOrFunctionContent,
         entered: ignoredEntered,
         requestClose: ignoredRequestClose,
         onEnter: ignoreOnEnter,
@@ -102,7 +102,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         ...TransitionProps,
     };
 
-    let content = singleContent;
+    let content = componentOrFunctionContent;
     if (typeof content === 'function') {
         content = content(otherSnack.id, otherSnack.message);
     }
@@ -118,7 +118,12 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             unmountOnExit
             timeout={175}
             in={collapsed}
-            classes={omitNonCollapseKeys(classes, dense)}
+            // TODO: How to customise these elements
+            classes={{
+                container: styles.collapseContainer,
+                wrapper: clsx(styles.collapseWrapper, { [styles.collapseWrapperDense]: dense }),
+                wrapperInner: styles.collapseWrapperInner,
+            }}
             onExited={callbacks.onExited}
         >
             <Snackbar

@@ -52,8 +52,9 @@ export const omitContainerKeys = (classes: Partial<ClassNameMap<CombinedClassKey
         containerAnchorOriginTopLeft: '',
         containerAnchorOriginBottomLeft: '',
     };
-    // @ts-ignore
-    return Object.keys(classes).filter(key => !containerClasses[key]).reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
+    return (Object.keys(classes) as ContainerClassKey[])
+        .filter(key => !containerClasses[key])
+        .reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
 };
 
 export const REASONS: { [key: string]: CloseReason } = {
@@ -65,7 +66,7 @@ export const REASONS: { [key: string]: CloseReason } = {
 
 /** Tranforms classes name */
 export const transformer = {
-    toContainerAnchorOrigin: (origin: string) => `anchorOrigin${origin}` as ContainerClassKey,
+    toContainerAnchorOrigin: (origin: string) => `containerAnchorOrigin${origin}` as ContainerClassKey,
     toSnackbarAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
         `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
     ),
