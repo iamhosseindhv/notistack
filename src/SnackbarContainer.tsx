@@ -4,7 +4,7 @@ import makeStyles from './utils/makeStyles';
 import { SNACKBAR_INDENTS, breakpoints } from './utils/constants';
 import { SnackbarProviderProps } from './index';
 
-const classes = makeStyles({
+const styles = makeStyles({
     root: {
         boxSizing: 'border-box',
         display: 'flex',
@@ -57,21 +57,23 @@ interface SnackbarContainerProps {
 }
 
 const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
-    const { className, anchorOrigin, dense } = props;
+    const { className, anchorOrigin, dense, children } = props;
 
     const combinedClassname = clsx(
-        classes.root,
-        classes[anchorOrigin.vertical],
-        classes[anchorOrigin.horizontal],
+        styles.root,
+        styles[anchorOrigin.vertical],
+        styles[anchorOrigin.horizontal],
         // @ts-ignore
-        classes[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
+        styles[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
         // @ts-ignore
-        classes[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
+        styles[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
         className,
     );
 
     return (
-        <div className={combinedClassname} />
+        <div className={combinedClassname}>
+            {children}
+        </div>
     );
 };
 
