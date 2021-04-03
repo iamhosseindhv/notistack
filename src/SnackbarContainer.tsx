@@ -64,9 +64,9 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
         styles[anchorOrigin.vertical],
         styles[anchorOrigin.horizontal],
         // @ts-ignore
-        styles[`${anchorOrigin.vertical}${dense ? 'Dense' : ''}`],
+        { [styles[`${anchorOrigin.vertical}Dense`]]: dense },
         // @ts-ignore
-        styles[`${anchorOrigin.horizontal}${dense ? 'Dense' : ''}`],
+        { [styles[`${anchorOrigin.horizontal}Dense`]]: dense },
         className,
     );
 
