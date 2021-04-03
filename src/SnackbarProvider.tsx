@@ -73,6 +73,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             entered: false,
             requestClose: false,
             action: merger('action'),
+            content: merger('content'),
             variant: merger('variant'),
             anchorOrigin: merger('anchorOrigin'),
             disableWindowBlurListener: merger('disableWindowBlurListener'),

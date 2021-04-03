@@ -13,8 +13,7 @@ you the tools to build your own snackbars. This is achieved through `Components`
 
 ### Breaking changes
 
-1. Drop `content` prop for SnackbarProvider. You can still pass `content` in the options parameter
-of `enqueueSnackbar` to display a one-off custom snackbar. If you find yourself using this prop quite often, consider defining your own custom variant/content using [Components]() props. After which you show your own snackbar in the following way:
+1. `content` prop is still supported but marked as deprecated and it will be removed in future releases. If you find yourself using this prop quite often, consider defining your own custom variant/content using [Components]() props. After which you can show your own snackbar in the following way:
 ```jsx
 <SnackbarProvider
     Components={{

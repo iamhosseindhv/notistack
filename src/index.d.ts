@@ -172,6 +172,16 @@ export interface SharedProps extends Partial<TransitionHandlerProps> {
      * this prop to apply html attributes for accessibility or data-* attributes.
      */
     SnackbarProps?: React.HTMLAttributes<HTMLDivElement>;
+    /**
+     * Replace the snackbar. Callback used for displaying entirely customized snackbars.
+     * @param {string|number} key key of a snackbar
+     *
+     * @ignore
+     * @deprecated - Will be removed in future releases. You should use `Components` prop of
+     * `SnackbarProvider` to display a custom snackbar. This is for your own benefit to have
+     * more control over your custom snackbars.
+     */
+    content?: SnackbarContentCallback;
 }
 
 /**
@@ -188,13 +198,6 @@ export interface OptionsObject extends SharedProps {
      * @default false
      */
     persist?: boolean;
-    /**
-     * Replace the snackbar. Callback used for displaying entirely customized snackbars.
-     * If you find yourself using this prop quite often, consider defining your own custom 
-     * variant/content using `Components` prop of `SnackbarProvider`.
-     * @param {string|number} key key of a snackbar
-     */
-    content?: SnackbarContentCallback;
 }
 
 type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
