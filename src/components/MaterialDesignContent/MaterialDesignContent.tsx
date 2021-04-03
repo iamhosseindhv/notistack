@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo, forwardRef } from 'react';
 import SnackbarContent from '../../SnackbarContent';
 import { CustomContentProps } from '../../index';
 import makeStyles from '../../utils/makeStyles';
@@ -49,7 +49,7 @@ const classes = makeStyles({
     },
 })
 
-const MaterialDesignContent: React.FC<CustomContentProps> = (props) => {
+const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((props, forwardedRef) => {
     const {
         id,
         message,
@@ -69,6 +69,7 @@ const MaterialDesignContent: React.FC<CustomContentProps> = (props) => {
 
     return (
         <SnackbarContent
+            ref={forwardedRef}
             role="alert"
             style={style}
             className={clsx(
@@ -86,6 +87,6 @@ const MaterialDesignContent: React.FC<CustomContentProps> = (props) => {
             )}
         </SnackbarContent>
     )
-}
+});
 
-export default MaterialDesignContent;
+export default memo(MaterialDesignContent);
