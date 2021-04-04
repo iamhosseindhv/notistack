@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
-import { withSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 
 const styles = {
     root: {
@@ -40,60 +40,50 @@ const buttons = [
 ];
 
 
-class MessageButtons extends Component {
-    handleClick = button => () => {
-        // Avoid material-ui warnings. more info: https://material-ui.com/style/typography/#migration-to-typography-v2
-        // eslint-disable-next-line no-underscore-dangle
-        window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
-        this.props.enqueueSnackbar(button.message, { variant: button.variant });
+const MessageButtons = ({ classes }) => {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    const handleClick = button => () => {
+        enqueueSnackbar(button.message, { variant: button.variant });
     };
 
-    handleClickWithAction = () => {
-        this.props.enqueueSnackbar('Customise this snackbar youself.', {
+    const handleClickWithAction = () => {
+        enqueueSnackbar('Customise this snackbar youself.', {
             variant: 'default',
-            action: (
-                <Button color="secondary" size="small" onClick={() => alert('clicked on my custom action')}>
-                    My action
-                </Button>
+            action: key => (
+                <Fragment>
+                    <Button color="secondary" size="small" onClick={() => alert(`Clicked on action of snackbar with key: ${key}`)}>
+                        Detail
+                    </Button>
+                    <Button color="secondary" size="small" onClick={() => closeSnackbar(key)}>
+                        Dismiss
+                    </Button>
+                </Fragment>
             ),
-            // Alternatively, you can access the key of current snackbar by passing an action of type function
-            // action: key => (
-            //     <Fragment>
-            //         <Button color="secondary" size="small" onClick={() => alert(`Clicked on action of snackbar with key: ${key}`)}>
-            //             Detail
-            //         </Button>
-            //         <Button color="secondary" size="small" onClick={() => this.props.closeSnackbar(key)}>
-            //             Dismiss
-            //         </Button>
-            //     </Fragment>
-            // ),
         });
     };
 
-    render() {
-        const { classes } = this.props;
-        return (
-            <Paper className={classes.root}>
-                {buttons.map(button => (
-                    <Button
-                        key={button.variant}
-                        variant="contained"
-                        className={clsx(classes.button, classes[button.variant])}
-                        onClick={this.handleClick(button)}
-                    >
-                        {button.variant}
-                    </Button>
-                ))}
+    return (
+        <Paper className={classes.root}>
+            {buttons.map(button => (
                 <Button
+                    key={button.variant}
                     variant="contained"
-                    className={classes.button}
-                    onClick={this.handleClickWithAction}
+                    className={clsx(classes.button, classes[button.variant])}
+                    onClick={handleClick(button)}
                 >
-                    default
+                    {button.variant}
                 </Button>
-            </Paper>
-        );
-    }
+            ))}
+            <Button
+                variant="contained"
+                className={classes.button}
+                onClick={handleClickWithAction}
+            >
+                default
+            </Button>
+        </Paper>
+    );
 }
 
-export default withStyles(styles)(withSnackbar(MessageButtons));
+export default withStyles(styles)(MessageButtons);
