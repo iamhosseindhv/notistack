@@ -82,6 +82,9 @@ const styles = (theme: Theme) => {
         },
         collapseWrapperInner: {
             width: 'auto',
+            [theme.breakpoints.down('xs')]: {
+                width: '100%',
+            },
         },
     });
 }
