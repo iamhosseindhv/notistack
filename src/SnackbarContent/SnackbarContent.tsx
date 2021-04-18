@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from 'react';
+import React, { forwardRef } from 'react';
 import clsx from 'clsx';
 import { SnackbarContentProps } from '../index';
 import { breakpoints } from '../utils/constants';
@@ -20,4 +20,4 @@ const SnackbarContent = forwardRef<HTMLDivElement, SnackbarContentProps>(({ clas
     <div ref={ref} className={clsx(classes.root, className)} {...props} />
 ));
 
-export default memo(SnackbarContent);
+export default SnackbarContent;
