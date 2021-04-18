@@ -1,5 +1,13 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@1.0.6`
+###### April 18, 2021
+* **@rzmz** Snackbars should have equal width on XS screens [#367](https://github.com/iamhosseindhv/notistack/issues/367) 
+
+
+<br />
+
+
 ### `notistack@1.0.5`
 ###### February 28, 2021
 * Prevent snackbars from having the same width [#356](https://github.com/iamhosseindhv/notistack/pull/356) 
