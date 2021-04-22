@@ -6,7 +6,7 @@
 	"originalName": "",
 	"children": [
 		{
-			"id": 87,
+			"id": 100,
 			"name": "SnackbarProvider",
 			"kind": 128,
 			"kindString": "Class",
@@ -15,7 +15,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 90,
+					"id": 103,
 					"name": "S",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"id": 91,
+					"id": 104,
 					"name": "SS",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -33,7 +33,7 @@
 					}
 				},
 				{
-					"id": 136,
+					"id": 149,
 					"name": "S",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -44,7 +44,7 @@
 			],
 			"children": [
 				{
-					"id": 139,
+					"id": 152,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -65,7 +65,7 @@
 					},
 					"signatures": [
 						{
-							"id": 140,
+							"id": 153,
 							"name": "new SnackbarProvider",
 							"kind": 16384,
 							"kindString": "Constructor signature",
@@ -86,7 +86,7 @@
 							},
 							"parameters": [
 								{
-									"id": 141,
+									"id": 154,
 									"name": "props",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -98,7 +98,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -108,17 +108,17 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 87,
+								"id": 100,
 								"name": "SnackbarProvider"
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 139,
+								"id": 152,
 								"name": "Component.__constructor"
 							}
 						},
 						{
-							"id": 142,
+							"id": 155,
 							"name": "new SnackbarProvider",
 							"kind": 16384,
 							"kindString": "Constructor signature",
@@ -139,7 +139,7 @@
 							},
 							"parameters": [
 								{
-									"id": 143,
+									"id": 156,
 									"name": "props",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -148,12 +148,12 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 59,
+										"id": 72,
 										"name": "SnackbarProviderProps"
 									}
 								},
 								{
-									"id": 144,
+									"id": 157,
 									"name": "context",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -169,12 +169,12 @@
 							],
 							"type": {
 								"type": "reference",
-								"id": 87,
+								"id": 100,
 								"name": "SnackbarProvider"
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 139,
+								"id": 152,
 								"name": "Component.__constructor"
 							}
 						}
@@ -193,12 +193,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 139,
+						"id": 152,
 						"name": "Component.__constructor"
 					}
 				},
 				{
-					"id": 89,
+					"id": 102,
 					"name": "closeSnackbar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -208,7 +208,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 258,
+							"line": 276,
 							"character": 17
 						}
 					],
@@ -225,7 +225,7 @@
 					}
 				},
 				{
-					"id": 138,
+					"id": 151,
 					"name": "context",
 					"kind": 1024,
 					"kindString": "Property",
@@ -255,12 +255,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 138,
+						"id": 151,
 						"name": "Component.context"
 					}
 				},
 				{
-					"id": 88,
+					"id": 101,
 					"name": "enqueueSnackbar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -270,7 +270,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 257,
+							"line": 275,
 							"character": 19
 						}
 					],
@@ -287,7 +287,7 @@
 					}
 				},
 				{
-					"id": 165,
+					"id": 178,
 					"name": "props",
 					"kind": 1024,
 					"kindString": "Property",
@@ -309,7 +309,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 59,
+										"id": 72,
 										"name": "SnackbarProviderProps"
 									}
 								],
@@ -321,7 +321,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 166,
+											"id": 179,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
@@ -330,7 +330,7 @@
 											},
 											"children": [
 												{
-													"id": 167,
+													"id": 180,
 													"name": "children",
 													"kind": 32,
 													"kindString": "Variable",
@@ -356,7 +356,7 @@
 													"title": "Variables",
 													"kind": 32,
 													"children": [
-														167
+														180
 													]
 												}
 											],
@@ -376,12 +376,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 165,
+						"id": 178,
 						"name": "Component.props"
 					}
 				},
 				{
-					"id": 169,
+					"id": 182,
 					"name": "refs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -406,7 +406,7 @@
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 170,
+							"id": 183,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -415,7 +415,7 @@
 							},
 							"indexSignature": [
 								{
-									"id": 171,
+									"id": 184,
 									"name": "__index",
 									"kind": 8192,
 									"kindString": "Index signature",
@@ -424,7 +424,7 @@
 									},
 									"parameters": [
 										{
-											"id": 172,
+											"id": 185,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -454,12 +454,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 169,
+						"id": 182,
 						"name": "Component.refs"
 					}
 				},
 				{
-					"id": 168,
+					"id": 181,
 					"name": "state",
 					"kind": 1024,
 					"kindString": "Property",
@@ -485,12 +485,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 168,
+						"id": 181,
 						"name": "Component.state"
 					}
 				},
 				{
-					"id": 137,
+					"id": 150,
 					"name": "contextType",
 					"kind": 1024,
 					"kindString": "Property",
@@ -528,12 +528,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 137,
+						"id": 150,
 						"name": "Component.contextType"
 					}
 				},
 				{
-					"id": 116,
+					"id": 129,
 					"name": "UNSAFE_componentWillMount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -543,7 +543,7 @@
 					},
 					"signatures": [
 						{
-							"id": 117,
+							"id": 130,
 							"name": "UNSAFE_componentWillMount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -574,7 +574,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 116,
+								"id": 129,
 								"name": "DeprecatedLifecycle.UNSAFE_componentWillMount"
 							}
 						}
@@ -588,12 +588,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 116,
+						"id": 129,
 						"name": "DeprecatedLifecycle.UNSAFE_componentWillMount"
 					}
 				},
 				{
-					"id": 122,
+					"id": 135,
 					"name": "UNSAFE_componentWillReceiveProps",
 					"kind": 2048,
 					"kindString": "Method",
@@ -603,7 +603,7 @@
 					},
 					"signatures": [
 						{
-							"id": 123,
+							"id": 136,
 							"name": "UNSAFE_componentWillReceiveProps",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -630,7 +630,7 @@
 							},
 							"parameters": [
 								{
-									"id": 124,
+									"id": 137,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -642,7 +642,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -650,7 +650,7 @@
 									}
 								},
 								{
-									"id": 125,
+									"id": 138,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -669,7 +669,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 122,
+								"id": 135,
 								"name": "DeprecatedLifecycle.UNSAFE_componentWillReceiveProps"
 							}
 						}
@@ -683,12 +683,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 122,
+						"id": 135,
 						"name": "DeprecatedLifecycle.UNSAFE_componentWillReceiveProps"
 					}
 				},
 				{
-					"id": 131,
+					"id": 144,
 					"name": "UNSAFE_componentWillUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -698,7 +698,7 @@
 					},
 					"signatures": [
 						{
-							"id": 132,
+							"id": 145,
 							"name": "UNSAFE_componentWillUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -725,7 +725,7 @@
 							},
 							"parameters": [
 								{
-									"id": 133,
+									"id": 146,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -737,7 +737,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -745,7 +745,7 @@
 									}
 								},
 								{
-									"id": 134,
+									"id": 147,
 									"name": "nextState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -764,7 +764,7 @@
 									}
 								},
 								{
-									"id": 135,
+									"id": 148,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -783,7 +783,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 131,
+								"id": 144,
 								"name": "DeprecatedLifecycle.UNSAFE_componentWillUpdate"
 							}
 						}
@@ -797,12 +797,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 131,
+						"id": 144,
 						"name": "DeprecatedLifecycle.UNSAFE_componentWillUpdate"
 					}
 				},
 				{
-					"id": 101,
+					"id": 114,
 					"name": "componentDidCatch",
 					"kind": 2048,
 					"kindString": "Method",
@@ -812,7 +812,7 @@
 					},
 					"signatures": [
 						{
-							"id": 102,
+							"id": 115,
 							"name": "componentDidCatch",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -824,7 +824,7 @@
 							},
 							"parameters": [
 								{
-									"id": 103,
+									"id": 116,
 									"name": "error",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -837,7 +837,7 @@
 									}
 								},
 								{
-									"id": 104,
+									"id": 117,
 									"name": "errorInfo",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -856,7 +856,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 101,
+								"id": 114,
 								"name": "ComponentLifecycle.componentDidCatch"
 							}
 						}
@@ -870,12 +870,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 101,
+						"id": 114,
 						"name": "ComponentLifecycle.componentDidCatch"
 					}
 				},
 				{
-					"id": 92,
+					"id": 105,
 					"name": "componentDidMount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -885,7 +885,7 @@
 					},
 					"signatures": [
 						{
-							"id": 93,
+							"id": 106,
 							"name": "componentDidMount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -901,7 +901,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 92,
+								"id": 105,
 								"name": "ComponentLifecycle.componentDidMount"
 							}
 						}
@@ -915,12 +915,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 92,
+						"id": 105,
 						"name": "ComponentLifecycle.componentDidMount"
 					}
 				},
 				{
-					"id": 109,
+					"id": 122,
 					"name": "componentDidUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -930,7 +930,7 @@
 					},
 					"signatures": [
 						{
-							"id": 110,
+							"id": 123,
 							"name": "componentDidUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -943,7 +943,7 @@
 							},
 							"parameters": [
 								{
-									"id": 111,
+									"id": 124,
 									"name": "prevProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -955,7 +955,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -963,7 +963,7 @@
 									}
 								},
 								{
-									"id": 112,
+									"id": 125,
 									"name": "prevState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -982,7 +982,7 @@
 									}
 								},
 								{
-									"id": 113,
+									"id": 126,
 									"name": "snapshot",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -992,7 +992,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 91,
+										"id": 104,
 										"name": "SS"
 									}
 								}
@@ -1003,7 +1003,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 109,
+								"id": 122,
 								"name": "NewLifecycle.componentDidUpdate"
 							}
 						}
@@ -1017,12 +1017,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 109,
+						"id": 122,
 						"name": "NewLifecycle.componentDidUpdate"
 					}
 				},
 				{
-					"id": 114,
+					"id": 127,
 					"name": "componentWillMount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1032,7 +1032,7 @@
 					},
 					"signatures": [
 						{
-							"id": 115,
+							"id": 128,
 							"name": "componentWillMount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1063,7 +1063,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 114,
+								"id": 127,
 								"name": "DeprecatedLifecycle.componentWillMount"
 							}
 						}
@@ -1077,12 +1077,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 114,
+						"id": 127,
 						"name": "DeprecatedLifecycle.componentWillMount"
 					}
 				},
 				{
-					"id": 118,
+					"id": 131,
 					"name": "componentWillReceiveProps",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1092,7 +1092,7 @@
 					},
 					"signatures": [
 						{
-							"id": 119,
+							"id": 132,
 							"name": "componentWillReceiveProps",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1119,7 +1119,7 @@
 							},
 							"parameters": [
 								{
-									"id": 120,
+									"id": 133,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1131,7 +1131,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -1139,7 +1139,7 @@
 									}
 								},
 								{
-									"id": 121,
+									"id": 134,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1158,7 +1158,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 118,
+								"id": 131,
 								"name": "DeprecatedLifecycle.componentWillReceiveProps"
 							}
 						}
@@ -1172,12 +1172,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 118,
+						"id": 131,
 						"name": "DeprecatedLifecycle.componentWillReceiveProps"
 					}
 				},
 				{
-					"id": 99,
+					"id": 112,
 					"name": "componentWillUnmount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1187,7 +1187,7 @@
 					},
 					"signatures": [
 						{
-							"id": 100,
+							"id": 113,
 							"name": "componentWillUnmount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1203,7 +1203,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 99,
+								"id": 112,
 								"name": "ComponentLifecycle.componentWillUnmount"
 							}
 						}
@@ -1217,12 +1217,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 99,
+						"id": 112,
 						"name": "ComponentLifecycle.componentWillUnmount"
 					}
 				},
 				{
-					"id": 126,
+					"id": 139,
 					"name": "componentWillUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1232,7 +1232,7 @@
 					},
 					"signatures": [
 						{
-							"id": 127,
+							"id": 140,
 							"name": "componentWillUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1259,7 +1259,7 @@
 							},
 							"parameters": [
 								{
-									"id": 128,
+									"id": 141,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1271,7 +1271,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -1279,7 +1279,7 @@
 									}
 								},
 								{
-									"id": 129,
+									"id": 142,
 									"name": "nextState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1298,7 +1298,7 @@
 									}
 								},
 								{
-									"id": 130,
+									"id": 143,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1317,7 +1317,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 126,
+								"id": 139,
 								"name": "DeprecatedLifecycle.componentWillUpdate"
 							}
 						}
@@ -1331,12 +1331,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 126,
+						"id": 139,
 						"name": "DeprecatedLifecycle.componentWillUpdate"
 					}
 				},
 				{
-					"id": 158,
+					"id": 171,
 					"name": "forceUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1345,7 +1345,7 @@
 					},
 					"signatures": [
 						{
-							"id": 159,
+							"id": 172,
 							"name": "forceUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1354,7 +1354,7 @@
 							},
 							"parameters": [
 								{
-									"id": 160,
+									"id": 173,
 									"name": "callback",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1372,7 +1372,7 @@
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 161,
+													"id": 174,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
@@ -1381,7 +1381,7 @@
 													},
 													"signatures": [
 														{
-															"id": 162,
+															"id": 175,
 															"name": "__call",
 															"kind": 4096,
 															"kindString": "Call signature",
@@ -1406,7 +1406,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 158,
+								"id": 171,
 								"name": "Component.forceUpdate"
 							}
 						}
@@ -1420,12 +1420,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 158,
+						"id": 171,
 						"name": "Component.forceUpdate"
 					}
 				},
 				{
-					"id": 105,
+					"id": 118,
 					"name": "getSnapshotBeforeUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1435,7 +1435,7 @@
 					},
 					"signatures": [
 						{
-							"id": 106,
+							"id": 119,
 							"name": "getSnapshotBeforeUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1448,7 +1448,7 @@
 							},
 							"parameters": [
 								{
-									"id": 107,
+									"id": 120,
 									"name": "prevProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1460,7 +1460,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -1468,7 +1468,7 @@
 									}
 								},
 								{
-									"id": 108,
+									"id": 121,
 									"name": "prevState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1502,7 +1502,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 105,
+								"id": 118,
 								"name": "NewLifecycle.getSnapshotBeforeUpdate"
 							}
 						}
@@ -1516,12 +1516,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 105,
+						"id": 118,
 						"name": "NewLifecycle.getSnapshotBeforeUpdate"
 					}
 				},
 				{
-					"id": 163,
+					"id": 176,
 					"name": "render",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1530,7 +1530,7 @@
 					},
 					"signatures": [
 						{
-							"id": 164,
+							"id": 177,
 							"name": "render",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1543,7 +1543,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 163,
+								"id": 176,
 								"name": "Component.render"
 							}
 						}
@@ -1557,12 +1557,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 163,
+						"id": 176,
 						"name": "Component.render"
 					}
 				},
 				{
-					"id": 145,
+					"id": 158,
 					"name": "setState",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1571,7 +1571,7 @@
 					},
 					"signatures": [
 						{
-							"id": 146,
+							"id": 159,
 							"name": "setState",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1580,7 +1580,7 @@
 							},
 							"typeParameter": [
 								{
-									"id": 147,
+									"id": 160,
 									"name": "K",
 									"kind": 131072,
 									"kindString": "Type parameter",
@@ -1599,7 +1599,7 @@
 							],
 							"parameters": [
 								{
-									"id": 148,
+									"id": 161,
 									"name": "state",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1612,7 +1612,7 @@
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 149,
+													"id": 162,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
@@ -1621,7 +1621,7 @@
 													},
 													"signatures": [
 														{
-															"id": 150,
+															"id": 163,
 															"name": "__call",
 															"kind": 4096,
 															"kindString": "Call signature",
@@ -1630,7 +1630,7 @@
 															},
 															"parameters": [
 																{
-																	"id": 151,
+																	"id": 164,
 																	"name": "prevState",
 																	"kind": 32768,
 																	"kindString": "Parameter",
@@ -1649,7 +1649,7 @@
 																	}
 																},
 																{
-																	"id": 152,
+																	"id": 165,
 																	"name": "props",
 																	"kind": 32768,
 																	"kindString": "Parameter",
@@ -1661,7 +1661,7 @@
 																		"typeArguments": [
 																			{
 																				"type": "reference",
-																				"id": 59,
+																				"id": 72,
 																				"name": "SnackbarProviderProps"
 																			}
 																		],
@@ -1683,7 +1683,7 @@
 																	{
 																		"type": "reflection",
 																		"declaration": {
-																			"id": 153,
+																			"id": 166,
 																			"name": "__type",
 																			"kind": 65536,
 																			"kindString": "Type literal",
@@ -1719,7 +1719,7 @@
 													{
 														"type": "reflection",
 														"declaration": {
-															"id": 154,
+															"id": 167,
 															"name": "__type",
 															"kind": 65536,
 															"kindString": "Type literal",
@@ -1734,7 +1734,7 @@
 									}
 								},
 								{
-									"id": 155,
+									"id": 168,
 									"name": "callback",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1752,7 +1752,7 @@
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 156,
+													"id": 169,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
@@ -1761,7 +1761,7 @@
 													},
 													"signatures": [
 														{
-															"id": 157,
+															"id": 170,
 															"name": "__call",
 															"kind": 4096,
 															"kindString": "Call signature",
@@ -1786,7 +1786,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 145,
+								"id": 158,
 								"name": "Component.setState"
 							}
 						}
@@ -1800,12 +1800,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 145,
+						"id": 158,
 						"name": "Component.setState"
 					}
 				},
 				{
-					"id": 94,
+					"id": 107,
 					"name": "shouldComponentUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1815,7 +1815,7 @@
 					},
 					"signatures": [
 						{
-							"id": 95,
+							"id": 108,
 							"name": "shouldComponentUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1828,7 +1828,7 @@
 							},
 							"parameters": [
 								{
-									"id": 96,
+									"id": 109,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1840,7 +1840,7 @@
 										"typeArguments": [
 											{
 												"type": "reference",
-												"id": 59,
+												"id": 72,
 												"name": "SnackbarProviderProps"
 											}
 										],
@@ -1848,7 +1848,7 @@
 									}
 								},
 								{
-									"id": 97,
+									"id": 110,
 									"name": "nextState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1867,7 +1867,7 @@
 									}
 								},
 								{
-									"id": 98,
+									"id": 111,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1886,7 +1886,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 94,
+								"id": 107,
 								"name": "ComponentLifecycle.shouldComponentUpdate"
 							}
 						}
@@ -1900,7 +1900,7 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 94,
+						"id": 107,
 						"name": "ComponentLifecycle.shouldComponentUpdate"
 					}
 				}
@@ -1910,48 +1910,48 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						139
+						152
 					]
 				},
 				{
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						89,
-						138,
-						88,
-						165,
-						169,
-						168,
-						137
+						102,
+						151,
+						101,
+						178,
+						182,
+						181,
+						150
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						116,
-						122,
-						131,
-						101,
-						92,
-						109,
+						129,
+						135,
+						144,
 						114,
-						118,
-						99,
-						126,
-						158,
 						105,
-						163,
-						145,
-						94
+						122,
+						127,
+						131,
+						112,
+						139,
+						171,
+						118,
+						176,
+						158,
+						107
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 256,
+					"line": 274,
 					"character": 29
 				}
 			],
@@ -1961,7 +1961,7 @@
 					"typeArguments": [
 						{
 							"type": "reference",
-							"id": 59,
+							"id": 72,
 							"name": "SnackbarProviderProps"
 						}
 					],
@@ -1970,7 +1970,7 @@
 			]
 		},
 		{
-			"id": 57,
+			"id": 70,
 			"name": "CustomContentProps",
 			"kind": 256,
 			"kindString": "Interface",
@@ -1978,12 +1978,12 @@
 				"isExported": true
 			},
 			"comment": {
-				"shortText": "Props that we be passed to a custom component in `SnackbarProvider` `Components` prop"
+				"shortText": "Props that will be passed to a custom component in `SnackbarProvider` `Components` prop"
 			},
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 208,
+					"line": 226,
 					"character": 35
 				}
 			],
@@ -1991,7 +1991,7 @@
 				{
 					"type": "reflection",
 					"declaration": {
-						"id": 58,
+						"id": 71,
 						"name": "__type",
 						"kind": 65536,
 						"kindString": "Type literal",
@@ -2001,7 +2001,7 @@
 						"sources": [
 							{
 								"fileName": "src/index.d.ts",
-								"line": 208,
+								"line": 226,
 								"character": 43
 							}
 						]
@@ -2032,7 +2032,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 52,
+							"line": 51,
 							"character": 11
 						}
 					],
@@ -2055,7 +2055,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 56,
+							"line": 55,
 							"character": 9
 						}
 					],
@@ -2078,7 +2078,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 68,
+							"line": 67,
 							"character": 8
 						}
 					],
@@ -2101,7 +2101,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 60,
+							"line": 59,
 							"character": 11
 						}
 					],
@@ -2124,7 +2124,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 64,
+							"line": 63,
 							"character": 11
 						}
 					],
@@ -2150,8 +2150,316 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 48,
+					"line": 47,
 					"character": 28
+				}
+			]
+		},
+		{
+			"id": 61,
+			"name": "InternalSnack",
+			"kind": 256,
+			"kindString": "Interface",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "Properties of a snackbar internal to notistack implementation. Not to be used by outside\nworld. If you find yourself using this, you're probably looking for `CustomContentProps` type."
+			},
+			"children": [
+				{
+					"id": 68,
+					"name": "entered",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 205,
+							"character": 11
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 59,
+						"name": "InternalSnackAttributes.entered"
+					}
+				},
+				{
+					"id": 64,
+					"name": "iconVariant",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 218,
+							"character": 15
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 4,
+						"name": "IconVariant"
+					}
+				},
+				{
+					"id": 62,
+					"name": "id",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 216,
+							"character": 6
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 201,
+						"name": "SnackbarKey"
+					}
+				},
+				{
+					"id": 63,
+					"name": "message",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 217,
+							"character": 11
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 204,
+						"name": "SnackbarMessage"
+					}
+				},
+				{
+					"id": 67,
+					"name": "open",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 204,
+							"character": 8
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 58,
+						"name": "InternalSnackAttributes.open"
+					}
+				},
+				{
+					"id": 69,
+					"name": "requestClose",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 206,
+							"character": 16
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					},
+					"inheritedFrom": {
+						"type": "reference",
+						"id": 60,
+						"name": "InternalSnackAttributes.requestClose"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						68,
+						64,
+						62,
+						63,
+						67,
+						69
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/index.d.ts",
+					"line": 215,
+					"character": 30
+				}
+			],
+			"extendedTypes": [
+				{
+					"type": "intersection",
+					"types": [
+						{
+							"type": "reflection",
+							"declaration": {
+								"id": 65,
+								"name": "__type",
+								"kind": 65536,
+								"kindString": "Type literal",
+								"flags": {
+									"isExported": true
+								}
+							}
+						},
+						{
+							"type": "reflection",
+							"declaration": {
+								"id": 66,
+								"name": "__type",
+								"kind": 65536,
+								"kindString": "Type literal",
+								"flags": {
+									"isExported": true
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "reference",
+					"id": 57,
+					"name": "InternalSnackAttributes"
+				}
+			]
+		},
+		{
+			"id": 57,
+			"name": "InternalSnackAttributes",
+			"kind": 256,
+			"kindString": "Interface",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "Properties of the internal snack which should not be exposed to outside world"
+			},
+			"children": [
+				{
+					"id": 59,
+					"name": "entered",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 205,
+							"character": 11
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 58,
+					"name": "open",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 204,
+							"character": 8
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				},
+				{
+					"id": 60,
+					"name": "requestClose",
+					"kind": 1024,
+					"kindString": "Property",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 206,
+							"character": 16
+						}
+					],
+					"type": {
+						"type": "intrinsic",
+						"name": "boolean"
+					}
+				}
+			],
+			"groups": [
+				{
+					"title": "Properties",
+					"kind": 1024,
+					"children": [
+						59,
+						58,
+						60
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/index.d.ts",
+					"line": 203,
+					"character": 33
+				}
+			],
+			"extendedBy": [
+				{
+					"type": "reference",
+					"id": 61,
+					"name": "InternalSnack"
 				}
 			]
 		},
@@ -2180,7 +2488,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 174,
+							"line": 173,
 							"character": 17
 						}
 					],
@@ -2221,7 +2529,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 135,
+							"line": 134,
 							"character": 23
 						}
 					],
@@ -2256,7 +2564,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 148,
+							"line": 147,
 							"character": 19
 						}
 					],
@@ -2293,13 +2601,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 164,
+							"line": 163,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 192,
+						"id": 205,
 						"name": "SnackbarAction"
 					},
 					"inheritedFrom": {
@@ -2329,7 +2637,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 117,
+							"line": 116,
 							"character": 16
 						}
 					],
@@ -2365,7 +2673,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 125,
+							"line": 124,
 							"character": 20
 						}
 					],
@@ -2400,7 +2708,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 111,
+							"line": 110,
 							"character": 13
 						}
 					],
@@ -2444,7 +2752,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 130,
+							"line": 129,
 							"character": 29
 						}
 					],
@@ -2492,7 +2800,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 169,
+							"line": 168,
 							"character": 19
 						}
 					],
@@ -2540,13 +2848,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 195,
+							"line": 194,
 							"character": 7
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 188,
+						"id": 201,
 						"name": "SnackbarKey"
 					}
 				},
@@ -2571,7 +2879,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 200,
+							"line": 199,
 							"character": 11
 						}
 					],
@@ -2614,7 +2922,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 159,
+							"line": 158,
 							"character": 20
 						}
 					],
@@ -2653,7 +2961,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 112,
+							"line": 111,
 							"character": 9
 						}
 					],
@@ -2688,7 +2996,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 144,
+							"line": 143,
 							"character": 22
 						}
 					],
@@ -2722,7 +3030,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 33
 												}
 											],
@@ -2752,7 +3060,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 49
 												}
 											],
@@ -2782,7 +3090,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 64
 												}
 											],
@@ -2843,13 +3151,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 154,
+							"line": 153,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 189,
+						"id": 202,
 						"name": "VariantType"
 					},
 					"inheritedFrom": {
@@ -2885,7 +3193,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 190,
+					"line": 189,
 					"character": 30
 				}
 			],
@@ -2898,7 +3206,7 @@
 			]
 		},
 		{
-			"id": 173,
+			"id": 186,
 			"name": "ProviderContext",
 			"kind": 256,
 			"kindString": "Interface",
@@ -2907,7 +3215,7 @@
 			},
 			"children": [
 				{
-					"id": 179,
+					"id": 192,
 					"name": "closeSnackbar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2917,14 +3225,14 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 263,
+							"line": 281,
 							"character": 17
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 180,
+							"id": 193,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -2933,7 +3241,7 @@
 							},
 							"signatures": [
 								{
-									"id": 181,
+									"id": 194,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -2942,7 +3250,7 @@
 									},
 									"parameters": [
 										{
-											"id": 182,
+											"id": 195,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -2952,7 +3260,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 188,
+												"id": 201,
 												"name": "SnackbarKey"
 											}
 										}
@@ -2966,7 +3274,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 263,
+									"line": 281,
 									"character": 18
 								}
 							]
@@ -2974,7 +3282,7 @@
 					}
 				},
 				{
-					"id": 174,
+					"id": 187,
 					"name": "enqueueSnackbar",
 					"kind": 1024,
 					"kindString": "Property",
@@ -2984,14 +3292,14 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 262,
+							"line": 280,
 							"character": 19
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 175,
+							"id": 188,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -3000,7 +3308,7 @@
 							},
 							"signatures": [
 								{
-									"id": 176,
+									"id": 189,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -3009,7 +3317,7 @@
 									},
 									"parameters": [
 										{
-											"id": 177,
+											"id": 190,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -3018,12 +3326,12 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 191,
+												"id": 204,
 												"name": "SnackbarMessage"
 											}
 										},
 										{
-											"id": 178,
+											"id": 191,
 											"name": "options",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -3040,7 +3348,7 @@
 									],
 									"type": {
 										"type": "reference",
-										"id": 188,
+										"id": 201,
 										"name": "SnackbarKey"
 									}
 								}
@@ -3048,7 +3356,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 262,
+									"line": 280,
 									"character": 20
 								}
 							]
@@ -3061,15 +3369,15 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						179,
-						174
+						192,
+						187
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 261,
+					"line": 279,
 					"character": 32
 				}
 			]
@@ -3099,7 +3407,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 174,
+							"line": 173,
 							"character": 17
 						}
 					],
@@ -3135,7 +3443,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 135,
+							"line": 134,
 							"character": 23
 						}
 					],
@@ -3165,7 +3473,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 148,
+							"line": 147,
 							"character": 19
 						}
 					],
@@ -3197,13 +3505,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 164,
+							"line": 163,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 192,
+						"id": 205,
 						"name": "SnackbarAction"
 					}
 				},
@@ -3228,7 +3536,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 117,
+							"line": 116,
 							"character": 16
 						}
 					],
@@ -3259,7 +3567,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 125,
+							"line": 124,
 							"character": 20
 						}
 					],
@@ -3289,7 +3597,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 111,
+							"line": 110,
 							"character": 13
 						}
 					],
@@ -3328,7 +3636,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 130,
+							"line": 129,
 							"character": 29
 						}
 					],
@@ -3371,7 +3679,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 169,
+							"line": 168,
 							"character": 19
 						}
 					],
@@ -3414,7 +3722,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 159,
+							"line": 158,
 							"character": 20
 						}
 					],
@@ -3448,7 +3756,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 112,
+							"line": 111,
 							"character": 9
 						}
 					],
@@ -3478,7 +3786,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 144,
+							"line": 143,
 							"character": 22
 						}
 					],
@@ -3512,7 +3820,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 33
 												}
 											],
@@ -3542,7 +3850,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 49
 												}
 											],
@@ -3572,7 +3880,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 64
 												}
 											],
@@ -3628,13 +3936,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 154,
+							"line": 153,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 189,
+						"id": 202,
 						"name": "VariantType"
 					}
 				}
@@ -3663,7 +3971,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 110,
+					"line": 109,
 					"character": 28
 				}
 			],
@@ -3681,7 +3989,7 @@
 						"sources": [
 							{
 								"fileName": "src/index.d.ts",
-								"line": 110,
+								"line": 109,
 								"character": 36
 							}
 						]
@@ -3696,7 +4004,7 @@
 				},
 				{
 					"type": "reference",
-					"id": 59,
+					"id": 72,
 					"name": "SnackbarProviderProps"
 				}
 			]
@@ -3721,7 +4029,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 45,
+							"line": 44,
 							"character": 14
 						}
 					],
@@ -3754,7 +4062,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 44,
+							"line": 43,
 							"character": 12
 						}
 					],
@@ -3786,13 +4094,13 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 43,
+					"line": 42,
 					"character": 31
 				}
 			]
 		},
 		{
-			"id": 59,
+			"id": 72,
 			"name": "SnackbarProviderProps",
 			"kind": 256,
 			"kindString": "Interface",
@@ -3802,7 +4110,7 @@
 			"comment": {},
 			"children": [
 				{
-					"id": 67,
+					"id": 80,
 					"name": "Components",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3816,7 +4124,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 251,
+							"line": 269,
 							"character": 14
 						}
 					],
@@ -3830,7 +4138,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 68,
+									"id": 81,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -3843,7 +4151,7 @@
 					}
 				},
 				{
-					"id": 85,
+					"id": 98,
 					"name": "SnackbarProps",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3857,7 +4165,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 174,
+							"line": 173,
 							"character": 17
 						}
 					],
@@ -3878,7 +4186,7 @@
 					}
 				},
 				{
-					"id": 74,
+					"id": 87,
 					"name": "TransitionComponent",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3898,7 +4206,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 135,
+							"line": 134,
 							"character": 23
 						}
 					],
@@ -3919,7 +4227,7 @@
 					}
 				},
 				{
-					"id": 80,
+					"id": 93,
 					"name": "TransitionProps",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3933,13 +4241,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 148,
+							"line": 147,
 							"character": 19
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 80,
+						"id": 93,
 						"name": "TransitionProps"
 					},
 					"inheritedFrom": {
@@ -3949,7 +4257,7 @@
 					}
 				},
 				{
-					"id": 83,
+					"id": 96,
 					"name": "action",
 					"kind": 1024,
 					"kindString": "Property",
@@ -3970,13 +4278,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 164,
+							"line": 163,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 192,
+						"id": 205,
 						"name": "SnackbarAction"
 					},
 					"inheritedFrom": {
@@ -3986,7 +4294,7 @@
 					}
 				},
 				{
-					"id": 71,
+					"id": 84,
 					"name": "anchorOrigin",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4006,7 +4314,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 117,
+							"line": 116,
 							"character": 16
 						}
 					],
@@ -4022,7 +4330,7 @@
 					}
 				},
 				{
-					"id": 72,
+					"id": 85,
 					"name": "autoHideDuration",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4042,7 +4350,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 125,
+							"line": 124,
 							"character": 20
 						}
 					],
@@ -4066,7 +4374,7 @@
 					}
 				},
 				{
-					"id": 60,
+					"id": 73,
 					"name": "children",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4079,7 +4387,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 220,
+							"line": 238,
 							"character": 12
 						}
 					],
@@ -4101,7 +4409,7 @@
 					}
 				},
 				{
-					"id": 69,
+					"id": 82,
 					"name": "className",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4112,7 +4420,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 111,
+							"line": 110,
 							"character": 13
 						}
 					],
@@ -4136,7 +4444,7 @@
 					}
 				},
 				{
-					"id": 64,
+					"id": 77,
 					"name": "classes",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4150,7 +4458,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 238,
+							"line": 256,
 							"character": 11
 						}
 					],
@@ -4159,11 +4467,11 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"id": 186,
+								"id": 199,
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 220,
+										"id": 233,
 										"name": "CombinedClassKey"
 									}
 								],
@@ -4174,7 +4482,7 @@
 					}
 				},
 				{
-					"id": 61,
+					"id": 74,
 					"name": "dense",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4194,7 +4502,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 225,
+							"line": 243,
 							"character": 9
 						}
 					],
@@ -4217,7 +4525,7 @@
 					}
 				},
 				{
-					"id": 73,
+					"id": 86,
 					"name": "disableWindowBlurListener",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4237,7 +4545,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 130,
+							"line": 129,
 							"character": 29
 						}
 					],
@@ -4265,7 +4573,7 @@
 					}
 				},
 				{
-					"id": 63,
+					"id": 76,
 					"name": "domRoot",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4279,7 +4587,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 234,
+							"line": 252,
 							"character": 11
 						}
 					],
@@ -4289,7 +4597,7 @@
 					}
 				},
 				{
-					"id": 84,
+					"id": 97,
 					"name": "hideIconVariant",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4309,7 +4617,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 169,
+							"line": 168,
 							"character": 19
 						}
 					],
@@ -4337,7 +4645,7 @@
 					}
 				},
 				{
-					"id": 65,
+					"id": 78,
 					"name": "iconVariant",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4351,7 +4659,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 242,
+							"line": 260,
 							"character": 15
 						}
 					],
@@ -4368,7 +4676,7 @@
 					}
 				},
 				{
-					"id": 62,
+					"id": 75,
 					"name": "maxSnack",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4388,7 +4696,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 230,
+							"line": 248,
 							"character": 12
 						}
 					],
@@ -4407,7 +4715,7 @@
 					}
 				},
 				{
-					"id": 82,
+					"id": 95,
 					"name": "preventDuplicate",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4427,7 +4735,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 159,
+							"line": 158,
 							"character": 20
 						}
 					],
@@ -4455,7 +4763,7 @@
 					}
 				},
 				{
-					"id": 70,
+					"id": 83,
 					"name": "style",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4466,7 +4774,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 112,
+							"line": 111,
 							"character": 9
 						}
 					],
@@ -4481,7 +4789,7 @@
 					}
 				},
 				{
-					"id": 75,
+					"id": 88,
 					"name": "transitionDuration",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4501,7 +4809,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 144,
+							"line": 143,
 							"character": 22
 						}
 					],
@@ -4515,7 +4823,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 76,
+									"id": 89,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -4524,7 +4832,7 @@
 									},
 									"children": [
 										{
-											"id": 77,
+											"id": 90,
 											"name": "appear",
 											"kind": 32,
 											"kindString": "Variable",
@@ -4535,7 +4843,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 33
 												}
 											],
@@ -4554,7 +4862,7 @@
 											}
 										},
 										{
-											"id": 78,
+											"id": 91,
 											"name": "enter",
 											"kind": 32,
 											"kindString": "Variable",
@@ -4565,7 +4873,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 49
 												}
 											],
@@ -4584,7 +4892,7 @@
 											}
 										},
 										{
-											"id": 79,
+											"id": 92,
 											"name": "exit",
 											"kind": 32,
 											"kindString": "Variable",
@@ -4595,7 +4903,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 144,
+													"line": 143,
 													"character": 64
 												}
 											],
@@ -4619,9 +4927,9 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												77,
-												78,
-												79
+												90,
+												91,
+												92
 											]
 										}
 									]
@@ -4636,7 +4944,7 @@
 					}
 				},
 				{
-					"id": 81,
+					"id": 94,
 					"name": "variant",
 					"kind": 1024,
 					"kindString": "Property",
@@ -4656,13 +4964,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 154,
+							"line": 153,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 189,
+						"id": 202,
 						"name": "VariantType"
 					},
 					"inheritedFrom": {
@@ -4677,33 +4985,33 @@
 					"title": "Properties",
 					"kind": 1024,
 					"children": [
-						67,
-						85,
-						74,
 						80,
-						83,
-						71,
-						72,
-						60,
-						69,
-						64,
-						61,
-						73,
-						63,
+						98,
+						87,
+						93,
+						96,
 						84,
-						65,
-						62,
+						85,
+						73,
 						82,
-						70,
+						77,
+						74,
+						86,
+						76,
+						97,
+						78,
 						75,
-						81
+						95,
+						83,
+						88,
+						94
 					]
 				}
 			],
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 215,
+					"line": 233,
 					"character": 38
 				}
 			],
@@ -4756,13 +5064,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 86,
+							"line": 85,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 201,
+						"id": 214,
 						"name": "TransitionCloseHandler"
 					}
 				},
@@ -4780,13 +5088,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 90,
+							"line": 89,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 213,
+						"id": 226,
 						"name": "TransitionHandler"
 					}
 				},
@@ -4804,13 +5112,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 94,
+							"line": 93,
 							"character": 13
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 207,
+						"id": 220,
 						"name": "TransitionEnterHandler"
 					}
 				},
@@ -4828,13 +5136,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 98,
+							"line": 97,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 213,
+						"id": 226,
 						"name": "TransitionHandler"
 					}
 				},
@@ -4852,13 +5160,13 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 102,
+							"line": 101,
 							"character": 12
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 213,
+						"id": 226,
 						"name": "TransitionHandler"
 					}
 				}
@@ -4879,13 +5187,13 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 74,
+					"line": 73,
 					"character": 39
 				}
 			]
 		},
 		{
-			"id": 186,
+			"id": 199,
 			"name": "ClassNameMap",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -4894,7 +5202,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 187,
+					"id": 200,
 					"name": "ClassKey",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -4910,7 +5218,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 9,
+					"line": 8,
 					"character": 24
 				}
 			],
@@ -4934,7 +5242,7 @@
 			}
 		},
 		{
-			"id": 190,
+			"id": 203,
 			"name": "CloseReason",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -4944,7 +5252,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 13,
+					"line": 12,
 					"character": 23
 				}
 			],
@@ -4971,7 +5279,7 @@
 			}
 		},
 		{
-			"id": 220,
+			"id": 233,
 			"name": "CombinedClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -4981,7 +5289,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 41,
+					"line": 40,
 					"character": 28
 				}
 			],
@@ -4990,19 +5298,19 @@
 				"types": [
 					{
 						"type": "reference",
-						"id": 219,
+						"id": 232,
 						"name": "ContainerClassKey"
 					},
 					{
 						"type": "reference",
-						"id": 218,
+						"id": 231,
 						"name": "SnackbarClassKey"
 					}
 				]
 			}
 		},
 		{
-			"id": 219,
+			"id": 232,
 			"name": "ContainerClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5012,7 +5320,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 32,
+					"line": 31,
 					"character": 29
 				}
 			],
@@ -5051,7 +5359,56 @@
 			}
 		},
 		{
-			"id": 222,
+			"id": 235,
+			"name": "NeededByInternalSnack",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"sources": [
+				{
+					"fileName": "src/index.d.ts",
+					"line": 209,
+					"character": 26
+				}
+			],
+			"type": {
+				"type": "union",
+				"types": [
+					{
+						"type": "stringLiteral",
+						"value": "variant"
+					},
+					{
+						"type": "stringLiteral",
+						"value": "anchorOrigin"
+					},
+					{
+						"type": "stringLiteral",
+						"value": "TransitionComponent"
+					},
+					{
+						"type": "stringLiteral",
+						"value": "TransitionProps"
+					},
+					{
+						"type": "stringLiteral",
+						"value": "transitionDuration"
+					},
+					{
+						"type": "stringLiteral",
+						"value": "hideIconVariant"
+					},
+					{
+						"type": "stringLiteral",
+						"value": "disableWindowBlurListener"
+					}
+				]
+			}
+		},
+		{
+			"id": 236,
 			"name": "NotNeededByCustomSnackbar",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5061,7 +5418,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 203,
+					"line": 221,
 					"character": 30
 				}
 			],
@@ -5073,6 +5430,7 @@
 						"operator": "keyof",
 						"target": {
 							"type": "reference",
+							"id": 57,
 							"name": "InternalSnackAttributes"
 						}
 					},
@@ -5104,7 +5462,7 @@
 			}
 		},
 		{
-			"id": 183,
+			"id": 196,
 			"name": "RequiredBy",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5113,7 +5471,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 184,
+					"id": 197,
 					"name": "T",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5122,7 +5480,7 @@
 					}
 				},
 				{
-					"id": 185,
+					"id": 198,
 					"name": "K",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5142,7 +5500,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 8,
+					"line": 7,
 					"character": 22
 				}
 			],
@@ -5203,7 +5561,7 @@
 			}
 		},
 		{
-			"id": 192,
+			"id": 205,
 			"name": "SnackbarAction",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5213,7 +5571,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 16,
+					"line": 15,
 					"character": 26
 				}
 			],
@@ -5227,7 +5585,7 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 193,
+							"id": 206,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -5236,7 +5594,7 @@
 							},
 							"signatures": [
 								{
-									"id": 194,
+									"id": 207,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -5245,7 +5603,7 @@
 									},
 									"parameters": [
 										{
-											"id": 195,
+											"id": 208,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -5254,7 +5612,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 188,
+												"id": 201,
 												"name": "SnackbarKey"
 											}
 										}
@@ -5268,7 +5626,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 16,
+									"line": 15,
 									"character": 46
 								}
 							]
@@ -5278,7 +5636,7 @@
 			}
 		},
 		{
-			"id": 218,
+			"id": 231,
 			"name": "SnackbarClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5288,7 +5646,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 23,
+					"line": 22,
 					"character": 28
 				}
 			],
@@ -5327,7 +5685,7 @@
 			}
 		},
 		{
-			"id": 196,
+			"id": 209,
 			"name": "SnackbarContentCallback",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5337,7 +5695,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 17,
+					"line": 16,
 					"character": 35
 				}
 			],
@@ -5351,7 +5709,7 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 197,
+							"id": 210,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -5360,7 +5718,7 @@
 							},
 							"signatures": [
 								{
-									"id": 198,
+									"id": 211,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -5369,7 +5727,7 @@
 									},
 									"parameters": [
 										{
-											"id": 199,
+											"id": 212,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -5378,12 +5736,12 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 188,
+												"id": 201,
 												"name": "SnackbarKey"
 											}
 										},
 										{
-											"id": 200,
+											"id": 213,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -5392,7 +5750,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 191,
+												"id": 204,
 												"name": "SnackbarMessage"
 											}
 										}
@@ -5406,7 +5764,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 17,
+									"line": 16,
 									"character": 55
 								}
 							]
@@ -5416,7 +5774,7 @@
 			}
 		},
 		{
-			"id": 221,
+			"id": 234,
 			"name": "SnackbarContentProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5426,7 +5784,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 105,
+					"line": 104,
 					"character": 32
 				}
 			],
@@ -5442,7 +5800,7 @@
 			}
 		},
 		{
-			"id": 188,
+			"id": 201,
 			"name": "SnackbarKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5452,7 +5810,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 11,
+					"line": 10,
 					"character": 23
 				}
 			],
@@ -5471,7 +5829,7 @@
 			}
 		},
 		{
-			"id": 191,
+			"id": 204,
 			"name": "SnackbarMessage",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5481,7 +5839,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 15,
+					"line": 14,
 					"character": 27
 				}
 			],
@@ -5500,7 +5858,7 @@
 			}
 		},
 		{
-			"id": 201,
+			"id": 214,
 			"name": "TransitionCloseHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5510,14 +5868,14 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 19,
+					"line": 18,
 					"character": 34
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 202,
+					"id": 215,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -5526,7 +5884,7 @@
 					},
 					"signatures": [
 						{
-							"id": 203,
+							"id": 216,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5535,7 +5893,7 @@
 							},
 							"parameters": [
 								{
-									"id": 204,
+									"id": 217,
 									"name": "event",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5563,7 +5921,7 @@
 									}
 								},
 								{
-									"id": 205,
+									"id": 218,
 									"name": "reason",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5572,12 +5930,12 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 190,
+										"id": 203,
 										"name": "CloseReason"
 									}
 								},
 								{
-									"id": 206,
+									"id": 219,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5587,7 +5945,99 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 188,
+										"id": 201,
+										"name": "SnackbarKey"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 18,
+							"character": 36
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": 220,
+			"name": "TransitionEnterHandler",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"sources": [
+				{
+					"fileName": "src/index.d.ts",
+					"line": 19,
+					"character": 34
+				}
+			],
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 221,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 222,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 223,
+									"name": "node",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"name": "HTMLElement"
+									}
+								},
+								{
+									"id": 224,
+									"name": "isAppearing",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								},
+								{
+									"id": 225,
+									"name": "key",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "reference",
+										"id": 201,
 										"name": "SnackbarKey"
 									}
 								}
@@ -5609,8 +6059,8 @@
 			}
 		},
 		{
-			"id": 207,
-			"name": "TransitionEnterHandler",
+			"id": 226,
+			"name": "TransitionHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
 			"flags": {
@@ -5620,13 +6070,13 @@
 				{
 					"fileName": "src/index.d.ts",
 					"line": 20,
-					"character": 34
+					"character": 29
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 208,
+					"id": 227,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -5635,7 +6085,7 @@
 					},
 					"signatures": [
 						{
-							"id": 209,
+							"id": 228,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -5644,7 +6094,7 @@
 							},
 							"parameters": [
 								{
-									"id": 210,
+									"id": 229,
 									"name": "node",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5657,20 +6107,7 @@
 									}
 								},
 								{
-									"id": 211,
-									"name": "isAppearing",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "intrinsic",
-										"name": "boolean"
-									}
-								},
-								{
-									"id": 212,
+									"id": 230,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -5679,7 +6116,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 188,
+										"id": 201,
 										"name": "SnackbarKey"
 									}
 								}
@@ -5694,85 +6131,6 @@
 						{
 							"fileName": "src/index.d.ts",
 							"line": 20,
-							"character": 36
-						}
-					]
-				}
-			}
-		},
-		{
-			"id": 213,
-			"name": "TransitionHandler",
-			"kind": 4194304,
-			"kindString": "Type alias",
-			"flags": {
-				"isExported": true
-			},
-			"sources": [
-				{
-					"fileName": "src/index.d.ts",
-					"line": 21,
-					"character": 29
-				}
-			],
-			"type": {
-				"type": "reflection",
-				"declaration": {
-					"id": 214,
-					"name": "__type",
-					"kind": 65536,
-					"kindString": "Type literal",
-					"flags": {
-						"isExported": true
-					},
-					"signatures": [
-						{
-							"id": 215,
-							"name": "__call",
-							"kind": 4096,
-							"kindString": "Call signature",
-							"flags": {
-								"isExported": true
-							},
-							"parameters": [
-								{
-									"id": 216,
-									"name": "node",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "reference",
-										"name": "HTMLElement"
-									}
-								},
-								{
-									"id": 217,
-									"name": "key",
-									"kind": 32768,
-									"kindString": "Parameter",
-									"flags": {
-										"isExported": true
-									},
-									"type": {
-										"type": "reference",
-										"id": 188,
-										"name": "SnackbarKey"
-									}
-								}
-							],
-							"type": {
-								"type": "intrinsic",
-								"name": "void"
-							}
-						}
-					],
-					"sources": [
-						{
-							"fileName": "src/index.d.ts",
-							"line": 21,
 							"character": 31
 						}
 					]
@@ -5780,7 +6138,7 @@
 			}
 		},
 		{
-			"id": 189,
+			"id": 202,
 			"name": "VariantType",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5790,7 +6148,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 12,
+					"line": 11,
 					"character": 23
 				}
 			],
@@ -5821,7 +6179,7 @@
 			}
 		},
 		{
-			"id": 229,
+			"id": 243,
 			"name": "SnackbarContent",
 			"kind": 32,
 			"kindString": "Variable",
@@ -5832,7 +6190,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 269,
+					"line": 287,
 					"character": 36
 				}
 			],
@@ -5844,7 +6202,7 @@
 						"types": [
 							{
 								"type": "reference",
-								"id": 221,
+								"id": 234,
 								"name": "SnackbarContentProps"
 							},
 							{
@@ -5864,7 +6222,7 @@
 			}
 		},
 		{
-			"id": 230,
+			"id": 244,
 			"name": "useSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -5873,7 +6231,7 @@
 			},
 			"signatures": [
 				{
-					"id": 231,
+					"id": 245,
 					"name": "useSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -5882,7 +6240,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 173,
+						"id": 186,
 						"name": "ProviderContext"
 					}
 				}
@@ -5890,13 +6248,13 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 271,
+					"line": 289,
 					"character": 27
 				}
 			]
 		},
 		{
-			"id": 223,
+			"id": 237,
 			"name": "withSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -5905,7 +6263,7 @@
 			},
 			"signatures": [
 				{
-					"id": 224,
+					"id": 238,
 					"name": "withSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -5914,7 +6272,7 @@
 					},
 					"typeParameter": [
 						{
-							"id": 225,
+							"id": 239,
 							"name": "P",
 							"kind": 131072,
 							"kindString": "Type parameter",
@@ -5923,14 +6281,14 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 173,
+								"id": 186,
 								"name": "ProviderContext"
 							}
 						}
 					],
 					"parameters": [
 						{
-							"id": 226,
+							"id": 240,
 							"name": "component",
 							"kind": 32768,
 							"kindString": "Parameter",
@@ -5945,7 +6303,7 @@
 										"name": "P",
 										"constraint": {
 											"type": "reference",
-											"id": 173,
+											"id": 186,
 											"name": "ProviderContext"
 										}
 									}
@@ -5968,7 +6326,7 @@
 												"name": "P",
 												"constraint": {
 													"type": "reference",
-													"id": 173,
+													"id": 186,
 													"name": "ProviderContext"
 												}
 											},
@@ -5977,7 +6335,7 @@
 												"operator": "keyof",
 												"target": {
 													"type": "reference",
-													"id": 173,
+													"id": 186,
 													"name": "ProviderContext"
 												}
 											}
@@ -5990,7 +6348,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 227,
+									"id": 241,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -5999,7 +6357,7 @@
 									},
 									"children": [
 										{
-											"id": 228,
+											"id": 242,
 											"name": "WrappedComponent",
 											"kind": 32,
 											"kindString": "Variable",
@@ -6009,7 +6367,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 267,
+													"line": 285,
 													"character": 77
 												}
 											],
@@ -6021,7 +6379,7 @@
 														"name": "P",
 														"constraint": {
 															"type": "reference",
-															"id": 173,
+															"id": 186,
 															"name": "ProviderContext"
 														}
 													}
@@ -6035,14 +6393,14 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												228
+												242
 											]
 										}
 									],
 									"sources": [
 										{
 											"fileName": "src/index.d.ts",
-											"line": 267,
+											"line": 285,
 											"character": 58
 										}
 									]
@@ -6055,7 +6413,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 266,
+					"line": 284,
 					"character": 28
 				}
 			]
@@ -6066,20 +6424,22 @@
 			"title": "Classes",
 			"kind": 128,
 			"children": [
-				87
+				100
 			]
 		},
 		{
 			"title": "Interfaces",
 			"kind": 256,
 			"children": [
-				57,
+				70,
 				4,
+				61,
+				57,
 				36,
-				173,
+				186,
 				16,
 				1,
-				59,
+				72,
 				10
 			],
 			"categories": [
@@ -6092,16 +6452,18 @@
 				{
 					"title": "Other",
 					"children": [
-						57,
+						70,
 						4,
-						173,
+						61,
+						57,
+						186,
 						1
 					]
 				},
 				{
 					"title": "Provider",
 					"children": [
-						59
+						72
 					]
 				},
 				{
@@ -6117,37 +6479,38 @@
 			"title": "Type aliases",
 			"kind": 4194304,
 			"children": [
-				186,
-				190,
-				220,
-				219,
-				222,
-				183,
-				192,
-				218,
+				199,
+				203,
+				233,
+				232,
+				235,
+				236,
 				196,
-				221,
-				188,
-				191,
+				205,
+				231,
+				209,
+				234,
 				201,
-				207,
-				213,
-				189
+				204,
+				214,
+				220,
+				226,
+				202
 			]
 		},
 		{
 			"title": "Variables",
 			"kind": 32,
 			"children": [
-				229
+				243
 			]
 		},
 		{
 			"title": "Functions",
 			"kind": 64,
 			"children": [
-				230,
-				223
+				244,
+				237
 			]
 		}
 	]
