@@ -206,7 +206,7 @@ interface InternalSnackAttributes {
     requestClose: boolean;
 }
 
-type NeededByInternalSnack = 'variant' | 'anchorOrigin' | 'TransitionComponent' | 'TransitionProps' | 'transitionDuration' | 'hideIconVariant' | 'disableWindowBlurListener';
+type NeededByInternalSnack = 'style' | 'persist' | 'variant' | 'anchorOrigin' | 'TransitionComponent' | 'TransitionProps' | 'transitionDuration' | 'hideIconVariant' | 'disableWindowBlurListener';
 
 /**
  * Properties of a snackbar internal to notistack implementation. Not to be used by outside
@@ -218,7 +218,7 @@ export interface InternalSnack extends RequiredBy<Omit<OptionsObject, 'key' | 'p
     iconVariant: IconVariant;
 }
 
-type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
+type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | keyof TransitionHandlerProps | 'SnackbarProps' | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
 
 /**
  * Props that will be passed to a custom component in `SnackbarProvider` `Components` prop

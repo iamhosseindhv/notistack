@@ -59,6 +59,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             open: true,
             entered: false,
             requestClose: false,
+            persist: merger('persist'),
             action: merger('action'),
             content: merger('content'),
             variant: merger('variant'),

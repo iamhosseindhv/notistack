@@ -19,6 +19,7 @@ export const SNACKBAR_INDENTS = {
 
 export const DEFAULTS = {
     maxSnack: 3,
+    persist: false,
     hideIconVariant: false,
     disableWindowBlurListener: false,
     variant: 'default' as VariantType,
@@ -73,7 +74,7 @@ export const transformer = {
 
 export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);
 
-const numberOrNull = (numberish?: number | null) => (
+const numberOrNull = (numberish: number | null) => (
     typeof numberish === 'number' || numberish === null
 );
 

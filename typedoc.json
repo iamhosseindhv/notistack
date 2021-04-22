@@ -5378,6 +5378,14 @@
 				"types": [
 					{
 						"type": "stringLiteral",
+						"value": "style"
+					},
+					{
+						"type": "stringLiteral",
+						"value": "persist"
+					},
+					{
+						"type": "stringLiteral",
 						"value": "variant"
 					},
 					{
@@ -5433,6 +5441,19 @@
 							"id": 57,
 							"name": "InternalSnackAttributes"
 						}
+					},
+					{
+						"type": "typeOperator",
+						"operator": "keyof",
+						"target": {
+							"type": "reference",
+							"id": 10,
+							"name": "TransitionHandlerProps"
+						}
+					},
+					{
+						"type": "stringLiteral",
+						"value": "SnackbarProps"
 					},
 					{
 						"type": "stringLiteral",
