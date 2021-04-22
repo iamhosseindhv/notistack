@@ -3,7 +3,6 @@
  */
 import * as React from 'react';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
-import { InternalSnackAttributes, Snack } from './SnackbarProvider';
 
 export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
@@ -200,12 +199,31 @@ export interface OptionsObject extends SharedProps {
     persist?: boolean;
 }
 
+/** Properties of the internal snack which should not be exposed to outside world  */
+interface InternalSnackAttributes {
+    open: boolean;
+    entered: boolean;
+    requestClose: boolean;
+}
+
+type NeededByInternalSnack = 'variant' | 'anchorOrigin' | 'TransitionComponent' | 'TransitionProps' | 'transitionDuration' | 'hideIconVariant' | 'disableWindowBlurListener';
+
+/**
+ * Properties of a snackbar internal to notistack implementation. Not to be used by outside
+ * world. If you find yourself using this, you're probably looking for `CustomContentProps` type.
+ */
+export interface InternalSnack extends RequiredBy<Omit<OptionsObject, 'key' | 'preventDuplicate'>, NeededByInternalSnack>, InternalSnackAttributes {
+    id: SnackbarKey;
+    message: SnackbarMessage;
+    iconVariant: IconVariant;
+}
+
 type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
 
 /**
- * Props that we be passed to a custom component in `SnackbarProvider` `Components` prop
+ * Props that will be passed to a custom component in `SnackbarProvider` `Components` prop
  */
-export interface CustomContentProps extends Omit<Snack, NotNeededByCustomSnackbar> {
+export interface CustomContentProps extends Omit<InternalSnack, NotNeededByCustomSnackbar> {
 
 }
 

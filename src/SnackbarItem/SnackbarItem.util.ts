@@ -1,4 +1,4 @@
-import { Snack } from '../SnackbarProvider';
+import { InternalSnack } from '../index';
 
 const DIRECTION = {
     right: 'left',
@@ -9,7 +9,7 @@ const DIRECTION = {
 
 export type DirectionType = typeof DIRECTION[keyof typeof DIRECTION]
 
-export const getTransitionDirection = (anchorOrigin: Snack['anchorOrigin']): DirectionType => {
+export const getTransitionDirection = (anchorOrigin: InternalSnack['anchorOrigin']): DirectionType => {
     if (anchorOrigin.horizontal !== 'center') {
         return DIRECTION[anchorOrigin.horizontal];
     }

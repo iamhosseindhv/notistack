@@ -3,9 +3,8 @@ import clsx from 'clsx';
 import Collapse from '@material-ui/core/Collapse';
 import { getTransitionDirection } from './SnackbarItem.util';
 import { breakpoints, REASONS, SNACKBAR_INDENTS, transformer } from '../utils/constants';
-import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap } from '../index';
+import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../index';
 import createChainedFunction from '../utils/createChainedFunction';
-import { Snack } from '../SnackbarProvider';
 import Snackbar from './Snackbar';
 import makeStyles from '../utils/makeStyles';
 
@@ -42,7 +41,7 @@ const styles = makeStyles({
 });
 
 export interface SnackbarItemProps extends Required<Pick<SnackbarProviderProps, 'onEntered' | 'onExited' | 'onClose' | 'dense'>> {
-    snack: Snack;
+    snack: InternalSnack;
     classes: Partial<ClassNameMap<SnackbarClassKey>>;
     onEnter: SnackbarProviderProps['onEnter'];
     onExit: SnackbarProviderProps['onExit'];

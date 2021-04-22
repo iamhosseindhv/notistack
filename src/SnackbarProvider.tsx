@@ -6,30 +6,17 @@ import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, mer
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { SnackbarProviderProps, SnackbarKey, SnackbarMessage, OptionsObject, ProviderContext, TransitionHandlerProps, RequiredBy, IconVariant } from './index';
+import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack } from './index';
 import createChainedFunction from './utils/createChainedFunction';
 import MaterialDesignContent from './components/MaterialDesignContent/MaterialDesignContent';
 
 type Reducer = (state: State) => State;
-type SnacksByPosition = { [key: string]: Snack[] };
+type SnacksByPosition = { [key: string]: InternalSnack[] };
 
-export interface InternalSnackAttributes {
-    open: boolean;
-    entered: boolean;
-    requestClose: boolean;
-}
-
-type Requireds = 'variant' | 'anchorOrigin' | 'TransitionComponent' | 'TransitionProps' | 'transitionDuration' | 'hideIconVariant' | 'disableWindowBlurListener';
-
-export interface Snack extends RequiredBy<Omit<OptionsObject, 'key' | 'preventDuplicate'>, Requireds>, InternalSnackAttributes {
-    id: SnackbarKey;
-    message: SnackbarMessage;
-    iconVariant: IconVariant;
-}
 
 interface State {
-    snacks: Snack[];
-    queue: Snack[];
+    snacks: InternalSnack[];
+    queue: InternalSnack[];
     contextValue: ProviderContext;
 }
 
@@ -65,7 +52,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
 
         const merger = merge(options, this.props, DEFAULTS);
-        const snack: Snack = {
+        const snack: InternalSnack = {
             id,
             ...options,
             message,
@@ -94,7 +81,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
         this.setState((state) => {
             if ((preventDuplicate === undefined && this.props.preventDuplicate) || preventDuplicate) {
-                const compareFunction = (item: Snack): boolean => (
+                const compareFunction = (item: InternalSnack): boolean => (
                     hasSpecifiedKey ? item.id === id : item.message === message
                 );
 

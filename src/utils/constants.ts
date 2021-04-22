@@ -1,7 +1,6 @@
 import Slide from '@material-ui/core/Slide';
-import { CloseReason, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey } from '../index';
+import { CloseReason, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey, InternalSnack } from '../index';
 import { SnackbarItemProps } from '../SnackbarItem';
-import { Snack } from '../SnackbarProvider';
 import defaultIconVariants from './defaultIconVariants';
 
 export const breakpoints = {
@@ -35,7 +34,7 @@ export const DEFAULTS = {
 
 export const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
 
-export const originKeyExtractor = (anchor: Snack['anchorOrigin']): string => (
+export const originKeyExtractor = (anchor: InternalSnack['anchorOrigin']): string => (
     `${capitalise(anchor.vertical)}${capitalise(anchor.horizontal)}`
 );
 
@@ -79,7 +78,7 @@ const numberOrNull = (numberish?: number | null) => (
 );
 
 // @ts-ignore
-export const merge = (options, props, defaults) => (name: keyof Snack, shouldObjectMerge = false): any => {
+export const merge = (options, props, defaults) => (name: keyof InternalSnack, shouldObjectMerge = false): any => {
     if (shouldObjectMerge) {
         return {
             ...defaults[name],
