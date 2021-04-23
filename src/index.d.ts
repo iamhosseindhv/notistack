@@ -44,29 +44,6 @@ export interface SnackbarOrigin {
     horizontal: 'left' | 'center' | 'right';
 }
 
-export interface IconVariant {
-    /**
-     * Icon displayed when variant of a snackbar is set to `default`.
-     */
-    default: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `error`.
-     */
-    error: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `success`.
-     */
-    success: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `warning`.
-     */
-    warning: React.ReactNode;
-    /**
-     * Icon displayed when variant of a snackbar is set to `info`.
-     */
-    info: React.ReactNode;
-}
-
 /**
  * @category Shared
  */
@@ -106,7 +83,7 @@ export type SnackbarContentProps = React.HTMLAttributes<HTMLDivElement>;
 /**
  * @category Shared
  */
-export interface SharedProps extends Partial<TransitionHandlerProps> {
+export interface SharedProps<V extends string = VariantType> extends Partial<TransitionHandlerProps> {
     className?: string;
     style?: React.CSSProperties;
     /**
@@ -150,7 +127,7 @@ export interface SharedProps extends Partial<TransitionHandlerProps> {
      * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
      * @default default
      */
-    variant?: VariantType;
+    variant?: V;
     /**
      * Ignores displaying multiple snackbars with the same `message`
      * @default false
@@ -186,7 +163,7 @@ export interface SharedProps extends Partial<TransitionHandlerProps> {
 /**
  * @category Enqueue
  */
-export interface OptionsObject extends SharedProps {
+export interface OptionsObject<V extends string = VariantType> extends SharedProps<V> {
     /**
      * Unique identifier to reference a snackbar.
      * @default string random unique string
@@ -215,7 +192,7 @@ type NeededByInternalSnack = 'style' | 'persist' | 'variant' | 'anchorOrigin' | 
 export interface InternalSnack extends RequiredBy<Omit<OptionsObject, 'key' | 'preventDuplicate'>, NeededByInternalSnack>, InternalSnackAttributes {
     id: SnackbarKey;
     message: SnackbarMessage;
-    iconVariant: IconVariant;
+    iconVariant: Record<string, React.ReactNode>;
 }
 
 type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | keyof TransitionHandlerProps | 'SnackbarProps' | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
@@ -230,7 +207,7 @@ export interface CustomContentProps extends Omit<InternalSnack, NotNeededByCusto
 /**
  * @category Provider
  */
-export interface SnackbarProviderProps extends SharedProps {
+export interface SnackbarProviderProps<V extends string = VariantType> extends SharedProps<V> {
     /**
      * Most of the time this is your App. every component from this point onward
      * will be able to show snackbars.
@@ -255,9 +232,9 @@ export interface SnackbarProviderProps extends SharedProps {
      */
     classes?: Partial<ClassNameMap<CombinedClassKey>>;
     /**
-     * Little icon that is displayed at left corner of a snackbar.
+     * Mapping between variants and an icon component
      */
-    iconVariant?: Partial<IconVariant>;
+    iconVariant?: Partial<Record<V, React.ReactNode>>;
     /**
      * @ignore
      * SnackbarProvider's ref
@@ -267,7 +244,7 @@ export interface SnackbarProviderProps extends SharedProps {
      * Mapping between variants and a custom component.
      */
     Components?: {
-        [key in VariantType]?: React.ComponentType<CustomContentProps>;
+        [key in V]?: React.ComponentType<CustomContentProps>;
     };
 }
 

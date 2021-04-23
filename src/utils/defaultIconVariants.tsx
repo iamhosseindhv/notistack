@@ -1,6 +1,5 @@
 import React from 'react';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
-import { IconVariant } from '../index';
 
 type Icon = (props: SvgIconProps) => JSX.Element;
 
@@ -37,7 +36,7 @@ const iconStyles = {
     marginInlineEnd: 8,
 };
 
-const defaultIconVariants: IconVariant = {
+const defaultIconVariants: Record<string, React.ReactNode> = {
     default: undefined,
     success: <CheckIcon style={iconStyles} />,
     warning: <WarningIcon style={iconStyles} />,
