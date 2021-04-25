@@ -256,8 +256,8 @@ type PropsOfComponent<C> = C extends React.ComponentType<infer P> ? P : never;
 type AdditionalPropsOfComponent<C extends React.ComponentType<any>> = AdditionalProps<PropsOfComponent<C>>
 
 interface EnqueueSnackbar<T extends AnyComponentMap> {
-    <V extends VariantsOf<T>>(message: string, options?: OptionsObject<V> & AdditionalPropsOfComponent<T[V]>): SnackbarKey;
     <V extends VariantsOf<T>>(options: OptionsObject<V> & AdditionalPropsOfComponent<T[V]> & { message?: SnackbarMessage }): SnackbarKey
+    <V extends VariantsOf<T>>(message: string, options?: OptionsObject<V> & AdditionalPropsOfComponent<T[V]>): SnackbarKey;
 }
 
 export interface ProviderContext<T extends AnyComponentMap = any> {
