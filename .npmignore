@@ -9,3 +9,4 @@ tsdx.config.js
 webpack.config.js
 typedoc.json
 tsconfig.json
+MIGRATION.md
