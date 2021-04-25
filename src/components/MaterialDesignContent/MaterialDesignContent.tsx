@@ -1,8 +1,8 @@
 import React, { memo, forwardRef } from 'react';
+import clsx from 'clsx';
 import SnackbarContent from '../../SnackbarContent';
 import { CustomContentProps } from '../../index';
-import makeStyles from '../../utils/makeStyles';
-import clsx from 'clsx';
+import { ComponentClasses, makeStyles } from '../../utils/styles';
 
 const classes = makeStyles({
     root: {
@@ -74,6 +74,7 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
             role="alert"
             style={style}
             className={clsx(
+                ComponentClasses.MuiContent,
                 classes.root,
                 { [classes.lessPadding]: !hideIconVariant && icon },
                 classes[variant],

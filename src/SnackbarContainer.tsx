@@ -1,12 +1,17 @@
 import React, { memo } from 'react';
 import clsx from 'clsx';
-import makeStyles from './utils/makeStyles';
+import { makeStyles, ComponentClasses } from './utils/styles';
 import { breakpoints } from './utils/constants';
 import { SnackbarProviderProps } from './index';
 
 const indents = {
     view: { default: 20, dense: 4 },
     snackbar: { default: 6, dense: 2 },
+};
+
+const collapse = {
+    container: '& > .MuiCollapse-container',
+    wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper',
 };
 
 const styles = makeStyles({
@@ -18,12 +23,14 @@ const styles = makeStyles({
         zIndex: 1400,
         height: 'auto',
         width: 'auto',
-        transition: 'top 300ms ease 0ms, right 300ms ease 0ms, bottom 300ms ease 0ms, left 300ms ease 0ms, margin 300ms ease 0ms',
+        transition: 'top 300ms ease 0ms, right 300ms ease 0ms, bottom 300ms ease 0ms, left 300ms ease 0ms, margin 300ms ease 0ms, max-width 300ms ease 0ms',
         // container itself is invisible and should not block clicks, clicks should be passed to its children 
         pointerEvents: 'none',
-        '& > div': {
+        [collapse.container]: {
             pointerEvents: 'all',
-            margin: `${indents.snackbar.default}px 0px`,
+        },
+        [collapse.wrapper]: {
+            padding: `${indents.snackbar.default}px 0px`,
         },
         maxWidth: `calc(100% - ${indents.view.default * 2}px)`,
         [breakpoints.downXs]: {
@@ -35,8 +42,8 @@ const styles = makeStyles({
     },
     rootDense: {
         maxWidth: `calc(100% - ${indents.view.dense * 2}px)`,
-        '& > div': {
-            margin: `${indents.snackbar.dense}px 0px`,
+        [collapse.wrapper]: {
+            padding: `${indents.snackbar.dense}px 0px`,
         },
     },
     top: {
@@ -95,6 +102,7 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
     const { className, anchorOrigin, dense, children } = props;
 
     const combinedClassname = clsx(
+        ComponentClasses.SnackbarContainer,
         styles[anchorOrigin.vertical],
         styles[anchorOrigin.horizontal],
         // @ts-ignore

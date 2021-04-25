@@ -6,7 +6,7 @@ import { REASONS, transformer } from '../utils/constants';
 import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../index';
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
-import makeStyles from '../utils/makeStyles';
+import { makeStyles } from '../utils/styles';
 
 const styles = makeStyles({
     wrappedRoot: {

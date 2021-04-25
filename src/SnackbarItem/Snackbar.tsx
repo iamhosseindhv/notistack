@@ -2,10 +2,12 @@
  * @link https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Snackbar/Snackbar.js
  */
 import * as React from 'react';
+import clsx from 'clsx';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { REASONS } from '../utils/constants';
 import useEventCallback from '../utils/useEventCallback';
 import { SharedProps } from '../index';
+import { ComponentClasses } from '../utils/styles';
 
 interface SnackbarProps extends Required<Pick<SharedProps, | 'disableWindowBlurListener' | 'onClose'>> {
     open: boolean;
@@ -114,7 +116,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
 
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
-            <div ref={ref} {...SnackbarProps} className={className} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <div ref={ref} {...SnackbarProps} className={clsx(ComponentClasses.Snackbar, className)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                 {children}
             </div>
         </ClickAwayListener>

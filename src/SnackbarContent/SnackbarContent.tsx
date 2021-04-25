@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import clsx from 'clsx';
 import { SnackbarContentProps } from '../index';
 import { breakpoints } from '../utils/constants';
-import makeStyles from '../utils/makeStyles';
+import { makeStyles } from '../utils/styles';
 
 const classes = makeStyles({
     root: {
