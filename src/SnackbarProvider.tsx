@@ -10,6 +10,10 @@ import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerP
 import createChainedFunction from './utils/createChainedFunction';
 import MaterialDesignContent from './components/MaterialDesignContent/MaterialDesignContent';
 
+const isOptions = (messageOrOptions: string | (OptionsObject & { message?: string })): messageOrOptions is OptionsObject & { message?: string } => {
+    return typeof messageOrOptions !== 'string';
+}
+
 type Reducer = (state: State) => State;
 type SnacksByPosition = { [key: string]: InternalSnack[] };
 
@@ -41,9 +45,13 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Adds a new snackbar to the queue to be presented.
      * Returns generated or user defined key referencing the new snackbar or null
      */
-    public enqueueSnackbar(messageOrOptions: OptionsObject | string, optsOrUndefined: OptionsObject & { message?: string } = {}): SnackbarKey {
-        const opts = typeof messageOrOptions !== 'string' ? messageOrOptions : optsOrUndefined;
-        const message = typeof messageOrOptions === 'string' ? messageOrOptions : optsOrUndefined.message;
+    public enqueueSnackbar(messageOrOptions: string | (OptionsObject & { message?: string }), optsOrUndefined: OptionsObject = {}): SnackbarKey {
+        const opts = isOptions(messageOrOptions) ? messageOrOptions : optsOrUndefined;
+
+        let message: string | undefined = messageOrOptions as string;
+        if (isOptions(messageOrOptions)) {
+            message = messageOrOptions.message;
+        }
 
         const {
             key,
