@@ -12,11 +12,6 @@ export const MESSAGES = {
     NO_PERSIST_ALL: 'WARNING - notistack: Reached maxSnack while all enqueued snackbars have \'persist\' flag. Notistack will dismiss the oldest snackbar anyway to allow other ones in the queue to be presented.',
 };
 
-export const SNACKBAR_INDENTS = {
-    view: { default: 20, dense: 4 },
-    snackbar: { default: 6, dense: 2 },
-};
-
 export const DEFAULTS = {
     maxSnack: 3,
     persist: false,
