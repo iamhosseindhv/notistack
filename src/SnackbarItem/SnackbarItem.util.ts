@@ -7,7 +7,7 @@ const DIRECTION = {
     top: 'down',
 } as const;
 
-export type DirectionType = typeof DIRECTION[keyof typeof DIRECTION]
+type DirectionType = typeof DIRECTION[keyof typeof DIRECTION]
 
 export const getTransitionDirection = (anchorOrigin: InternalSnack['anchorOrigin']): DirectionType => {
     if (anchorOrigin.horizontal !== 'center') {

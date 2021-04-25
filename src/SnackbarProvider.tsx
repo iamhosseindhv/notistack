@@ -6,7 +6,7 @@ import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, mer
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack } from './index';
+import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject } from './index';
 import createChainedFunction from './utils/createChainedFunction';
 import MaterialDesignContent from './components/MaterialDesignContent/MaterialDesignContent';
 
@@ -41,7 +41,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Adds a new snackbar to the queue to be presented.
      * Returns generated or user defined key referencing the new snackbar or null
      */
-    enqueueSnackbar: ProviderContext['enqueueSnackbar'] = (message, opts = {}) => {
+    public enqueueSnackbar(messageOrOptions: OptionsObject | string, optsOrUndefined: OptionsObject & { message?: string } = {}): SnackbarKey {
+        const opts = typeof messageOrOptions !== 'string' ? messageOrOptions : optsOrUndefined;
+        const message = typeof messageOrOptions === 'string' ? messageOrOptions : optsOrUndefined.message;
+
         const {
             key,
             preventDuplicate,
@@ -138,7 +141,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      *         snackbar is made. Once it entered the screen, it will be immediately dismissed.
      */
     handleDismissOldest: Reducer = (state) => {
-        if (state.snacks.some(item => !item.open || item.requestClose)) {
+        if (state.snacks.some((item) => !item.open || item.requestClose)) {
             return state;
         }
 
@@ -189,7 +192,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         }
 
         this.setState(({ snacks }) => ({
-            snacks: snacks.map(item => (
+            snacks: snacks.map((item) => (
                 item.id === key ? { ...item, entered: true } : { ...item }
             )),
         }));
@@ -218,7 +221,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                     ? { ...item, open: false }
                     : { ...item, requestClose: true };
             }),
-            queue: queue.filter(item => item.id !== key), // eslint-disable-line react/no-unused-state
+            queue: queue.filter((item) => item.id !== key), // eslint-disable-line react/no-unused-state
         }));
     };
 
@@ -227,7 +230,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      */
     closeSnackbar: ProviderContext['closeSnackbar'] = (key) => {
         // call individual snackbar onClose callback passed through options parameter
-        const toBeClosed = this.state.snacks.find(item => item.id === key);
+        const toBeClosed = this.state.snacks.find((item) => item.id === key);
         if (isDefined(key) && toBeClosed && toBeClosed.onClose) {
             toBeClosed.onClose(null, REASONS.INSTRUCTED, key);
         }
@@ -252,7 +255,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         this.setState((state) => {
             const newState = this.processQueue({
                 ...state,
-                snacks: state.snacks.filter(item => item.id !== key),
+                snacks: state.snacks.filter((item) => item.id !== key),
             });
 
             if (newState.queue.length === 0) {
@@ -294,7 +297,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                         classes[transformer.toContainerAnchorOrigin(origin)],
                     )}
                 >
-                    {snacks.map(snack => (
+                    {snacks.map((snack) => (
                         <SnackbarItem
                             key={snack.id}
                             dense={dense}

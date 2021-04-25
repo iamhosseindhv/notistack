@@ -4,20 +4,23 @@
 import * as React from 'react';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
 
-export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
+type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
 export type SnackbarKey = string | number;
 export type VariantType = 'default' | 'error' | 'success' | 'warning' | 'info';
 export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
 
-export type SnackbarMessage = string | React.ReactNode;
+export type SnackbarMessage = string;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
 export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
 export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
+
+type AnyComponentMap = Record<string, React.ComponentType<any>>;
+type VariantsOf<T> = { [K in keyof T]: K extends string ? K : never; }[keyof T];
 
 export type SnackbarClassKey =
     | 'root'
@@ -127,7 +130,7 @@ export interface SharedProps<V extends string = VariantType> extends Partial<Tra
      * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
      * @default default
      */
-    variant?: V;
+    variant?: V | VariantType;
     /**
      * Ignores displaying multiple snackbars with the same `message`
      * @default false
@@ -143,7 +146,7 @@ export interface SharedProps<V extends string = VariantType> extends Partial<Tra
      * @default false
      */
     hideIconVariant?: boolean;
-    /** 
+    /**
      * Properties applied to the Snackbar root element. You'd only want to use
      * this prop to apply html attributes for accessibility or data-* attributes.
      */
@@ -189,9 +192,9 @@ type NeededByInternalSnack = 'style' | 'persist' | 'variant' | 'anchorOrigin' | 
  * Properties of a snackbar internal to notistack implementation. Not to be used by outside
  * world. If you find yourself using this, you're probably looking for `CustomContentProps` type.
  */
-export interface InternalSnack extends RequiredBy<Omit<OptionsObject, 'key' | 'preventDuplicate'>, NeededByInternalSnack>, InternalSnackAttributes {
+export interface InternalSnack<V extends string = VariantType> extends RequiredBy<Omit<OptionsObject<V>, 'key' | 'preventDuplicate'>, NeededByInternalSnack>, InternalSnackAttributes {
     id: SnackbarKey;
-    message: SnackbarMessage;
+    message?: SnackbarMessage;
     iconVariant: Record<string, React.ReactNode>;
 }
 
@@ -200,14 +203,14 @@ type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | keyof Transitio
 /**
  * Props that will be passed to a custom component in `SnackbarProvider` `Components` prop
  */
-export interface CustomContentProps extends Omit<InternalSnack, NotNeededByCustomSnackbar> {
+export interface CustomContentProps<V extends string = VariantType> extends Omit<InternalSnack<V>, NotNeededByCustomSnackbar> {
 
 }
 
 /**
  * @category Provider
  */
-export interface SnackbarProviderProps<V extends string = VariantType> extends SharedProps<V> {
+export interface SnackbarProviderProps<V extends keyof T = any, T extends Record<V, React.ComponentType<any>> = any> extends SharedProps<VariantsOf<T>> {
     /**
      * Most of the time this is your App. every component from this point onward
      * will be able to show snackbars.
@@ -243,19 +246,28 @@ export interface SnackbarProviderProps<V extends string = VariantType> extends S
     /**
      * Mapping between variants and a custom component.
      */
-    Components?: {
-        [key in V]?: React.ComponentType<CustomContentProps>;
-    };
+    Components?: T;
 }
 
-export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
-    enqueueSnackbar: ProviderContext['enqueueSnackbar'];
-    closeSnackbar: ProviderContext['closeSnackbar'];
+/** All additional props (custom content props excluded (except message)) */
+type AdditionalProps<P extends CustomContentProps> = Omit<P, keyof CustomContentProps>;
+/** Infers type of props passed to a custom component */
+type PropsOfComponent<C> = C extends React.ComponentType<infer P> ? P : never;
+type AdditionalPropsOfComponent<C extends React.ComponentType<any>> = AdditionalProps<PropsOfComponent<C>>
+
+interface EnqueueSnackbar<T extends AnyComponentMap> {
+    <V extends VariantsOf<T>>(message: string, options?: OptionsObject<V> & AdditionalPropsOfComponent<T[V]>): SnackbarKey;
+    <V extends VariantsOf<T>>(options: OptionsObject<V> & AdditionalPropsOfComponent<T[V]> & { message?: SnackbarMessage }): SnackbarKey
 }
 
-export interface ProviderContext {
-    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
+export interface ProviderContext<T extends AnyComponentMap = any> {
+    enqueueSnackbar: EnqueueSnackbar<T>;
     closeSnackbar: (key?: SnackbarKey) => void;
+}
+
+export class SnackbarProvider<V extends keyof T, T extends Record<V, React.ComponentType<any>>> extends React.Component<SnackbarProviderProps<V, T>> {
+    enqueueSnackbar: ProviderContext<T>['enqueueSnackbar'];
+    closeSnackbar: ProviderContext<T>['closeSnackbar'];
 }
 
 export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
@@ -263,4 +275,4 @@ export function withSnackbar<P extends ProviderContext>(component: React.Compone
 
 export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
 
-export function useSnackbar(): ProviderContext;
+export function useSnackbar<T extends AnyComponentMap>(): ProviderContext<T>;

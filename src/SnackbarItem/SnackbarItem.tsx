@@ -103,7 +103,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
 
     let content = componentOrFunctionContent;
     if (typeof content === 'function') {
-        content = content(otherSnack.id, otherSnack.message);
+        content = content(otherSnack.id, otherSnack.message!);
     }
 
     const callbacks: { [key in keyof TransitionHandlerProps]?: any } =
