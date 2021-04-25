@@ -2641,143 +2641,6 @@
 					"parameters": [
 						{
 							"id": 103,
-							"name": "message",
-							"kind": 32768,
-							"kindString": "Parameter",
-							"flags": {
-								"isExported": true
-							},
-							"type": {
-								"type": "intrinsic",
-								"name": "string"
-							}
-						},
-						{
-							"id": 104,
-							"name": "options",
-							"kind": 32768,
-							"kindString": "Parameter",
-							"flags": {
-								"isExported": true,
-								"isOptional": true
-							},
-							"type": {
-								"type": "intersection",
-								"types": [
-									{
-										"type": "reference",
-										"id": 31,
-										"typeArguments": [
-											{
-												"type": "typeParameter",
-												"name": "V",
-												"constraint": {
-													"type": "reference",
-													"id": 241,
-													"typeArguments": [
-														{
-															"type": "typeParameter",
-															"name": "T",
-															"constraint": {
-																"type": "reference",
-																"id": 240,
-																"name": "AnyComponentMap"
-															}
-														}
-													],
-													"name": "VariantsOf"
-												}
-											}
-										],
-										"name": "OptionsObject"
-									},
-									{
-										"type": "reference",
-										"id": 254,
-										"typeArguments": [
-											{
-												"type": "indexedAccess",
-												"indexType": {
-													"type": "typeParameter",
-													"name": "V",
-													"constraint": {
-														"type": "reference",
-														"id": 241,
-														"typeArguments": [
-															{
-																"type": "typeParameter",
-																"name": "T",
-																"constraint": {
-																	"type": "reference",
-																	"id": 240,
-																	"name": "AnyComponentMap"
-																}
-															}
-														],
-														"name": "VariantsOf"
-													}
-												},
-												"objectType": {
-													"type": "typeParameter",
-													"name": "T",
-													"constraint": {
-														"type": "reference",
-														"id": 240,
-														"name": "AnyComponentMap"
-													}
-												}
-											}
-										],
-										"name": "AdditionalPropsOfComponent"
-									}
-								]
-							}
-						}
-					],
-					"type": {
-						"type": "reference",
-						"id": 210,
-						"name": "SnackbarKey"
-					}
-				},
-				{
-					"id": 105,
-					"name": "__call",
-					"kind": 4096,
-					"kindString": "Call signature",
-					"flags": {
-						"isExported": true
-					},
-					"typeParameter": [
-						{
-							"id": 106,
-							"name": "V",
-							"kind": 131072,
-							"kindString": "Type parameter",
-							"flags": {
-								"isExported": true
-							},
-							"type": {
-								"type": "reference",
-								"id": 241,
-								"typeArguments": [
-									{
-										"type": "typeParameter",
-										"name": "T",
-										"constraint": {
-											"type": "reference",
-											"id": 240,
-											"name": "AnyComponentMap"
-										}
-									}
-								],
-								"name": "VariantsOf"
-							}
-						}
-					],
-					"parameters": [
-						{
-							"id": 107,
 							"name": "options",
 							"kind": 32768,
 							"kindString": "Parameter",
@@ -2856,7 +2719,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 108,
+											"id": 104,
 											"name": "__type",
 											"kind": 65536,
 											"kindString": "Type literal",
@@ -2865,7 +2728,7 @@
 											},
 											"children": [
 												{
-													"id": 109,
+													"id": 105,
 													"name": "message",
 													"kind": 32,
 													"kindString": "Variable",
@@ -2876,7 +2739,7 @@
 													"sources": [
 														{
 															"fileName": "src/index.d.ts",
-															"line": 260,
+															"line": 259,
 															"character": 102
 														}
 													],
@@ -2892,18 +2755,155 @@
 													"title": "Variables",
 													"kind": 32,
 													"children": [
-														109
+														105
 													]
 												}
 											],
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 260,
+													"line": 259,
 													"character": 92
 												}
 											]
 										}
+									}
+								]
+							}
+						}
+					],
+					"type": {
+						"type": "reference",
+						"id": 210,
+						"name": "SnackbarKey"
+					}
+				},
+				{
+					"id": 106,
+					"name": "__call",
+					"kind": 4096,
+					"kindString": "Call signature",
+					"flags": {
+						"isExported": true
+					},
+					"typeParameter": [
+						{
+							"id": 107,
+							"name": "V",
+							"kind": 131072,
+							"kindString": "Type parameter",
+							"flags": {
+								"isExported": true
+							},
+							"type": {
+								"type": "reference",
+								"id": 241,
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T",
+										"constraint": {
+											"type": "reference",
+											"id": 240,
+											"name": "AnyComponentMap"
+										}
+									}
+								],
+								"name": "VariantsOf"
+							}
+						}
+					],
+					"parameters": [
+						{
+							"id": 108,
+							"name": "message",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true
+							},
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 109,
+							"name": "options",
+							"kind": 32768,
+							"kindString": "Parameter",
+							"flags": {
+								"isExported": true,
+								"isOptional": true
+							},
+							"type": {
+								"type": "intersection",
+								"types": [
+									{
+										"type": "reference",
+										"id": 31,
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "V",
+												"constraint": {
+													"type": "reference",
+													"id": 241,
+													"typeArguments": [
+														{
+															"type": "typeParameter",
+															"name": "T",
+															"constraint": {
+																"type": "reference",
+																"id": 240,
+																"name": "AnyComponentMap"
+															}
+														}
+													],
+													"name": "VariantsOf"
+												}
+											}
+										],
+										"name": "OptionsObject"
+									},
+									{
+										"type": "reference",
+										"id": 254,
+										"typeArguments": [
+											{
+												"type": "indexedAccess",
+												"indexType": {
+													"type": "typeParameter",
+													"name": "V",
+													"constraint": {
+														"type": "reference",
+														"id": 241,
+														"typeArguments": [
+															{
+																"type": "typeParameter",
+																"name": "T",
+																"constraint": {
+																	"type": "reference",
+																	"id": 240,
+																	"name": "AnyComponentMap"
+																}
+															}
+														],
+														"name": "VariantsOf"
+													}
+												},
+												"objectType": {
+													"type": "typeParameter",
+													"name": "T",
+													"constraint": {
+														"type": "reference",
+														"id": 240,
+														"name": "AnyComponentMap"
+													}
+												}
+											}
+										],
+										"name": "AdditionalPropsOfComponent"
 									}
 								]
 							}
