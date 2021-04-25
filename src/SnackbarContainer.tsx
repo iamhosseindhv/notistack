@@ -15,7 +15,6 @@ const styles = makeStyles({
         zIndex: 1400,
         height: 'auto',
         width: 'auto',
-        minWidth: '288px',
         transition: 'top 300ms ease 0ms, right 300ms ease 0ms, bottom 300ms ease 0ms, left 300ms ease 0ms',
         [breakpoints.downXs]: {
             left: '0 !important',

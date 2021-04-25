@@ -16,6 +16,7 @@ const styles = makeStyles({
         right: 0,
         bottom: 0,
         left: 0,
+        minWidth: '288px',
     },
     collapseContainer: {
         [breakpoints.downXs]: {
@@ -31,12 +32,6 @@ const styles = makeStyles({
     collapseWrapperDense: {
         marginTop: `${SNACKBAR_INDENTS.snackbar.dense}px`,
         marginBottom: `${SNACKBAR_INDENTS.snackbar.dense}px`,
-    },
-    collapseWrapperInner: {
-        width: 'auto !important',
-        [breakpoints.downXs]: {
-            width: '100%',
-        },
     },
 });
 
@@ -121,7 +116,6 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             classes={{
                 container: styles.collapseContainer,
                 wrapper: clsx(styles.collapseWrapper, { [styles.collapseWrapperDense]: dense }),
-                wrapperInner: styles.collapseWrapperInner,
             }}
             onExited={callbacks.onExited}
         >
