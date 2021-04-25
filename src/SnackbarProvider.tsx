@@ -308,7 +308,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                     {snacks.map((snack) => (
                         <SnackbarItem
                             key={snack.id}
-                            dense={dense}
                             snack={snack}
                             classes={omitContainerKeys(classes)}
                             Component={Components[snack.variant] || MaterialDesignContent}

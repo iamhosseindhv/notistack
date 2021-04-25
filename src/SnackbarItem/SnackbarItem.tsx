@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import clsx from 'clsx';
 import Collapse from '@material-ui/core/Collapse';
 import { getTransitionDirection } from './SnackbarItem.util';
-import { breakpoints, REASONS, SNACKBAR_INDENTS, transformer } from '../utils/constants';
+import { REASONS, transformer } from '../utils/constants';
 import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../index';
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
@@ -18,24 +18,9 @@ const styles = makeStyles({
         left: 0,
         minWidth: '288px',
     },
-    collapseContainer: {
-        [breakpoints.downXs]: {
-            paddingLeft: '8px',
-            paddingRight: '8px',
-        },
-    },
-    collapseWrapper: {
-        transition: 'margin-bottom 300ms ease 0ms',
-        marginTop: `${SNACKBAR_INDENTS.snackbar.default}px`,
-        marginBottom: `${SNACKBAR_INDENTS.snackbar.default}px`,
-    },
-    collapseWrapperDense: {
-        marginTop: `${SNACKBAR_INDENTS.snackbar.dense}px`,
-        marginBottom: `${SNACKBAR_INDENTS.snackbar.dense}px`,
-    },
 });
 
-export interface SnackbarItemProps extends Required<Pick<SnackbarProviderProps, 'onEntered' | 'onExited' | 'onClose' | 'dense'>> {
+export interface SnackbarItemProps extends Required<Pick<SnackbarProviderProps, 'onEntered' | 'onExited' | 'onClose'>> {
     snack: InternalSnack;
     classes: Partial<ClassNameMap<SnackbarClassKey>>;
     onEnter: SnackbarProviderProps['onEnter'];
@@ -69,7 +54,6 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
 
     const {
         snack,
-        dense,
         classes,
         Component,
     } = props;
@@ -108,17 +92,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         }), {});
 
     return (
-        <Collapse
-            unmountOnExit
-            timeout={175}
-            in={collapsed}
-            // TODO: How to customise these elements
-            classes={{
-                container: styles.collapseContainer,
-                wrapper: clsx(styles.collapseWrapper, { [styles.collapseWrapperDense]: dense }),
-            }}
-            onExited={callbacks.onExited}
-        >
+        <Collapse unmountOnExit timeout={175} in={collapsed} onExited={callbacks.onExited}>
             <Snackbar
                 open={open}
                 disableWindowBlurListener={disableWindowBlurListener}
