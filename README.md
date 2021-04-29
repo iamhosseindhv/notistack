@@ -31,6 +31,7 @@ Table of Contents
 
 
 ## Getting Started
+Note that this package requires `@material-ui/core` **v4**. 
 Use your preferred package manager:
 ```
 npm install notistack
