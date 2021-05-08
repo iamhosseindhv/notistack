@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import { withStyles, WithStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '../SnackbarContent';
-import { getTransitionDirection, omitNonCollapseKeys } from './SnackbarItem.util';
-import { allClasses, REASONS, SNACKBAR_INDENTS, objectMerge, DEFAULTS, transformer } from '../utils/constants';
+import { getTransitionDirection } from './SnackbarItem.util';
+import { allClasses, REASONS, objectMerge, DEFAULTS, transformer } from '../utils/constants';
 import { SharedProps, RequiredBy, TransitionHandlerProps, SnackbarProviderProps as ProviderProps } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
 import createChainedFunction from '../utils/createChainedFunction';
@@ -64,27 +64,6 @@ const styles = (theme: Theme) => {
             right: 0,
             bottom: 0,
             left: 0,
-        },
-        collapseContainer: {
-            [theme.breakpoints.down('xs')]: {
-                paddingLeft: theme.spacing(1),
-                paddingRight: theme.spacing(1),
-            },
-        },
-        collapseWrapper: {
-            transition: theme.transitions.create(['margin-bottom'], { easing: 'ease' }),
-            marginTop: SNACKBAR_INDENTS.snackbar.default,
-            marginBottom: SNACKBAR_INDENTS.snackbar.default,
-        },
-        collapseWrapperDense: {
-            marginTop: SNACKBAR_INDENTS.snackbar.dense,
-            marginBottom: SNACKBAR_INDENTS.snackbar.dense,
-        },
-        collapseWrapperInner: {
-            width: 'auto',
-            [theme.breakpoints.down('xs')]: {
-                width: '100%',
-            },
         },
     });
 }
@@ -214,7 +193,6 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             unmountOnExit
             timeout={175}
             in={collapsed}
-            classes={omitNonCollapseKeys(classes, dense)}
             onExited={callbacks.onExited}
         >
             {/* @ts-ignore */}
