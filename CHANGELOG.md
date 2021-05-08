@@ -1,5 +1,13 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@1.0.7`
+###### May 8, 2021
+* **@whytspace** Multiple Snackbars always left aligned [#373](https://github.com/iamhosseindhv/notistack/issues/373) 
+
+
+<br />
+
+
 ### `notistack@1.0.6`
 ###### April 18, 2021
 * **@rzmz** Snackbars should have equal width on XS screens [#367](https://github.com/iamhosseindhv/notistack/issues/367) 
