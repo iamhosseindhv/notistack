@@ -9,6 +9,8 @@ const collapse = {
     wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper',
 };
 
+const xsWidthMargin = 16;
+
 const useStyle = makeStyles((theme) => ({
     root: {
         boxSizing: 'border-box',
@@ -26,57 +28,48 @@ const useStyle = makeStyles((theme) => ({
         },
         [collapse.wrapper]: {
             padding: `${SNACKBAR_INDENTS.snackbar.default}px 0px`,
+            transition: 'padding 300ms ease 0ms',
         },
         maxWidth: `calc(100% - ${SNACKBAR_INDENTS.view.default * 2}px)`,
         [theme.breakpoints.down('xs')]: {
-            left: '16px',
-            right: '16px',
             width: '100%',
-            maxWidth: 'calc(100% - 32px)',
+            maxWidth: `calc(100% - ${xsWidthMargin * 2}px)`,
         },
     },
-
     rootDense: {
-        maxWidth: `calc(100% - ${SNACKBAR_INDENTS.view.dense * 2}px)`,
         [collapse.wrapper]: {
             padding: `${SNACKBAR_INDENTS.snackbar.dense}px 0px`,
         },
     },
-
     top: {
         top: SNACKBAR_INDENTS.view.default - SNACKBAR_INDENTS.snackbar.default,
         flexDirection: 'column',
     },
-    topDense: { top: SNACKBAR_INDENTS.view.dense - SNACKBAR_INDENTS.snackbar.dense },
-
     bottom: {
         bottom: SNACKBAR_INDENTS.view.default - SNACKBAR_INDENTS.snackbar.default,
         flexDirection: 'column-reverse',
     },
-    bottomDense: { bottom: SNACKBAR_INDENTS.view.dense - SNACKBAR_INDENTS.snackbar.dense },
-
     left: {
         left: SNACKBAR_INDENTS.view.default,
         [theme.breakpoints.up('sm')]: {
             alignItems: 'flex-start',
         },
+        [theme.breakpoints.down('xs')]: {
+            left: `${xsWidthMargin}px`,
+        },
     },
-    leftDense: { left: SNACKBAR_INDENTS.view.dense },
-
     right: {
         right: SNACKBAR_INDENTS.view.default,
         [theme.breakpoints.up('sm')]: {
             alignItems: 'flex-end',
         },
+        [theme.breakpoints.down('xs')]: {
+            right: `${xsWidthMargin}px`,
+        },
     },
-    rightDense: { right: SNACKBAR_INDENTS.view.dense },
-
     center: {
         left: '50%',
         transform: 'translateX(-50%)',
-        [theme.breakpoints.down('xs')]: {
-            transform: 'translateX(0)',
-        },
         [theme.breakpoints.up('sm')]: {
             alignItems: 'center',
         },
@@ -98,11 +91,6 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
     const combinedClassname = clsx(
         classes[anchorOrigin.vertical],
         classes[anchorOrigin.horizontal],
-        // @ts-ignore
-        { [classes[`${anchorOrigin.vertical}Dense`]]: dense },
-        // @ts-ignore
-        { [classes[`${anchorOrigin.horizontal}Dense`]]: dense },
-        // @ts-ignore
         { [classes.rootDense]: dense },
         classes.root, // root should come after others to override maxWidth
         className,
