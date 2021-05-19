@@ -70,7 +70,7 @@ const styles = (theme: Theme) => {
 
 
 type RemovedProps =
-    | 'variant' // the one received from Provider is processed and passed to snack prop 
+    | 'variant' // the one received from Provider is processed and passed to snack prop
     | 'anchorOrigin' // same as above
     | 'autoHideDuration' // same as above
     | 'preventDuplicate' // the one recevied from enqueueSnackbar is processed in provider, therefore shouldn't be passed to SnackbarItem */
@@ -178,7 +178,14 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
 
     let content = singleContent || otherContent;
     if (typeof content === 'function') {
-        content = content(key, snack.message);
+        content = content(key, snack.message, {
+            variant,
+            hideIconVariant,
+            icon,
+            otherClassName,
+            singleClassName,
+            action
+        });
     }
 
     const callbacks: { [key in keyof TransitionHandlerProps]?: any } =
