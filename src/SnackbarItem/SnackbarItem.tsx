@@ -21,20 +21,20 @@ const styles = (theme: Theme) => {
             paddingLeft: 8 * 2.5,
         },
         variantSuccess: {
-            backgroundColor: '#43a047 !important', // green
-            color: '#fff !important',
+            backgroundColor: theme.palette.success.main,
+            color: theme.palette.success.contrastText,
         },
         variantError: {
-            backgroundColor: '#d32f2f !important', // dark red
-            color: '#fff !important',
+            backgroundColor: theme.palette.error.main,
+            color: theme.palette.error.contrastText,
         },
         variantInfo: {
-            backgroundColor: '#2196f3 !important', // nice blue
-            color: '#fff !important',
+            backgroundColor: theme.palette.info.main,
+            color: theme.palette.info.contrastText,
         },
         variantWarning: {
-            backgroundColor: '#ff9800 !important', // amber
-            color: '#fff !important',
+            backgroundColor: theme.palette.warning.main,
+            color: theme.palette.warning.contrastText,
         },
         contentRoot: {
             ...theme.typography.body2,
