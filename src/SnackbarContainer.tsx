@@ -14,6 +14,8 @@ const collapse = {
     wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper',
 };
 
+const xsWidthMargin = 16;
+
 const styles = makeStyles({
     root: {
         boxSizing: 'border-box',
@@ -31,17 +33,15 @@ const styles = makeStyles({
         },
         [collapse.wrapper]: {
             padding: `${indents.snackbar.default}px 0px`,
+            transition: 'padding 300ms ease 0ms',
         },
         maxWidth: `calc(100% - ${indents.view.default * 2}px)`,
         [breakpoints.downXs]: {
-            left: '16px',
-            right: '16px',
             width: '100%',
-            maxWidth: 'calc(100% - 32px)',
+            maxWidth: `calc(100% - ${xsWidthMargin * 2}px)`,
         },
     },
     rootDense: {
-        maxWidth: `calc(100% - ${indents.view.dense * 2}px)`,
         [collapse.wrapper]: {
             padding: `${indents.snackbar.dense}px 0px`,
         },
@@ -50,40 +50,31 @@ const styles = makeStyles({
         top: `${indents.view.default - indents.snackbar.default}px`,
         flexDirection: 'column',
     },
-    topDense: {
-        top: `${indents.view.dense - indents.snackbar.dense}px`,
-    },
     bottom: {
         bottom: `${indents.view.default - indents.snackbar.default}px`,
         flexDirection: 'column-reverse',
-    },
-    bottomDense: {
-        bottom: `${indents.view.dense - indents.snackbar.dense}px`,
     },
     left: {
         left: `${indents.view.default}px`,
         [breakpoints.upSm]: {
             alignItems: 'flex-start',
         },
-    },
-    leftDense: {
-        left: `${indents.view.dense}px`,
+        [breakpoints.downXs]: {
+            left: `${xsWidthMargin}px`,
+        },
     },
     right: {
         right: `${indents.view.default}px`,
         [breakpoints.upSm]: {
             alignItems: 'flex-end',
         },
-    },
-    rightDense: {
-        right: `${indents.view.dense}px`,
+        [breakpoints.downXs]: {
+            right: `${xsWidthMargin}px`,
+        },
     },
     center: {
         left: '50%',
         transform: 'translateX(-50%)',
-        [breakpoints.downXs]: {
-            transform: 'translateX(0)',
-        },
         [breakpoints.upSm]: {
             alignItems: 'center',
         },
@@ -105,11 +96,6 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
         ComponentClasses.SnackbarContainer,
         styles[anchorOrigin.vertical],
         styles[anchorOrigin.horizontal],
-        // @ts-ignore
-        { [styles[`${anchorOrigin.vertical}Dense`]]: dense },
-        // @ts-ignore
-        { [styles[`${anchorOrigin.horizontal}Dense`]]: dense },
-        // @ts-ignore
         { [styles.rootDense]: dense },
         styles.root, // root should come after others to override maxWidth
         className,
