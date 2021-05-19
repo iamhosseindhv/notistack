@@ -1,5 +1,11 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@1.0.9`
+###### May 19, 2021
+* **@SimonAmphora** Remove the need to use `!important` to customise variant styles [#215 (comment)](https://github.com/iamhosseindhv/notistack/issues/215#issuecomment-700060481) 
+
+<br />
+
 ### `notistack@1.0.8`
 ###### May 18, 2021
 * **@angeshpc91** Fixes issues with centered snackbars on xs screen sizes [#380](https://github.com/iamhosseindhv/notistack/issues/380) 
