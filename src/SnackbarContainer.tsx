@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import { Theme } from '@material-ui/core/styles';
 import { SNACKBAR_INDENTS } from './utils/constants';
 import { SnackbarProviderProps } from '.';
-import createTheme from '../utils/createTheme';
+import createTheme from './utils/createTheme';
 
 const collapse = {
     container: '& > .MuiCollapse-container',
