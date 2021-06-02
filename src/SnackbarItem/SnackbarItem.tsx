@@ -253,5 +253,5 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
     );
 };
 
-const defaultTheme = createMuiTheme();
+const defaultTheme = createTheme();
 export default withStyles(styles, { defaultTheme })(SnackbarItem);
