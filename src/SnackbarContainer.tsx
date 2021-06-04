@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/styles';
+import { Theme, createMuiTheme as createTheme } from '@material-ui/core/styles';
 import { SNACKBAR_INDENTS } from './utils/constants';
 import { SnackbarProviderProps } from '.';
 
@@ -10,8 +11,9 @@ const collapse = {
 };
 
 const xsWidthMargin = 16;
+const defaultTheme = createTheme();
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles((theme: Theme) => ({
     root: {
         boxSizing: 'border-box',
         display: 'flex',
@@ -74,7 +76,7 @@ const useStyle = makeStyles((theme) => ({
             alignItems: 'center',
         },
     },
-}));
+}), { defaultTheme });
 
 
 interface SnackbarContainerProps {

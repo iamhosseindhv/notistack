@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
+import { withStyles, WithStyles, createStyles } from '@material-ui/styles'
+import { Theme, createMuiTheme as createTheme } from '@material-ui/core/styles';
 import { SnackbarContentProps } from '../index';
 
 const styles = (theme: Theme) => createStyles({
@@ -21,4 +22,5 @@ const SnackbarContent = forwardRef<HTMLDivElement, Props>(({ classes, className,
     <div ref={ref} className={clsx(classes.root, className)}  {...props} />
 ))
 
-export default withStyles(styles)(SnackbarContent);
+const defaultTheme = createTheme();
+export default withStyles(styles, { defaultTheme })(SnackbarContent);

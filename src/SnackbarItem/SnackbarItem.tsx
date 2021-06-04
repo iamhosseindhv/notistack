@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { withStyles, WithStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
+import { withStyles, WithStyles, createStyles } from '@material-ui/styles';
+import { Theme, emphasize, createMuiTheme as createTheme } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '../SnackbarContent';
 import { getTransitionDirection } from './SnackbarItem.util';
@@ -251,4 +252,5 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
     );
 };
 
-export default withStyles(styles)(SnackbarItem);
+const defaultTheme = createTheme();
+export default withStyles(styles, { defaultTheme })(SnackbarItem);
