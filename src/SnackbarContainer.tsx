@@ -4,11 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { SNACKBAR_INDENTS } from './utils/constants';
 import { SnackbarProviderProps } from '.';
 
-const collapse = {
-    container: '& > .MuiCollapse-container',
-    wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper',
-};
-
 const xsWidthMargin = 16;
 
 const useStyle = makeStyles((theme) => ({
@@ -23,22 +18,10 @@ const useStyle = makeStyles((theme) => ({
         transition: 'top 300ms ease 0ms, right 300ms ease 0ms, bottom 300ms ease 0ms, left 300ms ease 0ms, margin 300ms ease 0ms, max-width 300ms ease 0ms',
         // container itself is invisible and should not block clicks, clicks should be passed to its children 
         pointerEvents: 'none',
-        [collapse.container]: {
-            pointerEvents: 'all',
-        },
-        [collapse.wrapper]: {
-            padding: `${SNACKBAR_INDENTS.snackbar.default}px 0px`,
-            transition: 'padding 300ms ease 0ms',
-        },
         maxWidth: `calc(100% - ${SNACKBAR_INDENTS.view.default * 2}px)`,
         [theme.breakpoints.down('xs')]: {
             width: '100%',
             maxWidth: `calc(100% - ${xsWidthMargin * 2}px)`,
-        },
-    },
-    rootDense: {
-        [collapse.wrapper]: {
-            padding: `${SNACKBAR_INDENTS.snackbar.dense}px 0px`,
         },
     },
     top: {
@@ -76,7 +59,6 @@ const useStyle = makeStyles((theme) => ({
     },
 }));
 
-
 interface SnackbarContainerProps {
     children: JSX.Element | JSX.Element[];
     className?: string;
@@ -91,7 +73,6 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
     const combinedClassname = clsx(
         classes[anchorOrigin.vertical],
         classes[anchorOrigin.horizontal],
-        { [classes.rootDense]: dense },
         classes.root, // root should come after others to override maxWidth
         className,
     );
