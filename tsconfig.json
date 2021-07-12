@@ -1,0 +1,37 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "strict": true,
+    "module": "esnext",
+    "target": "es5",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "skipLibCheck": true,
+    "declaration": false,
+    "lib": ["esnext","dom"],
+    "jsx": "react",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
+  },
+  "typedocOptions": {
+    "inputFiles": ["./src/index.d.ts"],
+    "mode": "file",
+    "json": "typedoc.json",
+    "excludeExternals": true,
+    "externalPattern": "**/node_modules/**",
+    "ignoreCompilerErrors": true,
+    "includeDeclarations": true,
+  }
+}

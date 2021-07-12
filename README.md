@@ -1,15 +1,23 @@
-# notistack
-![npm downloads](https://img.shields.io/npm/dm/notistack.svg)
-![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)
-![npm version](https://img.shields.io/npm/l/notistack.svg)
+<p align="center">
+  <a href="https://iamhosseindhv.com/" rel="noopener" target="_blank"><img width="756" src="https://iamhosseindhv.com/static/projects/notistack-banner.png" alt="notistack logo"></a></p>
+</p>
+
+<div align="center">
+
+[**Notistack**](https://iamhosseindhv.com/notistack) is a notification library which makes it extremely easy to display notifications on your web apps. It is highly customizable and enables you to stack snackbars/toasts on top of one another.
+</br>
+**Visit [documentation website](https://iamhosseindhv.com/notistack/demos) for demos**.
+
+[![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)](https://www.npmjs.com/package/notistack)
+[![npm downloads](https://img.shields.io/npm/dm/notistack.svg)](https://www.npmjs.com/package/notistack)
+[![package license](https://img.shields.io/npm/l/notistack.svg)](https://www.npmjs.com/package/notistack)
 
 
-**Notistack** is an extention to Material-UI [Snackbar](https://material-ui.com/demos/snackbars). notistack makes it extremely easy to display snackbars (so you don't have to deal with open/close state of them), and also enables **you** to stack snackbars on top of one another. It's **highly customizable** and you can customize snackbars the same way you do for Mui-Snackbars.
+</div>
 
-    
-#### [`Play with online demo here`](https://iamhosseindhv.com/notistack)
-  
-| Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)| 
+
+
+| Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)|
 | --- | --- |
 | <img width="400" src="https://i.imgur.com/MtijvAK.gif"/>    | <img width="400" src="https://i.imgur.com/urX47Wn.gif"/>|
 
@@ -18,27 +26,23 @@ Table of Contents
 --
 - [How to use](#how-to-use)
 - [Online demo](#online-demo)
-- [Documentation](#documentation)
-    - [`SnackbarProvider`](#snackbarprovider)
-    - [`withSnackbar`](#withsnackbar)
-    - [Add actions to snackbar](#add-actions-to-snackbar)
-    - [Redux example](#redux-example)
-- [Contribution](#contribution)
-- [Notes](#notes)
-- [Author - Contact me](#author---contact)
+- [Documentation](https://iamhosseindhv.com/notistack/api)
+- [Redux / Mobx support](#redux-and-mobx-support)
 
 
 ## Getting Started
-Use your prefered package manager:
+Use your preferred package manager:
 ```
 npm install notistack
-yarn add notistack 
+yarn add notistack
 ```
 
-## How to use
+### How to use
 
-**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](#documentation) for a full list of available props)
-```javascript
+**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](https://iamhosseindhv.com/notistack/api) for a full list of available props)
+<br />
+**Note:** If you're using material-ui `ThemeProvider`, make sure `SnackbarProvider` is a child of it.
+```jsx
 import { SnackbarProvider } from 'notistack';
 
 <SnackbarProvider maxSnack={3}>
@@ -48,131 +52,60 @@ import { SnackbarProvider } from 'notistack';
 ```
 
 
-**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to the method `enqueueSnackbar` in your props which can be used to send snackbars.
+**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to methods `enqueueSnackbar` and `closeSnackbar`, where the former can be used to send snackbars.
 
 ```javascript
 import { withSnackbar } from 'notistack';
 
 class MyComponent extends Component {
   handleNetworkRequest = () => {
-     const { enqueueSnackbar } = this.props; 
      fetchSomeData()
-        .then(() => enqueueSnackbar('Successfully fetched the data.'))
-        .catch(() => enqueueSnackbar('Failed fetching data.'));
+        .then(() => this.props.enqueueSnackbar('Successfully fetched the data.'))
+        .catch(() => this.props.enqueueSnackbar('Failed fetching data.'));
   };
 
   render(){
      //...
   };
-  
+
 };
 
-export default withSnackbar(MyCompnent);
+export default withSnackbar(MyComponent);
 ```
 
+**2 (alternative):** You can use `useSnackbar` hook in your functional components as well.
 
-## Online demo
-**You can see the online demo and experiment all the possible configurations [`here`](https://iamhosseindhv.com/notistack).**</br>
-Or see the code for a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
-
-
-## Documentation
-#### [`See full docs here`](https://iamhosseindhv.com/notistack)
-
-### **SnackbarProvider**:
-All material-ui Snackbar props will get passed down to a Snackbar component. See Material-ui [docs](https://material-ui.com/api/snackbar/) for more info.
 ```javascript
-// Maximum number of snackbars that can be stacked on top of eachother.
-maxSnack            type: number          required: true        default: 3
+import { useSnackbar } from 'notistack';
 
-// The little icon that is displayed in a snackbar
-iconVariant         type: any             required: false       default: Material design icons
+const MyButton = () => {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-// hide or display icon variant of a snackbar
-hideIconVariant     type: boolean         required: false       default: false
+    const handleClick = () => {
+        enqueueSnackbar('I love hooks');
+    };
 
-// event fired when user clicks on action button (if any)
-onClickAction       type: func            required: false       defualt: dismisses the snackbar
-
-// Example of a Mui-Snackbar prop
-transitionDuration={{ exit: 380, enter: 400 }}
-```
-Using material-ui `classes` prop, you can override styles applied to a snackbar based on its variant. For more info see [overriding with classes](https://material-ui.com/customization/overrides/#overriding-with-classes). This accepts the following keys:
-```
-classes.variantSuccess:       Styles applied to the snackbar if variant is set to 'success'.
-classes.variantError:                                                   is set to 'error'.
-classes.variantWarning:                                                 is set to 'warning'.
-classes.variantInfo:                                                    is set to 'info'.
+    return (
+        <Button onClick={handleClick}>Show snackbar</Button>
+    );
+}
 ```
 
-### **withSnackbar**:
-When you export your component using `withSnackbar` you'll have access to `enqueueSnackbar` method in your props which basically adds a snackbar to the queue to be displayed to the user. It takes two arguments `message` and an object of `options`.
-```javascript
-this.props.enqueueSnackbar(message, options)
+### Online demo
+**Visit [`documentation website`](https://iamhosseindhv.com/notistack/demos) to see all the demos.**</br>
+Or play with a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
 
-// text of the snackbar
-message         type:string         required: true
 
-// object containing options with the following shape
-options:        type:object         required: false 
+### Redux and Mobx support:
+notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack/demos#redux-/-mobx-example) for more info.
 
-// type of the snackbar
-options.variant type:string         oneOf(['default', 'error', 'success', 'warning', 'info'])
-
-// event fired when user clicks on action button (if any)
-options.onClickAction   type: func          required: false       defualt: dismisses the snackbar
-
-// You can pass material-ui Snackbar props here, and they will be applied to this individual snackbar.
-// for example, this particular snackbar will be dismissed after 1sec.
-options.autoHideDuration: 1000
-```
-**Note**: `onPresentSnackbar` has been now deprecated. Use `enqueueSnackbar` instead:
-```javascript
-// ❌ before:
-this.props.onPresentSnackbar('variant', 'message')
-
-// ✅ after:
-this.props.enqueueSnackbar('message', { variant: 'variant' })
-```
-
-### Add actions to snackbar: 
-You can add actions to snackbars in the same manner specified in material-ui [docs](https://material-ui.com/demos/snackbars):
-```javascript
-<SnackbarProvider
-    maxSnack={3}
-    action={[
-        <Button color="secondary" size="small">My Action</Button>
-    ]}
-    onClickAction={() => alert('Clicked on my action button.')}
->
-    <App />
-</SnackbarProvider>
-```
-
-However, notice that by passing `action` to `SnackbarProvider`, you’ll be adding action to all of the snackbars. To specify action for a single snackbar, use `options` argument of `enqueueSnackbar` method instead: 
-```javascript
-this.props.enqueueSnackbar('Item moved to recently deleted folder.', {
-    variant: 'default',
-    action: <Button color="secondary" size="small">Undo</Button>,
-})
-```
-Use `onClickAction` prop to handle onClick event on snackbar action. The default behaviour of `onClickAction` is to dismiss the snackbar. Also, note that multiple actions for a snackbar is not supported by notistack. 
-
-### Redux example:
-You can use notistack to send snackbars from reducers. This has lots of applications but particularly useful when a network request fails. For more information check out notistack's [minimal redux example](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/redux-example).
-
-## Contribution
+### Contribution
 Open an issue and your problem will be solved.
 
 
-### Notes
-Material Design guidelines [suggests](https://material.io/design/components/snackbars.html#behavior) that only one snackbar should be displayed at a time. But I liked to stack them. 😁 So I made notistack. But if you'd like to stick to the guidelines, you can set `maxSnack` to `1` and just take advantage of `enqueueSnackbar` function.
-
-
-## Author - Contact
+### Author - Contact
 Hossein Dehnokhalaji
 
-<a href="https://www.facebook.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/facebook.png" alt="Hossein Dehnokhalaji Facebook profile" align="right" width="32" height="32"/></a>
 <a href="https://www.instagram.com/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/instagram.png" alt="Hossein Dehnokhalaji Instagram profile" align="right" width="32" height="32"/></a>
 <a href="https://www.linkedin.com/in/iamhosseindhv"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/linkedin.png" alt="Hossein Dehnokhalaji Linkedin profile" align="right" width="32" height="32"/></a>
 <a href="mailto:hossein.dehnavi98@yahoo.com"><img src="https://github.com/iamhosseindhv/Rentaly/blob/master/Gifs/contact.png" alt="Hossein Dehnokhalaji email address" align="right" width="32" height="32"/></a>

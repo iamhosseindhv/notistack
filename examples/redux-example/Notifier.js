@@ -1,52 +1,56 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { withSnackbar } from 'notistack';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSnackbar } from 'notistack';
 import { removeSnackbar } from './redux/actions';
 
-class Notifier extends Component {
-    displayed = [];
+let displayed = [];
 
-    storeDisplayed = id => {
-        this.displayed = [...this.displayed, id];
+const Notifier = () => {
+    const dispatch = useDispatch();
+    const notifications = useSelector(store => store.app.notifications || []);
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    const storeDisplayed = (id) => {
+        displayed = [...displayed, id];
     };
 
-    shouldComponentUpdate({ notifications: newSnacks = [] }) {
-        const { notifications: currentSnacks } = this.props;
-        let notExists = false;
-        for (let i = 0; i < newSnacks.length; i++) {
-            if (notExists) continue;
-            notExists = notExists || !currentSnacks.filter(({ key }) => newSnacks[i].key === key).length;
-        }
-        return notExists;
-    }
+    const removeDisplayed = (id) => {
+        displayed = [...displayed.filter(key => id !== key)];
+    };
 
-    componentDidUpdate() {
-        const { notifications = [] } = this.props;
+    React.useEffect(() => {
+        notifications.forEach(({ key, message, options = {}, dismissed = false }) => {
+            if (dismissed) {
+                // dismiss snackbar using notistack
+                closeSnackbar(key);
+                return;
+            }
 
-        notifications.forEach(notification => {
-            // Do nothing if snackbar is already displayed
-            if (this.displayed.includes(notification.key)) return;
-            // Display snackbar using notistack
-            this.props.enqueueSnackbar(notification.message, notification.options);
-            // Keep track of snackbars that we've displayed
-            this.storeDisplayed(notification.key);
-            // Dispatch action to remove snackbar from redux store
-            this.props.removeSnackbar(notification.key);
+            // do nothing if snackbar is already displayed
+            if (displayed.includes(key)) return;
+
+            // display snackbar using notistack
+            enqueueSnackbar(message, {
+                key,
+                ...options,
+                onClose: (event, reason, myKey) => {
+                    if (options.onClose) {
+                        options.onClose(event, reason, myKey);
+                    }
+                },
+                onExited: (event, myKey) => {
+                    // remove this snackbar from redux store
+                    dispatch(removeSnackbar(myKey));
+                    removeDisplayed(myKey);
+                },
+            });
+
+            // keep track of snackbars that we've displayed
+            storeDisplayed(key);
         });
-    }
-    render() {
-        return null;
-    }
-}
+    }, [notifications, closeSnackbar, enqueueSnackbar, dispatch]);
 
-const mapStateToProps = store => ({
-    notifications: store.app.notifications,
-});
+    return null;
+};
 
-const mapDispatchToProps = dispatch => bindActionCreators({ removeSnackbar }, dispatch);
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(withSnackbar(Notifier));
+export default Notifier;

@@ -1,11 +1,4 @@
 {
-  "presets": [
-    "env",
-    "react",
-    "stage-2"
-  ],
-  "plugins": [
-    "transform-object-rest-spread",
-    "transform-react-jsx"
-  ]
+  "presets": ["@babel/preset-react"],
+  "plugins": ["babel-plugin-optimize-clsx"]
 }

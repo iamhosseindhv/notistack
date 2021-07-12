@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
@@ -44,6 +43,7 @@ const buttons = [
 class MessageButtons extends Component {
     handleClick = button => () => {
         // Avoid material-ui warnings. more info: https://material-ui.com/style/typography/#migration-to-typography-v2
+        // eslint-disable-next-line no-underscore-dangle
         window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
         this.props.enqueueSnackbar(button.message, { variant: button.variant });
     };
@@ -51,8 +51,22 @@ class MessageButtons extends Component {
     handleClickWithAction = () => {
         this.props.enqueueSnackbar('Customise this snackbar youself.', {
             variant: 'default',
-            action: <Button color="secondary" size="small">Dismiss</Button>,
-            // onClickAction: () => alert('uncomment me to have your custom event handler'),
+            action: (
+                <Button color="secondary" size="small" onClick={() => alert('clicked on my custom action')}>
+                    My action
+                </Button>
+            ),
+            // Alternatively, you can access the key of current snackbar by passing an action of type function
+            // action: key => (
+            //     <Fragment>
+            //         <Button color="secondary" size="small" onClick={() => alert(`Clicked on action of snackbar with key: ${key}`)}>
+            //             Detail
+            //         </Button>
+            //         <Button color="secondary" size="small" onClick={() => this.props.closeSnackbar(key)}>
+            //             Dismiss
+            //         </Button>
+            //     </Fragment>
+            // ),
         });
     };
 
@@ -64,7 +78,7 @@ class MessageButtons extends Component {
                     <Button
                         key={button.variant}
                         variant="contained"
-                        className={classNames(classes.button, classes[button.variant])}
+                        className={clsx(classes.button, classes[button.variant])}
                         onClick={this.handleClick(button)}
                     >
                         {button.variant}
@@ -82,11 +96,4 @@ class MessageButtons extends Component {
     }
 }
 
-MessageButtons.propTypes = {
-    classes: PropTypes.object.isRequired,
-    enqueueSnackbar: PropTypes.func.isRequired,
-};
-
-export default withStyles(styles)(
-    withSnackbar(MessageButtons),
-);
+export default withStyles(styles)(withSnackbar(MessageButtons));
