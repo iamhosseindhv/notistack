@@ -3,8 +3,8 @@ import clsx from 'clsx';
 import { withStyles, WithStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '../SnackbarContent';
-import { getTransitionDirection, omitNonCollapseKeys } from './SnackbarItem.util';
-import { allClasses, REASONS, SNACKBAR_INDENTS, objectMerge, DEFAULTS, transformer } from '../utils/constants';
+import { getTransitionDirection } from './SnackbarItem.util';
+import { allClasses, REASONS, objectMerge, DEFAULTS, transformer } from '../utils/constants';
 import { SharedProps, RequiredBy, TransitionHandlerProps, SnackbarProviderProps as ProviderProps } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
 import createChainedFunction from '../utils/createChainedFunction';
@@ -17,25 +17,6 @@ const styles = (theme: Theme) => {
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
     return createStyles({
         ...allClasses.mui,
-        lessPadding: {
-            paddingLeft: 8 * 2.5,
-        },
-        variantSuccess: {
-            backgroundColor: '#43a047 !important', // green
-            color: '#fff !important',
-        },
-        variantError: {
-            backgroundColor: '#d32f2f !important', // dark red
-            color: '#fff !important',
-        },
-        variantInfo: {
-            backgroundColor: '#2196f3 !important', // nice blue
-            color: '#fff !important',
-        },
-        variantWarning: {
-            backgroundColor: '#ff9800 !important', // amber
-            color: '#fff !important',
-        },
         contentRoot: {
             ...theme.typography.body2,
             backgroundColor,
@@ -44,6 +25,25 @@ const styles = (theme: Theme) => {
             padding: '6px 16px',
             borderRadius: '4px',
             boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
+        },
+        lessPadding: {
+            paddingLeft: 8 * 2.5,
+        },
+        variantSuccess: {
+            backgroundColor: '#43a047', // green
+            color: '#fff',
+        },
+        variantError: {
+            backgroundColor: '#d32f2f', // dark red
+            color: '#fff',
+        },
+        variantInfo: {
+            backgroundColor: '#2196f3', // nice blue
+            color: '#fff',
+        },
+        variantWarning: {
+            backgroundColor: '#ff9800', // amber
+            color: '#fff',
         },
         message: {
             display: 'flex',
@@ -64,27 +64,6 @@ const styles = (theme: Theme) => {
             right: 0,
             bottom: 0,
             left: 0,
-        },
-        collapseContainer: {
-            [theme.breakpoints.down('xs')]: {
-                paddingLeft: theme.spacing(1),
-                paddingRight: theme.spacing(1),
-            },
-        },
-        collapseWrapper: {
-            transition: theme.transitions.create(['margin-bottom'], { easing: 'ease' }),
-            marginTop: SNACKBAR_INDENTS.snackbar.default,
-            marginBottom: SNACKBAR_INDENTS.snackbar.default,
-        },
-        collapseWrapperDense: {
-            marginTop: SNACKBAR_INDENTS.snackbar.dense,
-            marginBottom: SNACKBAR_INDENTS.snackbar.dense,
-        },
-        collapseWrapperInner: {
-            width: 'auto',
-            [theme.breakpoints.down('xs')]: {
-                width: '100%',
-            },
         },
     });
 }
@@ -214,7 +193,6 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             unmountOnExit
             timeout={175}
             in={collapsed}
-            classes={omitNonCollapseKeys(classes, dense)}
             onExited={callbacks.onExited}
         >
             {/* @ts-ignore */}
