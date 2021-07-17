@@ -5,8 +5,10 @@ import { SNACKBAR_INDENTS } from './utils/constants';
 import { SnackbarProviderProps } from '.';
 
 const collapse = {
-    container: '& > .MuiCollapse-container',
-    wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper',
+    // Material-UI 4.12.x and above uses MuiCollapse-root; earlier versions use
+    // Mui-Collapse-container.  https://github.com/mui-org/material-ui/pull/24084
+    container: '& > .MuiCollapse-container, & > .MuiCollapse-root',
+    wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper, & > .MuiCollapse-root > .MuiCollapse-wrapper',
 };
 
 const xsWidthMargin = 16;
