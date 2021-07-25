@@ -1,5 +1,11 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@1.0.10`
+###### July 25, 2021
+* **@joshkel** Support Collapse with root and container class keys [#408](https://github.com/iamhosseindhv/notistack/pull/408) 
+
+<br />
+
 ### `notistack@1.0.9`
 ###### May 19, 2021
 * **@SimonAmphora** Remove the need to use `!important` to customise variant styles [#215 (comment)](https://github.com/iamhosseindhv/notistack/issues/215#issuecomment-700060481) 
