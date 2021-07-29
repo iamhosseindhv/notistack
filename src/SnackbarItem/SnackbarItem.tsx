@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { withStyles, WithStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
+import { Theme, emphasize } from '@material-ui/core/styles';
+import { WithStyles } from '@material-ui/styles';
+import withStyles from '@material-ui/styles/withStyles';
+import createStyles from '@material-ui/styles/createStyles';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '../SnackbarContent';
 import { getTransitionDirection } from './SnackbarItem.util';
@@ -13,7 +16,7 @@ import Snackbar from './Snackbar';
 
 const styles = (theme: Theme) => {
     // @ts-ignore
-    const mode = theme.palette.mode || theme.palette.type;
+    const mode = theme.palette.mode || theme.palette.mode;
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
     return createStyles({
         ...allClasses.mui,
