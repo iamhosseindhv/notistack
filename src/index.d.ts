@@ -256,14 +256,18 @@ export interface SnackbarProviderProps extends SharedProps {
     ref?: React.Ref<SnackbarProvider>;
 }
 
+export function enqueueSnackbar(message: SnackbarMessage, options?: OptionsObject) : SnackbarKey;
+export function closeSnackbar(key?: SnackbarKey) : void;
+
 export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
-    enqueueSnackbar: ProviderContext['enqueueSnackbar'];
-    closeSnackbar: ProviderContext['closeSnackbar'];
+    enqueueSnackbar: enqueueSnackbar;
+
+    closeSnackbar: closeSnackbar;
 }
 
 export interface ProviderContext {
-    enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
-    closeSnackbar: (key?: SnackbarKey) => void;
+    enqueueSnackbar: enqueueSnackbar;
+    closeSnackbar: closeSnackbar;
 }
 
 export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):

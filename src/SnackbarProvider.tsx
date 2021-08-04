@@ -24,6 +24,10 @@ interface State {
     queue: Snack[];
     contextValue: ProviderContext;
 }
+// @ts-ignore
+export let enqueueSnackbar = null;
+// @ts-ignore
+export let closeSnackbar = null;
 
 class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     constructor(props: SnackbarProviderProps) {
@@ -258,6 +262,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
     render(): JSX.Element {
         const { contextValue } = this.state;
+        // @ts-ignore
+        enqueueSnackbar=contextValue.enqueueSnackbar;
+        // @ts-ignore
+        closeSnackbar=contextValue.closeSnackbar;
         const {
             maxSnack: dontspread1,
             preventDuplicate: dontspread2,
