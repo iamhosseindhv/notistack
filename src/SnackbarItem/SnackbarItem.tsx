@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { withStyles, WithStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
+import { makeStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '../SnackbarContent';
 import { getTransitionDirection } from './SnackbarItem.util';
@@ -11,8 +11,7 @@ import createChainedFunction from '../utils/createChainedFunction';
 import { Snack } from '../SnackbarProvider';
 import Snackbar from './Snackbar';
 
-const styles = (theme: Theme) => {
-    // @ts-ignore
+const useStyles = makeStyles((theme: Theme) => {
     const mode = theme.palette.mode || theme.palette.type;
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
     return createStyles({
@@ -66,7 +65,7 @@ const styles = (theme: Theme) => {
             left: 0,
         },
     });
-}
+})
 
 
 type RemovedProps =
@@ -76,14 +75,15 @@ type RemovedProps =
     | 'preventDuplicate' // the one recevied from enqueueSnackbar is processed in provider, therefore shouldn't be passed to SnackbarItem */
 
 
-export interface SnackbarItemProps extends WithStyles<typeof styles>, RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
+export interface SnackbarItemProps extends RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
     snack: Snack;
     dense: ProviderProps['dense'];
     iconVariant: ProviderProps['iconVariant'];
     hideIconVariant: ProviderProps['hideIconVariant'];
 }
 
-const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
+const SnackbarItem: React.FC<SnackbarItemProps> = ({ ...props }) => {
+    const classes = useStyles()
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
@@ -251,4 +251,4 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
     );
 };
 
-export default withStyles(styles)(SnackbarItem);
+export default SnackbarItem;
