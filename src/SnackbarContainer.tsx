@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { styled } from '@material-ui/core/styles';
 import { SNACKBAR_INDENTS } from './utils/constants';
 import { SnackbarProviderProps } from '.';
 
@@ -13,8 +13,20 @@ const collapse = {
 
 const xsWidthMargin = 16;
 
-const useStyle = makeStyles((theme) => ({
-    root: {
+const componentName = 'SnackbarContainer';
+
+const classes = {
+    root: `${componentName}-root`,
+    rootDense: `${componentName}-rootDense`,
+    top: `${componentName}-top`,
+    bottom: `${componentName}-bottom`,
+    left: `${componentName}-left`,
+    right: `${componentName}-right`,
+    center: `${componentName}-center`,
+};
+
+const Root = styled('div')(({ theme }) => ({
+    [`&.${classes.root}`]: {
         boxSizing: 'border-box',
         display: 'flex',
         maxHeight: '100%',
@@ -38,20 +50,20 @@ const useStyle = makeStyles((theme) => ({
             maxWidth: `calc(100% - ${xsWidthMargin * 2}px)`,
         },
     },
-    rootDense: {
+    [`&.${classes.rootDense}`]: {
         [collapse.wrapper]: {
             padding: `${SNACKBAR_INDENTS.snackbar.dense}px 0px`,
         },
     },
-    top: {
+    [`&.${classes.top}`]: {
         top: SNACKBAR_INDENTS.view.default - SNACKBAR_INDENTS.snackbar.default,
         flexDirection: 'column',
     },
-    bottom: {
+    [`&.${classes.bottom}`]: {
         bottom: SNACKBAR_INDENTS.view.default - SNACKBAR_INDENTS.snackbar.default,
         flexDirection: 'column-reverse',
     },
-    left: {
+    [`&.${classes.left}`]: {
         left: SNACKBAR_INDENTS.view.default,
         [theme.breakpoints.up('sm')]: {
             alignItems: 'flex-start',
@@ -60,7 +72,7 @@ const useStyle = makeStyles((theme) => ({
             left: `${xsWidthMargin}px`,
         },
     },
-    right: {
+    [`&.${classes.right}`]: {
         right: SNACKBAR_INDENTS.view.default,
         [theme.breakpoints.up('sm')]: {
             alignItems: 'flex-end',
@@ -69,7 +81,7 @@ const useStyle = makeStyles((theme) => ({
             right: `${xsWidthMargin}px`,
         },
     },
-    center: {
+    [`&.${classes.center}`]: {
         left: '50%',
         transform: 'translateX(-50%)',
         [theme.breakpoints.up('sm')]: {
@@ -86,7 +98,6 @@ interface SnackbarContainerProps {
 }
 
 const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
-    const classes = useStyle();
     const { className, anchorOrigin, dense, ...other } = props;
 
     const combinedClassname = clsx(
@@ -98,7 +109,7 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
     );
 
     return (
-        <div className={combinedClassname} {...other} />
+        <Root className={combinedClassname} {...other} />
     );
 };
 
