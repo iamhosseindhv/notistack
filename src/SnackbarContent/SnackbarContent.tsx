@@ -1,10 +1,16 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
+import { styled } from '@material-ui/core/styles';
 import { SnackbarContentProps } from '../index';
 
-const styles = (theme: Theme) => createStyles({
-    root: {
+const componentName = 'SnackbarContent';
+
+const classes = {
+    root: `${componentName}-root`,
+};
+
+const Root = styled('div')(({ theme }) => ({
+    [`&.${classes.root}`]: {
         display: 'flex',
         flexWrap: 'wrap',
         flexGrow: 1,
@@ -12,13 +18,11 @@ const styles = (theme: Theme) => createStyles({
             flexGrow: 'initial',
             minWidth: 288,
         },
-    }
-});
+    },
+}));
 
-interface Props extends WithStyles<typeof styles>, SnackbarContentProps { }
+const SnackbarContent = forwardRef<HTMLDivElement, SnackbarContentProps>(({ className, ...props }, ref) => (
+    <Root ref={ref} className={clsx(classes.root, className)} {...props} />
+));
 
-const SnackbarContent = forwardRef<HTMLDivElement, Props>(({ classes, className, ...props }, ref) => (
-    <div ref={ref} className={clsx(classes.root, className)}  {...props} />
-))
-
-export default withStyles(styles)(SnackbarContent);
+export default SnackbarContent;

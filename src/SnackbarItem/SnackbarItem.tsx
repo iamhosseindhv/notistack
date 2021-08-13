@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { withStyles, WithStyles, createStyles, Theme, emphasize } from '@material-ui/core/styles';
+import { emphasize, styled } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
 import SnackbarContent from '../SnackbarContent';
 import { getTransitionDirection } from './SnackbarItem.util';
@@ -11,13 +11,27 @@ import createChainedFunction from '../utils/createChainedFunction';
 import { Snack } from '../SnackbarProvider';
 import Snackbar from './Snackbar';
 
-const styles = (theme: Theme) => {
-    // @ts-ignore
+const componentName = 'SnackbarItem';
+
+const classes = {
+    contentRoot: `${componentName}-contentRoot`,
+    lessPadding: `${componentName}-lessPadding`,
+    variantSuccess: `${componentName}-variantSuccess`,
+    variantError: `${componentName}-variantError`,
+    variantInfo: `${componentName}-variantInfo`,
+    variantWarning: `${componentName}-variantWarning`,
+    message: `${componentName}-message`,
+    action: `${componentName}-action`,
+    wrappedRoot: `${componentName}-wrappedRoot`,
+};
+
+const Root = styled(Snackbar)(({ theme }) => {
     const mode = theme.palette.mode || theme.palette.type;
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
-    return createStyles({
+
+    return {
         ...allClasses.mui,
-        contentRoot: {
+        [`&.${classes.contentRoot}`]: {
             ...theme.typography.body2,
             backgroundColor,
             color: theme.palette.getContrastText(backgroundColor),
@@ -26,38 +40,38 @@ const styles = (theme: Theme) => {
             borderRadius: '4px',
             boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
         },
-        lessPadding: {
+        [`&.${classes.lessPadding}`]: {
             paddingLeft: 8 * 2.5,
         },
-        variantSuccess: {
+        [`&.${classes.variantSuccess}`]: {
             backgroundColor: '#43a047', // green
             color: '#fff',
         },
-        variantError: {
+        [`&.${classes.variantError}`]: {
             backgroundColor: '#d32f2f', // dark red
             color: '#fff',
         },
-        variantInfo: {
+        [`&.${classes.variantInfo}`]: {
             backgroundColor: '#2196f3', // nice blue
             color: '#fff',
         },
-        variantWarning: {
+        [`&.${classes.variantWarning}`]: {
             backgroundColor: '#ff9800', // amber
             color: '#fff',
         },
-        message: {
+        [`&.${classes.message}`]: {
             display: 'flex',
             alignItems: 'center',
             padding: '8px 0',
         },
-        action: {
+        [`&.${classes.action}`]: {
             display: 'flex',
             alignItems: 'center',
             marginLeft: 'auto',
             paddingLeft: 16,
             marginRight: -8,
         },
-        wrappedRoot: {
+        [`&.${classes.wrappedRoot}`]: {
             position: 'relative',
             transform: 'translateX(0)',
             top: 0,
@@ -65,25 +79,23 @@ const styles = (theme: Theme) => {
             bottom: 0,
             left: 0,
         },
-    });
-}
-
+    };
+});
 
 type RemovedProps =
-    | 'variant' // the one received from Provider is processed and passed to snack prop 
+    | 'variant' // the one received from Provider is processed and passed to snack prop
     | 'anchorOrigin' // same as above
     | 'autoHideDuration' // same as above
     | 'preventDuplicate' // the one recevied from enqueueSnackbar is processed in provider, therefore shouldn't be passed to SnackbarItem */
 
-
-export interface SnackbarItemProps extends WithStyles<typeof styles>, RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
+export interface SnackbarItemProps extends RequiredBy<Omit<SharedProps, RemovedProps>, 'onEntered' | 'onExited' | 'onClose'> {
     snack: Snack;
     dense: ProviderProps['dense'];
     iconVariant: ProviderProps['iconVariant'];
     hideIconVariant: ProviderProps['hideIconVariant'];
 }
 
-const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
+const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
@@ -196,7 +208,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
             onExited={callbacks.onExited}
         >
             {/* @ts-ignore */}
-            <Snackbar
+            <Root
                 {...other}
                 {...singleSnackProps}
                 open={open}
@@ -233,7 +245,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                                 { [classes.lessPadding]: !hideIconVariant && icon },
                                 classes[transformer.toVariant(variant)],
                                 otherClassName,
-                                singleClassName
+                                singleClassName,
                             )}
                         >
                             <div id={ariaAttributes['aria-describedby']} className={classes.message}>
@@ -246,9 +258,9 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes, ...props }) => {
                         </SnackbarContent>
                     )}
                 </TransitionComponent>
-            </Snackbar>
+            </Root>
         </Collapse>
     );
 };
 
-export default withStyles(styles)(SnackbarItem);
+export default SnackbarItem;
