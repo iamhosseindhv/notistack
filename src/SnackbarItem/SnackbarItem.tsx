@@ -23,15 +23,30 @@ const classes = {
     message: `${componentName}-message`,
     action: `${componentName}-action`,
     wrappedRoot: `${componentName}-wrappedRoot`,
+    root: `${componentName}-root`,
+    anchorOriginTopCenter: `${componentName}-anchorOriginTopCenter`,
+    anchorOriginBottomCenter: `${componentName}-anchorOriginBottomCenter`,
+    anchorOriginTopRight: `${componentName}-anchorOriginTopRight`,
+    anchorOriginBottomRight: `${componentName}-anchorOriginBottomRight`,
+    anchorOriginTopLeft: `${componentName}-anchorOriginTopLeft`,
+    anchorOriginBottomLeft: `${componentName}-anchorOriginBottomLeft`,
 };
 
-const Root = styled(Snackbar)(({ theme }) => {
+const WrappedRoot = styled(Snackbar)(({ theme }) => {
     const mode = theme.palette.mode || theme.palette.type;
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
 
     return {
         ...allClasses.mui,
-        [`&.${classes.contentRoot}`]: {
+        [`&.${classes.wrappedRoot}`]: {
+            position: 'relative',
+            transform: 'translateX(0)',
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+        },
+        [`.${classes.contentRoot}`]: {
             ...theme.typography.body2,
             backgroundColor,
             color: theme.palette.getContrastText(backgroundColor),
@@ -40,44 +55,36 @@ const Root = styled(Snackbar)(({ theme }) => {
             borderRadius: '4px',
             boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
         },
-        [`&.${classes.lessPadding}`]: {
+        [`.${classes.lessPadding}`]: {
             paddingLeft: 8 * 2.5,
         },
-        [`&.${classes.variantSuccess}`]: {
+        [`.${classes.variantSuccess}`]: {
             backgroundColor: '#43a047', // green
             color: '#fff',
         },
-        [`&.${classes.variantError}`]: {
+        [`.${classes.variantError}`]: {
             backgroundColor: '#d32f2f', // dark red
             color: '#fff',
         },
-        [`&.${classes.variantInfo}`]: {
+        [`.${classes.variantInfo}`]: {
             backgroundColor: '#2196f3', // nice blue
             color: '#fff',
         },
-        [`&.${classes.variantWarning}`]: {
+        [`.${classes.variantWarning}`]: {
             backgroundColor: '#ff9800', // amber
             color: '#fff',
         },
-        [`&.${classes.message}`]: {
+        [`.${classes.message}`]: {
             display: 'flex',
             alignItems: 'center',
             padding: '8px 0',
         },
-        [`&.${classes.action}`]: {
+        [`.${classes.action}`]: {
             display: 'flex',
             alignItems: 'center',
             marginLeft: 'auto',
             paddingLeft: 16,
             marginRight: -8,
-        },
-        [`&.${classes.wrappedRoot}`]: {
-            position: 'relative',
-            transform: 'translateX(0)',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
         },
     };
 });
@@ -193,12 +200,27 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         content = content(key, snack.message);
     }
 
+    // eslint-disable-next-line operator-linebreak
     const callbacks: { [key in keyof TransitionHandlerProps]?: any } =
         ['onEnter', 'onEntering', 'onEntered', 'onExit', 'onExiting', 'onExited'].reduce((acc, cbName) => ({
             ...acc,
-            // @ts-ignore
-            [cbName]: createChainedFunction([props.snack[cbName], props[cbName]], props.snack.key),
+            [cbName]: createChainedFunction([
+                props.snack[cbName as keyof Snack],
+                props[cbName as keyof SnackbarItemProps],
+            ], props.snack.key),
         }), {});
+
+    // https://github.com/Microsoft/TypeScript/issues/15463
+    const wrappedRootProps = {
+        ...other,
+        ...singleSnackProps,
+        open,
+        className: clsx(
+            classes.wrappedRoot,
+            classes[transformer.toAnchorOrigin(anchorOrigin)],
+        ),
+        onClose: handleClose,
+    };
 
     return (
         <Collapse
@@ -207,19 +229,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             in={collapsed}
             onExited={callbacks.onExited}
         >
-            {/* @ts-ignore */}
-            <Root
-                {...other}
-                {...singleSnackProps}
-                open={open}
-                className={clsx(
-                    classes.root,
-                    classes.wrappedRoot,
-                    classes[transformer.toAnchorOrigin(anchorOrigin)],
-                )}
-                onClose={handleClose}
-            >
-                {/* @ts-ignore */}
+            <WrappedRoot {...wrappedRootProps}>
                 <TransitionComponent
                     appear
                     in={open}
@@ -258,7 +268,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                         </SnackbarContent>
                     )}
                 </TransitionComponent>
-            </Root>
+            </WrappedRoot>
         </Collapse>
     );
 };
