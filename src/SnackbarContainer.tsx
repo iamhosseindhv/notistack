@@ -45,7 +45,7 @@ const Root = styled('div')(({ theme }) => ({
             transition: 'padding 300ms ease 0ms',
         },
         maxWidth: `calc(100% - ${SNACKBAR_INDENTS.view.default * 2}px)`,
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
             width: '100%',
             maxWidth: `calc(100% - ${xsWidthMargin * 2}px)`,
         },
@@ -68,7 +68,7 @@ const Root = styled('div')(({ theme }) => ({
         [theme.breakpoints.up('sm')]: {
             alignItems: 'flex-start',
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
             left: `${xsWidthMargin}px`,
         },
     },
@@ -77,7 +77,7 @@ const Root = styled('div')(({ theme }) => ({
         [theme.breakpoints.up('sm')]: {
             alignItems: 'flex-end',
         },
-        [theme.breakpoints.down('xs')]: {
+        [theme.breakpoints.down('sm')]: {
             right: `${xsWidthMargin}px`,
         },
     },
