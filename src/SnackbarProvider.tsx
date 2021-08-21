@@ -32,8 +32,8 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             snacks: [],
             queue: [], // eslint-disable-line react/no-unused-state
             contextValue: {
-                enqueueSnackbar: this.enqueueSnackbar,
-                closeSnackbar: this.closeSnackbar,
+                enqueueSnackbar: this.enqueueSnackbar.bind(this),
+                closeSnackbar: this.closeSnackbar.bind(this),
             },
         };
     }
