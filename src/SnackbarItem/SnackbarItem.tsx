@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { emphasize, styled } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
+import type { SnackbarClassKey } from '@material-ui/core';
 import SnackbarContent from '../SnackbarContent';
 import { getTransitionDirection } from './SnackbarItem.util';
-import { allClasses, REASONS, objectMerge, DEFAULTS, transformer } from '../utils/constants';
-import { SharedProps, RequiredBy, TransitionHandlerProps, SnackbarProviderProps as ProviderProps } from '../index';
+import { REASONS, objectMerge, DEFAULTS, transformer } from '../utils/constants';
+import { SharedProps, RequiredBy, TransitionHandlerProps, SnackbarProviderProps as ProviderProps, ClassNameMap } from '../index';
 import defaultIconVariants from '../utils/defaultIconVariants';
 import createChainedFunction from '../utils/createChainedFunction';
 import { Snack } from '../SnackbarProvider';
@@ -23,21 +24,13 @@ const classes = {
     message: `${componentName}-message`,
     action: `${componentName}-action`,
     wrappedRoot: `${componentName}-wrappedRoot`,
-    root: `${componentName}-root`,
-    anchorOriginTopCenter: `${componentName}-anchorOriginTopCenter`,
-    anchorOriginBottomCenter: `${componentName}-anchorOriginBottomCenter`,
-    anchorOriginTopRight: `${componentName}-anchorOriginTopRight`,
-    anchorOriginBottomRight: `${componentName}-anchorOriginBottomRight`,
-    anchorOriginTopLeft: `${componentName}-anchorOriginTopLeft`,
-    anchorOriginBottomLeft: `${componentName}-anchorOriginBottomLeft`,
 };
 
-const WrappedRoot = styled(Snackbar)(({ theme }) => {
+const StyledSnackbar = styled(Snackbar)(({ theme }) => {
     const mode = theme.palette.mode || theme.palette.type;
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
 
     return {
-        ...allClasses.mui,
         [`&.${classes.wrappedRoot}`]: {
             position: 'relative',
             transform: 'translateX(0)',
@@ -100,9 +93,10 @@ export interface SnackbarItemProps extends RequiredBy<Omit<SharedProps, RemovedP
     dense: ProviderProps['dense'];
     iconVariant: ProviderProps['iconVariant'];
     hideIconVariant: ProviderProps['hideIconVariant'];
+    classes: Partial<ClassNameMap<SnackbarClassKey>>;
 }
 
-const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
+const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes: propClasses, ...props }) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
@@ -210,18 +204,6 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             ], props.snack.key),
         }), {});
 
-    // https://github.com/Microsoft/TypeScript/issues/15463
-    const wrappedRootProps = {
-        ...other,
-        ...singleSnackProps,
-        open,
-        className: clsx(
-            classes.wrappedRoot,
-            classes[transformer.toAnchorOrigin(anchorOrigin)],
-        ),
-        onClose: handleClose,
-    };
-
     return (
         <Collapse
             unmountOnExit
@@ -229,7 +211,17 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             in={collapsed}
             onExited={callbacks.onExited}
         >
-            <WrappedRoot {...wrappedRootProps}>
+            <StyledSnackbar
+                {...other}
+                {...singleSnackProps}
+                open={open}
+                className={clsx(
+                    propClasses.root,
+                    classes.wrappedRoot,
+                    propClasses[transformer.toAnchorOrigin(anchorOrigin)],
+                )}
+                onClose={handleClose}
+            >
                 <TransitionComponent
                     appear
                     in={open}
@@ -268,7 +260,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                         </SnackbarContent>
                     )}
                 </TransitionComponent>
-            </WrappedRoot>
+            </StyledSnackbar>
         </Collapse>
     );
 };

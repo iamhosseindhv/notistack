@@ -17,6 +17,7 @@ module.exports = {
         'react/jsx-closing-bracket-location': 0,
         'react/sort-comp': 0,
         'react/require-default-props': 0,
+        'react/jsx-props-no-spreading': 0,
         'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
         'jsx-a11y/anchor-is-valid': ['error', { aspects: ['invalidHref', 'preferButton'] }],
     },
