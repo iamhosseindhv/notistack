@@ -16,6 +16,7 @@ module.exports = {
         'react/destructuring-assignment': 0,
         'react/jsx-closing-bracket-location': 0,
         'react/sort-comp': 0,
+        'arrow-parens': 0,
         'react/require-default-props': 0,
         'react/jsx-props-no-spreading': 0,
         'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
