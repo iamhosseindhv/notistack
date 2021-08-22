@@ -203,9 +203,7 @@ type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | keyof Transitio
 /**
  * Props that will be passed to a custom component in `SnackbarProvider` `Components` prop
  */
-export interface CustomContentProps<V extends string = VariantType> extends Omit<InternalSnack<V>, NotNeededByCustomSnackbar> {
-
-}
+export type CustomContentProps<V extends string = VariantType> = Omit<InternalSnack<V>, NotNeededByCustomSnackbar>
 
 /**
  * @category Provider
@@ -242,7 +240,7 @@ export interface SnackbarProviderProps<V extends keyof T = any, T extends Record
      * @ignore
      * SnackbarProvider's ref
      */
-    ref?: React.Ref<SnackbarProvider>;
+    ref?: React.Ref<SnackbarProvider<any, any>>;
     /**
      * Mapping between variants and a custom component.
      */
@@ -265,14 +263,15 @@ export interface ProviderContext<T extends AnyComponentMap = any> {
     closeSnackbar: (key?: SnackbarKey) => void;
 }
 
-export class SnackbarProvider<V extends keyof T, T extends Record<V, React.ComponentType<any>>> extends React.Component<SnackbarProviderProps<V, T>> {
+export declare class SnackbarProvider<V extends keyof T, T extends Record<V, React.ComponentType<any>>> extends React.Component<SnackbarProviderProps<V, T>> {
     enqueueSnackbar: ProviderContext<T>['enqueueSnackbar'];
+
     closeSnackbar: ProviderContext<T>['closeSnackbar'];
 }
 
-export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
+export declare function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
     React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
 
 export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
 
-export function useSnackbar<T extends AnyComponentMap>(): ProviderContext<T>;
+export declare function useSnackbar<T extends AnyComponentMap>(): ProviderContext<T>;
