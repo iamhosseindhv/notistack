@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import clsx from 'clsx';
 import { makeStyles, ComponentClasses } from './utils/styles';
 import { breakpoints } from './utils/constants';
-import { SnackbarProviderProps } from './index';
+import { SnackbarProviderProps } from './types';
 
 const indents = {
     view: { default: 20, dense: 4 },
@@ -10,8 +10,10 @@ const indents = {
 };
 
 const collapse = {
-    container: '& > .MuiCollapse-container',
-    wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper',
+    // Material-UI 4.12.x and above uses MuiCollapse-root; earlier versions use
+    // Mui-Collapse-container.  https://github.com/mui-org/material-ui/pull/24084
+    container: '& > .MuiCollapse-container, & > .MuiCollapse-root',
+    wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper, & > .MuiCollapse-root > .MuiCollapse-wrapper',
 };
 
 const xsWidthMargin = 16;
@@ -26,7 +28,7 @@ const styles = makeStyles({
         height: 'auto',
         width: 'auto',
         transition: 'top 300ms ease 0ms, right 300ms ease 0ms, bottom 300ms ease 0ms, left 300ms ease 0ms, margin 300ms ease 0ms, max-width 300ms ease 0ms',
-        // container itself is invisible and should not block clicks, clicks should be passed to its children 
+        // container itself is invisible and should not block clicks, clicks should be passed to its children
         pointerEvents: 'none',
         [collapse.container]: {
             pointerEvents: 'all',
@@ -80,7 +82,6 @@ const styles = makeStyles({
         },
     },
 });
-
 
 interface SnackbarContainerProps {
     children: JSX.Element | JSX.Element[];
