@@ -6,17 +6,16 @@ import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, mer
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject } from './index';
+import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject } from './types';
 import createChainedFunction from './utils/createChainedFunction';
 import MaterialDesignContent from './components/MaterialDesignContent/MaterialDesignContent';
 
-const isOptions = (messageOrOptions: string | (OptionsObject & { message?: string })): messageOrOptions is OptionsObject & { message?: string } => {
-    return typeof messageOrOptions !== 'string';
-}
+const isOptions = (messageOrOptions: string | (OptionsObject & { message?: string })): messageOrOptions is OptionsObject & { message?: string } => (
+    typeof messageOrOptions !== 'string'
+);
 
 type Reducer = (state: State) => State;
 type SnacksByPosition = { [key: string]: InternalSnack[] };
-
 
 interface State {
     snacks: InternalSnack[];
@@ -31,8 +30,8 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             snacks: [],
             queue: [], // eslint-disable-line react/no-unused-state
             contextValue: {
-                enqueueSnackbar: this.enqueueSnackbar.bind(this),
-                closeSnackbar: this.closeSnackbar.bind(this),
+                enqueueSnackbar: this.enqueueSnackbar,
+                closeSnackbar: this.closeSnackbar,
             },
         };
     }
@@ -45,7 +44,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Adds a new snackbar to the queue to be presented.
      * Returns generated or user defined key referencing the new snackbar or null
      */
-    public enqueueSnackbar(messageOrOptions: string | (OptionsObject & { message?: string }), optsOrUndefined: OptionsObject = {}): SnackbarKey {
+    enqueueSnackbar = (messageOrOptions: string | (OptionsObject & { message?: string }), optsOrUndefined: OptionsObject = {}): SnackbarKey => {
         const opts = isOptions(messageOrOptions) ? messageOrOptions : optsOrUndefined;
 
         let message: string | undefined = messageOrOptions as string;
@@ -111,7 +110,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         });
 
         return id;
-    };
+    }
 
     /**
      * Reducer: Display snack if there's space for it. Otherwise, immediately
