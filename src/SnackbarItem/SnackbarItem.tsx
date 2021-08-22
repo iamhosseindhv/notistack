@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Collapse from '@material-ui/core/Collapse';
 import { getTransitionDirection } from './SnackbarItem.util';
 import { REASONS, transformer } from '../utils/constants';
-import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../index';
+import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
 import { makeStyles } from '../utils/styles';
@@ -85,11 +85,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         content = content(otherSnack.id, otherSnack.message!);
     }
 
-    const callbacks: { [key in keyof TransitionHandlerProps]?: any } =
-        (['onEnter', 'onEntered', 'onExit', 'onExited'] as (keyof TransitionHandlerProps)[]).reduce((acc, cbName) => ({
-            ...acc,
-            [cbName]: createChainedFunction([props.snack[cbName], props[cbName]], otherSnack.id),
-        }), {});
+    const callbacks: { [key in keyof TransitionHandlerProps]?: any } = (['onEnter', 'onEntered', 'onExit', 'onExited'] as (keyof TransitionHandlerProps)[]).reduce((acc, cbName) => ({
+        ...acc,
+        [cbName]: createChainedFunction([props.snack[cbName], props[cbName]], otherSnack.id),
+    }), {});
 
     return (
         <Collapse unmountOnExit timeout={175} in={collapsed} onExited={callbacks.onExited}>

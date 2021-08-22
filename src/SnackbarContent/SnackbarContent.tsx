@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import { SnackbarContentProps } from '../index';
+import { SnackbarContentProps } from '../types';
 import { breakpoints } from '../utils/constants';
 import { makeStyles } from '../utils/styles';
 
@@ -13,7 +13,7 @@ const classes = makeStyles({
             flexGrow: 'initial',
             minWidth: '288px',
         },
-    }
+    },
 });
 
 const SnackbarContent = forwardRef<HTMLDivElement, SnackbarContentProps>(({ className, ...props }, ref) => (

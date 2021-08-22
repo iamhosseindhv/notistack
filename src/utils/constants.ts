@@ -1,12 +1,12 @@
 import Slide from '@material-ui/core/Slide';
-import { CloseReason, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey, InternalSnack } from '../index';
+import { CloseReason, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey, InternalSnack } from '../types';
 import { SnackbarItemProps } from '../SnackbarItem';
 import defaultIconVariants from './defaultIconVariants';
 
 export const breakpoints = {
     downXs: '@media (max-width:599.95px)',
     upSm: '@media (min-width:600px)',
-}
+};
 
 export const MESSAGES = {
     NO_PERSIST_ALL: 'WARNING - notistack: Reached maxSnack while all enqueued snackbars have \'persist\' flag. Notistack will dismiss the oldest snackbar anyway to allow other ones in the queue to be presented.',
@@ -48,8 +48,8 @@ export const omitContainerKeys = (classes: Partial<ClassNameMap<CombinedClassKey
         containerAnchorOriginBottomLeft: '',
     };
     return (Object.keys(classes) as ContainerClassKey[])
-        .filter(key => !containerClasses[key])
-        .reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {})
+        .filter((key) => !containerClasses[key])
+        .reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {});
 };
 
 export const REASONS: { [key: string]: CloseReason } = {
@@ -62,7 +62,7 @@ export const REASONS: { [key: string]: CloseReason } = {
 /** Tranforms classes name */
 export const transformer = {
     toContainerAnchorOrigin: (origin: string) => `containerAnchorOrigin${origin}` as ContainerClassKey,
-    toSnackbarAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) =>  (
+    toSnackbarAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
         `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
     ),
 };

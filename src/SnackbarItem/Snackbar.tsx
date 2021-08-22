@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { REASONS } from '../utils/constants';
 import useEventCallback from '../utils/useEventCallback';
-import { SharedProps } from '../index';
+import { SharedProps } from '../types';
 import { ComponentClasses } from '../utils/styles';
 
 interface SnackbarProps extends Required<Pick<SharedProps, | 'disableWindowBlurListener' | 'onClose'>> {
@@ -25,7 +25,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
         disableWindowBlurListener = false,
         onClose,
         open,
-        SnackbarProps = {}
+        SnackbarProps = {},
     } = props;
 
     const timerAutoHide = React.useRef<ReturnType<typeof setTimeout>>();

@@ -1,7 +1,7 @@
 import React, { memo, forwardRef } from 'react';
 import clsx from 'clsx';
 import SnackbarContent from '../../SnackbarContent';
-import { CustomContentProps } from '../../index';
+import { CustomContentProps } from '../../types';
 import { ComponentClasses, makeStyles } from '../../utils/styles';
 
 const classes = makeStyles({
@@ -48,7 +48,7 @@ const classes = makeStyles({
         paddingLeft: '16px',
         marginRight: '-8px',
     },
-})
+});
 
 const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((props, forwardedRef) => {
     const {
@@ -88,7 +88,7 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
                 <div className={classes.action}>{action}</div>
             )}
         </SnackbarContent>
-    )
+    );
 });
 
 export default memo(MaterialDesignContent);
