@@ -1,5 +1,5 @@
-import Slide from '@material-ui/core/Slide';
-import { SnackbarClassKey } from '@material-ui/core/Snackbar';
+import Slide from '@mui/material/Slide';
+import { SnackbarClassKey } from '@mui/material/Snackbar';
 import { CloseReason, ContainerClassKey, SnackbarProviderProps, VariantType, SnackbarOrigin, VariantClassKey } from '../index';
 import { SnackbarItemProps } from '../SnackbarItem';
 import { Snack } from '../SnackbarProvider';

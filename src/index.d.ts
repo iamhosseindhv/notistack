@@ -2,10 +2,10 @@
  * Part of the following typing and documentation is from material-ui/src/Snackbar/Snackbar.d.ts
  */
 import * as React from 'react';
-import { SnackbarClassKey } from '@material-ui/core/Snackbar';
-import { ClickAwayListenerProps } from '@material-ui/core/ClickAwayListener';
-import { TransitionProps } from '@material-ui/core/transitions/transition';
-import { StandardProps } from '@material-ui/core';
+import { SnackbarClassKey } from '@mui/material/Snackbar';
+import { ClickAwayListenerProps } from '@mui/material/ClickAwayListener';
+import { TransitionProps } from '@mui/material/transitions/transition';
+import { StandardProps } from '@mui/material';
 
 export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
