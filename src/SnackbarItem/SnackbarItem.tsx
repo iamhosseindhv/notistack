@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { emphasize, styled } from '@mui/styles';
+import { emphasize, styled } from '@mui/material/styles';
 import Collapse from '@mui/material/Collapse';
 import type { SnackbarClassKey } from '@mui/material';
 import SnackbarContent from '../SnackbarContent';
