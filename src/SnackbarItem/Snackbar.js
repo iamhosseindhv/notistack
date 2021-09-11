@@ -2,7 +2,7 @@
  * @link https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/Snackbar/Snackbar.js
  */
 import * as React from 'react';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { REASONS } from '../utils/constants';
 import useEventCallback from '../utils/useEventCallback';
 

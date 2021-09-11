@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
-import { emphasize, styled } from '@material-ui/core/styles';
-import Collapse from '@material-ui/core/Collapse';
-import type { SnackbarClassKey } from '@material-ui/core';
+import { emphasize, styled } from '@mui/material/styles';
+import Collapse from '@mui/material/Collapse';
+import type { SnackbarClassKey } from '@mui/material';
 import SnackbarContent from '../SnackbarContent';
 import { getTransitionDirection } from './SnackbarItem.util';
 import { REASONS, objectMerge, DEFAULTS, transformer } from '../utils/constants';

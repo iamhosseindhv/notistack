@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "1.0.6-next.2",
+    "version": "1.0.6-next.3",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "dist/index.js",
     "module": "dist/notistack.esm.js",
@@ -24,11 +24,11 @@
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },
     "peerDependencies": {
-        "react": "^16.8.0 || ^17.0.0",
-        "react-dom": "^16.8.0 || ^17.0.0",
         "@emotion/react": "^11.4.1",
         "@emotion/styled": "^11.3.0",
-        "@material-ui/core": "^5.0.0-beta.4"
+        "@mui/material": "^5.0.0-rc.0",
+        "react": "^16.8.0 || ^17.0.0",
+        "react-dom": "^16.8.0 || ^17.0.0"
     },
     "peerDependenciesMeta": {
         "@emotion/react": {
@@ -42,7 +42,7 @@
         "@babel/preset-react": "^7.8.3",
         "@emotion/react": "^11.4.1",
         "@emotion/styled": "^11.3.0",
-        "@material-ui/core": "^5.0.0-beta.4",
+        "@mui/material": "^5.0.0-rc.0",
         "@types/node": "^13.9.0",
         "@types/react": "^16.9.23",
         "@types/react-dom": "^16.9.5",

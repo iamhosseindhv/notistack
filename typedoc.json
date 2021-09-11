@@ -3051,7 +3051,7 @@
 					},
 					"sources": [
 						{
-							"fileName": "node_modules/@material-ui/core/index.d.ts",
+							"fileName": "node_modules/@mui/material/index.d.ts",
 							"line": 19,
 							"character": 13
 						}
@@ -3089,7 +3089,7 @@
 					},
 					"sources": [
 						{
-							"fileName": "node_modules/@material-ui/core/styles/index.d.ts",
+							"fileName": "node_modules/@mui/material/styles/index.d.ts",
 							"line": 76,
 							"character": 9
 						}
@@ -3177,7 +3177,7 @@
 					},
 					"sources": [
 						{
-							"fileName": "node_modules/@material-ui/core/index.d.ts",
+							"fileName": "node_modules/@mui/material/index.d.ts",
 							"line": 20,
 							"character": 7
 						}
@@ -3210,7 +3210,7 @@
 										},
 										"sources": [
 											{
-												"fileName": "node_modules/@material-ui/core/index.d.ts",
+												"fileName": "node_modules/@mui/material/index.d.ts",
 												"line": 20,
 												"character": 25
 											}
@@ -3232,7 +3232,7 @@
 								],
 								"sources": [
 									{
-										"fileName": "node_modules/@material-ui/core/index.d.ts",
+										"fileName": "node_modules/@mui/material/index.d.ts",
 										"line": 20,
 										"character": 19
 									}
@@ -3310,7 +3310,7 @@
 					},
 					"sources": [
 						{
-							"fileName": "node_modules/@material-ui/core/index.d.ts",
+							"fileName": "node_modules/@mui/material/index.d.ts",
 							"line": 21,
 							"character": 9
 						}
@@ -3580,7 +3580,7 @@
 										},
 										"sources": [
 											{
-												"fileName": "node_modules/@material-ui/core/index.d.ts",
+												"fileName": "node_modules/@mui/material/index.d.ts",
 												"line": 19,
 												"character": 13
 											}
@@ -3610,7 +3610,7 @@
 										},
 										"sources": [
 											{
-												"fileName": "node_modules/@material-ui/core/index.d.ts",
+												"fileName": "node_modules/@mui/material/index.d.ts",
 												"line": 20,
 												"character": 7
 											}
@@ -3643,7 +3643,7 @@
 															},
 															"sources": [
 																{
-																	"fileName": "node_modules/@material-ui/core/index.d.ts",
+																	"fileName": "node_modules/@mui/material/index.d.ts",
 																	"line": 20,
 																	"character": 25
 																}
@@ -3665,7 +3665,7 @@
 													],
 													"sources": [
 														{
-															"fileName": "node_modules/@material-ui/core/index.d.ts",
+															"fileName": "node_modules/@mui/material/index.d.ts",
 															"line": 20,
 															"character": 19
 														}
@@ -3699,7 +3699,7 @@
 										},
 										"sources": [
 											{
-												"fileName": "node_modules/@material-ui/core/index.d.ts",
+												"fileName": "node_modules/@mui/material/index.d.ts",
 												"line": 21,
 												"character": 9
 											}
