@@ -28,7 +28,6 @@ const classes = {
 
 const StyledSnackbar = styled(Snackbar)(({ theme }) => {
     const mode = theme.palette.mode;
-    const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
 
     return {
         [`&.${classes.wrappedRoot}`]: {
@@ -41,8 +40,8 @@ const StyledSnackbar = styled(Snackbar)(({ theme }) => {
         },
         [`.${classes.contentRoot}`]: {
             ...theme.typography.body2,
-            backgroundColor,
-            color: theme.palette.getContrastText(backgroundColor),
+            backgroundColor: emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98),
+            color: theme.palette.getContrastText(emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98)),
             alignItems: 'center',
             padding: '6px 16px',
             borderRadius: '4px',
