@@ -27,7 +27,7 @@ const classes = {
 };
 
 const StyledSnackbar = styled(Snackbar)(({ theme }) => {
-    const mode = theme.palette.mode || theme.palette.type;
+    const mode = theme.palette.mode;
     const backgroundColor = emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98);
 
     return {
@@ -52,20 +52,20 @@ const StyledSnackbar = styled(Snackbar)(({ theme }) => {
             paddingLeft: 8 * 2.5,
         },
         [`.${classes.variantSuccess}`]: {
-            backgroundColor: '#43a047', // green
-            color: '#fff',
+            backgroundColor: mode === "light" ? theme.palette.success.main : theme.palette.success.dark,
+            color:  mode === "light" ? theme.palette.getContrastText(theme.palette.success.main) : theme.palette.getContrastText(theme.palette.success.dark),
         },
         [`.${classes.variantError}`]: {
-            backgroundColor: '#d32f2f', // dark red
-            color: '#fff',
+            backgroundColor: mode === "light" ? theme.palette.error.main : theme.palette.error.dark,
+            color:  mode === "light" ? theme.palette.getContrastText(theme.palette.error.main) : theme.palette.getContrastText(theme.palette.error.dark),
         },
         [`.${classes.variantInfo}`]: {
-            backgroundColor: '#2196f3', // nice blue
-            color: '#fff',
+            backgroundColor: mode === "light" ? theme.palette.info.main : theme.palette.info.dark,
+            color:  mode === "light" ? theme.palette.getContrastText(theme.palette.info.main) : theme.palette.getContrastText(theme.palette.info.dark),
         },
         [`.${classes.variantWarning}`]: {
-            backgroundColor: '#ff9800', // amber
-            color: '#fff',
+            backgroundColor: mode === "light" ? theme.palette.warning.main : theme.palette.warning.dark,
+            color:  mode === "light" ? theme.palette.getContrastText(theme.palette.warning.main) : theme.palette.getContrastText(theme.palette.warning.dark),
         },
         [`.${classes.message}`]: {
             display: 'flex',
