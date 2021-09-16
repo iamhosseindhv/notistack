@@ -43,12 +43,12 @@ const StyledSnackbar = styled(Snackbar)(({ theme }) => {
             backgroundColor: emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98),
             color: theme.palette.getContrastText(emphasize(theme.palette.background.default, mode === 'light' ? 0.8 : 0.98)),
             alignItems: 'center',
-            padding: '6px 16px',
+            padding: `${theme.spacing(0.75)} ${theme.spacing(2)}`,
             borderRadius: '4px',
             boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
         },
         [`.${classes.lessPadding}`]: {
-            paddingLeft: 8 * 2.5,
+            paddingLeft: theme.spacing(2.5),
         },
         [`.${classes.variantSuccess}`]: {
             backgroundColor: mode === "light" ? theme.palette.success.main : theme.palette.success.dark,
@@ -69,14 +69,14 @@ const StyledSnackbar = styled(Snackbar)(({ theme }) => {
         [`.${classes.message}`]: {
             display: 'flex',
             alignItems: 'center',
-            padding: '8px 0',
+            padding: `${theme.spacing(1)} 0`,
         },
         [`.${classes.action}`]: {
             display: 'flex',
             alignItems: 'center',
             marginLeft: 'auto',
-            paddingLeft: 16,
-            marginRight: -8,
+            paddingLeft: theme.spacing(2),
+            marginRight: theme.spacing(-1),
         },
     };
 });
