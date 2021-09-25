@@ -94,15 +94,25 @@
 										"isExported": true
 									},
 									"type": {
-										"type": "reference",
-										"typeArguments": [
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 59,
+														"name": "SnackbarProviderProps"
+													}
+												],
+												"name": "Readonly"
+											},
 											{
 												"type": "reference",
 												"id": 59,
 												"name": "SnackbarProviderProps"
 											}
-										],
-										"name": "Readonly"
+										]
 									}
 								}
 							],
@@ -158,8 +168,7 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
-										"isExported": true,
-										"isOptional": true
+										"isExported": true
 									},
 									"type": {
 										"type": "intrinsic",
@@ -182,13 +191,13 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 448,
+							"line": 473,
 							"character": 21
 						},
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 450,
-							"character": 40
+							"line": 475,
+							"character": 44
 						}
 					],
 					"inheritedFrom": {
@@ -245,7 +254,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 448,
+							"line": 473,
 							"character": 15
 						}
 					],
@@ -297,7 +306,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 473,
+							"line": 498,
 							"character": 22
 						}
 					],
@@ -341,13 +350,22 @@
 													"sources": [
 														{
 															"fileName": "node_modules/@types/react/index.d.ts",
-															"line": 473,
+															"line": 498,
 															"character": 57
 														}
 													],
 													"type": {
-														"type": "reference",
-														"name": "ReactNode"
+														"type": "union",
+														"types": [
+															{
+																"type": "reference",
+																"name": "ReactNode"
+															},
+															{
+																"type": "intrinsic",
+																"name": "undefined"
+															}
+														]
 													}
 												}
 											],
@@ -363,7 +381,7 @@
 											"sources": [
 												{
 													"fileName": "node_modules/@types/react/index.d.ts",
-													"line": 473,
+													"line": 498,
 													"character": 47
 												}
 											]
@@ -399,7 +417,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 479,
+							"line": 504,
 							"character": 12
 						}
 					],
@@ -446,7 +464,7 @@
 							"sources": [
 								{
 									"fileName": "node_modules/@types/react/index.d.ts",
-									"line": 479,
+									"line": 504,
 									"character": 13
 								}
 							]
@@ -469,7 +487,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 474,
+							"line": 499,
 							"character": 13
 						}
 					],
@@ -512,19 +530,28 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 430,
+							"line": 455,
 							"character": 26
 						}
 					],
 					"type": {
-						"type": "reference",
-						"typeArguments": [
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Context"
+							},
 							{
 								"type": "intrinsic",
-								"name": "any"
+								"name": "undefined"
 							}
-						],
-						"name": "Context"
+						]
 					},
 					"inheritedFrom": {
 						"type": "reference",
@@ -582,7 +609,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 674,
+							"line": 711,
 							"character": 33
 						}
 					],
@@ -677,7 +704,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 706,
+							"line": 743,
 							"character": 40
 						}
 					],
@@ -791,7 +818,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 734,
+							"line": 771,
 							"character": 34
 						}
 					],
@@ -864,7 +891,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 603,
+							"line": 640,
 							"character": 25
 						}
 					],
@@ -909,7 +936,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 582,
+							"line": 619,
 							"character": 25
 						}
 					],
@@ -1011,7 +1038,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 645,
+							"line": 682,
 							"character": 26
 						}
 					],
@@ -1071,7 +1098,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 660,
+							"line": 697,
 							"character": 26
 						}
 					],
@@ -1166,7 +1193,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 689,
+							"line": 726,
 							"character": 33
 						}
 					],
@@ -1211,7 +1238,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 598,
+							"line": 635,
 							"character": 28
 						}
 					],
@@ -1325,7 +1352,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 719,
+							"line": 756,
 							"character": 27
 						}
 					],
@@ -1414,7 +1441,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 465,
+							"line": 490,
 							"character": 19
 						}
 					],
@@ -1510,7 +1537,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 639,
+							"line": 676,
 							"character": 31
 						}
 					],
@@ -1551,7 +1578,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 466,
+							"line": 491,
 							"character": 14
 						}
 					],
@@ -1699,7 +1726,7 @@
 													"sources": [
 														{
 															"fileName": "node_modules/@types/react/index.d.ts",
-															"line": 461,
+															"line": 486,
 															"character": 18
 														}
 													]
@@ -1794,7 +1821,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 460,
+							"line": 485,
 							"character": 16
 						}
 					],
@@ -1894,7 +1921,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 593,
+							"line": 630,
 							"character": 29
 						}
 					],
