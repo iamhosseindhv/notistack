@@ -25,7 +25,7 @@
       "@emotion/react": "latest",
       "@emotion/styled": "latest",
       "@mui/material": "latest",
-      "notistack": "next",
+      "notistack": "latest",
       "react": "latest",
       "react-dom": "latest",
       "react-redux": "latest",
