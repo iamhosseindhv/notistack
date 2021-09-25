@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import clsx from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import { withSnackbar } from 'notistack';
+import React, { useCallback } from 'react';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import { useSnackbar } from 'notistack';
 
 const styles = {
     root: {
@@ -39,17 +37,15 @@ const buttons = [
     { variant: 'info', message: 'For your info...' },
 ];
 
+const MessageButtons = () => {
+    const { enqueueSnackbar } = useSnackbar();
 
-class MessageButtons extends Component {
-    handleClick = button => () => {
-        // Avoid material-ui warnings. more info: https://material-ui.com/style/typography/#migration-to-typography-v2
-        // eslint-disable-next-line no-underscore-dangle
-        window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
-        this.props.enqueueSnackbar(button.message, { variant: button.variant });
-    };
+    const handleClick = useCallback(button => () => {
+        enqueueSnackbar(button.message, { variant: button.variant });
+    }, [enqueueSnackbar]);
 
-    handleClickWithAction = () => {
-        this.props.enqueueSnackbar('Customise this snackbar youself.', {
+    const handleClickWithAction = useCallback(() => {
+        enqueueSnackbar('Customise this snackbar youself.', {
             variant: 'default',
             action: (
                 <Button color="secondary" size="small" onClick={() => alert('clicked on my custom action')}>
@@ -68,32 +64,29 @@ class MessageButtons extends Component {
             //     </Fragment>
             // ),
         });
-    };
+    }, [enqueueSnackbar]);
 
-    render() {
-        const { classes } = this.props;
-        return (
-            <Paper className={classes.root}>
-                {buttons.map(button => (
-                    <Button
-                        key={button.variant}
-                        variant="contained"
-                        className={clsx(classes.button, classes[button.variant])}
-                        onClick={this.handleClick(button)}
-                    >
-                        {button.variant}
-                    </Button>
-                ))}
+    return (
+        <Paper style={styles.root}>
+            {buttons.map(button => (
                 <Button
-                    variant="contained"
-                    className={classes.button}
-                    onClick={this.handleClickWithAction}
+                    key={button.variant}
+                    variant="outlined"
+                    style={{ ...styles.button , ...styles[button.variant] }}
+                    onClick={handleClick(button)}
                 >
-                    default
+                    {button.variant}
                 </Button>
-            </Paper>
-        );
-    }
+            ))}
+            <Button
+                variant="outlined"
+                style={styles.button}
+                onClick={handleClickWithAction}
+            >
+                default
+            </Button>
+        </Paper>
+    );
 }
 
-export default withStyles(styles)(withSnackbar(MessageButtons));
+export default MessageButtons;
