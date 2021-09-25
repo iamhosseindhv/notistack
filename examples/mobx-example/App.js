@@ -21,7 +21,7 @@ class App extends Component {
                 <Typography variant="h4" gutterBottom>
                     Notistack mobx example
                 </Typography>
-                <Button variant="contained" onClick={this.handleClick}>
+                <Button variant="outlined" onClick={this.handleClick}>
                     Display snackbar
                 </Button>
             </Fragment>
