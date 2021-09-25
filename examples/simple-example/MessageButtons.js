@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, Fragment } from 'react';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import { useSnackbar } from 'notistack';
@@ -9,77 +9,78 @@ const styles = {
         display: 'flex',
         margin: 16,
         justifyContent: 'center',
-        alignItems: 'middle',
+        alignItems: 'middle'
     },
     button: {
         margin: 8,
-        color: '#fff',
-        backgroundColor: '#313131',
+        borderColor: '#313131',
+        color: '#313131'
     },
     success: {
-        backgroundColor: '#43a047',
+        borderColor: '#43a047',
+        color: '#43a047'
     },
     error: {
-        backgroundColor: '#d32f2f',
+        borderColor: '#d32f2f',
+        color: '#d32f2f'
     },
     info: {
-        backgroundColor: '#2979ff',
+        borderColor: '#2979ff',
+        color: '#2979ff'
     },
     warning: {
-        backgroundColor: '#ffa000',
-    },
+        borderColor: '#ffa000',
+        color: '#ffa000'
+    }
 };
 
 const buttons = [
     { variant: 'success', message: 'Successfully done the operation.' },
     { variant: 'error', message: 'Something went wrong.' },
-    { variant: 'warning', message: 'Be careful of what you just did!' },
-    { variant: 'info', message: 'For your info...' },
+    { variant: 'warning', message: 'Something could go wrong' },
+    { variant: 'info', message: 'For your info...' }
 ];
 
 const MessageButtons = () => {
-    const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-    const handleClick = useCallback(button => () => {
+    const handleClick = useCallback((button) => () => {
         enqueueSnackbar(button.message, { variant: button.variant });
     }, [enqueueSnackbar]);
 
     const handleClickWithAction = useCallback(() => {
-        enqueueSnackbar('Customise this snackbar youself.', {
+        enqueueSnackbar('I use snackbars responsibly', {
             variant: 'default',
-            action: (
-                <Button color="secondary" size="small" onClick={() => alert('clicked on my custom action')}>
-                    My action
-                </Button>
-            ),
-            // Alternatively, you can access the key of current snackbar by passing an action of type function
-            // action: key => (
-            //     <Fragment>
-            //         <Button color="secondary" size="small" onClick={() => alert(`Clicked on action of snackbar with key: ${key}`)}>
-            //             Detail
-            //         </Button>
-            //         <Button color="secondary" size="small" onClick={() => this.props.closeSnackbar(key)}>
-            //             Dismiss
-            //         </Button>
-            //     </Fragment>
-            // ),
+            action: (key) => (
+                <Fragment>
+                    <Button
+                        size='small'
+                        onClick={() => alert(`Clicked on action of snackbar with id: ${key}`)}
+                    >
+                        Detail
+                    </Button>
+                    <Button size='small' onClick={() => closeSnackbar(key)}>
+                        Dismiss
+                    </Button>
+                </Fragment>
+            )
         });
-    }, [enqueueSnackbar]);
+    }, [enqueueSnackbar, closeSnackbar]);
 
     return (
         <Paper style={styles.root}>
-            {buttons.map(button => (
+            {buttons.map((button) => (
                 <Button
                     key={button.variant}
-                    variant="outlined"
-                    style={{ ...styles.button , ...styles[button.variant] }}
+                    variant='outlined'
+                    style={{ ...styles.button, ...styles[button.variant] }}
                     onClick={handleClick(button)}
                 >
                     {button.variant}
                 </Button>
             ))}
             <Button
-                variant="outlined"
+                variant='outlined'
                 style={styles.button}
                 onClick={handleClickWithAction}
             >
@@ -87,6 +88,6 @@ const MessageButtons = () => {
             </Button>
         </Paper>
     );
-}
+};
 
 export default MessageButtons;
