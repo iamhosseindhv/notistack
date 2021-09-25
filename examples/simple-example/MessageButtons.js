@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
-import clsx from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
-import { withSnackbar } from 'notistack';
+import React, { useCallback, Fragment } from 'react';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import { useSnackbar } from 'notistack';
 
 const styles = {
     root: {
@@ -11,89 +9,85 @@ const styles = {
         display: 'flex',
         margin: 16,
         justifyContent: 'center',
-        alignItems: 'middle',
+        alignItems: 'middle'
     },
     button: {
         margin: 8,
-        color: '#fff',
-        backgroundColor: '#313131',
+        borderColor: '#313131',
+        color: '#313131'
     },
     success: {
-        backgroundColor: '#43a047',
+        borderColor: '#43a047',
+        color: '#43a047'
     },
     error: {
-        backgroundColor: '#d32f2f',
+        borderColor: '#d32f2f',
+        color: '#d32f2f'
     },
     info: {
-        backgroundColor: '#2979ff',
+        borderColor: '#2979ff',
+        color: '#2979ff'
     },
     warning: {
-        backgroundColor: '#ffa000',
-    },
+        borderColor: '#ffa000',
+        color: '#ffa000'
+    }
 };
 
 const buttons = [
     { variant: 'success', message: 'Successfully done the operation.' },
     { variant: 'error', message: 'Something went wrong.' },
-    { variant: 'warning', message: 'Be careful of what you just did!' },
-    { variant: 'info', message: 'For your info...' },
+    { variant: 'warning', message: 'Something could go wrong' },
+    { variant: 'info', message: 'For your info...' }
 ];
 
+const MessageButtons = () => {
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-class MessageButtons extends Component {
-    handleClick = button => () => {
-        // Avoid material-ui warnings. more info: https://material-ui.com/style/typography/#migration-to-typography-v2
-        // eslint-disable-next-line no-underscore-dangle
-        window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
-        this.props.enqueueSnackbar(button.message, { variant: button.variant });
-    };
+    const handleClick = useCallback((button) => () => {
+        enqueueSnackbar(button.message, { variant: button.variant });
+    }, [enqueueSnackbar]);
 
-    handleClickWithAction = () => {
-        this.props.enqueueSnackbar('Customise this snackbar youself.', {
+    const handleClickWithAction = useCallback(() => {
+        enqueueSnackbar('I use snackbars responsibly', {
             variant: 'default',
-            action: (
-                <Button color="secondary" size="small" onClick={() => alert('clicked on my custom action')}>
-                    My action
-                </Button>
-            ),
-            // Alternatively, you can access the key of current snackbar by passing an action of type function
-            // action: key => (
-            //     <Fragment>
-            //         <Button color="secondary" size="small" onClick={() => alert(`Clicked on action of snackbar with key: ${key}`)}>
-            //             Detail
-            //         </Button>
-            //         <Button color="secondary" size="small" onClick={() => this.props.closeSnackbar(key)}>
-            //             Dismiss
-            //         </Button>
-            //     </Fragment>
-            // ),
-        });
-    };
-
-    render() {
-        const { classes } = this.props;
-        return (
-            <Paper className={classes.root}>
-                {buttons.map(button => (
+            action: (key) => (
+                <Fragment>
                     <Button
-                        key={button.variant}
-                        variant="contained"
-                        className={clsx(classes.button, classes[button.variant])}
-                        onClick={this.handleClick(button)}
+                        size='small'
+                        onClick={() => alert(`Clicked on action of snackbar with id: ${key}`)}
                     >
-                        {button.variant}
+                        Detail
                     </Button>
-                ))}
-                <Button
-                    variant="contained"
-                    className={classes.button}
-                    onClick={this.handleClickWithAction}
-                >
-                    default
-                </Button>
-            </Paper>
-        );
-    }
-}
+                    <Button size='small' onClick={() => closeSnackbar(key)}>
+                        Dismiss
+                    </Button>
+                </Fragment>
+            )
+        });
+    }, [enqueueSnackbar, closeSnackbar]);
 
-export default withStyles(styles)(withSnackbar(MessageButtons));
+    return (
+        <Paper style={styles.root}>
+            {buttons.map((button) => (
+                <Button
+                    key={button.variant}
+                    variant='outlined'
+                    style={{ ...styles.button, ...styles[button.variant] }}
+                    onClick={handleClick(button)}
+                >
+                    {button.variant}
+                </Button>
+            ))}
+            <Button
+                variant='outlined'
+                style={styles.button}
+                onClick={handleClickWithAction}
+            >
+                default
+            </Button>
+        </Paper>
+    );
+};
+
+export default MessageButtons;

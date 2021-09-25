@@ -7,26 +7,36 @@
     "type": "git"
   },
   "main": "src/index.js",
+  "keywords": [
+    "react",
+    "javascript",
+    "material-ui",
+    "mui",
+    "@mui/material",
+    "emotion",
+    "@emotion/react",
+    "@emotion/styled",
+    "stacked",
+    "snackbar",
+    "notification",
+    "mobx",
+    "mobxjs"
+  ],
   "dependencies": {
-    "@material-ui/core": "^4.0.0",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-scripts": "1.1.4",
-    "mobx": "^5.9.0",
-    "mobx-react": "^5.4.3",
-    "notistack": "latest"
+      "@emotion/react": "latest",
+      "@emotion/styled": "latest",
+      "@mui/material": "latest",
+      "notistack": "latest",
+      "react": "latest",
+      "react-dom": "latest",
+      "react-scripts": "latest",
+      "mobx": "^5.9.0",
+      "mobx-react": "^5.4.3"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "keywords": [
-    "notistack",
-    "mobx",
-    "react",
-    "mobxjs"
-  ]
+  }
 }
