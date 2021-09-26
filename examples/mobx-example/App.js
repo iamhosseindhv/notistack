@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { inject, observer } from 'mobx-react';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import Notifier from './Notifier';
 
 class App extends Component {
@@ -21,7 +21,7 @@ class App extends Component {
                 <Typography variant="h4" gutterBottom>
                     Notistack mobx example
                 </Typography>
-                <Button variant="contained" onClick={this.handleClick}>
+                <Button variant="outlined" onClick={this.handleClick}>
                     Display snackbar
                 </Button>
             </Fragment>

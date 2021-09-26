@@ -37,6 +37,12 @@ npm install notistack
 yarn add notistack
 ```
 
+If you're using Material-UI version 4.x.x or lower, download a compatible version of notistack using:
+```
+npm install notistack@latest-mui-v4
+yarn add notistack@latest-mui-v4
+```
+
 ### How to use
 
 **1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](https://iamhosseindhv.com/notistack/api) for a full list of available props)
