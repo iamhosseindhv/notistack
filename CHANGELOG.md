@@ -1,6 +1,6 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
-### `notistack@2.0.0`
+### `notistack@2.0.2`
 ###### Sep 26, 2021
 * **@hugofpsilva** **@ramosbugs** **@joemaffei** Publish material-ui v5 compatible version as `latest` instead of `next` [#437](https://github.com/iamhosseindhv/notistack/pull/437) 
 
