@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import clsx from 'clsx';
-import Collapse from '@material-ui/core/Collapse';
+import Collapse from '../transitions/Collapse';
 import { getTransitionDirection } from './SnackbarItem.util';
 import { REASONS, transformer } from '../utils/constants';
 import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../types';
@@ -105,7 +105,6 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                 onClose={handleClose}
             >
                 <TransitionComponent
-                    appear
                     in={open}
                     timeout={transitionDuration}
                     {...transitionProps}
