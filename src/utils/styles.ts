@@ -8,7 +8,8 @@ export function makeStyles<S extends { [key: string]: CSSAttribute }, K extends 
 }
 
 export const ComponentClasses = {
-    SnackbarContainer: 'NST-SnackbarContainer',
-    Snackbar: 'NST-Snackbar',
-    MuiContent: 'NST-MuiContent',
+    SnackbarContainer: 'notistack-SnackbarContainer',
+    Snackbar: 'notistack-Snackbar',
+    CollapseWrapper: 'notistack-CollapseWrapper',
+    MuiContent: 'notistack-MuiContent',
 };
