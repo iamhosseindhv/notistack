@@ -6,7 +6,7 @@ import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, mer
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
-import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject } from './types';
+import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject, SharedProps } from './types';
 import createChainedFunction from './utils/createChainedFunction';
 import MaterialDesignContent from './components/MaterialDesignContent/MaterialDesignContent';
 
@@ -61,7 +61,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         const hasSpecifiedKey = isDefined(key);
         const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
 
-        const merger = merge(options, this.props, DEFAULTS);
+        const merger = merge(options, this.props);
         const snack: InternalSnack = {
             id,
             ...options,
@@ -78,7 +78,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             autoHideDuration: merger('autoHideDuration'),
             hideIconVariant: merger('hideIconVariant'),
             TransitionComponent: merger('TransitionComponent'),
-            transitionDuration: merger('transitionDuration', true),
+            transitionDuration: merger('transitionDuration'),
             TransitionProps: merger('TransitionProps', true),
             iconVariant: merger('iconVariant', true),
             style: merger('style', true),
@@ -208,7 +208,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     /**
      * Hide a snackbar after its timeout.
      */
-    handleCloseSnack: TransitionHandlerProps['onClose'] = (event, reason, key) => {
+    handleCloseSnack: NonNullable<SharedProps['onClose']> = (event, reason, key) => {
         // should not use createChainedFunction for onClose.
         // because this.closeSnackbar called this function
         if (this.props.onClose) {
@@ -252,9 +252,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * waiting in the queue (if any). If after this process the queue is not empty, the
      * oldest message is dismissed.
      */
-    // @ts-ignore
-    handleExitedSnack: TransitionHandlerProps['onExited'] = (event, key1, key2) => {
-        const key = key1 || key2;
+    handleExitedSnack: TransitionHandlerProps['onExited'] = (event, key) => {
         if (!isDefined(key)) {
             throw new Error('handleExitedSnack Cannot be called with undefined key');
         }
