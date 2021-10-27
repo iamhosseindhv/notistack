@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
-import { MESSAGES, REASONS, originKeyExtractor, omitContainerKeys, DEFAULTS, merge, transformer, isDefined } from './utils/constants';
+import { MESSAGES, CloseReason, originKeyExtractor, omitContainerKeys, DEFAULTS, merge, transformer, isDefined } from './utils/constants';
 import SnackbarItem from './SnackbarItem';
 import SnackbarContainer from './SnackbarContainer';
 import warning from './utils/warning';
@@ -175,8 +175,13 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                     };
                 }
 
-                if (item.onClose) item.onClose(null, REASONS.MAXSNACK, item.id);
-                if (this.props.onClose) this.props.onClose(null, REASONS.MAXSNACK, item.id);
+                if (item.onClose) {
+                    item.onClose(null, CloseReason.MaxSnack, item.id);
+                }
+
+                if (this.props.onClose) {
+                    this.props.onClose(null, CloseReason.MaxSnack, item.id);
+                }
 
                 return {
                     ...item,
@@ -215,7 +220,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             this.props.onClose(event, reason, key);
         }
 
-        if (reason === REASONS.CLICKAWAY) return;
+        if (reason === CloseReason.ClickAway) {
+            return;
+        }
+
         const shouldCloseAll = key === undefined;
 
         this.setState(({ snacks, queue }) => ({
@@ -239,10 +247,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         // call individual snackbar onClose callback passed through options parameter
         const toBeClosed = this.state.snacks.find((item) => item.id === key);
         if (isDefined(key) && toBeClosed && toBeClosed.onClose) {
-            toBeClosed.onClose(null, REASONS.INSTRUCTED, key);
+            toBeClosed.onClose(null, CloseReason.Instructed, key);
         }
 
-        this.handleCloseSnack(null, REASONS.INSTRUCTED, key);
+        this.handleCloseSnack(null, CloseReason.Instructed, key);
     }
 
     /**

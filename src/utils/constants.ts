@@ -1,7 +1,7 @@
-import Slide from '@material-ui/core/Slide';
-import { CloseReason, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey, InternalSnack } from '../types';
+import { CloseReason as CloseReasonType, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey, InternalSnack } from '../types';
 import { SnackbarItemProps } from '../SnackbarItem';
 import defaultIconVariants from './defaultIconVariants';
+import Slide from '../transitions/Slide';
 
 export const breakpoints = {
     downXs: '@media (max-width:599.95px)',
@@ -20,7 +20,7 @@ export const DEFAULTS = {
     variant: 'default' as VariantType,
     autoHideDuration: 5000,
     iconVariant: defaultIconVariants,
-    anchorOrigin: { vertical: 'bottom', horizontal: 'left' } as SnackbarOrigin,
+    anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
     TransitionComponent: Slide,
     transitionDuration: {
         enter: 225,
@@ -28,7 +28,7 @@ export const DEFAULTS = {
     },
 };
 
-export const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
+const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
 
 export const originKeyExtractor = (anchor: InternalSnack['anchorOrigin']): string => (
     `${capitalise(anchor.vertical)}${capitalise(anchor.horizontal)}`
@@ -52,17 +52,19 @@ export const omitContainerKeys = (classes: Partial<ClassNameMap<CombinedClassKey
         .reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {});
 };
 
-export const REASONS: { [key: string]: CloseReason } = {
-    TIMEOUT: 'timeout',
-    CLICKAWAY: 'clickaway',
-    MAXSNACK: 'maxsnack',
-    INSTRUCTED: 'instructed',
+export const CloseReason: Record<string, CloseReasonType> = {
+    Timeout: 'timeout',
+    ClickAway: 'clickaway',
+    MaxSnack: 'maxsnack',
+    Instructed: 'instructed',
 };
 
 /** Tranforms classes name */
 export const transformer = {
-    toContainerAnchorOrigin: (origin: string) => `containerAnchorOrigin${origin}` as ContainerClassKey,
-    toSnackbarAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin) => (
+    toContainerAnchorOrigin: (origin: string): ContainerClassKey => (
+        `containerAnchorOrigin${origin}` as ContainerClassKey
+    ),
+    toSnackbarAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin): SnackbarClassKey => (
         `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
     ),
 };
@@ -73,11 +75,10 @@ const numberOrNull = (numberish: number | null) => (
     typeof numberish === 'number' || numberish === null
 );
 
-// @ts-ignore
-export const merge = (options, props, defaults) => (name: keyof InternalSnack, shouldObjectMerge = false): any => {
+export const merge = (options, props) => (name: keyof InternalSnack, shouldObjectMerge = false): any => {
     if (shouldObjectMerge) {
         return {
-            ...defaults[name],
+            ...DEFAULTS[name],
             ...props[name],
             ...options[name],
         };
@@ -89,5 +90,28 @@ export const merge = (options, props, defaults) => (name: keyof InternalSnack, s
         return DEFAULTS.autoHideDuration;
     }
 
-    return options[name] || props[name] || defaults[name];
+    if (name === 'transitionDuration') {
+        if (typeof options.transitionDuration === 'string' || typeof options.transitionDuration === 'number') {
+            return options.transitionDuration;
+        }
+        if (typeof options.transitionDuration === 'object') {
+            return {
+                ...DEFAULTS.transitionDuration,
+                ...(typeof props.transitionDuration === 'object' && props.transitionDuration),
+                ...options.transitionDuration,
+            };
+        }
+        if (typeof props.transitionDuration === 'string' || typeof props.transitionDuration === 'number') {
+            return props.transitionDuration;
+        }
+        if (typeof props.transitionDuration === 'object') {
+            return {
+                ...DEFAULTS.transitionDuration,
+                ...props.transitionDuration,
+            };
+        }
+        return DEFAULTS.transitionDuration;
+    }
+
+    return options[name] || props[name] || DEFAULTS[name];
 };

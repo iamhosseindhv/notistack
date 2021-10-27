@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import clsx from 'clsx';
 import Collapse from '../transitions/Collapse';
 import { getTransitionDirection } from './SnackbarItem.util';
-import { REASONS, transformer } from '../utils/constants';
+import { CloseReason, transformer } from '../utils/constants';
 import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
@@ -36,7 +36,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
-            handleClose(null, REASONS.INSTRCUTED);
+            handleClose(null, CloseReason.INSTRCUTED);
         }
     };
 

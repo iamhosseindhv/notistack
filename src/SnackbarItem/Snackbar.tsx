@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 import clsx from 'clsx';
-import { REASONS } from '../utils/constants';
+import { CloseReason } from '../utils/constants';
 import useEventCallback from '../utils/useEventCallback';
 import { SharedProps } from '../types';
 import { ComponentClasses } from '../utils/styles';
@@ -43,7 +43,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
             clearTimeout(timerAutoHide.current);
         }
         timerAutoHide.current = setTimeout(() => {
-            handleClose(null, REASONS.TIMEOUT);
+            handleClose(null, CloseReason.Timeout);
         }, autoHideDurationParam);
     });
 
@@ -95,7 +95,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
 
     const handleClickAway = (event: any) => {
         if (onClose) {
-            onClose(event, REASONS.CLICKAWAY);
+            onClose(event, CloseReason.ClickAway);
         }
     };
 
