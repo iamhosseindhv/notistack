@@ -1,8 +1,74 @@
-/**
- * Part of the following typing and documentation is from material-ui/src/Snackbar/Snackbar.d.ts
- */
 import * as React from 'react';
-import { TransitionProps } from '@material-ui/core/transitions/transition';
+
+export interface TransitionDuration { enter?: number, exit?: number }
+
+/**
+ * @category Shared
+ */
+export interface TransitionHandlerProps {
+    /**
+     * Callback fired before the transition is entering.
+     */
+    onEnter: TransitionEnterHandler;
+    /**
+     * Callback fired when the transition has entered.
+     */
+    onEntered: TransitionEnterHandler;
+    /**
+     * Callback fired before the transition is exiting.
+     */
+    onExit: TransitionExitHandler;
+    /**
+     * Callback fired when the transition has exited.
+     */
+    onExited: TransitionExitHandler;
+}
+
+export type SlideTransitionDirection = 'down' | 'left' | 'right' | 'up';
+
+export interface TransitionProps extends Partial<TransitionHandlerProps> {
+    /**
+     * Show the component; triggers the enter or exit states
+     */
+    in?: boolean;
+    /**
+     * The duration of the transition, in milliseconds
+     */
+    timeout?: number | TransitionDuration | 'auto';
+    /**
+     * Enable or disable enter transitions.
+     */
+    enter?: boolean;
+    /**
+     * Enable or disable exit transitions.
+     */
+    exit?: boolean;
+    /**
+     * By default the child component is mounted immediately along with the
+     * parent Transition component. If you want to "lazy mount" the component on
+     * the first `in={true}` you can set `mountOnEnter`. After the first enter
+     * transition the component will stay mounted, even on "exited", unless you
+     * also specify `unmountOnExit`.
+     */
+    mountOnEnter?: boolean;
+    /**
+     * By default the child component stays mounted after it reaches the
+     * 'exited' state. Set `unmountOnExit` if you'd prefer to unmount the
+     * component after it finishes exiting.
+     */
+    unmountOnExit?: boolean;
+    /**
+     * Can be used to apply a custom `transitionTimingFunction` (e.g. your own easing),
+     * `transitionDuration` and `transitionDelay`.
+     */
+    style?: React.CSSProperties;
+    /**
+     * The direction in which a snackbar slides into the screen.
+     * Only applicable if `TransitionComponent` is Slide
+     */
+    direction?: SlideTransitionDirection;
+    children: React.ReactNode;
+}
 
 type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
@@ -17,7 +83,7 @@ export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, mess
 
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
-export type TransitionHandler = (node: HTMLElement, key: SnackbarKey) => void;
+export type TransitionExitHandler = (node: HTMLElement, key: SnackbarKey) => void;
 
 type AnyComponentMap = Record<string, React.ComponentType<any>>;
 type VariantsOf<T> = { [K in keyof T]: K extends string ? K : never; }[keyof T];
@@ -45,40 +111,6 @@ export type CombinedClassKey = ContainerClassKey | SnackbarClassKey;
 export interface SnackbarOrigin {
     vertical: 'top' | 'bottom';
     horizontal: 'left' | 'center' | 'right';
-}
-
-/**
- * @category Shared
- */
-export interface TransitionHandlerProps {
-    /**
-     * Callback fired before snackbar requests to get closed.
-     * The `reason` parameter can optionally be used to control the response to `onClose`.
-     *
-     * @param {object} event The event source of the callback
-     * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
-     *  or: `"maxsnack"` (snackbar was closed because `maxSnack` has reached) or: `"instructed"`
-     * (snackbar was closed programmatically)
-     * @param {string|number|undefined} key key of a Snackbar. key will be `undefined` if closeSnackbar
-     * is called with no key (user requested all the snackbars to be closed)
-     */
-    onClose: TransitionCloseHandler;
-    /**
-     * Callback fired before the transition is entering.
-     */
-    onEnter: TransitionHandler;
-    /**
-     * Callback fired when the transition has entered.
-     */
-    onEntered: TransitionEnterHandler;
-    /**
-     * Callback fired before the transition is exiting.
-     */
-    onExit: TransitionHandler;
-    /**
-     * Callback fired when the transition has exited.
-     */
-    onExited: TransitionHandler;
 }
 
 export type SnackbarContentProps = React.HTMLAttributes<HTMLDivElement>;
@@ -114,17 +146,26 @@ export interface SharedProps<V extends string = VariantType> extends Partial<Tra
     TransitionComponent?: React.ComponentType<TransitionProps>;
     /**
      * The duration for the transition, in milliseconds.
-     * You may specify the duration with an object in the following shape:
+     *
+     * You may specify a single timeout for all transitions:
      * ```js
-     * transitionDuration={{ enter: 300, exit: 500 }}
+     * timeout={500}
+     * ```
+     * or individually:
+     * ```js
+     * timeout={{ enter: 300, exit: 500 }}
+     * ```
+     * or auto-adjust based on dimensions of the snackbar (Only applicable if TransitionComponent is Grow)
+     * ```js
+     * transitionDuration="auto"
      * ```
      * @default { enter: 225, exit: 195 }
      */
-    transitionDuration?: { appear?: number; enter?: number; exit?: number };
+    transitionDuration?: TransitionProps['timeout'];
     /**
      * Properties applied to Transition component (e.g. Slide, Grow, Zoom, etc.)
      */
-    TransitionProps?: TransitionProps;
+    TransitionProps?: Partial<TransitionProps>;
     /**
      * Used to easily display different variant of snackbars. When passed to `SnackbarProvider`
      * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
@@ -161,6 +202,18 @@ export interface SharedProps<V extends string = VariantType> extends Partial<Tra
      * more control over your custom snackbars.
      */
     content?: SnackbarContentCallback;
+    /**
+     * Callback fired before snackbar requests to get closed.
+     * The `reason` parameter can optionally be used to control the response to `onClose`.
+     *
+     * @param {object} event The event source of the callback
+     * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"clickaway"`
+     *  or: `"maxsnack"` (snackbar was closed because `maxSnack` has reached) or: `"instructed"`
+     * (snackbar was closed programmatically)
+     * @param {string|number|undefined} key key of a Snackbar. key will be `undefined` if closeSnackbar
+     * is called with no key (user requested all the snackbars to be closed)
+     */
+    onClose?: TransitionCloseHandler;
 }
 
 /**
@@ -198,7 +251,7 @@ export interface InternalSnack<V extends string = VariantType> extends RequiredB
     iconVariant: Record<string, React.ReactNode>;
 }
 
-type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | keyof TransitionHandlerProps | 'SnackbarProps' | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
+type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | keyof TransitionHandlerProps | 'onClose' | 'SnackbarProps' | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
 
 /**
  * Props that will be passed to a custom component in `SnackbarProvider` `Components` prop
