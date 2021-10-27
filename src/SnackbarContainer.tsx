@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import clsx from 'clsx';
+import { createTransition } from './transitions/util';
 import { makeStyles, ComponentClasses } from './utils/styles';
 import { breakpoints } from './utils/constants';
 import { SnackbarProviderProps } from './types';
@@ -9,12 +10,7 @@ const indents = {
     snackbar: { default: 6, dense: 2 },
 };
 
-const collapse = {
-    // Material-UI 4.12.x and above uses MuiCollapse-root; earlier versions use
-    // Mui-Collapse-container.  https://github.com/mui-org/material-ui/pull/24084
-    container: '& > .MuiCollapse-container, & > .MuiCollapse-root',
-    wrapper: '& > .MuiCollapse-container > .MuiCollapse-wrapper, & > .MuiCollapse-root > .MuiCollapse-wrapper',
-};
+const collapseWrapper = `.${ComponentClasses.CollapseWrapper}`;
 
 const xsWidthMargin = 16;
 
@@ -27,13 +23,11 @@ const styles = makeStyles({
         zIndex: 1400,
         height: 'auto',
         width: 'auto',
-        transition: 'top 300ms ease 0ms, right 300ms ease 0ms, bottom 300ms ease 0ms, left 300ms ease 0ms, margin 300ms ease 0ms, max-width 300ms ease 0ms',
+        transition: createTransition(['top', 'right', 'bottom', 'left', 'max-width'], { duration: 300, easing: 'ease' }),
         // container itself is invisible and should not block clicks, clicks should be passed to its children
+        // a pointerEvents: all is applied in the collapse component
         pointerEvents: 'none',
-        [collapse.container]: {
-            pointerEvents: 'all',
-        },
-        [collapse.wrapper]: {
+        [collapseWrapper]: {
             padding: `${indents.snackbar.default}px 0px`,
             transition: 'padding 300ms ease 0ms',
         },
@@ -44,7 +38,7 @@ const styles = makeStyles({
         },
     },
     rootDense: {
-        [collapse.wrapper]: {
+        [collapseWrapper]: {
             padding: `${indents.snackbar.dense}px 0px`,
         },
     },
