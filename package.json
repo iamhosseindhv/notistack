@@ -17,7 +17,8 @@
         "type": "git"
     },
     "scripts": {
-        "build": "tsdx build --entry ./src/index.js",
+        "build": "tsdx build --transpileOnly --entry ./src/index.js",
+        "watch": "tsdx watch --transpileOnly --entry ./src/index.js",
         "prebuild": "npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
@@ -25,12 +26,10 @@
     },
     "peerDependencies": {
         "react": "^16.8.0 || ^17.0.0",
-        "react-dom": "^16.8.0 || ^17.0.0",
-        "@material-ui/core": "^4.0.0"
+        "react-dom": "^16.8.0 || ^17.0.0"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.8.3",
-        "@material-ui/core": "^4.9.5",
         "@types/node": "^13.9.0",
         "@types/react": "^16.9.23",
         "@types/react-dom": "^16.9.5",
