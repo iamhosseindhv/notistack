@@ -7,6 +7,7 @@ import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, Snac
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
 import { makeStyles } from '../utils/styles';
+import MaterialDesignContent from '../ui/MaterialDesignContent';
 
 const styles = makeStyles({
     wrappedRoot: {
@@ -25,7 +26,7 @@ export interface SnackbarItemProps extends Required<Pick<SnackbarProviderProps, 
     classes: Partial<ClassNameMap<SnackbarClassKey>>;
     onEnter: SnackbarProviderProps['onEnter'];
     onExit: SnackbarProviderProps['onExit'];
-    Component: React.ComponentType<CustomContentProps>;
+    Component?: React.ComponentType<CustomContentProps>;
 }
 
 const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
@@ -55,7 +56,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const {
         snack,
         classes,
-        Component,
+        Component = MaterialDesignContent,
     } = props;
 
     const {
