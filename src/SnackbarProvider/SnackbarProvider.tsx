@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from '../SnackbarContext';
-import { MESSAGES, CloseReason, originKeyExtractor, DEFAULTS, merge, isDefined } from '../utils/constants';
+import { CloseReason, originKeyExtractor, DEFAULTS, merge, isDefined } from '../utils/constants';
 import SnackbarItem from '../SnackbarItem';
 import SnackbarContainer from '../SnackbarContainer';
 import warning from '../utils/warning';
@@ -159,7 +159,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         ), 0);
 
         if (persistentCount === this.maxSnack) {
-            warning(MESSAGES.NO_PERSIST_ALL);
+            warning('NO_PERSIST_ALL');
             ignore = true;
         }
 
