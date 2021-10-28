@@ -1,4 +1,4 @@
-import { CloseReason as CloseReasonType, VariantType, InternalSnack } from '../types';
+import { InternalSnack } from '../types';
 import defaultIconVariants from './defaultIconVariants';
 import Slide from '../transitions/Slide';
 
@@ -12,7 +12,7 @@ export const DEFAULTS = {
     persist: false,
     hideIconVariant: false,
     disableWindowBlurListener: false,
-    variant: 'default' as VariantType,
+    variant: 'default',
     autoHideDuration: 5000,
     iconVariant: defaultIconVariants,
     anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
@@ -23,24 +23,58 @@ export const DEFAULTS = {
     },
 };
 
-export const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
+const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
 
 export const originKeyExtractor = (anchor: InternalSnack['anchorOrigin']): string => (
     `${capitalise(anchor.vertical)}${capitalise(anchor.horizontal)}`
 );
 
-export const CloseReason: Record<string, CloseReasonType> = {
-    Timeout: 'timeout',
-    ClickAway: 'clickaway',
-    MaxSnack: 'maxsnack',
-    Instructed: 'instructed',
-};
-
 export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);
 
-const numberOrNull = (numberish: number | null) => (
-    typeof numberish === 'number' || numberish === null
-);
+/**
+ * Derives the right autoHideDuration taking into account the following
+ * prority order: 1: Options, 2: Props, 3: default fallback
+ */
+const getAutoHideDuration = (optionsDuration: any, propsDuration: any) => {
+    const isNumberOrNull = (numberish: number | null) => typeof numberish === 'number' || numberish === null;
+
+    if (isNumberOrNull(optionsDuration)) return optionsDuration;
+    if (isNumberOrNull(propsDuration)) return propsDuration;
+    return DEFAULTS.autoHideDuration;
+};
+
+/**
+ * Derives the right transitionDuration taking into account the following
+ * prority order: 1: Options, 2: Props, 3: default fallback
+ */
+const getTransitionDuration = (optionsDuration: any, propsDuration: any) => {
+    const is = (item: any, types: string[]) => types.some((t) => typeof item === t);
+
+    if (is(optionsDuration, ['string', 'number'])) {
+        return optionsDuration;
+    }
+
+    if (is(optionsDuration, ['object'])) {
+        return {
+            ...DEFAULTS.transitionDuration,
+            ...(is(propsDuration, ['object']) && propsDuration),
+            ...optionsDuration,
+        };
+    }
+
+    if (is(propsDuration, ['string', 'number'])) {
+        return propsDuration;
+    }
+
+    if (is(propsDuration, ['object'])) {
+        return {
+            ...DEFAULTS.transitionDuration,
+            ...propsDuration,
+        };
+    }
+
+    return DEFAULTS.transitionDuration;
+};
 
 export const merge = (options, props) => (name: keyof InternalSnack, shouldObjectMerge = false): any => {
     if (shouldObjectMerge) {
@@ -52,32 +86,11 @@ export const merge = (options, props) => (name: keyof InternalSnack, shouldObjec
     }
 
     if (name === 'autoHideDuration') {
-        if (numberOrNull(options.autoHideDuration)) return options.autoHideDuration;
-        if (numberOrNull(props.autoHideDuration)) return props.autoHideDuration;
-        return DEFAULTS.autoHideDuration;
+        return getAutoHideDuration(options.autoHideDuration, props.autoHideDuration);
     }
 
     if (name === 'transitionDuration') {
-        if (typeof options.transitionDuration === 'string' || typeof options.transitionDuration === 'number') {
-            return options.transitionDuration;
-        }
-        if (typeof options.transitionDuration === 'object') {
-            return {
-                ...DEFAULTS.transitionDuration,
-                ...(typeof props.transitionDuration === 'object' && props.transitionDuration),
-                ...options.transitionDuration,
-            };
-        }
-        if (typeof props.transitionDuration === 'string' || typeof props.transitionDuration === 'number') {
-            return props.transitionDuration;
-        }
-        if (typeof props.transitionDuration === 'object') {
-            return {
-                ...DEFAULTS.transitionDuration,
-                ...props.transitionDuration,
-            };
-        }
-        return DEFAULTS.transitionDuration;
+        return getTransitionDuration(options.transitionDuration, props.transitionDuration);
     }
 
     return options[name] || props[name] || DEFAULTS[name];
