@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import clsx from 'clsx';
 import createTransition from '../transitions/createTransition';
 import { makeStyles, ComponentClasses } from '../utils/styles';
-import { breakpoints, originKeyExtractor } from '../utils/constants';
+import { breakpoints, originKeyExtractor } from '../utils';
 import { ContainerClassKey, SnackbarProviderProps } from '../types';
 
 const indents = {

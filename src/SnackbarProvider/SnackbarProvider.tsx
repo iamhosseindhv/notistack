@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from '../SnackbarContext';
-import { originKeyExtractor, isDefined } from '../utils/constants';
+import { originKeyExtractor, isDefined } from '../utils';
 import { defaults, merge } from './merger';
 import SnackbarItem from '../SnackbarItem';
 import SnackbarContainer from '../SnackbarContainer';

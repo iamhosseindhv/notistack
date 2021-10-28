@@ -1,5 +1,5 @@
 import { InternalSnack, SlideTransitionDirection, SnackbarOrigin, SnackbarClassKey, SnackbarProviderProps, ClassNameMap, ContainerClassKey } from '../types';
-import { originKeyExtractor } from '../utils/constants';
+import { originKeyExtractor } from '../utils';
 
 const direction: Record<string, SlideTransitionDirection> = {
     right: 'left',
