@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
-import SnackbarContext from './SnackbarContext';
-import { MESSAGES, CloseReason, originKeyExtractor, omitContainerKeys, DEFAULTS, merge, transformer, isDefined } from './utils/constants';
-import SnackbarItem from './SnackbarItem';
-import SnackbarContainer from './SnackbarContainer';
-import warning from './utils/warning';
-import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject, SharedProps } from './types';
-import createChainedFunction from './utils/createChainedFunction';
-import MaterialDesignContent from './ui/MaterialDesignContent/MaterialDesignContent';
+import SnackbarContext from '../SnackbarContext';
+import { MESSAGES, CloseReason, originKeyExtractor, omitContainerKeys, DEFAULTS, merge, transformer, isDefined } from '../utils/constants';
+import SnackbarItem from '../SnackbarItem';
+import SnackbarContainer from '../SnackbarContainer';
+import warning from '../utils/warning';
+import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject, SharedProps } from '../types';
+import createChainedFunction from '../utils/createChainedFunction';
+import MaterialDesignContent from '../ui/MaterialDesignContent/MaterialDesignContent';
 
 const isOptions = (messageOrOptions: string | (OptionsObject & { message?: string })): messageOrOptions is OptionsObject & { message?: string } => (
     typeof messageOrOptions !== 'string'
