@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import clsx from 'clsx';
 import Collapse from '../transitions/Collapse';
 import { getSlideDirection, toSnackbarAnchorOrigin, keepSnackbarClassKeys } from './utils';
-import { CloseReason } from '../utils/constants';
-import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, InternalSnack } from '../types';
+import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, InternalSnack, SharedProps } from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
 import { makeStyles } from '../utils/styles';
@@ -33,11 +32,11 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
-    const handleClose = createChainedFunction([props.snack.onClose, props.onClose], props.snack.id);
+    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction([props.snack.onClose, props.onClose], props.snack.id);
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
-            handleClose(null, CloseReason.INSTRCUTED);
+            handleClose(null, 'instructed');
         }
     };
 

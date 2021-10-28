@@ -28,7 +28,7 @@ interface ClickAwayProps {
     /**
      * Callback fired when a "click away" event is detected.
      */
-    onClickAway: (event: MouseEvent | TouchEvent) => void;
+    onClickAway: (event: React.SyntheticEvent<any>) => void;
 }
 
 /**
@@ -54,7 +54,7 @@ function ClickAway({ children, onClickAway }: ClickAwayProps): JSX.Element {
 
     const handleRef = useForkRef(children.ref, nodeRef);
 
-    const handleClickAway = useEventCallback((event: MouseEvent | TouchEvent) => {
+    const handleClickAway = useEventCallback((event: any) => {
         const insideReactTree = syntheticEventRef.current;
         syntheticEventRef.current = false;
 

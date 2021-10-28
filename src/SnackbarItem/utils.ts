@@ -1,5 +1,5 @@
 import { InternalSnack, SlideTransitionDirection, SnackbarOrigin, SnackbarClassKey, SnackbarProviderProps, ClassNameMap, ContainerClassKey } from '../types';
-import { capitalise } from '../utils/constants';
+import { originKeyExtractor } from '../utils/constants';
 
 const direction: Record<string, SlideTransitionDirection> = {
     right: 'left',
@@ -17,7 +17,7 @@ export const getSlideDirection = (anchorOrigin: InternalSnack['anchorOrigin']): 
 
 /** Tranforms classes name */
 export const toSnackbarAnchorOrigin = (anchorOrigin: SnackbarOrigin): SnackbarClassKey => (
-    `anchorOrigin${capitalise(anchorOrigin.vertical)}${capitalise(anchorOrigin.horizontal)}` as SnackbarClassKey
+    `anchorOrigin${originKeyExtractor(anchorOrigin)}` as SnackbarClassKey
 );
 
 /**

@@ -3,9 +3,8 @@
  */
 import * as React from 'react';
 import clsx from 'clsx';
-import { CloseReason } from '../utils/constants';
 import useEventCallback from '../utils/useEventCallback';
-import { SharedProps } from '../types';
+import { CloseReason, SharedProps } from '../types';
 import { ComponentClasses } from '../utils/styles';
 import ClickAway from '../ClickAway';
 
@@ -16,6 +15,8 @@ interface SnackbarProps extends Required<Pick<SharedProps, | 'disableWindowBlurL
     autoHideDuration: number | null | undefined;
     SnackbarProps: SharedProps['SnackbarProps'];
 }
+
+type CloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason) => void;
 
 const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) => {
     const {
@@ -30,8 +31,10 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
 
     const timerAutoHide = React.useRef<ReturnType<typeof setTimeout>>();
 
-    const handleClose = useEventCallback((...args: any[]) => {
-        if (onClose) onClose(...args);
+    const handleClose: CloseHandler = useEventCallback((args: [React.SyntheticEvent<any>, CloseReason]) => {
+        if (onClose) {
+            onClose(...args);
+        }
     });
 
     const setAutoHideTimer = useEventCallback((autoHideDurationParam: number | null) => {
@@ -43,7 +46,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
             clearTimeout(timerAutoHide.current);
         }
         timerAutoHide.current = setTimeout(() => {
-            handleClose(null, CloseReason.Timeout);
+            handleClose(null, 'timeout');
         }, autoHideDurationParam);
     });
 
@@ -93,9 +96,9 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
         handleResume();
     };
 
-    const handleClickAway = (event: any) => {
+    const handleClickAway = (event: React.SyntheticEvent<any>) => {
         if (onClose) {
-            onClose(event, CloseReason.ClickAway);
+            onClose(event, 'clickaway');
         }
     };
 

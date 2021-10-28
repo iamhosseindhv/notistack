@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from '../SnackbarContext';
-import { CloseReason, originKeyExtractor, DEFAULTS, merge, isDefined } from '../utils/constants';
+import { originKeyExtractor, DEFAULTS, merge, isDefined } from '../utils/constants';
 import SnackbarItem from '../SnackbarItem';
 import SnackbarContainer from '../SnackbarContainer';
 import warning from '../utils/warning';
@@ -175,11 +175,11 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                 }
 
                 if (item.onClose) {
-                    item.onClose(null, CloseReason.MaxSnack, item.id);
+                    item.onClose(null, 'maxsnack', item.id);
                 }
 
                 if (this.props.onClose) {
-                    this.props.onClose(null, CloseReason.MaxSnack, item.id);
+                    this.props.onClose(null, 'maxsnack', item.id);
                 }
 
                 return {
@@ -219,7 +219,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             this.props.onClose(event, reason, key);
         }
 
-        if (reason === CloseReason.ClickAway) {
+        if (reason === 'clickaway') {
             return;
         }
 
@@ -246,10 +246,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         // call individual snackbar onClose callback passed through options parameter
         const toBeClosed = this.state.snacks.find((item) => item.id === key);
         if (isDefined(key) && toBeClosed && toBeClosed.onClose) {
-            toBeClosed.onClose(null, CloseReason.Instructed, key);
+            toBeClosed.onClose(null, 'instructed', key);
         }
 
-        this.handleCloseSnack(null, CloseReason.Instructed, key);
+        this.handleCloseSnack(null, 'instructed', key);
     }
 
     /**
