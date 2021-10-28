@@ -6,7 +6,7 @@ import SnackbarContext from './SnackbarContext';
 const withSnackbar = (Component) => {
     const WrappedComponent = React.forwardRef((props, ref) => (
         <SnackbarContext.Consumer>
-            {context => (
+            {(context) => (
                 <Component
                     {...props}
                     ref={ref}
