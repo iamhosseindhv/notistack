@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from '../SnackbarContext';
-import { MESSAGES, CloseReason, originKeyExtractor, omitContainerKeys, DEFAULTS, merge, transformer, isDefined } from '../utils/constants';
+import { MESSAGES, CloseReason, originKeyExtractor, DEFAULTS, merge, isDefined } from '../utils/constants';
 import SnackbarItem from '../SnackbarItem';
 import SnackbarContainer from '../SnackbarContainer';
 import warning from '../utils/warning';
@@ -285,7 +285,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             children,
             dense = false,
             Components = {},
-            classes = {},
+            classes,
         } = this.props;
 
         const categ = this.state.snacks.reduce<SnacksByPosition>((acc, current) => {
@@ -299,21 +299,19 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
         const snackbars = Object.keys(categ).map((origin) => {
             const snacks = categ[origin];
+            const [nomineeSnack] = snacks;
             return (
                 <SnackbarContainer
                     key={origin}
                     dense={dense}
-                    anchorOrigin={snacks[0].anchorOrigin}
-                    className={clsx(
-                        classes.containerRoot,
-                        classes[transformer.toContainerAnchorOrigin(origin)],
-                    )}
+                    anchorOrigin={nomineeSnack.anchorOrigin}
+                    classes={classes}
                 >
                     {snacks.map((snack) => (
                         <SnackbarItem
                             key={snack.id}
                             snack={snack}
-                            classes={omitContainerKeys(classes)}
+                            classes={classes}
                             Component={Components[snack.variant]}
                             onClose={this.handleCloseSnack}
                             onEnter={this.props.onEnter}

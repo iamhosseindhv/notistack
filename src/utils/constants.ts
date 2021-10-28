@@ -1,5 +1,4 @@
-import { CloseReason as CloseReasonType, ContainerClassKey, VariantType, SnackbarOrigin, SnackbarClassKey, ClassNameMap, CombinedClassKey, InternalSnack } from '../types';
-import { SnackbarItemProps } from '../SnackbarItem';
+import { CloseReason as CloseReasonType, VariantType, InternalSnack } from '../types';
 import defaultIconVariants from './defaultIconVariants';
 import Slide from '../transitions/Slide';
 
@@ -28,45 +27,17 @@ export const DEFAULTS = {
     },
 };
 
-const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
+export const capitalise = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
 
 export const originKeyExtractor = (anchor: InternalSnack['anchorOrigin']): string => (
     `${capitalise(anchor.vertical)}${capitalise(anchor.horizontal)}`
 );
-
-/**
- * Omit SnackbarContainer class keys that are not needed for SnackbarItem
- */
-export const omitContainerKeys = (classes: Partial<ClassNameMap<CombinedClassKey>>): SnackbarItemProps['classes'] => {
-    const containerClasses: ClassNameMap<ContainerClassKey> = {
-        containerRoot: '',
-        containerAnchorOriginTopCenter: '',
-        containerAnchorOriginBottomCenter: '',
-        containerAnchorOriginTopRight: '',
-        containerAnchorOriginBottomRight: '',
-        containerAnchorOriginTopLeft: '',
-        containerAnchorOriginBottomLeft: '',
-    };
-    return (Object.keys(classes) as ContainerClassKey[])
-        .filter((key) => !containerClasses[key])
-        .reduce((obj, key) => ({ ...obj, [key]: classes[key] }), {});
-};
 
 export const CloseReason: Record<string, CloseReasonType> = {
     Timeout: 'timeout',
     ClickAway: 'clickaway',
     MaxSnack: 'maxsnack',
     Instructed: 'instructed',
-};
-
-/** Tranforms classes name */
-export const transformer = {
-    toContainerAnchorOrigin: (origin: string): ContainerClassKey => (
-        `containerAnchorOrigin${origin}` as ContainerClassKey
-    ),
-    toSnackbarAnchorOrigin: ({ vertical, horizontal }: SnackbarOrigin): SnackbarClassKey => (
-        `anchorOrigin${capitalise(vertical)}${capitalise(horizontal)}` as SnackbarClassKey
-    ),
 };
 
 export const isDefined = (value: string | null | undefined | number): boolean => (!!value || value === 0);

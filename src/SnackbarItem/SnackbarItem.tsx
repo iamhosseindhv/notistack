@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import clsx from 'clsx';
 import Collapse from '../transitions/Collapse';
-import { getSlideDirection } from './SnackbarItem.util';
-import { CloseReason, transformer } from '../utils/constants';
-import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../types';
+import { getSlideDirection, toSnackbarAnchorOrigin, keepSnackbarClassKeys } from './utils';
+import { CloseReason } from '../utils/constants';
+import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, InternalSnack } from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
 import { makeStyles } from '../utils/styles';
@@ -21,9 +21,9 @@ const styles = makeStyles({
     },
 });
 
-export interface SnackbarItemProps extends Required<Pick<SnackbarProviderProps, 'onEntered' | 'onExited' | 'onClose'>> {
+interface SnackbarItemProps extends Required<Pick<SnackbarProviderProps, 'onEntered' | 'onExited' | 'onClose'>> {
     snack: InternalSnack;
-    classes: Partial<ClassNameMap<SnackbarClassKey>>;
+    classes: SnackbarProviderProps['classes'];
     onEnter: SnackbarProviderProps['onEnter'];
     onExit: SnackbarProviderProps['onExit'];
     Component?: React.ComponentType<CustomContentProps>;
@@ -55,9 +55,11 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
 
     const {
         snack,
-        classes,
+        classes: allClasses,
         Component = MaterialDesignContent,
     } = props;
+
+    const classes = useMemo(() => keepSnackbarClassKeys(allClasses), [allClasses]);
 
     const {
         open,
@@ -101,7 +103,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                 className={clsx(
                     styles.wrappedRoot,
                     classes.root,
-                    classes[transformer.toSnackbarAnchorOrigin(otherSnack.anchorOrigin)],
+                    classes[toSnackbarAnchorOrigin(otherSnack.anchorOrigin)],
                 )}
                 SnackbarProps={SnackbarProps}
                 onClose={handleClose}

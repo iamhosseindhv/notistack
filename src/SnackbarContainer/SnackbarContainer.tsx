@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import clsx from 'clsx';
 import createTransition from '../transitions/createTransition';
 import { makeStyles, ComponentClasses } from '../utils/styles';
-import { breakpoints } from '../utils/constants';
-import { SnackbarProviderProps } from '../types';
+import { breakpoints, originKeyExtractor } from '../utils/constants';
+import { ContainerClassKey, SnackbarProviderProps } from '../types';
 
 const indents = {
     view: { default: 20, dense: 4 },
@@ -78,14 +78,19 @@ const styles = makeStyles({
 });
 
 interface SnackbarContainerProps {
-    children: JSX.Element | JSX.Element[];
-    className: string;
+    children: React.ReactNode;
     dense: SnackbarProviderProps['dense'];
     anchorOrigin: NonNullable<SnackbarProviderProps['anchorOrigin']>;
+    classes: SnackbarProviderProps['classes'];
 }
 
 const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
-    const { className, anchorOrigin, dense, children } = props;
+    const {
+        classes = {},
+        anchorOrigin,
+        dense,
+        children,
+    } = props;
 
     const combinedClassname = clsx(
         ComponentClasses.SnackbarContainer,
@@ -93,7 +98,8 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
         styles[anchorOrigin.horizontal],
         { [styles.rootDense]: dense },
         styles.root, // root should come after others to override maxWidth
-        className,
+        classes.containerRoot,
+        classes[`containerAnchorOrigin${originKeyExtractor(anchorOrigin)}` as ContainerClassKey],
     );
 
     return (
