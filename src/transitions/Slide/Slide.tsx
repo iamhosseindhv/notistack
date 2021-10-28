@@ -4,10 +4,10 @@
 import * as React from 'react';
 import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
-import useCallbackNormaliser from './useCallbackNormaliser';
-import useForkRef from '../utils/useForkRef';
-import { getTransitionProps, defaultEasing, createTransition, reflow, ownerWindow } from './util';
-import { SlideTransitionDirection, TransitionProps } from '../types';
+import useCallbackNormaliser from '../useCallbackNormaliser';
+import useForkRef from '../../utils/useForkRef';
+import { getTransitionProps, defaultEasing, createTransition, reflow, ownerWindow } from '../util';
+import { SlideTransitionDirection, TransitionProps } from '../../types';
 
 // Corresponds to 10 frames at 60 Hz.
 // A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.

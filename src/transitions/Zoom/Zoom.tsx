@@ -4,10 +4,10 @@
 import * as React from 'react';
 import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
-import { createTransition, getTransitionProps, reflow } from './util';
-import useForkRef from '../utils/useForkRef';
-import useCallbackNormaliser from './useCallbackNormaliser';
-import { TransitionProps } from '../types';
+import { createTransition, getTransitionProps, reflow } from '../util';
+import useForkRef from '../../utils/useForkRef';
+import useCallbackNormaliser from '../useCallbackNormaliser';
+import { TransitionProps } from '../../types';
 
 const styles: Partial<Record<TransitionStatus, React.CSSProperties>> = {
     entering: {

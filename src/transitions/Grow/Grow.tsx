@@ -4,10 +4,10 @@
 import * as React from 'react';
 import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
-import useCallbackNormaliser from './useCallbackNormaliser';
-import { reflow, getTransitionProps, getAutoHeightDuration, createTransition } from './util';
-import useForkRef from '../utils/useForkRef';
-import { TransitionProps } from '../types';
+import useCallbackNormaliser from '../useCallbackNormaliser';
+import { reflow, getTransitionProps, getAutoHeightDuration, createTransition } from '../util';
+import useForkRef from '../../utils/useForkRef';
+import { TransitionProps } from '../../types';
 
 function getScale(value: number): string {
     return `scale(${value}, ${value ** 2})`;

@@ -5,11 +5,11 @@ import * as React from 'react';
 import clsx from 'clsx';
 import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
-import useForkRef from '../utils/useForkRef';
-import { TransitionProps } from '../types';
-import useCallbackNormaliser from './useCallbackNormaliser';
-import { createTransition, getAutoHeightDuration, getTransitionProps } from './util';
-import { ComponentClasses, makeStyles } from '../utils/styles';
+import useForkRef from '../../utils/useForkRef';
+import { TransitionProps } from '../../types';
+import useCallbackNormaliser from '../useCallbackNormaliser';
+import { createTransition, getAutoHeightDuration, getTransitionProps } from '../util';
+import { ComponentClasses, makeStyles } from '../../utils/styles';
 
 const classes = makeStyles({
     root: {
