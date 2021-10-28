@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import clsx from 'clsx';
-import { createTransition } from './transitions/util';
+import createTransition from './transitions/createTransition';
 import { makeStyles, ComponentClasses } from './utils/styles';
 import { breakpoints } from './utils/constants';
 import { SnackbarProviderProps } from './types';

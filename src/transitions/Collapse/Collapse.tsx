@@ -8,7 +8,9 @@ import { TransitionStatus } from 'react-transition-group/Transition';
 import useForkRef from '../../utils/useForkRef';
 import { TransitionProps } from '../../types';
 import useCallbackNormaliser from '../useCallbackNormaliser';
-import { createTransition, getAutoHeightDuration, getTransitionProps } from '../util';
+import getAutoHeightDuration from '../getAutoHeightDuration';
+import getTransitionProps from '../getTransitionProps';
+import createTransition from '../createTransition';
 import { ComponentClasses, makeStyles } from '../../utils/styles';
 
 const classes = makeStyles({

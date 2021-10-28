@@ -2,7 +2,7 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import { ownerDocument } from '../transitions/util';
+import { ownerDocument } from '../transitions/document-window';
 import useEventCallback from '../utils/useEventCallback';
 import useForkRef from '../utils/useForkRef';
 

@@ -7,7 +7,9 @@ import { TransitionStatus } from 'react-transition-group/Transition';
 import useCallbackNormaliser from '../useCallbackNormaliser';
 import { TransitionProps } from '../../types';
 import useForkRef from '../../utils/useForkRef';
-import { createTransition, getTransitionProps, reflow } from '../util';
+import { reflow } from '../utils';
+import getTransitionProps from '../getTransitionProps';
+import createTransition from '../createTransition';
 
 const styles: Partial<Record<TransitionStatus, React.CSSProperties>> = {
     entering: {

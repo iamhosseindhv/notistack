@@ -5,7 +5,10 @@ import * as React from 'react';
 import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
 import useCallbackNormaliser from '../useCallbackNormaliser';
-import { reflow, getTransitionProps, getAutoHeightDuration, createTransition } from '../util';
+import { reflow } from '../utils';
+import getAutoHeightDuration from '../getAutoHeightDuration';
+import getTransitionProps from '../getTransitionProps';
+import createTransition from '../createTransition';
 import useForkRef from '../../utils/useForkRef';
 import { TransitionProps } from '../../types';
 

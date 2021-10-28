@@ -6,7 +6,10 @@ import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
 import useCallbackNormaliser from '../useCallbackNormaliser';
 import useForkRef from '../../utils/useForkRef';
-import { getTransitionProps, defaultEasing, createTransition, reflow, ownerWindow } from '../util';
+import getTransitionProps from '../getTransitionProps';
+import createTransition from '../createTransition';
+import { defaultEasing, reflow } from '../utils';
+import { ownerWindow } from '../document-window';
 import { SlideTransitionDirection, TransitionProps } from '../../types';
 
 // Corresponds to 10 frames at 60 Hz.
