@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import clsx from 'clsx';
 import Collapse from '../transitions/Collapse';
-import { getTransitionDirection } from './SnackbarItem.util';
+import { getSlideDirection } from './SnackbarItem.util';
 import { CloseReason, transformer } from '../utils/constants';
 import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, SnackbarClassKey, ClassNameMap, InternalSnack } from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
@@ -76,7 +76,8 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     } = snack;
 
     const transitionProps = {
-        direction: getTransitionDirection(otherSnack.anchorOrigin),
+        direction: getSlideDirection(otherSnack.anchorOrigin),
+        timeout: transitionDuration,
         ...TransitionProps,
     };
 
@@ -105,9 +106,8 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                 onClose={handleClose}
             >
                 <TransitionComponent
-                    in={open}
-                    timeout={transitionDuration}
                     {...transitionProps}
+                    in={open}
                     onExit={callbacks.onExit}
                     onExited={handleExitedScreen}
                     onEnter={callbacks.onEnter}

@@ -8,7 +8,7 @@ const direction: Record<string, SlideTransitionDirection> = {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const getTransitionDirection = (anchorOrigin: InternalSnack['anchorOrigin']): SlideTransitionDirection => {
+export const getSlideDirection = (anchorOrigin: InternalSnack['anchorOrigin']): SlideTransitionDirection => {
     if (anchorOrigin.horizontal !== 'center') {
         return direction[anchorOrigin.horizontal];
     }

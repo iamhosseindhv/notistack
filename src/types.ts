@@ -140,14 +140,21 @@ export interface SharedProps<V extends string = VariantType> extends Partial<Tra
      */
     disableWindowBlurListener?: boolean;
     /**
-     * The component used for the transition. (e.g. Slide, Grow, Zoom, etc.)
+     * The component used for the transition. notistack supports 4 transitions
+     * out of the box. You can also create your own transitions using react-transition-group.
+     * ```jsx
+     * import Fade from 'notistack/transitions/Fade';
+     * import Grow from 'notistack/transitions/Grow';
+     * import Slide from 'notistack/transitions/Slide';
+     * import Zoom from 'notistack/transitions/Zoom';
+     * ```
      * @default Slide
      */
     TransitionComponent?: React.ComponentType<TransitionProps>;
     /**
      * The duration for the transition, in milliseconds.
      *
-     * You may specify a single timeout for all transitions:
+     * You may specify a single timeout for both enter and exit transitions:
      * ```js
      * timeout={500}
      * ```
@@ -163,7 +170,7 @@ export interface SharedProps<V extends string = VariantType> extends Partial<Tra
      */
     transitionDuration?: TransitionProps['timeout'];
     /**
-     * Properties applied to Transition component (e.g. Slide, Grow, Zoom, etc.)
+     * Properties applied to Transition component
      */
     TransitionProps?: Partial<TransitionProps>;
     /**

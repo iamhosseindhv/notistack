@@ -8,7 +8,7 @@ import SnackbarContainer from '../SnackbarContainer';
 import warning from '../utils/warning';
 import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject, SharedProps } from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
-import MaterialDesignContent from '../ui/MaterialDesignContent/MaterialDesignContent';
+import MaterialDesignContent from '../ui/MaterialDesignContent';
 
 const isOptions = (messageOrOptions: string | (OptionsObject & { message?: string })): messageOrOptions is OptionsObject & { message?: string } => (
     typeof messageOrOptions !== 'string'
