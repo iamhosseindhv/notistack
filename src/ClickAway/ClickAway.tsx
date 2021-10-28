@@ -4,7 +4,7 @@
 import * as React from 'react';
 import { ownerDocument } from '../transitions/document-window';
 import useEventCallback from '../utils/useEventCallback';
-import useForkRef from '../utils/useForkRef';
+import useForkRef from '../transitions/useForkRef';
 
 function mapEventPropToEvent(eventProp: string): string {
     return eventProp.substring(2).toLowerCase() as any;

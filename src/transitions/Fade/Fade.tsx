@@ -6,7 +6,7 @@ import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
 import useCallbackNormaliser from '../useCallbackNormaliser';
 import { TransitionProps } from '../../types';
-import useForkRef from '../../utils/useForkRef';
+import useForkRef from '../useForkRef';
 import { reflow } from '../utils';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';

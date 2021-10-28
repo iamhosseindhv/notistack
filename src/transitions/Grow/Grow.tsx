@@ -9,7 +9,7 @@ import { reflow } from '../utils';
 import getAutoHeightDuration from '../getAutoHeightDuration';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
-import useForkRef from '../../utils/useForkRef';
+import useForkRef from '../useForkRef';
 import { TransitionProps } from '../../types';
 
 function getScale(value: number): string {

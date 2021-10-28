@@ -5,7 +5,7 @@ import * as React from 'react';
 import { Transition as TransitionComponent } from 'react-transition-group';
 import { TransitionStatus } from 'react-transition-group/Transition';
 import useCallbackNormaliser from '../useCallbackNormaliser';
-import useForkRef from '../../utils/useForkRef';
+import useForkRef from '../useForkRef';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import { defaultEasing, reflow } from '../utils';
