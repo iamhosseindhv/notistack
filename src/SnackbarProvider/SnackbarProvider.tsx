@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from '../SnackbarContext';
-import { originKeyExtractor, DEFAULTS, merge, isDefined } from '../utils/constants';
+import { originKeyExtractor, isDefined } from '../utils/constants';
+import { defaults, merge } from './merger';
 import SnackbarItem from '../SnackbarItem';
 import SnackbarContainer from '../SnackbarContainer';
 import warning from '../utils/warning';
@@ -36,7 +37,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     }
 
     get maxSnack(): number {
-        return this.props.maxSnack || DEFAULTS.maxSnack;
+        return this.props.maxSnack || defaults.maxSnack;
     }
 
     /**
