@@ -2,9 +2,9 @@
     "name": "notistack",
     "version": "3.0.0-alpha.1",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
-    "main": "dist/index.js",
-    "module": "dist/notistack.esm.js",
-    "types": "dist/index.d.ts",
+    "main": "./index.js",
+    "module": "./notistack.esm.js",
+    "types": "./index.d.ts",
     "license": "MIT",
     "author": {
         "name": "Hossein Dehnokhalaji",
