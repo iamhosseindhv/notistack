@@ -22,7 +22,8 @@
         "prebuild": "npm run docs",
         "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
-        "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+        "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "release": "np"
     },
     "peerDependencies": {
         "react": "^16.8.0 || ^17.0.0",
@@ -44,6 +45,7 @@
         "eslint-plugin-import": "~2.22.0",
         "eslint-plugin-jsx-a11y": "^6.3.1",
         "eslint-plugin-react": "^7.20.6",
+        "np": "^7.5.0",
         "react": "^16.8.0 || ^17.0.0",
         "react-dom": "^16.8.0 || ^17.0.0",
         "rimraf": "^3.0.2",
@@ -88,5 +90,13 @@
         "hossein",
         "dehnokhalaji",
         "iamhosseindhv"
-    ]
+    ],
+    "np": {
+        "branch": "alpha",
+        "tag": "alpha",
+        "yolo": true,
+        "yarn": false,
+        "contents": "dist",
+        "message": "v%s"
+    }
 }
