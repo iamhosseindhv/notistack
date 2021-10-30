@@ -17,13 +17,13 @@
         "type": "git"
     },
     "scripts": {
+        "prebuild": "npm run docs",
         "build": "tsdx build --transpileOnly --entry ./src/index.js",
         "watch": "tsdx watch --transpileOnly --entry ./src/index.js",
-        "prebuild": "npm run docs",
-        "prepublishOnly": "npm run build",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "release": "np"
+        "prerelease": "npm run build",
+        "release:alpha": "np --tag alpha"
     },
     "peerDependencies": {
         "react": "^16.8.0 || ^17.0.0",
@@ -93,7 +93,6 @@
     ],
     "np": {
         "branch": "alpha",
-        "tag": "alpha",
         "yolo": true,
         "yarn": false,
         "contents": "dist",
