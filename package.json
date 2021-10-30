@@ -97,6 +97,7 @@
         "yolo": true,
         "yarn": false,
         "contents": "dist",
-        "message": "v%s"
+        "message": "v%s",
+        "releaseDraft": false
     }
 }
