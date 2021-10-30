@@ -1,0 +1,54 @@
+{
+  "name": "notistack-custom-snackbar-example",
+  "description": "Custom snackbar example for notistack",
+  "main": "src/index.tsx",
+  "repository": {
+    "url": "git+https://github.com/iamhosseindhv/notistack.git",
+    "type": "git"
+  },
+  "author": {
+    "name": "Hossein Dehnokhalaji",
+    "email": "hossein.dehnavi98@yahoo.com",
+    "url": "https://github.com/iamhosseindhv/notistack"
+  },
+  "homepage": "https://github.com/iamhosseindhv/notistack",
+  "bugs": {
+    "url": "https://github.com/iamhosseindhv/notistack/issues"
+  },
+  "contributors": [
+    "Hossein Dehnokhalaji (https://www.linkedin.com/in/iamhosseindhv/)"
+  ],
+  "dependencies": {
+    "@mui/styles": "5.0.2",
+    "notistack": "3.0.0-alpha.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.20",
+    "@types/react-dom": "17.0.9",
+    "typescript": "4.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "javascript",
+    "stacked",
+    "snackbar",
+    "notistack",
+    "notification"
+  ]
+}
