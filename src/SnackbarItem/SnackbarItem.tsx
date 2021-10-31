@@ -246,6 +246,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes: propClasses, ...pr
                                 classes.contentRoot,
                                 { [classes.lessPadding]: !hideIconVariant && icon },
                                 classes[transformer.toVariant(variant)],
+                                propClasses[transformer.toVariant(variant)],
                                 otherClassName,
                                 singleClassName,
                             )}
