@@ -4,6 +4,8 @@ import { makeStyles } from "@mui/styles";
 import { CustomContentProps, SnackbarContent } from "notistack";
 import { useTheme } from "./App";
 
+// You can use whatever styling solution you like.
+// i.e. You don't have to use @mui/styles
 const useStyles = makeStyles(() => ({
   root: {
     backgroundColor: "#313131",
