@@ -13,11 +13,11 @@ you the tools to build your own snackbars. This is achieved through [`Components
 
 ### Breaking changes
 
-1. `content` prop is still supported but marked as deprecated and it will be removed in future releases. If you find yourself using this prop quite often, consider defining your own custom variant/content using [Components](#8-new-components-prop) props. 
+* `content` prop is still supported but marked as deprecated and it will be removed in future releases. If you find yourself using this prop quite often, consider defining your own custom variant/content using [Components](#8-new-components-prop) props. 
 
-2. Drop `ariaAttributes` from props. If you need to pass aria-attributes, use a [custom component](#8-new-components-prop).
+* Drop `ariaAttributes` from props. If you need to pass aria-attributes, use a [custom component](#8-new-components-prop).
 
-3. HTML attributes applied to Snackbar root component should be passed inside `SnackbarProps` prop.
+* HTML attributes applied to Snackbar root component should be passed inside `SnackbarProps` prop.
 ```diff
 <SnackbarProvider
 -    data-test="test"
@@ -34,43 +34,49 @@ enqueueSnackbar('message', {
 +    },
 })
 ```
-4. Any customisation through Material-UI theme is no longer applied to the elements. This would also mean toggling theme `mode` to **Dark**/Light would not affect the appearance of snackbars. You can easily use a [custom component](#8-new-components-prop) for more control over your snackbars. 
-5. Drop support for `resumeHideDuration`, `onEntering` and `onExisting` transition callbacks due to the fact that they are rarely used. Get in touch if this decision affects you to potentially bring them back to life.
-6. Exported type `WithSnackbarProps` was kept in type declerations for backwards compatibility. After nearly a year, it has been now deleted and you should use `ProviderContext` type instead.
-7. Drop Customisation through `classes.variant(Success|Error|Info|Warning)`. To customise snackbars according to their
-variant, use a [custom component](#8-new-components-prop).
+
+* Drop support for `resumeHideDuration`, `onEntering` and `onExisting` transition callbacks due to the fact that they are rarely used. Get in touch if this decision affects you to potentially bring them back to life.
+
+* Exported type `WithSnackbarProps` was kept in type declerations for backwards compatibility. After nearly a year, it has been now deleted and you should use `ProviderContext` type instead.
+
+* Drop Customisation through `classes.variant(Success|Error|Info|Warning)`. To customise snackbars according to their
+variant, use a [custom component](#8-new-components-prop). [`This example`](https://github.com/iamhosseindhv/notistack/tree/alpha/examples/custom-snackbar-example) demonstrates how this is done.
+
+* Any customisation through Material-UI theme is not applied to the elements. This would also mean toggling theme `mode` to **Dark**/**Light** would not affect the appearance of snackbars. You can easily use a [custom component](#8-new-components-prop) to have full control over your snackbars. [`This example`](https://github.com/iamhosseindhv/notistack/tree/alpha/examples/custom-snackbar-example) demonstrates how your snackbars can react to change of theme mode.
 
 #### 8. New `Components` prop
 You can now define your own `variant`s and show entirely customsied snackbars. Your custom component accepts all props passed to `enqueueSnackbar` or `SnackbarProvider`, so you have full control over it. On top of that, you'll be able pass additional options in options parameter of `enqueueSnackbar. Example usage:
 
-```jsx
+```tsx
 <SnackbarProvider
     Components={{
-        error: MyCustomErrorNotification,
         success: MyCustomSuccessNotification,
-        reportComplete: MyCustomReportNotification,
+        reportComplete: ReportComplete,
     }}
 >
 </SnackbarProvider>
 
+interface ReportCompleteProps extends CustomContentProps {
+    allowDownload: boolean;
+}
 
-// ...
+const ReportComplete = React.forwardRef((props: ReportCompleteProps, ref) => {
+    const {
+        // You have access to notistack props, options 👇🏼
+        variant,
+        message
+        // as well as your own custom props 👇🏼
+        allowDownload,
+    } = props;
+
+    // 
+})
+
 enqueueSnackbar('Your report is ready to download', {
    variant: 'reportComplete',
    persist: true,
    allowDownload: true, // <-- pass any additional options
 })
 
-
-const MyCustomReportNotification = (props) => {
-    // access notistack props, options and your own options here
-    const {
-        allowDownload,
-        anchorOrigin,
-        // ...
-    } = props;
-
-    // ...
-}
 ```
 
