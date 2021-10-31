@@ -1,5 +1,11 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@2.0.3`
+###### Oct 31, 2021
+* **@h0tw4t3r** Ensure `variant` classes are passed to SnackbarContent  [#451](https://github.com/iamhosseindhv/notistack/pull/451) 
+
+<br />
+
 ### `notistack@2.0.2`
 ###### Sep 26, 2021
 * **@hugofpsilva** **@ramosbugs** **@joemaffei** Publish material-ui v5 compatible version as `latest` instead of `next` [#437](https://github.com/iamhosseindhv/notistack/pull/437) 
