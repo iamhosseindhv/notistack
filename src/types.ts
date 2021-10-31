@@ -28,6 +28,11 @@ export type SlideTransitionDirection = 'down' | 'left' | 'right' | 'up';
 
 export interface TransitionProps extends Partial<TransitionHandlerProps> {
     /**
+     * Id/key of the snackbar this transition belongs to. Used in transition callbacks
+     * (e.g. onExited) to identify which snackbar has exited.
+     */
+    id: SnackbarKey;
+    /**
      * Show the component; triggers the enter or exit states
      */
     in?: boolean;
@@ -79,7 +84,7 @@ export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
 
 export type SnackbarMessage = string;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
-export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
+export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message?: SnackbarMessage) => React.ReactNode);
 
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
