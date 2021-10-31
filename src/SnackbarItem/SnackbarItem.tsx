@@ -90,11 +90,11 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
 
     const callbacks: { [key in keyof TransitionHandlerProps]?: any } = (['onEnter', 'onEntered', 'onExit', 'onExited'] as (keyof TransitionHandlerProps)[]).reduce((acc, cbName) => ({
         ...acc,
-        [cbName]: createChainedFunction([props.snack[cbName], props[cbName]], otherSnack.id),
+        [cbName]: createChainedFunction([props.snack[cbName], props[cbName]]),
     }), {});
 
     return (
-        <Collapse unmountOnExit timeout={175} in={collapsed} onExited={callbacks.onExited}>
+        <Collapse id={otherSnack.id} unmountOnExit timeout={175} in={collapsed} onExited={callbacks.onExited}>
             <Snackbar
                 open={open}
                 disableWindowBlurListener={disableWindowBlurListener}
@@ -109,6 +109,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             >
                 <TransitionComponent
                     {...transitionProps}
+                    id={otherSnack.id}
                     in={open}
                     onExit={callbacks.onExit}
                     onExited={handleExitedScreen}
