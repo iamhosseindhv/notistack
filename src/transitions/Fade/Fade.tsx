@@ -2,10 +2,8 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import { Transition as TransitionComponent } from 'react-transition-group';
-import { TransitionStatus } from 'react-transition-group/Transition';
-import useCallbackNormaliser from '../useCallbackNormaliser';
-import { TransitionProps } from '../../types';
+import TransitionComponent, { TransitionStatus } from '../Transition';
+import { TransitionHandlerProps, TransitionProps } from '../../types';
 import useForkRef from '../useForkRef';
 import { reflow } from '../utils';
 import getTransitionProps from '../getTransitionProps';
@@ -38,9 +36,7 @@ const Fade = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     const handleRefIntermediary = useForkRef(children.ref, ref);
     const handleRef = useForkRef(nodeRef, handleRefIntermediary);
 
-    const callbackNormaliser = useCallbackNormaliser(nodeRef);
-
-    const handleEnter = callbackNormaliser((node, isAppearing) => {
+    const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
         reflow(node);
 
         const transitionProps = getTransitionProps({ style, timeout, mode: 'enter' });
@@ -48,23 +44,19 @@ const Fade = React.forwardRef<unknown, TransitionProps>((props, ref) => {
         node.style.transition = createTransition('opacity', transitionProps);
 
         if (onEnter) {
-            onEnter(node, isAppearing);
+            onEnter(node, isAppearing, snackId);
         }
-    });
+    };
 
-    const handleEntered = callbackNormaliser(onEntered);
-
-    const handleExit = callbackNormaliser((node) => {
+    const handleExit: TransitionHandlerProps['onExit'] = (node, snackId) => {
         const transitionProps = getTransitionProps({ style, timeout, mode: 'exit' });
         node.style.webkitTransition = createTransition('opacity', transitionProps);
         node.style.transition = createTransition('opacity', transitionProps);
 
         if (onExit) {
-            onExit(node);
+            onExit(node, snackId);
         }
-    });
-
-    const handleExited = callbackNormaliser(onExited);
+    };
 
     return (
         <TransitionComponent
@@ -72,9 +64,9 @@ const Fade = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             in={inProp}
             nodeRef={nodeRef}
             onEnter={handleEnter}
-            onEntered={handleEntered}
+            onEntered={onEntered}
             onExit={handleExit}
-            onExited={handleExited}
+            onExited={onExited}
             timeout={timeout}
             {...other}
         >

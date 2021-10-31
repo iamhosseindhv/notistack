@@ -2,18 +2,18 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import { Transition as TransitionComponent } from 'react-transition-group';
-import { TransitionStatus } from 'react-transition-group/Transition';
-import useCallbackNormaliser from '../useCallbackNormaliser';
+import TransitionComponent, { TransitionStatus } from '../Transition';
 import useForkRef from '../useForkRef';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import { defaultEasing, reflow } from '../utils';
 import { ownerWindow } from '../document-window';
-import { SlideTransitionDirection, TransitionProps } from '../../types';
+import { SlideTransitionDirection, TransitionHandlerProps, TransitionProps } from '../../types';
 
-// Corresponds to 10 frames at 60 Hz.
-// A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
+/**
+ * Corresponds to 10 frames at 60 Hz.
+ * A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
+ */
 function debounce(func, wait = 166) {
     let timeout;
     function debounced(...args: any[]) {
@@ -96,18 +96,16 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     const handleRefIntermediary = useForkRef(children.ref, nodeRef);
     const handleRef = useForkRef(handleRefIntermediary, ref);
 
-    const callbackNormaliser = useCallbackNormaliser(nodeRef);
-
-    const handleEnter = callbackNormaliser((node, isAppearing) => {
+    const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
         setTranslateValue(direction, node);
         reflow(node);
 
         if (onEnter) {
-            onEnter(node, isAppearing);
+            onEnter(node, isAppearing, snackId);
         }
-    });
+    };
 
-    const handleEntering = callbackNormaliser((node) => {
+    const handleEntering = (node: HTMLElement) => {
         const easing = style?.transitionTimingFunction || defaultEasing.easeOut;
         const transitionProps = getTransitionProps({
             timeout,
@@ -120,11 +118,9 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
 
         node.style.webkitTransform = 'none';
         node.style.transform = 'none';
-    });
+    };
 
-    const handleEntered = callbackNormaliser(onEntered);
-
-    const handleExit = callbackNormaliser((node) => {
+    const handleExit: TransitionHandlerProps['onExit'] = (node, snackId) => {
         const easing = style?.transitionTimingFunction || defaultEasing.sharp;
         const transitionProps = getTransitionProps({
             timeout,
@@ -138,19 +134,19 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
         setTranslateValue(direction, node);
 
         if (onExit) {
-            onExit(node);
+            onExit(node, snackId);
         }
-    });
+    };
 
-    const handleExited = callbackNormaliser((node) => {
+    const handleExited: TransitionHandlerProps['onExited'] = (node, snackId) => {
         // No need for transitions when the component is hidden
         node.style.webkitTransition = '';
         node.style.transition = '';
 
         if (onExited) {
-            onExited(node);
+            onExited(node, snackId);
         }
-    });
+    };
 
     const updatePosition = React.useCallback(() => {
         if (nodeRef.current) {
@@ -191,7 +187,7 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             appear
             nodeRef={nodeRef}
             onEnter={handleEnter}
-            onEntered={handleEntered}
+            onEntered={onEntered}
             onEntering={handleEntering}
             onExit={handleExit}
             onExited={handleExited}

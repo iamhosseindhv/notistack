@@ -2,15 +2,13 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import { Transition as TransitionComponent } from 'react-transition-group';
-import { TransitionStatus } from 'react-transition-group/Transition';
-import useCallbackNormaliser from '../useCallbackNormaliser';
+import TransitionComponent, { TransitionStatus } from '../Transition';
 import { reflow } from '../utils';
 import getAutoHeightDuration from '../getAutoHeightDuration';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import useForkRef from '../useForkRef';
-import { TransitionProps } from '../../types';
+import { TransitionHandlerProps, TransitionProps } from '../../types';
 
 function getScale(value: number): string {
     return `scale(${value}, ${value ** 2})`;
@@ -46,9 +44,7 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     const handleRefIntermediary = useForkRef(children.ref, nodeRef);
     const handleRef = useForkRef(handleRefIntermediary, ref);
 
-    const callbackNormaliser = useCallbackNormaliser(nodeRef);
-
-    const handleEnter = callbackNormaliser((node, isAppearing) => {
+    const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
         reflow(node);
 
         const {
@@ -69,13 +65,11 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
         ].join(',');
 
         if (onEnter) {
-            onEnter(node, isAppearing);
+            onEnter(node, isAppearing, snackId);
         }
-    });
+    };
 
-    const handleEntered = callbackNormaliser(onEntered);
-
-    const handleExit = callbackNormaliser((node) => {
+    const handleExit: TransitionHandlerProps['onExit'] = (node, snackId) => {
         const {
             duration: transitionDuration,
             delay,
@@ -101,11 +95,9 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
         node.style.transform = getScale(0.75);
 
         if (onExit) {
-            onExit(node);
+            onExit(node, snackId);
         }
-    });
-
-    const handleExited = callbackNormaliser(onExited);
+    };
 
     const handleAddEndListener = (next: any) => {
         if (timeout === 'auto') {
@@ -125,9 +117,9 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             in={inProp}
             nodeRef={nodeRef}
             onEnter={handleEnter}
-            onEntered={handleEntered}
+            onEntered={onEntered}
             onExit={handleExit}
-            onExited={handleExited}
+            onExited={onExited}
             addEndListener={handleAddEndListener}
             timeout={timeout === 'auto' ? null : timeout}
             {...other}

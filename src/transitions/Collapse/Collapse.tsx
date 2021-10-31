@@ -3,11 +3,9 @@
  */
 import * as React from 'react';
 import clsx from 'clsx';
-import { Transition as TransitionComponent } from 'react-transition-group';
-import { TransitionStatus } from 'react-transition-group/Transition';
+import TransitionComponent, { TransitionStatus } from '../Transition';
 import useForkRef from '../useForkRef';
-import { TransitionProps } from '../../types';
-import useCallbackNormaliser from '../useCallbackNormaliser';
+import { TransitionHandlerProps, TransitionProps } from '../../types';
 import getAutoHeightDuration from '../getAutoHeightDuration';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
@@ -51,18 +49,16 @@ const Collapse = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     const nodeRef = React.useRef(null);
     const handleRef = useForkRef(ref, nodeRef);
 
-    const callbackNormaliser = useCallbackNormaliser(nodeRef);
-
     const getWrapperSize = () => (wrapperRef.current ? wrapperRef.current.clientHeight : 0);
 
-    const handleEnter = callbackNormaliser((node, isAppearing) => {
+    const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
         node.style.height = collapsedSize;
         if (onEnter) {
-            onEnter(node, isAppearing);
+            onEnter(node, isAppearing, snackId);
         }
-    });
+    };
 
-    const handleEntering = callbackNormaliser((node) => {
+    const handleEntering = (node: HTMLElement) => {
         const wrapperSize = getWrapperSize();
 
         const { duration: transitionDuration, easing } = getTransitionProps({
@@ -79,25 +75,23 @@ const Collapse = React.forwardRef<unknown, TransitionProps>((props, ref) => {
 
         node.style.height = `${wrapperSize}px`;
         node.style.transitionTimingFunction = easing || '';
-    });
+    };
 
-    const handleEntered = callbackNormaliser((node, isAppearing) => {
+    const handleEntered: TransitionHandlerProps['onEntered'] = (node, isAppearing, snackId) => {
         node.style.height = 'auto';
         if (onEntered) {
-            onEntered(node, isAppearing);
+            onEntered(node, isAppearing, snackId);
         }
-    });
+    };
 
-    const handleExit = callbackNormaliser((node) => {
+    const handleExit: TransitionHandlerProps['onExit'] = (node, snackId) => {
         node.style.height = `${getWrapperSize()}px`;
         if (onExit) {
-            onExit(node);
+            onExit(node, snackId);
         }
-    });
+    };
 
-    const handleExited = callbackNormaliser(onExited);
-
-    const handleExiting = callbackNormaliser((node) => {
+    const handleExiting = (node: HTMLElement) => {
         const wrapperSize = getWrapperSize();
         const { duration: transitionDuration, easing } = getTransitionProps({
             style, timeout, mode: 'exit',
@@ -113,7 +107,7 @@ const Collapse = React.forwardRef<unknown, TransitionProps>((props, ref) => {
 
         node.style.height = collapsedSize;
         node.style.transitionTimingFunction = easing || '';
-    });
+    };
 
     const handleAddEndListener = (next: any) => {
         if (timeout === 'auto') {
@@ -128,7 +122,7 @@ const Collapse = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             onEntered={handleEntered}
             onEntering={handleEntering}
             onExit={handleExit}
-            onExited={handleExited}
+            onExited={onExited}
             onExiting={handleExiting}
             addEndListener={handleAddEndListener}
             nodeRef={nodeRef}
