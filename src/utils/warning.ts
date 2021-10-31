@@ -10,7 +10,7 @@ export default (messageKey: keyof typeof messages): void => {
 
     const message = messages[messageKey];
     if (typeof console !== 'undefined') {
-        console.error(`WARNING - notistack: ${messages}`);
+        console.error(`WARNING - notistack: ${message}`);
     }
     try {
         throw new Error(message);
