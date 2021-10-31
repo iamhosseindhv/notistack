@@ -260,7 +260,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * waiting in the queue (if any). If after this process the queue is not empty, the
      * oldest message is dismissed.
      */
-    handleExitedSnack: TransitionHandlerProps['onExited'] = (event, key) => {
+    handleExitedSnack: TransitionHandlerProps['onExited'] = (node, key) => {
         if (!isDefined(key)) {
             throw new Error('handleExitedSnack Cannot be called with undefined key');
         }
