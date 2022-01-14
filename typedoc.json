@@ -208,7 +208,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 261,
+							"line": 267,
 							"character": 17
 						}
 					],
@@ -270,7 +270,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 260,
+							"line": 266,
 							"character": 19
 						}
 					],
@@ -1951,7 +1951,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 259,
+					"line": 265,
 					"character": 29
 				}
 			],
@@ -1992,7 +1992,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 50,
+							"line": 56,
 							"character": 11
 						}
 					],
@@ -2015,7 +2015,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 54,
+							"line": 60,
 							"character": 9
 						}
 					],
@@ -2038,7 +2038,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 66,
+							"line": 72,
 							"character": 8
 						}
 					],
@@ -2061,7 +2061,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 58,
+							"line": 64,
 							"character": 11
 						}
 					],
@@ -2084,7 +2084,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 62,
+							"line": 68,
 							"character": 11
 						}
 					],
@@ -2110,7 +2110,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 46,
+					"line": 52,
 					"character": 28
 				}
 			]
@@ -2147,7 +2147,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 196,
+							"line": 202,
 							"character": 10
 						}
 					],
@@ -2184,7 +2184,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 191,
+							"line": 197,
 							"character": 11
 						}
 					],
@@ -2220,7 +2220,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 207,
+							"line": 213,
 							"character": 7
 						}
 					],
@@ -2251,7 +2251,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 212,
+							"line": 218,
 							"character": 11
 						}
 					],
@@ -2294,7 +2294,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 186,
+							"line": 192,
 							"character": 20
 						}
 					],
@@ -2342,7 +2342,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 181,
+							"line": 187,
 							"character": 11
 						}
 					],
@@ -2375,7 +2375,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 202,
+					"line": 208,
 					"character": 30
 				}
 			],
@@ -2407,7 +2407,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 266,
+							"line": 272,
 							"character": 17
 						}
 					],
@@ -2456,7 +2456,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 266,
+									"line": 272,
 									"character": 18
 								}
 							]
@@ -2474,7 +2474,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 265,
+							"line": 271,
 							"character": 19
 						}
 					],
@@ -2538,7 +2538,7 @@
 							"sources": [
 								{
 									"fileName": "src/index.d.ts",
-									"line": 265,
+									"line": 271,
 									"character": 20
 								}
 							]
@@ -2559,7 +2559,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 264,
+					"line": 270,
 					"character": 32
 				}
 			]
@@ -2596,7 +2596,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 196,
+							"line": 202,
 							"character": 10
 						}
 					],
@@ -2628,7 +2628,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 191,
+							"line": 197,
 							"character": 11
 						}
 					],
@@ -2659,7 +2659,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 186,
+							"line": 192,
 							"character": 20
 						}
 					],
@@ -2702,7 +2702,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 181,
+							"line": 187,
 							"character": 11
 						}
 					],
@@ -2728,7 +2728,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 175,
+					"line": 181,
 					"character": 28
 				}
 			],
@@ -2746,7 +2746,7 @@
 						"sources": [
 							{
 								"fileName": "src/index.d.ts",
-								"line": 175,
+								"line": 181,
 								"character": 36
 							}
 						]
@@ -2765,7 +2765,7 @@
 						"sources": [
 							{
 								"fileName": "src/index.d.ts",
-								"line": 175,
+								"line": 181,
 								"character": 68
 							}
 						]
@@ -2805,7 +2805,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 43,
+							"line": 49,
 							"character": 14
 						}
 					],
@@ -2838,7 +2838,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 42,
+							"line": 48,
 							"character": 12
 						}
 					],
@@ -2870,7 +2870,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 41,
+					"line": 47,
 					"character": 31
 				}
 			]
@@ -2906,7 +2906,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 156,
+							"line": 162,
 							"character": 23
 						}
 					],
@@ -2936,7 +2936,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 169,
+							"line": 175,
 							"character": 19
 						}
 					],
@@ -2967,7 +2967,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 121,
+							"line": 127,
 							"character": 16
 						}
 					],
@@ -2992,7 +2992,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 138,
+							"line": 144,
 							"character": 18
 						}
 					],
@@ -3022,7 +3022,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 129,
+							"line": 135,
 							"character": 20
 						}
 					],
@@ -3144,7 +3144,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 143,
+							"line": 149,
 							"character": 29
 						}
 					],
@@ -3281,7 +3281,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 151,
+							"line": 157,
 							"character": 22
 						}
 					],
@@ -3346,7 +3346,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 165,
+							"line": 171,
 							"character": 22
 						}
 					],
@@ -3380,7 +3380,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 165,
+													"line": 171,
 													"character": 33
 												}
 											],
@@ -3410,7 +3410,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 165,
+													"line": 171,
 													"character": 49
 												}
 											],
@@ -3440,7 +3440,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 165,
+													"line": 171,
 													"character": 64
 												}
 											],
@@ -3499,7 +3499,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 116,
+					"line": 122,
 					"character": 30
 				}
 			],
@@ -3761,7 +3761,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 196,
+							"line": 202,
 							"character": 10
 						}
 					],
@@ -3790,7 +3790,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 224,
+							"line": 230,
 							"character": 12
 						}
 					],
@@ -3826,7 +3826,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 247,
+							"line": 253,
 							"character": 11
 						}
 					],
@@ -3839,7 +3839,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 211,
+										"id": 217,
 										"name": "CombinedClassKey"
 									}
 								],
@@ -3871,7 +3871,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 191,
+							"line": 197,
 							"character": 11
 						}
 					],
@@ -3907,7 +3907,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 229,
+							"line": 235,
 							"character": 9
 						}
 					],
@@ -3944,7 +3944,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 243,
+							"line": 249,
 							"character": 11
 						}
 					],
@@ -3974,7 +3974,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 239,
+							"line": 245,
 							"character": 19
 						}
 					],
@@ -4011,7 +4011,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 251,
+							"line": 257,
 							"character": 15
 						}
 					],
@@ -4048,7 +4048,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 234,
+							"line": 240,
 							"character": 12
 						}
 					],
@@ -4087,7 +4087,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 186,
+							"line": 192,
 							"character": 20
 						}
 					],
@@ -4135,7 +4135,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 181,
+							"line": 187,
 							"character": 11
 						}
 					],
@@ -4173,7 +4173,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 219,
+					"line": 225,
 					"character": 38
 				}
 			],
@@ -4226,7 +4226,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 84,
+							"line": 90,
 							"character": 11
 						}
 					],
@@ -4250,7 +4250,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 88,
+							"line": 94,
 							"character": 11
 						}
 					],
@@ -4274,7 +4274,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 96,
+							"line": 102,
 							"character": 13
 						}
 					],
@@ -4298,7 +4298,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 92,
+							"line": 98,
 							"character": 14
 						}
 					],
@@ -4322,7 +4322,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 100,
+							"line": 106,
 							"character": 10
 						}
 					],
@@ -4346,7 +4346,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 108,
+							"line": 114,
 							"character": 12
 						}
 					],
@@ -4370,7 +4370,7 @@
 					"sources": [
 						{
 							"fileName": "src/index.d.ts",
-							"line": 104,
+							"line": 110,
 							"character": 13
 						}
 					],
@@ -4399,7 +4399,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 72,
+					"line": 78,
 					"character": 39
 				}
 			]
@@ -4491,7 +4491,7 @@
 			}
 		},
 		{
-			"id": 211,
+			"id": 217,
 			"name": "CombinedClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -4501,7 +4501,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 39,
+					"line": 45,
 					"character": 28
 				}
 			],
@@ -4510,12 +4510,12 @@
 				"types": [
 					{
 						"type": "reference",
-						"id": 210,
+						"id": 216,
 						"name": "VariantClassKey"
 					},
 					{
 						"type": "reference",
-						"id": 209,
+						"id": 215,
 						"name": "ContainerClassKey"
 					},
 					{
@@ -4526,7 +4526,7 @@
 			}
 		},
 		{
-			"id": 209,
+			"id": 215,
 			"name": "ContainerClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -4536,7 +4536,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 29,
+					"line": 35,
 					"character": 29
 				}
 			],
@@ -4729,6 +4729,139 @@
 					}
 				],
 				"name": "Pick"
+			}
+		},
+		{
+			"id": 209,
+			"name": "ReasonKeys",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"sources": [
+				{
+					"fileName": "src/index.d.ts",
+					"line": 28,
+					"character": 22
+				}
+			],
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 210,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 212,
+							"name": "CLICKAWAY",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/index.d.ts",
+									"line": 30,
+									"character": 13
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 181,
+								"name": "CloseReason"
+							}
+						},
+						{
+							"id": 214,
+							"name": "INSTRUCTED",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/index.d.ts",
+									"line": 32,
+									"character": 14
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 181,
+								"name": "CloseReason"
+							}
+						},
+						{
+							"id": 213,
+							"name": "MAXSNACK",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/index.d.ts",
+									"line": 31,
+									"character": 12
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 181,
+								"name": "CloseReason"
+							}
+						},
+						{
+							"id": 211,
+							"name": "TIMEOUT",
+							"kind": 32,
+							"kindString": "Variable",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "src/index.d.ts",
+									"line": 29,
+									"character": 11
+								}
+							],
+							"type": {
+								"type": "reference",
+								"id": 181,
+								"name": "CloseReason"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Variables",
+							"kind": 32,
+							"children": [
+								212,
+								214,
+								213,
+								211
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/index.d.ts",
+							"line": 28,
+							"character": 24
+						}
+					]
+				}
 			}
 		},
 		{
@@ -4996,7 +5129,7 @@
 			}
 		},
 		{
-			"id": 212,
+			"id": 218,
 			"name": "SnackbarContentProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5006,7 +5139,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 111,
+					"line": 117,
 					"character": 32
 				}
 			],
@@ -5360,7 +5493,7 @@
 			}
 		},
 		{
-			"id": 210,
+			"id": 216,
 			"name": "VariantClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5370,7 +5503,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 38,
+					"line": 44,
 					"character": 27
 				}
 			],
@@ -5438,7 +5571,7 @@
 			}
 		},
 		{
-			"id": 222,
+			"id": 228,
 			"name": "WithSnackbarProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5448,7 +5581,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 277,
+					"line": 283,
 					"character": 29
 				}
 			],
@@ -5459,7 +5592,7 @@
 			}
 		},
 		{
-			"id": 219,
+			"id": 225,
 			"name": "SnackbarContent",
 			"kind": 32,
 			"kindString": "Variable",
@@ -5470,7 +5603,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 272,
+					"line": 278,
 					"character": 36
 				}
 			],
@@ -5482,7 +5615,7 @@
 						"types": [
 							{
 								"type": "reference",
-								"id": 212,
+								"id": 218,
 								"name": "SnackbarContentProps"
 							},
 							{
@@ -5502,7 +5635,7 @@
 			}
 		},
 		{
-			"id": 220,
+			"id": 226,
 			"name": "useSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -5511,7 +5644,7 @@
 			},
 			"signatures": [
 				{
-					"id": 221,
+					"id": 227,
 					"name": "useSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -5528,13 +5661,13 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 274,
+					"line": 280,
 					"character": 27
 				}
 			]
 		},
 		{
-			"id": 213,
+			"id": 219,
 			"name": "withSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -5543,7 +5676,7 @@
 			},
 			"signatures": [
 				{
-					"id": 214,
+					"id": 220,
 					"name": "withSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -5552,7 +5685,7 @@
 					},
 					"typeParameter": [
 						{
-							"id": 215,
+							"id": 221,
 							"name": "P",
 							"kind": 131072,
 							"kindString": "Type parameter",
@@ -5568,7 +5701,7 @@
 					],
 					"parameters": [
 						{
-							"id": 216,
+							"id": 222,
 							"name": "component",
 							"kind": 32768,
 							"kindString": "Parameter",
@@ -5629,7 +5762,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 217,
+									"id": 223,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -5638,7 +5771,7 @@
 									},
 									"children": [
 										{
-											"id": 218,
+											"id": 224,
 											"name": "WrappedComponent",
 											"kind": 32,
 											"kindString": "Variable",
@@ -5648,7 +5781,7 @@
 											"sources": [
 												{
 													"fileName": "src/index.d.ts",
-													"line": 270,
+													"line": 276,
 													"character": 77
 												}
 											],
@@ -5674,14 +5807,14 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												218
+												224
 											]
 										}
 									],
 									"sources": [
 										{
 											"fileName": "src/index.d.ts",
-											"line": 270,
+											"line": 276,
 											"character": 58
 										}
 									]
@@ -5694,7 +5827,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 269,
+					"line": 275,
 					"character": 28
 				}
 			]
@@ -5758,37 +5891,38 @@
 			"children": [
 				171,
 				181,
-				211,
-				209,
+				217,
+				215,
 				176,
 				173,
+				209,
 				168,
 				183,
 				187,
-				212,
+				218,
 				179,
 				182,
 				192,
 				198,
 				204,
-				210,
+				216,
 				180,
-				222
+				228
 			]
 		},
 		{
 			"title": "Variables",
 			"kind": 32,
 			"children": [
-				219
+				225
 			]
 		},
 		{
 			"title": "Functions",
 			"kind": 64,
 			"children": [
-				220,
-				213
+				226,
+				219
 			]
 		}
 	]

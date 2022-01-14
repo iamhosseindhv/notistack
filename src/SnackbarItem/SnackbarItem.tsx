@@ -110,7 +110,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes: propClasses, ...pr
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
-            handleClose(null, REASONS.INSTRCUTED);
+            handleClose(null, REASONS.INSTRUCTED);
         }
     };
 
