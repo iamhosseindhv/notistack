@@ -153,7 +153,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      * The component used for the transition. (e.g. Slide, Grow, Zoom, etc.)
      * @default Slide
      */
-    TransitionComponent?: React.ComponentType<TransitionProps>;
+    TransitionComponent?: React.ComponentType<TransitionProps> | React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
     /**
      * The duration for the transition, in milliseconds.
      * You may specify the duration with an object in the following shape:
