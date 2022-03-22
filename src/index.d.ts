@@ -216,7 +216,7 @@ export interface OptionsObject extends SharedProps {
  * All material-ui props, including class keys for notistack and material-ui with additional notistack props
  * @category Provider
  */
-export interface SnackbarProviderProps extends SharedProps {
+export interface SnackbarProviderProps extends Omit<SharedProps, 'ref'> {
     /**
      * Most of the time this is your App. every component from this point onward
      * will be able to show snackbars.
@@ -249,11 +249,6 @@ export interface SnackbarProviderProps extends SharedProps {
      * Little icon that is displayed at left corner of a snackbar.
      */
     iconVariant?: Partial<IconVariant>;
-    /**
-     * @ignore
-     * SnackbarProvider's ref
-     */
-    ref?: React.Ref<SnackbarProvider>;
 }
 
 export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
