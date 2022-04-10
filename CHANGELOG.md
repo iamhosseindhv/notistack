@@ -1,7 +1,7 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
 ### `notistack@2.0.4`
-###### Oct 31, 2021
+###### Apr 10, 2022
 * **@suren-atoyan** Add support for React 18 [#482](https://github.com/iamhosseindhv/notistack/pull/482) 
 
 <br />
