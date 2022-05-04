@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from './SnackbarContext';
@@ -256,7 +256,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         });
     };
 
-    render(): JSX.Element {
+    render(): ReactElement {
         const { contextValue } = this.state;
         const {
             maxSnack: dontspread1,
