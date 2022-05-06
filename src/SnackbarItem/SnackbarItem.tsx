@@ -191,7 +191,8 @@ const SnackbarItem: React.FC<SnackbarItemProps> = ({ classes: propClasses, ...pr
 
     let content = singleContent || otherContent;
     if (typeof content === 'function') {
-        content = content(key, snack.message);
+        const { message, ...otherProps } = snack;
+        content = content(key, message, { ...otherProps });
     }
 
     // eslint-disable-next-line operator-linebreak
