@@ -20,7 +20,6 @@ export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
 export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message: SnackbarMessage) => React.ReactNode);
 
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
@@ -153,7 +152,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
      * The component used for the transition. (e.g. Slide, Grow, Zoom, etc.)
      * @default Slide
      */
-    TransitionComponent?: React.ComponentType<TransitionProps>;
+    TransitionComponent?: React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
     /**
      * The duration for the transition, in milliseconds.
      * You may specify the duration with an object in the following shape:
@@ -258,6 +257,7 @@ export interface SnackbarProviderProps extends SharedProps {
 
 export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
     enqueueSnackbar: ProviderContext['enqueueSnackbar'];
+
     closeSnackbar: ProviderContext['closeSnackbar'];
 }
 
