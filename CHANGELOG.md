@@ -1,5 +1,11 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@2.0.5`
+###### May 12, 2022
+* **@neporshiso** Update TransitionComponent type for MUIv5 compatibility [#474](https://github.com/iamhosseindhv/notistack/pull/474) 
+
+<br />
+
 ### `notistack@2.0.4`
 ###### Apr 10, 2022
 * **@suren-atoyan** Add support for React 18 [#482](https://github.com/iamhosseindhv/notistack/pull/482) 
