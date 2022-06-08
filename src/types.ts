@@ -2,6 +2,8 @@ import * as React from 'react';
 
 export interface TransitionDuration { enter?: number, exit?: number }
 
+type TransitionComponent = React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>
+
 /**
  * @category Shared
  */
@@ -148,14 +150,14 @@ export interface SharedProps<V extends string = VariantType> extends Partial<Tra
      * The component used for the transition. notistack supports 4 transitions
      * out of the box. You can also create your own transitions using react-transition-group.
      * ```jsx
-     * import Fade from 'notistack/transitions/Fade';
-     * import Grow from 'notistack/transitions/Grow';
-     * import Slide from 'notistack/transitions/Slide';
-     * import Zoom from 'notistack/transitions/Zoom';
+     * import { Fade } from 'notistack';
+     * import { Grow } from 'notistack';
+     * import { Slide } from 'notistack';
+     * import { Zoom } from 'notistack';
      * ```
      * @default Slide
      */
-    TransitionComponent?: React.ComponentType<TransitionProps>;
+    TransitionComponent?: TransitionComponent;
     /**
      * The duration for the transition, in milliseconds.
      *
@@ -340,3 +342,8 @@ export declare function withSnackbar<P extends ProviderContext>(component: React
 export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
 
 export declare function useSnackbar<T extends AnyComponentMap>(): ProviderContext<T>;
+
+export declare const Slide: TransitionComponent;
+export declare const Grow: TransitionComponent;
+export declare const Fade: TransitionComponent;
+export declare const Zoom: TransitionComponent;
