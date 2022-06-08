@@ -7,8 +7,6 @@ import { ComponentClasses, makeStyles } from '../../utils/styles';
 const classes = makeStyles({
     root: {
         backgroundColor: '#313131', // dark grey
-        fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-        fontWeight: 400,
         fontSize: '0.875rem',
         lineHeight: 1.43,
         letterSpacing: '0.01071em',
