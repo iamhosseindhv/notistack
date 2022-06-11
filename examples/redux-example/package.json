@@ -1,7 +1,7 @@
 {
   "name": "notistack-redux-example",
   "description": "Redux example for notistack",
-  "homepage": "https://www.iamhosseindhv.com/notistack",
+  "homepage": "https://www.notistack.com",
   "repository": {
     "url": "git+https://github.com/iamhosseindhv/notistack.git",
     "type": "git"

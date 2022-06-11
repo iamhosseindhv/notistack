@@ -1,12 +1,12 @@
 <p align="center">
-  <a href="https://iamhosseindhv.com/" rel="noopener" target="_blank"><img width="756" src="https://iamhosseindhv.com/static/projects/notistack-banner.png" alt="notistack logo"></a></p>
+  <a href="https://notistack.com/" rel="noopener" target="_blank"><img width="756" src="https://iamhosseindhv.com/static/projects/notistack-banner.png" alt="notistack logo"></a></p>
 </p>
 
 <div align="center">
 
-[**Notistack**](https://iamhosseindhv.com/notistack) is a notification library which makes it extremely easy to display notifications on your web apps. It is highly customizable and enables you to stack snackbars/toasts on top of one another.
+[**Notistack**](https://notistack.com) is a notification library which makes it extremely easy to display notifications on your web apps. It is highly customizable and enables you to stack snackbars/toasts on top of one another.
 </br>
-**Visit [documentation website](https://iamhosseindhv.com/notistack/demos) for demos**.
+**Visit the [documentation website](https://notistack.com/examples) for demos**.
 
 [![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)](https://www.npmjs.com/package/notistack)
 [![npm downloads](https://img.shields.io/npm/dm/notistack.svg)](https://www.npmjs.com/package/notistack)
@@ -26,7 +26,7 @@ Table of Contents
 --
 - [How to use](#how-to-use)
 - [Online demo](#online-demo)
-- [Documentation](https://iamhosseindhv.com/notistack/api)
+- [Documentation](https://notistack.com/notistack/api-reference)
 - [Redux / Mobx support](#redux-and-mobx-support)
 
 
@@ -39,7 +39,7 @@ yarn add notistack
 
 ### How to use
 
-**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](https://iamhosseindhv.com/notistack/api) for a full list of available props)
+**1:** Wrap your app inside a `SnackbarProvider` component: (see [docs](https://notistack.com/notistack/api-reference) for a full list of available props)
 <br />
 **Note:** If you're using material-ui `ThemeProvider`, make sure `SnackbarProvider` is a child of it.
 ```jsx
@@ -92,12 +92,12 @@ const MyButton = () => {
 ```
 
 ### Online demo
-**Visit [`documentation website`](https://iamhosseindhv.com/notistack/demos) to see all the demos.**</br>
+**Visit the [`documentation website`](https://notistack.com/examples) to see all the examples.**</br>
 Or play with a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
 
 
 ### Redux and Mobx support:
-notistack is compatible with state management libraries such as Redux and Mobx. See notistack [documentation](https://iamhosseindhv.com/notistack/demos#redux-/-mobx-example) for more info.
+notistack is compatible with state management libraries such as Redux and Mobx. See examples for [Redux](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/redux-example) and [MobX](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/mobx-example).
 
 ### Contribution
 Open an issue and your problem will be solved.
