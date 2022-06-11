@@ -89,7 +89,6 @@
     ],
     "np": {
         "branch": "alpha",
-        "yolo": true,
         "yarn": false,
         "contents": "dist",
         "message": "v%s",
