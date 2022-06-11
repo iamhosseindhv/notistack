@@ -208,7 +208,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 339,
+							"line": 406,
 							"character": 17
 						}
 					],
@@ -270,7 +270,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 337,
+							"line": 404,
 							"character": 19
 						}
 					],
@@ -1951,7 +1951,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 336,
+					"line": 403,
 					"character": 37
 				}
 			],
@@ -1997,7 +1997,7 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 211,
+								"id": 226,
 								"name": "VariantType"
 							}
 						}
@@ -2016,14 +2016,14 @@
 								"types": [
 									{
 										"type": "reference",
-										"id": 248,
+										"id": 263,
 										"typeArguments": [
 											{
 												"type": "typeParameter",
 												"name": "V",
 												"constraint": {
 													"type": "reference",
-													"id": 211,
+													"id": 226,
 													"name": "VariantType"
 												}
 											}
@@ -2053,13 +2053,13 @@
 													"sources": [
 														{
 															"fileName": "src/types.ts",
-															"line": 327,
-															"character": 72
+															"line": 394,
+															"character": 73
 														}
 													],
 													"type": {
 														"type": "reference",
-														"id": 214,
+														"id": 229,
 														"name": "SnackbarMessage"
 													}
 												}
@@ -2076,8 +2076,8 @@
 											"sources": [
 												{
 													"fileName": "src/types.ts",
-													"line": 327,
-													"character": 62
+													"line": 394,
+													"character": 63
 												}
 											]
 										}
@@ -2088,7 +2088,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 212,
+						"id": 227,
 						"name": "SnackbarKey"
 					}
 				},
@@ -2111,7 +2111,7 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 211,
+								"id": 226,
 								"name": "VariantType"
 							}
 						}
@@ -2141,14 +2141,14 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 248,
+								"id": 263,
 								"typeArguments": [
 									{
 										"type": "typeParameter",
 										"name": "V",
 										"constraint": {
 											"type": "reference",
-											"id": 211,
+											"id": 226,
 											"name": "VariantType"
 										}
 									}
@@ -2159,7 +2159,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 212,
+						"id": 227,
 						"name": "SnackbarKey"
 					}
 				}
@@ -2167,7 +2167,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 326,
+					"line": 393,
 					"character": 25
 				}
 			]
@@ -2195,7 +2195,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 257,
+							"line": 300,
 							"character": 11
 						}
 					],
@@ -2220,7 +2220,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 270,
+							"line": 324,
 							"character": 15
 						}
 					],
@@ -2250,13 +2250,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 268,
+							"line": 322,
 							"character": 6
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 212,
+						"id": 227,
 						"name": "SnackbarKey"
 					}
 				},
@@ -2272,13 +2272,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 269,
+							"line": 323,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 214,
+						"id": 229,
 						"name": "SnackbarMessage"
 					}
 				},
@@ -2293,7 +2293,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 256,
+							"line": 299,
 							"character": 8
 						}
 					],
@@ -2318,7 +2318,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 258,
+							"line": 301,
 							"character": 16
 						}
 					],
@@ -2350,7 +2350,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 267,
+					"line": 319,
 					"character": 30
 				}
 			],
@@ -2414,7 +2414,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 257,
+							"line": 300,
 							"character": 11
 						}
 					],
@@ -2434,7 +2434,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 256,
+							"line": 299,
 							"character": 8
 						}
 					],
@@ -2454,7 +2454,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 258,
+							"line": 301,
 							"character": 16
 						}
 					],
@@ -2478,7 +2478,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 255,
+					"line": 298,
 					"character": 33
 				}
 			],
@@ -2510,7 +2510,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 211,
+						"id": 226,
 						"name": "VariantType"
 					}
 				}
@@ -2531,7 +2531,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 213,
+							"line": 256,
 							"character": 17
 						}
 					],
@@ -2572,7 +2572,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 165,
+							"line": 208,
 							"character": 23
 						}
 					],
@@ -2602,7 +2602,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 187,
+							"line": 230,
 							"character": 19
 						}
 					],
@@ -2645,13 +2645,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 203,
+							"line": 246,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 215,
+						"id": 230,
 						"name": "SnackbarAction"
 					},
 					"inheritedFrom": {
@@ -2681,7 +2681,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 140,
+							"line": 183,
 							"character": 16
 						}
 					],
@@ -2717,7 +2717,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 148,
+							"line": 191,
 							"character": 20
 						}
 					],
@@ -2752,7 +2752,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 134,
+							"line": 177,
 							"character": 13
 						}
 					],
@@ -2796,7 +2796,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 153,
+							"line": 196,
 							"character": 29
 						}
 					],
@@ -2844,7 +2844,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 208,
+							"line": 251,
 							"character": 19
 						}
 					],
@@ -2892,13 +2892,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 246,
+							"line": 289,
 							"character": 7
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 212,
+						"id": 227,
 						"name": "SnackbarKey"
 					}
 				},
@@ -2934,13 +2934,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 235,
+							"line": 278,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 224,
+						"id": 239,
 						"name": "TransitionCloseHandler"
 					},
 					"inheritedFrom": {
@@ -2970,7 +2970,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 251,
+							"line": 294,
 							"character": 11
 						}
 					],
@@ -3013,7 +3013,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 198,
+							"line": 241,
 							"character": 20
 						}
 					],
@@ -3052,7 +3052,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 135,
+							"line": 178,
 							"character": 9
 						}
 					],
@@ -3088,7 +3088,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 183,
+							"line": 226,
 							"character": 22
 						}
 					],
@@ -3130,7 +3130,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 193,
+							"line": 236,
 							"character": 11
 						}
 					],
@@ -3173,7 +3173,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 241,
+					"line": 284,
 					"character": 30
 				}
 			],
@@ -3187,7 +3187,7 @@
 							"name": "V",
 							"constraint": {
 								"type": "reference",
-								"id": 211,
+								"id": 226,
 								"name": "VariantType"
 							}
 						}
@@ -3216,7 +3216,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 333,
+							"line": 400,
 							"character": 17
 						}
 					],
@@ -3251,7 +3251,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 212,
+												"id": 227,
 												"name": "SnackbarKey"
 											}
 										}
@@ -3265,7 +3265,7 @@
 							"sources": [
 								{
 									"fileName": "src/types.ts",
-									"line": 333,
+									"line": 400,
 									"character": 18
 								}
 							]
@@ -3283,7 +3283,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 332,
+							"line": 399,
 							"character": 19
 						}
 					],
@@ -3307,7 +3307,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 331,
+					"line": 398,
 					"character": 32
 				}
 			]
@@ -3332,7 +3332,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 211,
+						"id": 226,
 						"name": "VariantType"
 					}
 				}
@@ -3353,7 +3353,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 213,
+							"line": 256,
 							"character": 17
 						}
 					],
@@ -3389,7 +3389,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 165,
+							"line": 208,
 							"character": 23
 						}
 					],
@@ -3414,7 +3414,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 187,
+							"line": 230,
 							"character": 19
 						}
 					],
@@ -3452,13 +3452,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 203,
+							"line": 246,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 215,
+						"id": 230,
 						"name": "SnackbarAction"
 					}
 				},
@@ -3483,7 +3483,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 140,
+							"line": 183,
 							"character": 16
 						}
 					],
@@ -3514,7 +3514,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 148,
+							"line": 191,
 							"character": 20
 						}
 					],
@@ -3544,7 +3544,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 134,
+							"line": 177,
 							"character": 13
 						}
 					],
@@ -3583,7 +3583,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 153,
+							"line": 196,
 							"character": 29
 						}
 					],
@@ -3626,7 +3626,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 208,
+							"line": 251,
 							"character": 19
 						}
 					],
@@ -3680,13 +3680,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 235,
+							"line": 278,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 224,
+						"id": 239,
 						"name": "TransitionCloseHandler"
 					}
 				},
@@ -3711,7 +3711,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 198,
+							"line": 241,
 							"character": 20
 						}
 					],
@@ -3745,7 +3745,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 135,
+							"line": 178,
 							"character": 9
 						}
 					],
@@ -3776,7 +3776,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 183,
+							"line": 226,
 							"character": 22
 						}
 					],
@@ -3813,7 +3813,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 193,
+							"line": 236,
 							"character": 11
 						}
 					],
@@ -3849,7 +3849,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 133,
+					"line": 176,
 					"character": 28
 				}
 			],
@@ -3867,7 +3867,7 @@
 						"sources": [
 							{
 								"fileName": "src/types.ts",
-								"line": 133,
+								"line": 176,
 								"character": 73
 							}
 						]
@@ -3907,7 +3907,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 125,
+							"line": 168,
 							"character": 14
 						}
 					],
@@ -3940,7 +3940,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 124,
+							"line": 167,
 							"character": 12
 						}
 					],
@@ -3972,7 +3972,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 123,
+					"line": 166,
 					"character": 31
 				}
 			]
@@ -3997,7 +3997,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 211,
+						"id": 226,
 						"name": "VariantType"
 					}
 				}
@@ -4018,7 +4018,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 319,
+							"line": 384,
 							"character": 14
 						}
 					],
@@ -4059,7 +4059,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 213,
+							"line": 256,
 							"character": 17
 						}
 					],
@@ -4100,7 +4100,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 165,
+							"line": 208,
 							"character": 23
 						}
 					],
@@ -4130,7 +4130,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 187,
+							"line": 230,
 							"character": 19
 						}
 					],
@@ -4173,13 +4173,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 203,
+							"line": 246,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 215,
+						"id": 230,
 						"name": "SnackbarAction"
 					},
 					"inheritedFrom": {
@@ -4209,7 +4209,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 140,
+							"line": 183,
 							"character": 16
 						}
 					],
@@ -4245,7 +4245,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 148,
+							"line": 191,
 							"character": 20
 						}
 					],
@@ -4274,7 +4274,8 @@
 					"kind": 1024,
 					"kindString": "Property",
 					"flags": {
-						"isExported": true
+						"isExported": true,
+						"isOptional": true
 					},
 					"comment": {
 						"shortText": "Most of the time this is your App. every component from this point onward\nwill be able to show snackbars."
@@ -4282,7 +4283,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 288,
+							"line": 352,
 							"character": 12
 						}
 					],
@@ -4315,7 +4316,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 134,
+							"line": 177,
 							"character": 13
 						}
 					],
@@ -4353,7 +4354,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 306,
+							"line": 371,
 							"character": 11
 						}
 					],
@@ -4362,11 +4363,11 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"id": 207,
+								"id": 222,
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 243,
+										"id": 258,
 										"name": "CombinedClassKey"
 									}
 								],
@@ -4397,7 +4398,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 293,
+							"line": 357,
 							"character": 9
 						}
 					],
@@ -4440,7 +4441,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 153,
+							"line": 196,
 							"character": 29
 						}
 					],
@@ -4477,12 +4478,12 @@
 						"isOptional": true
 					},
 					"comment": {
-						"shortText": "Valid and exist HTML Node element, used to target `ReactDOM.createPortal`"
+						"shortText": "Valid HTML Node element, used to target `ReactDOM.createPortal`. If you are\nusing this prop, most likely you also want to apply `position: absolute` to SnackbarContainer."
 					},
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 302,
+							"line": 367,
 							"character": 11
 						}
 					],
@@ -4512,7 +4513,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 208,
+							"line": 251,
 							"character": 19
 						}
 					],
@@ -4554,7 +4555,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 310,
+							"line": 375,
 							"character": 15
 						}
 					],
@@ -4566,7 +4567,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 211,
+										"id": 226,
 										"name": "VariantType"
 									},
 									{
@@ -4601,7 +4602,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 298,
+							"line": 362,
 							"character": 12
 						}
 					],
@@ -4651,13 +4652,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 235,
+							"line": 278,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 224,
+						"id": 239,
 						"name": "TransitionCloseHandler"
 					},
 					"inheritedFrom": {
@@ -4687,7 +4688,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 198,
+							"line": 241,
 							"character": 20
 						}
 					],
@@ -4726,7 +4727,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 135,
+							"line": 178,
 							"character": 9
 						}
 					],
@@ -4762,7 +4763,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 183,
+							"line": 226,
 							"character": 22
 						}
 					],
@@ -4804,7 +4805,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 193,
+							"line": 236,
 							"character": 11
 						}
 					],
@@ -4852,7 +4853,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 283,
+					"line": 347,
 					"character": 38
 				}
 			],
@@ -4885,8 +4886,8 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 4,
-							"character": 43
+							"line": 39,
+							"character": 9
 						}
 					],
 					"type": {
@@ -4915,8 +4916,8 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 4,
-							"character": 58
+							"line": 40,
+							"character": 8
 						}
 					],
 					"type": {
@@ -4947,7 +4948,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 4,
+					"line": 38,
 					"character": 35
 				}
 			]
@@ -4976,13 +4977,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 15,
+							"line": 52,
 							"character": 11
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 230,
+						"id": 245,
 						"name": "TransitionEnterHandler"
 					}
 				},
@@ -5000,13 +5001,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 19,
+							"line": 56,
 							"character": 13
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 230,
+						"id": 245,
 						"name": "TransitionEnterHandler"
 					}
 				},
@@ -5024,13 +5025,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 23,
+							"line": 60,
 							"character": 10
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 236,
+						"id": 251,
 						"name": "TransitionExitHandler"
 					}
 				},
@@ -5048,13 +5049,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 27,
+							"line": 64,
 							"character": 12
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 236,
+						"id": 251,
 						"name": "TransitionExitHandler"
 					}
 				}
@@ -5074,7 +5075,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 11,
+					"line": 48,
 					"character": 39
 				}
 			]
@@ -5099,7 +5100,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 78,
+							"line": 115,
 							"character": 12
 						}
 					],
@@ -5123,13 +5124,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 77,
+							"line": 114,
 							"character": 13
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 206,
+						"id": 221,
 						"name": "SlideTransitionDirection"
 					}
 				},
@@ -5148,7 +5149,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 49,
+							"line": 86,
 							"character": 9
 						}
 					],
@@ -5185,7 +5186,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 53,
+							"line": 90,
 							"character": 8
 						}
 					],
@@ -5221,13 +5222,13 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 37,
+							"line": 74,
 							"character": 6
 						}
 					],
 					"type": {
 						"type": "reference",
-						"id": 212,
+						"id": 227,
 						"name": "SnackbarKey"
 					}
 				},
@@ -5246,7 +5247,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 41,
+							"line": 78,
 							"character": 6
 						}
 					],
@@ -5283,7 +5284,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 61,
+							"line": 98,
 							"character": 16
 						}
 					],
@@ -5320,7 +5321,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 72,
+							"line": 109,
 							"character": 9
 						}
 					],
@@ -5344,7 +5345,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 45,
+							"line": 82,
 							"character": 11
 						}
 					],
@@ -5382,7 +5383,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 67,
+							"line": 104,
 							"character": 17
 						}
 					],
@@ -5426,7 +5427,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 32,
+					"line": 69,
 					"character": 32
 				}
 			],
@@ -5444,7 +5445,7 @@
 						"sources": [
 							{
 								"fileName": "src/types.ts",
-								"line": 32,
+								"line": 69,
 								"character": 40
 							}
 						]
@@ -5463,13 +5464,13 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 84,
+					"line": 121,
 					"character": 26
 				}
 			]
 		},
 		{
-			"id": 210,
+			"id": 225,
 			"name": "BaseVariant",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5479,7 +5480,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 88,
+					"line": 125,
 					"character": 16
 				}
 			],
@@ -5510,7 +5511,7 @@
 			}
 		},
 		{
-			"id": 207,
+			"id": 222,
 			"name": "ClassNameMap",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5519,7 +5520,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 208,
+					"id": 223,
 					"name": "ClassKey",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5535,7 +5536,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 81,
+					"line": 118,
 					"character": 24
 				}
 			],
@@ -5559,7 +5560,7 @@
 			}
 		},
 		{
-			"id": 213,
+			"id": 228,
 			"name": "CloseReason",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5569,7 +5570,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 93,
+					"line": 130,
 					"character": 23
 				}
 			],
@@ -5596,7 +5597,7 @@
 			}
 		},
 		{
-			"id": 243,
+			"id": 258,
 			"name": "CombinedClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5606,7 +5607,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 121,
+					"line": 164,
 					"character": 28
 				}
 			],
@@ -5615,19 +5616,19 @@
 				"types": [
 					{
 						"type": "reference",
-						"id": 242,
+						"id": 257,
 						"name": "ContainerClassKey"
 					},
 					{
 						"type": "reference",
-						"id": 241,
+						"id": 256,
 						"name": "SnackbarClassKey"
 					}
 				]
 			}
 		},
 		{
-			"id": 242,
+			"id": 257,
 			"name": "ContainerClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5637,7 +5638,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 112,
+					"line": 155,
 					"character": 29
 				}
 			],
@@ -5676,7 +5677,7 @@
 			}
 		},
 		{
-			"id": 247,
+			"id": 262,
 			"name": "CustomContentProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5689,7 +5690,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 278,
+					"line": 342,
 					"character": 30
 				}
 			],
@@ -5703,7 +5704,7 @@
 					},
 					{
 						"type": "reference",
-						"id": 246,
+						"id": 261,
 						"name": "NotNeededByCustomSnackbar"
 					}
 				],
@@ -5711,7 +5712,136 @@
 			}
 		},
 		{
-			"id": 245,
+			"id": 215,
+			"name": "GetWhitelistedVariants",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"typeParameter": [
+				{
+					"id": 216,
+					"name": "V",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					},
+					"type": {
+						"type": "intrinsic",
+						"name": "string"
+					}
+				},
+				{
+					"id": 217,
+					"name": "U",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 36,
+					"character": 27
+				}
+			],
+			"type": {
+				"type": "reference",
+				"id": 206,
+				"typeArguments": [
+					{
+						"type": "reference",
+						"id": 212,
+						"typeArguments": [
+							{
+								"type": "reference",
+								"id": 209,
+								"typeArguments": [
+									{
+										"type": "reference",
+										"typeArguments": [
+											{
+												"type": "typeParameter",
+												"name": "V",
+												"constraint": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											},
+											{
+												"type": "intrinsic",
+												"name": "true"
+											}
+										],
+										"name": "Record"
+									},
+									{
+										"type": "typeParameter",
+										"name": "U"
+									}
+								],
+								"name": "Override"
+							}
+						],
+						"name": "MarkInvalidVariantAsNever"
+					}
+				],
+				"name": "OmitNever"
+			}
+		},
+		{
+			"id": 212,
+			"name": "MarkInvalidVariantAsNever",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"typeParameter": [
+				{
+					"id": 213,
+					"name": "T",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 32,
+					"character": 30
+				}
+			],
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 214,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"sources": [
+						{
+							"fileName": "src/types.ts",
+							"line": 32,
+							"character": 35
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": 260,
 			"name": "NeededByInternalSnack",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5721,7 +5851,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 261,
+					"line": 304,
 					"character": 26
 				}
 			],
@@ -5768,7 +5898,7 @@
 			}
 		},
 		{
-			"id": 246,
+			"id": 261,
 			"name": "NotNeededByCustomSnackbar",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5778,7 +5908,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 273,
+					"line": 327,
 					"character": 30
 				}
 			],
@@ -5839,7 +5969,78 @@
 			}
 		},
 		{
-			"id": 248,
+			"id": 206,
+			"name": "OmitNever",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "type MyType = {\n     a: string\n     b: never\n}",
+				"text": "OmitNever<MyType> --> { a: string }\n"
+			},
+			"typeParameter": [
+				{
+					"id": 207,
+					"name": "T",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 13,
+					"character": 14
+				}
+			],
+			"type": {
+				"type": "reference",
+				"typeArguments": [
+					{
+						"type": "typeParameter",
+						"name": "T"
+					},
+					{
+						"type": "indexedAccess",
+						"indexType": {
+							"type": "typeOperator",
+							"operator": "keyof",
+							"target": {
+								"type": "typeParameter",
+								"name": "T"
+							}
+						},
+						"objectType": {
+							"type": "reflection",
+							"declaration": {
+								"id": 208,
+								"name": "__type",
+								"kind": 65536,
+								"kindString": "Type literal",
+								"flags": {
+									"isExported": true
+								},
+								"sources": [
+									{
+										"fileName": "src/types.ts",
+										"line": 14,
+										"character": 6
+									}
+								]
+							}
+						}
+					}
+				],
+				"name": "Pick"
+			}
+		},
+		{
+			"id": 263,
 			"name": "OptionsWithExtraProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5848,7 +6049,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 249,
+					"id": 264,
 					"name": "V",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5857,7 +6058,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 211,
+						"id": 226,
 						"name": "VariantType"
 					}
 				}
@@ -5865,7 +6066,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 324,
+					"line": 389,
 					"character": 26
 				}
 			],
@@ -5878,7 +6079,7 @@
 						"name": "V",
 						"constraint": {
 							"type": "reference",
-							"id": 211,
+							"id": 226,
 							"name": "VariantType"
 						}
 					},
@@ -5899,7 +6100,7 @@
 							"name": "V",
 							"constraint": {
 								"type": "reference",
-								"id": 211,
+								"id": 226,
 								"name": "VariantType"
 							}
 						}
@@ -5917,7 +6118,7 @@
 									"name": "V",
 									"constraint": {
 										"type": "reference",
-										"id": 211,
+										"id": 226,
 										"name": "VariantType"
 									}
 								}
@@ -5931,7 +6132,7 @@
 								"name": "V",
 								"constraint": {
 									"type": "reference",
-									"id": 211,
+									"id": 226,
 									"name": "VariantType"
 								}
 							},
@@ -5945,7 +6146,173 @@
 			}
 		},
 		{
-			"id": 206,
+			"id": 209,
+			"name": "Override",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"comment": {
+				"shortText": "type Type1 = { a: string; b: number }\ntype Type2 = { b: boolean; c: string }",
+				"text": "Override<Type1, Type2> --> {\n     a: string\n     b: boolean\n     c: string\n}\n"
+			},
+			"typeParameter": [
+				{
+					"id": 210,
+					"name": "T",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					}
+				},
+				{
+					"id": 211,
+					"name": "U",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 30,
+					"character": 13
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "typeParameter",
+								"name": "T"
+							},
+							{
+								"type": "typeOperator",
+								"operator": "keyof",
+								"target": {
+									"type": "typeParameter",
+									"name": "U"
+								}
+							}
+						],
+						"name": "Omit"
+					},
+					{
+						"type": "typeParameter",
+						"name": "U"
+					}
+				]
+			}
+		},
+		{
+			"id": 203,
+			"name": "RequiredBy",
+			"kind": 4194304,
+			"kindString": "Type alias",
+			"flags": {
+				"isExported": true
+			},
+			"typeParameter": [
+				{
+					"id": 204,
+					"name": "T",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					}
+				},
+				{
+					"id": 205,
+					"name": "K",
+					"kind": 131072,
+					"kindString": "Type parameter",
+					"flags": {
+						"isExported": true
+					},
+					"type": {
+						"type": "typeOperator",
+						"operator": "keyof",
+						"target": {
+							"type": "typeParameter",
+							"name": "T"
+						}
+					}
+				}
+			],
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 3,
+					"character": 22
+				}
+			],
+			"type": {
+				"type": "intersection",
+				"types": [
+					{
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "typeParameter",
+								"name": "T"
+							},
+							{
+								"type": "typeParameter",
+								"name": "K",
+								"constraint": {
+									"type": "typeOperator",
+									"operator": "keyof",
+									"target": {
+										"type": "typeParameter",
+										"name": "T"
+									}
+								}
+							}
+						],
+						"name": "Omit"
+					},
+					{
+						"type": "reference",
+						"typeArguments": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "typeParameter",
+										"name": "T"
+									},
+									{
+										"type": "typeParameter",
+										"name": "K",
+										"constraint": {
+											"type": "typeOperator",
+											"operator": "keyof",
+											"target": {
+												"type": "typeParameter",
+												"name": "T"
+											}
+										}
+									}
+								],
+								"name": "Pick"
+							}
+						],
+						"name": "Required"
+					}
+				]
+			}
+		},
+		{
+			"id": 221,
 			"name": "SlideTransitionDirection",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5955,7 +6322,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 30,
+					"line": 67,
 					"character": 36
 				}
 			],
@@ -5982,7 +6349,7 @@
 			}
 		},
 		{
-			"id": 215,
+			"id": 230,
 			"name": "SnackbarAction",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5992,7 +6359,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 96,
+					"line": 133,
 					"character": 26
 				}
 			],
@@ -6006,7 +6373,7 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 216,
+							"id": 231,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -6015,7 +6382,7 @@
 							},
 							"signatures": [
 								{
-									"id": 217,
+									"id": 232,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -6024,7 +6391,7 @@
 									},
 									"parameters": [
 										{
-											"id": 218,
+											"id": 233,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -6033,7 +6400,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 212,
+												"id": 227,
 												"name": "SnackbarKey"
 											}
 										}
@@ -6047,7 +6414,7 @@
 							"sources": [
 								{
 									"fileName": "src/types.ts",
-									"line": 96,
+									"line": 133,
 									"character": 46
 								}
 							]
@@ -6057,7 +6424,7 @@
 			}
 		},
 		{
-			"id": 241,
+			"id": 256,
 			"name": "SnackbarClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6067,7 +6434,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 103,
+					"line": 146,
 					"character": 28
 				}
 			],
@@ -6106,7 +6473,7 @@
 			}
 		},
 		{
-			"id": 219,
+			"id": 234,
 			"name": "SnackbarContentCallback",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6116,7 +6483,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 97,
+					"line": 134,
 					"character": 35
 				}
 			],
@@ -6130,7 +6497,7 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 220,
+							"id": 235,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -6139,7 +6506,7 @@
 							},
 							"signatures": [
 								{
-									"id": 221,
+									"id": 236,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -6148,7 +6515,7 @@
 									},
 									"parameters": [
 										{
-											"id": 222,
+											"id": 237,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -6157,12 +6524,12 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 212,
+												"id": 227,
 												"name": "SnackbarKey"
 											}
 										},
 										{
-											"id": 223,
+											"id": 238,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -6172,7 +6539,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 214,
+												"id": 229,
 												"name": "SnackbarMessage"
 											}
 										}
@@ -6186,8 +6553,8 @@
 							"sources": [
 								{
 									"fileName": "src/types.ts",
-									"line": 97,
-									"character": 55
+									"line": 136,
+									"character": 5
 								}
 							]
 						}
@@ -6196,7 +6563,7 @@
 			}
 		},
 		{
-			"id": 244,
+			"id": 259,
 			"name": "SnackbarContentProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6206,7 +6573,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 128,
+					"line": 171,
 					"character": 32
 				}
 			],
@@ -6222,7 +6589,7 @@
 			}
 		},
 		{
-			"id": 212,
+			"id": 227,
 			"name": "SnackbarKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6232,7 +6599,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 92,
+					"line": 129,
 					"character": 23
 				}
 			],
@@ -6251,7 +6618,7 @@
 			}
 		},
 		{
-			"id": 214,
+			"id": 229,
 			"name": "SnackbarMessage",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6261,7 +6628,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 95,
+					"line": 132,
 					"character": 27
 				}
 			],
@@ -6271,7 +6638,7 @@
 			}
 		},
 		{
-			"id": 224,
+			"id": 239,
 			"name": "TransitionCloseHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6281,14 +6648,14 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 99,
+					"line": 138,
 					"character": 34
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 225,
+					"id": 240,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -6297,7 +6664,7 @@
 					},
 					"signatures": [
 						{
-							"id": 226,
+							"id": 241,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6306,7 +6673,7 @@
 							},
 							"parameters": [
 								{
-									"id": 227,
+									"id": 242,
 									"name": "event",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6334,7 +6701,7 @@
 									}
 								},
 								{
-									"id": 228,
+									"id": 243,
 									"name": "reason",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6343,12 +6710,12 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 213,
+										"id": 228,
 										"name": "CloseReason"
 									}
 								},
 								{
-									"id": 229,
+									"id": 244,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6358,7 +6725,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 212,
+										"id": 227,
 										"name": "SnackbarKey"
 									}
 								}
@@ -6372,7 +6739,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 99,
+							"line": 138,
 							"character": 36
 						}
 					]
@@ -6380,7 +6747,7 @@
 			}
 		},
 		{
-			"id": 203,
+			"id": 218,
 			"name": "TransitionComponent",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6390,7 +6757,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 6,
+					"line": 43,
 					"character": 24
 				}
 			],
@@ -6408,7 +6775,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 204,
+									"id": 219,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -6417,7 +6784,7 @@
 									},
 									"children": [
 										{
-											"id": 205,
+											"id": 220,
 											"name": "children",
 											"kind": 32,
 											"kindString": "Variable",
@@ -6427,7 +6794,7 @@
 											"sources": [
 												{
 													"fileName": "src/types.ts",
-													"line": 6,
+													"line": 43,
 													"character": 83
 												}
 											],
@@ -6452,14 +6819,14 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												205
+												220
 											]
 										}
 									],
 									"sources": [
 										{
 											"fileName": "src/types.ts",
-											"line": 6,
+											"line": 43,
 											"character": 72
 										}
 									]
@@ -6472,7 +6839,7 @@
 			}
 		},
 		{
-			"id": 230,
+			"id": 245,
 			"name": "TransitionEnterHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6482,14 +6849,14 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 100,
+					"line": 143,
 					"character": 34
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 231,
+					"id": 246,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -6498,7 +6865,7 @@
 					},
 					"signatures": [
 						{
-							"id": 232,
+							"id": 247,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6507,7 +6874,7 @@
 							},
 							"parameters": [
 								{
-									"id": 233,
+									"id": 248,
 									"name": "node",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6520,7 +6887,7 @@
 									}
 								},
 								{
-									"id": 234,
+									"id": 249,
 									"name": "isAppearing",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6533,7 +6900,7 @@
 									}
 								},
 								{
-									"id": 235,
+									"id": 250,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6542,7 +6909,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 212,
+										"id": 227,
 										"name": "SnackbarKey"
 									}
 								}
@@ -6556,7 +6923,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 100,
+							"line": 143,
 							"character": 36
 						}
 					]
@@ -6564,7 +6931,7 @@
 			}
 		},
 		{
-			"id": 236,
+			"id": 251,
 			"name": "TransitionExitHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6574,14 +6941,14 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 101,
+					"line": 144,
 					"character": 33
 				}
 			],
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 237,
+					"id": 252,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -6590,7 +6957,7 @@
 					},
 					"signatures": [
 						{
-							"id": 238,
+							"id": 253,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6599,7 +6966,7 @@
 							},
 							"parameters": [
 								{
-									"id": 239,
+									"id": 254,
 									"name": "node",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6612,7 +6979,7 @@
 									}
 								},
 								{
-									"id": 240,
+									"id": 255,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6621,7 +6988,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 212,
+										"id": 227,
 										"name": "SnackbarKey"
 									}
 								}
@@ -6635,7 +7002,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 101,
+							"line": 144,
 							"character": 35
 						}
 					]
@@ -6643,7 +7010,7 @@
 			}
 		},
 		{
-			"id": 209,
+			"id": 224,
 			"name": "VariantMap",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6653,16 +7020,17 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 86,
+					"line": 123,
 					"character": 15
 				}
 			],
 			"type": {
 				"type": "reference",
+				"id": 215,
 				"typeArguments": [
 					{
 						"type": "reference",
-						"id": 210,
+						"id": 225,
 						"name": "BaseVariant"
 					},
 					{
@@ -6675,7 +7043,7 @@
 			}
 		},
 		{
-			"id": 211,
+			"id": 226,
 			"name": "VariantType",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6685,7 +7053,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 90,
+					"line": 127,
 					"character": 23
 				}
 			],
@@ -6694,13 +7062,13 @@
 				"operator": "keyof",
 				"target": {
 					"type": "reference",
-					"id": 209,
+					"id": 224,
 					"name": "VariantMap"
 				}
 			}
 		},
 		{
-			"id": 261,
+			"id": 276,
 			"name": "Fade",
 			"kind": 32,
 			"kindString": "Variable",
@@ -6711,7 +7079,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 351,
+					"line": 419,
 					"character": 25
 				}
 			],
@@ -6722,7 +7090,7 @@
 			}
 		},
 		{
-			"id": 260,
+			"id": 275,
 			"name": "Grow",
 			"kind": 32,
 			"kindString": "Variable",
@@ -6733,7 +7101,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 350,
+					"line": 418,
 					"character": 25
 				}
 			],
@@ -6744,7 +7112,7 @@
 			}
 		},
 		{
-			"id": 259,
+			"id": 274,
 			"name": "Slide",
 			"kind": 32,
 			"kindString": "Variable",
@@ -6755,7 +7123,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 349,
+					"line": 417,
 					"character": 26
 				}
 			],
@@ -6766,7 +7134,7 @@
 			}
 		},
 		{
-			"id": 256,
+			"id": 271,
 			"name": "SnackbarContent",
 			"kind": 32,
 			"kindString": "Variable",
@@ -6777,7 +7145,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 345,
+					"line": 413,
 					"character": 36
 				}
 			],
@@ -6789,7 +7157,7 @@
 						"types": [
 							{
 								"type": "reference",
-								"id": 244,
+								"id": 259,
 								"name": "SnackbarContentProps"
 							},
 							{
@@ -6809,7 +7177,7 @@
 			}
 		},
 		{
-			"id": 262,
+			"id": 277,
 			"name": "Zoom",
 			"kind": 32,
 			"kindString": "Variable",
@@ -6820,7 +7188,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 352,
+					"line": 420,
 					"character": 25
 				}
 			],
@@ -6831,7 +7199,7 @@
 			}
 		},
 		{
-			"id": 257,
+			"id": 272,
 			"name": "useSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -6840,7 +7208,7 @@
 			},
 			"signatures": [
 				{
-					"id": 258,
+					"id": 273,
 					"name": "useSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -6857,13 +7225,13 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 347,
+					"line": 415,
 					"character": 35
 				}
 			]
 		},
 		{
-			"id": 250,
+			"id": 265,
 			"name": "withSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -6872,7 +7240,7 @@
 			},
 			"signatures": [
 				{
-					"id": 251,
+					"id": 266,
 					"name": "withSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -6881,7 +7249,7 @@
 					},
 					"typeParameter": [
 						{
-							"id": 252,
+							"id": 267,
 							"name": "P",
 							"kind": 131072,
 							"kindString": "Type parameter",
@@ -6897,7 +7265,7 @@
 					],
 					"parameters": [
 						{
-							"id": 253,
+							"id": 268,
 							"name": "component",
 							"kind": 32768,
 							"kindString": "Parameter",
@@ -6957,7 +7325,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 254,
+									"id": 269,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -6966,7 +7334,7 @@
 									},
 									"children": [
 										{
-											"id": 255,
+											"id": 270,
 											"name": "WrappedComponent",
 											"kind": 32,
 											"kindString": "Variable",
@@ -6976,8 +7344,8 @@
 											"sources": [
 												{
 													"fileName": "src/types.ts",
-													"line": 343,
-													"character": 77
+													"line": 411,
+													"character": 76
 												}
 											],
 											"type": {
@@ -7002,15 +7370,15 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												255
+												270
 											]
 										}
 									],
 									"sources": [
 										{
 											"fileName": "src/types.ts",
-											"line": 343,
-											"character": 58
+											"line": 411,
+											"character": 57
 										}
 									]
 								}
@@ -7022,7 +7390,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 342,
+					"line": 409,
 					"character": 36
 				}
 			]
@@ -7092,47 +7460,52 @@
 			"title": "Type aliases",
 			"kind": 4194304,
 			"children": [
-				210,
-				207,
-				213,
-				243,
-				242,
-				247,
-				245,
-				246,
-				248,
-				206,
+				225,
+				222,
+				228,
+				258,
+				257,
+				262,
 				215,
-				241,
-				219,
-				244,
 				212,
-				214,
-				224,
-				203,
-				230,
-				236,
+				260,
+				261,
+				206,
+				263,
 				209,
-				211
+				203,
+				221,
+				230,
+				256,
+				234,
+				259,
+				227,
+				229,
+				239,
+				218,
+				245,
+				251,
+				224,
+				226
 			]
 		},
 		{
 			"title": "Variables",
 			"kind": 32,
 			"children": [
-				261,
-				260,
-				259,
-				256,
-				262
+				276,
+				275,
+				274,
+				271,
+				277
 			]
 		},
 		{
 			"title": "Functions",
 			"kind": 64,
 			"children": [
-				257,
-				250
+				272,
+				265
 			]
 		}
 	]
