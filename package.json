@@ -96,5 +96,9 @@
         "contents": "dist",
         "message": "v%s",
         "releaseDraft": false
+    },
+    "engines": {
+        "node": "14",
+        "npm": "6"
     }
 }

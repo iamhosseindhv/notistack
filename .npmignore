@@ -6,6 +6,7 @@ examples
 .eslintignore
 .gitignore
 .prettierrc
+.npmrc
 tsdx.config.js
 webpack.config.js
 typedoc.json
