@@ -1,9 +1,46 @@
 import * as React from 'react';
-import { GetWhitelistedVariants, RequiredBy } from './types/utils';
 
-export interface TransitionDuration { enter?: number, exit?: number }
+export type RequiredBy<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>;
 
-type TransitionComponent = React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>
+/**
+ * type MyType = {
+ *      a: string
+ *      b: never
+ * }
+ *
+ * OmitNever<MyType> --> { a: string }
+ */
+type OmitNever<T> = Pick<
+    T,
+    {
+        [Prop in keyof T]: [T[Prop]] extends [never] ? never : Prop;
+    }[keyof T]
+>;
+
+/**
+ * type Type1 = { a: string; b: number }
+ * type Type2 = { b: boolean; c: string }
+ *
+ * Override<Type1, Type2> --> {
+ *      a: string
+ *      b: boolean
+ *      c: string
+ * }
+ */
+type Override<T, U> = Omit<T, keyof U> & U;
+
+type MarkInvalidVariantAsNever<T> = {
+    [Key in keyof T]: T[Key] extends true ? T[Key] : T[Key] extends Record<string, unknown> ? T[Key] : never;
+};
+
+type GetWhitelistedVariants<V extends string, U> = OmitNever<MarkInvalidVariantAsNever<Override<Record<V, true>, U>>>;
+
+export interface TransitionDuration {
+    enter?: number;
+    exit?: number;
+}
+
+type TransitionComponent = React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
 
 /**
  * @category Shared
@@ -81,11 +118,11 @@ export interface TransitionProps extends Partial<TransitionHandlerProps> {
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface VariantOverrides { }
+interface VariantOverrides {}
 
 type VariantMap = GetWhitelistedVariants<BaseVariant, VariantOverrides>;
 
-type BaseVariant = 'default' | 'error' | 'success' | 'warning' | 'info'
+type BaseVariant = 'default' | 'error' | 'success' | 'warning' | 'info';
 
 export type VariantType = keyof VariantMap;
 
@@ -94,9 +131,15 @@ export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
 
 export type SnackbarMessage = string;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
-export type SnackbarContentCallback = React.ReactNode | ((key: SnackbarKey, message?: SnackbarMessage) => React.ReactNode);
+export type SnackbarContentCallback =
+    | React.ReactNode
+    | ((key: SnackbarKey, message?: SnackbarMessage) => React.ReactNode);
 
-export type TransitionCloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
+export type TransitionCloseHandler = (
+    event: React.SyntheticEvent<any> | null,
+    reason: CloseReason,
+    key?: SnackbarKey
+) => void;
 export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
 export type TransitionExitHandler = (node: HTMLElement, key: SnackbarKey) => void;
 
@@ -258,24 +301,45 @@ interface InternalSnackAttributes {
     requestClose: boolean;
 }
 
-type NeededByInternalSnack = 'style' | 'persist' | 'variant' | 'anchorOrigin' | 'TransitionComponent' | 'TransitionProps' | 'transitionDuration' | 'hideIconVariant' | 'disableWindowBlurListener';
+type NeededByInternalSnack =
+    | 'style'
+    | 'persist'
+    | 'variant'
+    | 'anchorOrigin'
+    | 'TransitionComponent'
+    | 'TransitionProps'
+    | 'transitionDuration'
+    | 'hideIconVariant'
+    | 'disableWindowBlurListener';
 
 /**
  * Properties of a snackbar internal to notistack implementation. Not to be used by outside
  * world. If you find yourself using this, you're probably looking for `CustomContentProps` type.
  */
-export interface InternalSnack extends RequiredBy<Omit<OptionsObject, 'key' | 'preventDuplicate'>, NeededByInternalSnack>, InternalSnackAttributes {
+export interface InternalSnack
+    extends RequiredBy<Omit<OptionsObject, 'key' | 'preventDuplicate'>, NeededByInternalSnack>,
+        InternalSnackAttributes {
     id: SnackbarKey;
     message?: SnackbarMessage;
     iconVariant: Record<string, React.ReactNode>;
 }
 
-type NotNeededByCustomSnackbar = keyof InternalSnackAttributes | keyof TransitionHandlerProps | 'onClose' | 'SnackbarProps' | 'disableWindowBlurListener' | 'TransitionComponent' | 'transitionDuration' | 'TransitionProps' | 'dense' | 'content';
+type NotNeededByCustomSnackbar =
+    | keyof InternalSnackAttributes
+    | keyof TransitionHandlerProps
+    | 'onClose'
+    | 'SnackbarProps'
+    | 'disableWindowBlurListener'
+    | 'TransitionComponent'
+    | 'transitionDuration'
+    | 'TransitionProps'
+    | 'dense'
+    | 'content';
 
 /**
  * Props that will be passed to a custom component in `SnackbarProvider` `Components` prop
  */
-export type CustomContentProps = Omit<InternalSnack, NotNeededByCustomSnackbar>
+export type CustomContentProps = Omit<InternalSnack, NotNeededByCustomSnackbar>;
 
 /**
  * @category Provider
@@ -285,7 +349,7 @@ export interface SnackbarProviderProps extends SharedProps {
      * Most of the time this is your App. every component from this point onward
      * will be able to show snackbars.
      */
-    children: React.ReactNode | React.ReactNode[];
+    children?: React.ReactNode | React.ReactNode[];
     /**
      * Denser margins for snackbars. Recommended to be used on mobile devices.
      * @default false
@@ -297,7 +361,8 @@ export interface SnackbarProviderProps extends SharedProps {
      */
     maxSnack?: number;
     /**
-     * Valid and exist HTML Node element, used to target `ReactDOM.createPortal`
+     * Valid HTML Node element, used to target `ReactDOM.createPortal`. If you are
+     * using this prop, most likely you also want to apply `position: absolute` to SnackbarContainer.
      */
     domRoot?: HTMLElement;
     /**
@@ -317,15 +382,17 @@ export interface SnackbarProviderProps extends SharedProps {
      * Mapping between variants and a custom component.
      */
     Components?: {
-        [variant in VariantType]?: React.JSXElementConstructor<any>
-    }
+        [variant in VariantType]?: React.JSXElementConstructor<any>;
+    };
 }
 
-type OptionsWithExtraProps<V extends VariantType> = VariantMap[V] extends true ? OptionsObject<V> : OptionsObject<V> & VariantMap[V]
+type OptionsWithExtraProps<V extends VariantType> = VariantMap[V] extends true
+    ? OptionsObject<V>
+    : OptionsObject<V> & VariantMap[V];
 
 interface EnqueueSnackbar {
-   <V extends VariantType>(options: OptionsWithExtraProps<V> & { message?: SnackbarMessage }): SnackbarKey
-   <V extends VariantType>(message: string, options?: OptionsWithExtraProps<V>): SnackbarKey;
+    <V extends VariantType>(options: OptionsWithExtraProps<V> & { message?: SnackbarMessage }): SnackbarKey;
+    <V extends VariantType>(message: string, options?: OptionsWithExtraProps<V>): SnackbarKey;
 }
 
 export interface ProviderContext {
@@ -339,8 +406,9 @@ export declare class SnackbarProvider extends React.Component<SnackbarProviderPr
     closeSnackbar: ProviderContext['closeSnackbar'];
 }
 
-export declare function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
-    React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
+export declare function withSnackbar<P extends ProviderContext>(
+    component: React.ComponentType<P>
+): React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
 
 export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
 
