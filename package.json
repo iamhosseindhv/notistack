@@ -23,7 +23,7 @@
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
         "prerelease": "npm run build",
-        "prepare": "cpy package.json dist",
+        "prepublishOnly": "cpy package.json dist",
         "release:alpha": "np --tag alpha"
     },
     "peerDependencies": {
