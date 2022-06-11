@@ -94,15 +94,25 @@
 										"isExported": true
 									},
 									"type": {
-										"type": "reference",
-										"typeArguments": [
+										"type": "union",
+										"types": [
+											{
+												"type": "reference",
+												"typeArguments": [
+													{
+														"type": "reference",
+														"id": 75,
+														"name": "SnackbarProviderProps"
+													}
+												],
+												"name": "Readonly"
+											},
 											{
 												"type": "reference",
 												"id": 75,
 												"name": "SnackbarProviderProps"
 											}
-										],
-										"name": "Readonly"
+										]
 									}
 								}
 							],
@@ -158,8 +168,7 @@
 									"kind": 32768,
 									"kindString": "Parameter",
 									"flags": {
-										"isExported": true,
-										"isOptional": true
+										"isExported": true
 									},
 									"type": {
 										"type": "intrinsic",
@@ -182,13 +191,13 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 448,
-							"character": 21
+							"line": 470,
+							"character": 25
 						},
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 450,
-							"character": 40
+							"line": 472,
+							"character": 44
 						}
 					],
 					"inheritedFrom": {
@@ -245,13 +254,13 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 448,
+							"line": 470,
 							"character": 15
 						}
 					],
 					"type": {
 						"type": "intrinsic",
-						"name": "any"
+						"name": "unknown"
 					},
 					"inheritedFrom": {
 						"type": "reference",
@@ -297,82 +306,20 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 473,
+							"line": 490,
 							"character": 22
 						}
 					],
 					"type": {
-						"type": "intersection",
-						"types": [
+						"type": "reference",
+						"typeArguments": [
 							{
 								"type": "reference",
-								"typeArguments": [
-									{
-										"type": "reference",
-										"id": 75,
-										"name": "SnackbarProviderProps"
-									}
-								],
-								"name": "Readonly"
-							},
-							{
-								"type": "reference",
-								"typeArguments": [
-									{
-										"type": "reflection",
-										"declaration": {
-											"id": 196,
-											"name": "__type",
-											"kind": 65536,
-											"kindString": "Type literal",
-											"flags": {
-												"isExported": true
-											},
-											"children": [
-												{
-													"id": 197,
-													"name": "children",
-													"kind": 32,
-													"kindString": "Variable",
-													"flags": {
-														"isExported": true,
-														"isOptional": true
-													},
-													"sources": [
-														{
-															"fileName": "node_modules/@types/react/index.d.ts",
-															"line": 473,
-															"character": 57
-														}
-													],
-													"type": {
-														"type": "reference",
-														"name": "ReactNode"
-													}
-												}
-											],
-											"groups": [
-												{
-													"title": "Variables",
-													"kind": 32,
-													"children": [
-														197
-													]
-												}
-											],
-											"sources": [
-												{
-													"fileName": "node_modules/@types/react/index.d.ts",
-													"line": 473,
-													"character": 47
-												}
-											]
-										}
-									}
-								],
-								"name": "Readonly"
+								"id": 75,
+								"name": "SnackbarProviderProps"
 							}
-						]
+						],
+						"name": "Readonly"
 					},
 					"inheritedFrom": {
 						"type": "reference",
@@ -381,7 +328,7 @@
 					}
 				},
 				{
-					"id": 199,
+					"id": 197,
 					"name": "refs",
 					"kind": 1024,
 					"kindString": "Property",
@@ -399,14 +346,14 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 479,
+							"line": 496,
 							"character": 12
 						}
 					],
 					"type": {
 						"type": "reflection",
 						"declaration": {
-							"id": 200,
+							"id": 198,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -415,7 +362,7 @@
 							},
 							"indexSignature": [
 								{
-									"id": 201,
+									"id": 199,
 									"name": "__index",
 									"kind": 8192,
 									"kindString": "Index signature",
@@ -424,7 +371,7 @@
 									},
 									"parameters": [
 										{
-											"id": 202,
+											"id": 200,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -446,7 +393,7 @@
 							"sources": [
 								{
 									"fileName": "node_modules/@types/react/index.d.ts",
-									"line": 479,
+									"line": 496,
 									"character": 13
 								}
 							]
@@ -454,12 +401,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 199,
+						"id": 197,
 						"name": "Component.refs"
 					}
 				},
 				{
-					"id": 198,
+					"id": 196,
 					"name": "state",
 					"kind": 1024,
 					"kindString": "Property",
@@ -469,7 +416,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 474,
+							"line": 491,
 							"character": 13
 						}
 					],
@@ -485,7 +432,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 198,
+						"id": 196,
 						"name": "Component.state"
 					}
 				},
@@ -512,19 +459,28 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 430,
+							"line": 453,
 							"character": 26
 						}
 					],
 					"type": {
-						"type": "reference",
-						"typeArguments": [
+						"type": "union",
+						"types": [
+							{
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "Context"
+							},
 							{
 								"type": "intrinsic",
-								"name": "any"
+								"name": "undefined"
 							}
-						],
-						"name": "Context"
+						]
 					},
 					"inheritedFrom": {
 						"type": "reference",
@@ -582,7 +538,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 674,
+							"line": 687,
 							"character": 33
 						}
 					],
@@ -677,7 +633,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 706,
+							"line": 719,
 							"character": 40
 						}
 					],
@@ -791,7 +747,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 734,
+							"line": 747,
 							"character": 34
 						}
 					],
@@ -864,7 +820,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 603,
+							"line": 616,
 							"character": 25
 						}
 					],
@@ -909,7 +865,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 582,
+							"line": 595,
 							"character": 25
 						}
 					],
@@ -1011,7 +967,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 645,
+							"line": 658,
 							"character": 26
 						}
 					],
@@ -1071,7 +1027,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 660,
+							"line": 673,
 							"character": 26
 						}
 					],
@@ -1166,7 +1122,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 689,
+							"line": 702,
 							"character": 33
 						}
 					],
@@ -1211,7 +1167,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 598,
+							"line": 611,
 							"character": 28
 						}
 					],
@@ -1325,7 +1281,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 719,
+							"line": 732,
 							"character": 27
 						}
 					],
@@ -1414,7 +1370,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 465,
+							"line": 487,
 							"character": 19
 						}
 					],
@@ -1510,7 +1466,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 639,
+							"line": 652,
 							"character": 31
 						}
 					],
@@ -1551,7 +1507,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 466,
+							"line": 488,
 							"character": 14
 						}
 					],
@@ -1699,7 +1655,7 @@
 													"sources": [
 														{
 															"fileName": "node_modules/@types/react/index.d.ts",
-															"line": 461,
+															"line": 483,
 															"character": 18
 														}
 													]
@@ -1794,7 +1750,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 460,
+							"line": 482,
 							"character": 16
 						}
 					],
@@ -1894,7 +1850,7 @@
 					"sources": [
 						{
 							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 593,
+							"line": 606,
 							"character": 29
 						}
 					],
@@ -1921,8 +1877,8 @@
 						168,
 						118,
 						195,
-						199,
-						198,
+						197,
+						196,
 						167
 					]
 				},
@@ -1997,7 +1953,7 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 226,
+								"id": 224,
 								"name": "VariantType"
 							}
 						}
@@ -2016,14 +1972,14 @@
 								"types": [
 									{
 										"type": "reference",
-										"id": 263,
+										"id": 261,
 										"typeArguments": [
 											{
 												"type": "typeParameter",
 												"name": "V",
 												"constraint": {
 													"type": "reference",
-													"id": 226,
+													"id": 224,
 													"name": "VariantType"
 												}
 											}
@@ -2059,7 +2015,7 @@
 													],
 													"type": {
 														"type": "reference",
-														"id": 229,
+														"id": 227,
 														"name": "SnackbarMessage"
 													}
 												}
@@ -2088,7 +2044,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 227,
+						"id": 225,
 						"name": "SnackbarKey"
 					}
 				},
@@ -2111,7 +2067,7 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 226,
+								"id": 224,
 								"name": "VariantType"
 							}
 						}
@@ -2141,14 +2097,14 @@
 							},
 							"type": {
 								"type": "reference",
-								"id": 263,
+								"id": 261,
 								"typeArguments": [
 									{
 										"type": "typeParameter",
 										"name": "V",
 										"constraint": {
 											"type": "reference",
-											"id": 226,
+											"id": 224,
 											"name": "VariantType"
 										}
 									}
@@ -2159,7 +2115,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 227,
+						"id": 225,
 						"name": "SnackbarKey"
 					}
 				}
@@ -2256,7 +2212,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 227,
+						"id": 225,
 						"name": "SnackbarKey"
 					}
 				},
@@ -2278,7 +2234,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 229,
+						"id": 227,
 						"name": "SnackbarMessage"
 					}
 				},
@@ -2510,7 +2466,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 226,
+						"id": 224,
 						"name": "VariantType"
 					}
 				}
@@ -2651,7 +2607,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 230,
+						"id": 228,
 						"name": "SnackbarAction"
 					},
 					"inheritedFrom": {
@@ -2898,7 +2854,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 227,
+						"id": 225,
 						"name": "SnackbarKey"
 					}
 				},
@@ -2940,7 +2896,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 239,
+						"id": 237,
 						"name": "TransitionCloseHandler"
 					},
 					"inheritedFrom": {
@@ -3187,7 +3143,7 @@
 							"name": "V",
 							"constraint": {
 								"type": "reference",
-								"id": 226,
+								"id": 224,
 								"name": "VariantType"
 							}
 						}
@@ -3251,7 +3207,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 227,
+												"id": 225,
 												"name": "SnackbarKey"
 											}
 										}
@@ -3332,7 +3288,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 226,
+						"id": 224,
 						"name": "VariantType"
 					}
 				}
@@ -3458,7 +3414,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 230,
+						"id": 228,
 						"name": "SnackbarAction"
 					}
 				},
@@ -3686,7 +3642,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 239,
+						"id": 237,
 						"name": "TransitionCloseHandler"
 					}
 				},
@@ -3997,7 +3953,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 226,
+						"id": 224,
 						"name": "VariantType"
 					}
 				}
@@ -4179,7 +4135,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 230,
+						"id": 228,
 						"name": "SnackbarAction"
 					},
 					"inheritedFrom": {
@@ -4363,11 +4319,11 @@
 						"typeArguments": [
 							{
 								"type": "reference",
-								"id": 222,
+								"id": 220,
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 258,
+										"id": 256,
 										"name": "CombinedClassKey"
 									}
 								],
@@ -4567,7 +4523,7 @@
 								"typeArguments": [
 									{
 										"type": "reference",
-										"id": 226,
+										"id": 224,
 										"name": "VariantType"
 									},
 									{
@@ -4658,7 +4614,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 239,
+						"id": 237,
 						"name": "TransitionCloseHandler"
 					},
 					"inheritedFrom": {
@@ -4983,7 +4939,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 245,
+						"id": 243,
 						"name": "TransitionEnterHandler"
 					}
 				},
@@ -5007,7 +4963,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 245,
+						"id": 243,
 						"name": "TransitionEnterHandler"
 					}
 				},
@@ -5031,7 +4987,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 251,
+						"id": 249,
 						"name": "TransitionExitHandler"
 					}
 				},
@@ -5055,7 +5011,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 251,
+						"id": 249,
 						"name": "TransitionExitHandler"
 					}
 				}
@@ -5130,7 +5086,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 221,
+						"id": 219,
 						"name": "SlideTransitionDirection"
 					}
 				},
@@ -5228,7 +5184,7 @@
 					],
 					"type": {
 						"type": "reference",
-						"id": 227,
+						"id": 225,
 						"name": "SnackbarKey"
 					}
 				},
@@ -5470,7 +5426,7 @@
 			]
 		},
 		{
-			"id": 225,
+			"id": 223,
 			"name": "BaseVariant",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5511,7 +5467,7 @@
 			}
 		},
 		{
-			"id": 222,
+			"id": 220,
 			"name": "ClassNameMap",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5520,7 +5476,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 223,
+					"id": 221,
 					"name": "ClassKey",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5560,7 +5516,7 @@
 			}
 		},
 		{
-			"id": 228,
+			"id": 226,
 			"name": "CloseReason",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5597,7 +5553,7 @@
 			}
 		},
 		{
-			"id": 258,
+			"id": 256,
 			"name": "CombinedClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5616,19 +5572,19 @@
 				"types": [
 					{
 						"type": "reference",
-						"id": 257,
+						"id": 255,
 						"name": "ContainerClassKey"
 					},
 					{
 						"type": "reference",
-						"id": 256,
+						"id": 254,
 						"name": "SnackbarClassKey"
 					}
 				]
 			}
 		},
 		{
-			"id": 257,
+			"id": 255,
 			"name": "ContainerClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5677,7 +5633,7 @@
 			}
 		},
 		{
-			"id": 262,
+			"id": 260,
 			"name": "CustomContentProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5704,7 +5660,7 @@
 					},
 					{
 						"type": "reference",
-						"id": 261,
+						"id": 259,
 						"name": "NotNeededByCustomSnackbar"
 					}
 				],
@@ -5712,7 +5668,7 @@
 			}
 		},
 		{
-			"id": 215,
+			"id": 213,
 			"name": "GetWhitelistedVariants",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5721,7 +5677,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 216,
+					"id": 214,
 					"name": "V",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5734,7 +5690,7 @@
 					}
 				},
 				{
-					"id": 217,
+					"id": 215,
 					"name": "U",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5752,15 +5708,15 @@
 			],
 			"type": {
 				"type": "reference",
-				"id": 206,
+				"id": 204,
 				"typeArguments": [
 					{
 						"type": "reference",
-						"id": 212,
+						"id": 210,
 						"typeArguments": [
 							{
 								"type": "reference",
-								"id": 209,
+								"id": 207,
 								"typeArguments": [
 									{
 										"type": "reference",
@@ -5795,7 +5751,7 @@
 			}
 		},
 		{
-			"id": 212,
+			"id": 210,
 			"name": "MarkInvalidVariantAsNever",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5804,7 +5760,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 213,
+					"id": 211,
 					"name": "T",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -5823,7 +5779,7 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 214,
+					"id": 212,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -5841,7 +5797,7 @@
 			}
 		},
 		{
-			"id": 260,
+			"id": 258,
 			"name": "NeededByInternalSnack",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5898,7 +5854,7 @@
 			}
 		},
 		{
-			"id": 261,
+			"id": 259,
 			"name": "NotNeededByCustomSnackbar",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5969,7 +5925,7 @@
 			}
 		},
 		{
-			"id": 206,
+			"id": 204,
 			"name": "OmitNever",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -5982,7 +5938,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 207,
+					"id": 205,
 					"name": "T",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -6018,7 +5974,7 @@
 						"objectType": {
 							"type": "reflection",
 							"declaration": {
-								"id": 208,
+								"id": 206,
 								"name": "__type",
 								"kind": 65536,
 								"kindString": "Type literal",
@@ -6040,7 +5996,7 @@
 			}
 		},
 		{
-			"id": 263,
+			"id": 261,
 			"name": "OptionsWithExtraProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6049,7 +6005,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 264,
+					"id": 262,
 					"name": "V",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -6058,7 +6014,7 @@
 					},
 					"type": {
 						"type": "reference",
-						"id": 226,
+						"id": 224,
 						"name": "VariantType"
 					}
 				}
@@ -6079,7 +6035,7 @@
 						"name": "V",
 						"constraint": {
 							"type": "reference",
-							"id": 226,
+							"id": 224,
 							"name": "VariantType"
 						}
 					},
@@ -6100,7 +6056,7 @@
 							"name": "V",
 							"constraint": {
 								"type": "reference",
-								"id": 226,
+								"id": 224,
 								"name": "VariantType"
 							}
 						}
@@ -6118,7 +6074,7 @@
 									"name": "V",
 									"constraint": {
 										"type": "reference",
-										"id": 226,
+										"id": 224,
 										"name": "VariantType"
 									}
 								}
@@ -6132,7 +6088,7 @@
 								"name": "V",
 								"constraint": {
 									"type": "reference",
-									"id": 226,
+									"id": 224,
 									"name": "VariantType"
 								}
 							},
@@ -6146,7 +6102,7 @@
 			}
 		},
 		{
-			"id": 209,
+			"id": 207,
 			"name": "Override",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6159,7 +6115,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 210,
+					"id": 208,
 					"name": "T",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -6168,7 +6124,7 @@
 					}
 				},
 				{
-					"id": 211,
+					"id": 209,
 					"name": "U",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -6213,7 +6169,7 @@
 			}
 		},
 		{
-			"id": 203,
+			"id": 201,
 			"name": "RequiredBy",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6222,7 +6178,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 204,
+					"id": 202,
 					"name": "T",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -6231,7 +6187,7 @@
 					}
 				},
 				{
-					"id": 205,
+					"id": 203,
 					"name": "K",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -6312,7 +6268,7 @@
 			}
 		},
 		{
-			"id": 221,
+			"id": 219,
 			"name": "SlideTransitionDirection",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6349,7 +6305,7 @@
 			}
 		},
 		{
-			"id": 230,
+			"id": 228,
 			"name": "SnackbarAction",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6373,7 +6329,7 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 231,
+							"id": 229,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -6382,7 +6338,7 @@
 							},
 							"signatures": [
 								{
-									"id": 232,
+									"id": 230,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -6391,7 +6347,7 @@
 									},
 									"parameters": [
 										{
-											"id": 233,
+											"id": 231,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -6400,7 +6356,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 227,
+												"id": 225,
 												"name": "SnackbarKey"
 											}
 										}
@@ -6424,7 +6380,7 @@
 			}
 		},
 		{
-			"id": 256,
+			"id": 254,
 			"name": "SnackbarClassKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6473,7 +6429,7 @@
 			}
 		},
 		{
-			"id": 234,
+			"id": 232,
 			"name": "SnackbarContentCallback",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6497,7 +6453,7 @@
 					{
 						"type": "reflection",
 						"declaration": {
-							"id": 235,
+							"id": 233,
 							"name": "__type",
 							"kind": 65536,
 							"kindString": "Type literal",
@@ -6506,7 +6462,7 @@
 							},
 							"signatures": [
 								{
-									"id": 236,
+									"id": 234,
 									"name": "__call",
 									"kind": 4096,
 									"kindString": "Call signature",
@@ -6515,7 +6471,7 @@
 									},
 									"parameters": [
 										{
-											"id": 237,
+											"id": 235,
 											"name": "key",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -6524,12 +6480,12 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 227,
+												"id": 225,
 												"name": "SnackbarKey"
 											}
 										},
 										{
-											"id": 238,
+											"id": 236,
 											"name": "message",
 											"kind": 32768,
 											"kindString": "Parameter",
@@ -6539,7 +6495,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"id": 229,
+												"id": 227,
 												"name": "SnackbarMessage"
 											}
 										}
@@ -6563,7 +6519,7 @@
 			}
 		},
 		{
-			"id": 259,
+			"id": 257,
 			"name": "SnackbarContentProps",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6589,7 +6545,7 @@
 			}
 		},
 		{
-			"id": 227,
+			"id": 225,
 			"name": "SnackbarKey",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6618,7 +6574,7 @@
 			}
 		},
 		{
-			"id": 229,
+			"id": 227,
 			"name": "SnackbarMessage",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6638,7 +6594,7 @@
 			}
 		},
 		{
-			"id": 239,
+			"id": 237,
 			"name": "TransitionCloseHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6655,7 +6611,7 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 240,
+					"id": 238,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -6664,7 +6620,7 @@
 					},
 					"signatures": [
 						{
-							"id": 241,
+							"id": 239,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6673,7 +6629,7 @@
 							},
 							"parameters": [
 								{
-									"id": 242,
+									"id": 240,
 									"name": "event",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6701,7 +6657,7 @@
 									}
 								},
 								{
-									"id": 243,
+									"id": 241,
 									"name": "reason",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6710,12 +6666,12 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 228,
+										"id": 226,
 										"name": "CloseReason"
 									}
 								},
 								{
-									"id": 244,
+									"id": 242,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6725,7 +6681,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 227,
+										"id": 225,
 										"name": "SnackbarKey"
 									}
 								}
@@ -6747,7 +6703,7 @@
 			}
 		},
 		{
-			"id": 218,
+			"id": 216,
 			"name": "TransitionComponent",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6775,7 +6731,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 219,
+									"id": 217,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -6784,7 +6740,7 @@
 									},
 									"children": [
 										{
-											"id": 220,
+											"id": 218,
 											"name": "children",
 											"kind": 32,
 											"kindString": "Variable",
@@ -6819,7 +6775,7 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												220
+												218
 											]
 										}
 									],
@@ -6839,7 +6795,7 @@
 			}
 		},
 		{
-			"id": 245,
+			"id": 243,
 			"name": "TransitionEnterHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6856,7 +6812,7 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 246,
+					"id": 244,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -6865,7 +6821,7 @@
 					},
 					"signatures": [
 						{
-							"id": 247,
+							"id": 245,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6874,7 +6830,7 @@
 							},
 							"parameters": [
 								{
-									"id": 248,
+									"id": 246,
 									"name": "node",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6887,7 +6843,7 @@
 									}
 								},
 								{
-									"id": 249,
+									"id": 247,
 									"name": "isAppearing",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6900,7 +6856,7 @@
 									}
 								},
 								{
-									"id": 250,
+									"id": 248,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6909,7 +6865,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 227,
+										"id": 225,
 										"name": "SnackbarKey"
 									}
 								}
@@ -6931,7 +6887,7 @@
 			}
 		},
 		{
-			"id": 251,
+			"id": 249,
 			"name": "TransitionExitHandler",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -6948,7 +6904,7 @@
 			"type": {
 				"type": "reflection",
 				"declaration": {
-					"id": 252,
+					"id": 250,
 					"name": "__type",
 					"kind": 65536,
 					"kindString": "Type literal",
@@ -6957,7 +6913,7 @@
 					},
 					"signatures": [
 						{
-							"id": 253,
+							"id": 251,
 							"name": "__call",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -6966,7 +6922,7 @@
 							},
 							"parameters": [
 								{
-									"id": 254,
+									"id": 252,
 									"name": "node",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6979,7 +6935,7 @@
 									}
 								},
 								{
-									"id": 255,
+									"id": 253,
 									"name": "key",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -6988,7 +6944,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 227,
+										"id": 225,
 										"name": "SnackbarKey"
 									}
 								}
@@ -7010,7 +6966,7 @@
 			}
 		},
 		{
-			"id": 224,
+			"id": 222,
 			"name": "VariantMap",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -7026,11 +6982,11 @@
 			],
 			"type": {
 				"type": "reference",
-				"id": 215,
+				"id": 213,
 				"typeArguments": [
 					{
 						"type": "reference",
-						"id": 225,
+						"id": 223,
 						"name": "BaseVariant"
 					},
 					{
@@ -7043,7 +6999,7 @@
 			}
 		},
 		{
-			"id": 226,
+			"id": 224,
 			"name": "VariantType",
 			"kind": 4194304,
 			"kindString": "Type alias",
@@ -7062,13 +7018,13 @@
 				"operator": "keyof",
 				"target": {
 					"type": "reference",
-					"id": 224,
+					"id": 222,
 					"name": "VariantMap"
 				}
 			}
 		},
 		{
-			"id": 276,
+			"id": 274,
 			"name": "Fade",
 			"kind": 32,
 			"kindString": "Variable",
@@ -7090,7 +7046,7 @@
 			}
 		},
 		{
-			"id": 275,
+			"id": 273,
 			"name": "Grow",
 			"kind": 32,
 			"kindString": "Variable",
@@ -7112,7 +7068,7 @@
 			}
 		},
 		{
-			"id": 274,
+			"id": 272,
 			"name": "Slide",
 			"kind": 32,
 			"kindString": "Variable",
@@ -7134,7 +7090,7 @@
 			}
 		},
 		{
-			"id": 271,
+			"id": 269,
 			"name": "SnackbarContent",
 			"kind": 32,
 			"kindString": "Variable",
@@ -7157,7 +7113,7 @@
 						"types": [
 							{
 								"type": "reference",
-								"id": 259,
+								"id": 257,
 								"name": "SnackbarContentProps"
 							},
 							{
@@ -7177,7 +7133,7 @@
 			}
 		},
 		{
-			"id": 277,
+			"id": 275,
 			"name": "Zoom",
 			"kind": 32,
 			"kindString": "Variable",
@@ -7199,7 +7155,7 @@
 			}
 		},
 		{
-			"id": 272,
+			"id": 270,
 			"name": "useSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -7208,7 +7164,7 @@
 			},
 			"signatures": [
 				{
-					"id": 273,
+					"id": 271,
 					"name": "useSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -7231,7 +7187,7 @@
 			]
 		},
 		{
-			"id": 265,
+			"id": 263,
 			"name": "withSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -7240,7 +7196,7 @@
 			},
 			"signatures": [
 				{
-					"id": 266,
+					"id": 264,
 					"name": "withSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -7249,7 +7205,7 @@
 					},
 					"typeParameter": [
 						{
-							"id": 267,
+							"id": 265,
 							"name": "P",
 							"kind": 131072,
 							"kindString": "Type parameter",
@@ -7265,7 +7221,7 @@
 					],
 					"parameters": [
 						{
-							"id": 268,
+							"id": 266,
 							"name": "component",
 							"kind": 32768,
 							"kindString": "Parameter",
@@ -7325,7 +7281,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 269,
+									"id": 267,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -7334,7 +7290,7 @@
 									},
 									"children": [
 										{
-											"id": 270,
+											"id": 268,
 											"name": "WrappedComponent",
 											"kind": 32,
 											"kindString": "Variable",
@@ -7370,7 +7326,7 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												270
+												268
 											]
 										}
 									],
@@ -7460,52 +7416,52 @@
 			"title": "Type aliases",
 			"kind": 4194304,
 			"children": [
-				225,
-				222,
-				228,
-				258,
-				257,
-				262,
-				215,
-				212,
-				260,
-				261,
-				206,
-				263,
-				209,
-				203,
-				221,
-				230,
+				223,
+				220,
+				226,
 				256,
-				234,
+				255,
+				260,
+				213,
+				210,
+				258,
 				259,
+				204,
+				261,
+				207,
+				201,
+				219,
+				228,
+				254,
+				232,
+				257,
+				225,
 				227,
-				229,
-				239,
-				218,
-				245,
-				251,
-				224,
-				226
+				237,
+				216,
+				243,
+				249,
+				222,
+				224
 			]
 		},
 		{
 			"title": "Variables",
 			"kind": 32,
 			"children": [
-				276,
-				275,
 				274,
-				271,
-				277
+				273,
+				272,
+				269,
+				275
 			]
 		},
 		{
 			"title": "Functions",
 			"kind": 64,
 			"children": [
-				272,
-				265
+				270,
+				263
 			]
 		}
 	]
