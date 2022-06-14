@@ -1,62 +1,59 @@
-import { useState, forwardRef, useCallback } from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@mui/styles';
-import { useSnackbar, SnackbarContent, CustomContentProps } from 'notistack';
-import Collapse from '@mui/material/Collapse';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useState, forwardRef, useCallback } from "react";
+import clsx from "clsx";
+import { makeStyles } from "@mui/styles";
+import { useSnackbar, SnackbarContent, CustomContentProps } from "notistack";
+import Collapse from "@mui/material/Collapse";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    [theme.breakpoints.up('sm')]: {
-      minWidth: '344px !important',
-    },
+    "@media (min-width:600px)": {
+      minWidth: "344px !important"
+    }
   },
   card: {
-    backgroundColor: '#fddc6c',
-    width: '100%',
+    backgroundColor: "#fddc6c",
+    width: "100%"
   },
   typography: {
-    color: theme.palette.getContrastText('#fddc6c'),
+    color: "#000"
   },
   actionRoot: {
-    padding: '8px 8px 8px 16px',
-    justifyContent: 'space-between',
+    padding: "8px 8px 8px 16px",
+    justifyContent: "space-between"
   },
   icons: {
-    marginLeft: 'auto',
+    marginLeft: "auto"
   },
   expand: {
-    padding: '8px 8px',
-    transform: 'rotate(0deg)',
-    color: '#000',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+    padding: "8px 8px",
+    transform: "rotate(0deg)",
+    color: "#000",
+    transition: "all .2s"
   },
   expandOpen: {
-    transform: 'rotate(180deg)',
+    transform: "rotate(180deg)"
   },
   paper: {
-    backgroundColor: '#fff',
-    padding: 16,
+    backgroundColor: "#fff",
+    padding: 16
   },
   checkIcon: {
     fontSize: 20,
-    // color: '#b3b3b3',
-    paddingRight: 4,
+    paddingRight: 4
   },
   button: {
     padding: 0,
-    textTransform: 'none',
-  },
+    textTransform: "none"
+  }
 }));
 
 interface ReportCompleteProps extends CustomContentProps {
@@ -89,7 +86,7 @@ const ReportComplete = forwardRef<HTMLDivElement, ReportCompleteProps>(
                 aria-label="Show more"
                 size="small"
                 className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded,
+                  [classes.expandOpen]: expanded
                 })}
                 onClick={handleExpandClick}
               >
@@ -109,7 +106,7 @@ const ReportComplete = forwardRef<HTMLDivElement, ReportCompleteProps>(
               <Typography
                 gutterBottom
                 variant="caption"
-                style={{ color: '#000', display: 'block' }}
+                style={{ color: "#000", display: "block" }}
               >
                 PDF ready
               </Typography>
@@ -125,6 +122,6 @@ const ReportComplete = forwardRef<HTMLDivElement, ReportCompleteProps>(
   }
 );
 
-ReportComplete.displayName = 'ReportComplete';
+ReportComplete.displayName = "ReportComplete";
 
 export default ReportComplete;
