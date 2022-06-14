@@ -1,7 +1,7 @@
+import { createContext, useContext, useState } from "react";
 import { SnackbarProvider, useSnackbar } from "notistack";
 import "./styles.css";
-import ThemeResponsiveSnackbar from "./ThemeResponsiveSnackbar";
-import { createContext, useContext, useState } from "react";
+import ReportComplete from "./ReportComplete";
 
 const Child = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -14,6 +14,12 @@ const Child = () => {
     </button>
   );
 };
+
+declare module 'notistack' {
+  interface VariantOverrides {
+    reportComplete: true
+  }
+}
 
 const ThemeProvider = createContext<string>("");
 export const useTheme = () => useContext(ThemeProvider);
@@ -29,10 +35,7 @@ export default function App() {
     <ThemeProvider.Provider value={themeType}>
       <SnackbarProvider
         Components={{
-          default: ThemeResponsiveSnackbar,
-          success: ThemeResponsiveSnackbar,
-          error: ThemeResponsiveSnackbar,
-          warning: ThemeResponsiveSnackbar
+          reportComplete: ReportComplete
         }}
       >
         <div
