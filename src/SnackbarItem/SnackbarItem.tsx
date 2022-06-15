@@ -32,11 +32,11 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
-    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction([props.snack.onClose, props.onClose], props.snack.id);
+    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction([props.snack.onClose, props.onClose]);
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
-            handleClose(null, 'instructed');
+            handleClose(null, 'instructed', props.snack.id);
         }
     };
 
@@ -97,6 +97,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         <Collapse id={otherSnack.id} unmountOnExit timeout={175} in={collapsed} onExited={callbacks.onExited}>
             <Snackbar
                 open={open}
+                id={otherSnack.id}
                 disableWindowBlurListener={disableWindowBlurListener}
                 autoHideDuration={otherSnack.autoHideDuration}
                 className={clsx(

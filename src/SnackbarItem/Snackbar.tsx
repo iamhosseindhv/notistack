@@ -4,19 +4,18 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import useEventCallback from '../utils/useEventCallback';
-import { CloseReason, SharedProps } from '../types';
+import { CloseReason, SharedProps, SnackbarKey } from '../types';
 import { ComponentClasses } from '../utils/styles';
 import ClickAway from '../ClickAway';
 
 interface SnackbarProps extends Required<Pick<SharedProps, | 'disableWindowBlurListener' | 'onClose'>> {
     open: boolean;
+    id: SnackbarKey
     className: string;
     children: JSX.Element;
     autoHideDuration: number | null | undefined;
     SnackbarProps: SharedProps['SnackbarProps'];
 }
-
-type CloseHandler = (event: React.SyntheticEvent<any> | null, reason: CloseReason) => void;
 
 const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) => {
     const {
@@ -25,13 +24,14 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
         autoHideDuration,
         disableWindowBlurListener = false,
         onClose,
+        id,
         open,
         SnackbarProps = {},
     } = props;
 
     const timerAutoHide = React.useRef<ReturnType<typeof setTimeout>>();
 
-    const handleClose: CloseHandler = useEventCallback((args: [React.SyntheticEvent<any>, CloseReason]) => {
+    const handleClose = useEventCallback((...args: [React.SyntheticEvent<any>, CloseReason, SnackbarKey]) => {
         if (onClose) {
             onClose(...args);
         }
@@ -46,7 +46,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
             clearTimeout(timerAutoHide.current);
         }
         timerAutoHide.current = setTimeout(() => {
-            handleClose(null, 'timeout');
+            handleClose(null, 'timeout', id);
         }, autoHideDurationParam);
     });
 
@@ -98,7 +98,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
 
     const handleClickAway = (event: React.SyntheticEvent<any>) => {
         if (onClose) {
-            onClose(event, 'clickaway');
+            onClose(event, 'clickaway', id);
         }
     };
 
