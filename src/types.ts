@@ -260,8 +260,8 @@ export interface SharedProps<V extends VariantType = VariantType> extends Partia
      *
      * @ignore
      * @deprecated - Will be removed in future releases. You should use `Components` prop of
-     * `SnackbarProvider` to display a custom snackbar. This is for your own benefit to have
-     * more control over your custom snackbars.
+     * `SnackbarProvider` to display a custom snackbar. This is to have more control over
+     * custom snackbars.
      */
     content?: SnackbarContentCallback;
     /**
