@@ -96,7 +96,7 @@
         "releaseDraft": false
     },
     "engines": {
-        "node": "14",
-        "npm": "6"
+        "node": ">=12.0.0",
+        "npm": ">=6.0.0"
     }
 }
