@@ -18,7 +18,7 @@ export const defaultEasing = {
  */
 export const reflow = (node: Element): void => {
     // We have to do something with node.scrollTop.
-    // Otherwise it removed from the compiled code by optimisers
+    // Otherwise it's removed from the compiled code by optimisers
     // eslint-disable-next-line no-self-assign
     node.scrollTop = node.scrollTop;
 };
