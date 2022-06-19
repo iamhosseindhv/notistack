@@ -42,7 +42,7 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     const timer = React.useRef<ReturnType<typeof setTimeout>>();
     const autoTimeout = React.useRef<number>();
 
-    const nodeRef = React.useRef(null);
+    const nodeRef = React.useRef<HTMLDivElement>(null);
     const handleRefIntermediary = useForkRef(children.ref, nodeRef);
     const handleRef = useForkRef(handleRefIntermediary, ref);
 
@@ -120,7 +120,7 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             onExit={handleExit}
             onExited={onExited}
             addEndListener={handleAddEndListener}
-            timeout={timeout === 'auto' ? null : timeout}
+            timeout={timeout === 'auto' ? undefined : timeout}
             {...other}
         >
             {(state: TransitionStatus, childProps: Record<string, any>) =>

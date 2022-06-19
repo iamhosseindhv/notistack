@@ -31,6 +31,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import React from 'react';
+import { TransitionEnterHandler, TransitionExitHandler, TransitionProps } from '../../types';
+import { TransitionStatus } from './types';
 
 export const UNMOUNTED = 'unmounted';
 export const EXITED = 'exited';
@@ -38,13 +40,35 @@ export const ENTERING = 'entering';
 export const ENTERED = 'entered';
 export const EXITING = 'exiting';
 
-class Transition extends React.Component {
-    constructor(props) {
+interface TransitionComponentProps extends Omit<TransitionProps, 'children'> {
+    children: (status: TransitionStatus, childProps: Record<string, any>) => React.ReactNode;
+    nodeRef: React.RefObject<HTMLDivElement>;
+    appear?: boolean;
+    addEndListener?: (node: HTMLDivElement, callback: () => void) => void;
+    onEntering?: TransitionEnterHandler;
+    onExiting?: TransitionExitHandler;
+}
+
+interface State {
+    status: TransitionStatus;
+}
+
+interface NextCallback {
+    (): void;
+    cancel?: () => void;
+}
+
+class Transition extends React.Component<TransitionComponentProps, State> {
+    appearStatus: TransitionStatus | null;
+
+    nextCallback: NextCallback | null;
+
+    constructor(props: TransitionComponentProps) {
         super(props);
 
         const { appear } = props;
 
-        let initialStatus;
+        let initialStatus: TransitionStatus;
 
         this.appearStatus = null;
 
@@ -66,7 +90,7 @@ class Transition extends React.Component {
         this.nextCallback = null;
     }
 
-    static getDerivedStateFromProps({ in: nextIn }, prevState) {
+    static getDerivedStateFromProps({ in: nextIn }: TransitionComponentProps, prevState: State) {
         if (nextIn && prevState.status === UNMOUNTED) {
             return { status: EXITED };
         }
@@ -77,8 +101,8 @@ class Transition extends React.Component {
         this.updateStatus(true, this.appearStatus);
     }
 
-    componentDidUpdate(prevProps) {
-        let nextStatus = null;
+    componentDidUpdate(prevProps: TransitionComponentProps) {
+        let nextStatus: TransitionStatus | null = null;
         if (prevProps !== this.props) {
             const { status } = this.state;
 
@@ -97,19 +121,22 @@ class Transition extends React.Component {
         this.cancelNextCallback();
     }
 
-    getTimeouts() {
+    getTimeouts(): { exit: number; enter: number } {
         const { timeout } = this.props;
         let enter = timeout;
         let exit = timeout;
 
-        if (timeout != null && typeof timeout !== 'number') {
+        if (timeout != null && typeof timeout !== 'number' && typeof timeout !== 'string') {
             exit = timeout.exit;
             enter = timeout.enter;
         }
-        return { exit, enter };
+        return {
+            exit: exit as number,
+            enter: enter as number,
+        };
     }
 
-    updateStatus(mounting = false, nextStatus) {
+    updateStatus(mounting = false, nextStatus: TransitionStatus | null) {
         if (nextStatus !== null) {
             this.cancelNextCallback();
 
@@ -131,7 +158,7 @@ class Transition extends React.Component {
         return node;
     }
 
-    performEnter(mounting) {
+    performEnter(mounting: boolean) {
         const { enter, id } = this.props;
         const isAppearing = mounting;
 
@@ -139,19 +166,27 @@ class Transition extends React.Component {
 
         if (!mounting && !enter) {
             this.safeSetState({ status: ENTERED }, () => {
-                this.props.onEntered(this.node, isAppearing, id);
+                if (this.props.onEntered) {
+                    this.props.onEntered(this.node, isAppearing, id);
+                }
             });
             return;
         }
 
-        this.props.onEnter(this.node, isAppearing, id);
+        if (this.props.onEnter) {
+            this.props.onEnter(this.node, isAppearing, id);
+        }
 
         this.safeSetState({ status: ENTERING }, () => {
-            this.props.onEntering(this.node, isAppearing, id);
+            if (this.props.onEntering) {
+                this.props.onEntering(this.node, isAppearing, id);
+            }
 
             this.onTransitionEnd(timeouts.enter, () => {
                 this.safeSetState({ status: ENTERED }, () => {
-                    this.props.onEntered(this.node, isAppearing, id);
+                    if (this.props.onEntered) {
+                        this.props.onEntered(this.node, isAppearing, id);
+                    }
                 });
             });
         });
@@ -164,69 +199,77 @@ class Transition extends React.Component {
         // no exit animation skip right to EXITED
         if (!exit) {
             this.safeSetState({ status: EXITED }, () => {
-                this.props.onExited(this.node, id);
+                if (this.props.onExited) {
+                    this.props.onExited(this.node, id);
+                }
             });
             return;
         }
 
-        this.props.onExit(this.node, id);
+        if (this.props.onExit) {
+            this.props.onExit(this.node, id);
+        }
 
         this.safeSetState({ status: EXITING }, () => {
-            this.props.onExiting(this.node, id);
+            if (this.props.onExiting) {
+                this.props.onExiting(this.node, id);
+            }
 
             this.onTransitionEnd(timeouts.exit, () => {
                 this.safeSetState({ status: EXITED }, () => {
-                    this.props.onExited(this.node, id);
+                    if (this.props.onExited) {
+                        this.props.onExited(this.node, id);
+                    }
                 });
             });
         });
     }
 
     cancelNextCallback() {
-        if (this.nextCallback !== null) {
+        if (this.nextCallback !== null && this.nextCallback.cancel) {
             this.nextCallback.cancel();
             this.nextCallback = null;
         }
     }
 
-    safeSetState(nextState, callback) {
+    safeSetState(nextState: State, callback: () => void) {
         callback = this.setNextCallback(callback);
         this.setState(nextState, callback);
     }
 
-    setNextCallback(callback) {
+    setNextCallback(callback: () => void) {
         let active = true;
 
-        this.nextCallback = (event) => {
+        this.nextCallback = () => {
             if (active) {
                 active = false;
                 this.nextCallback = null;
 
-                callback(event);
+                callback();
             }
         };
 
-        this.nextCallback.cancel = () => {
+        (this.nextCallback as NextCallback).cancel = () => {
             active = false;
         };
 
         return this.nextCallback;
     }
 
-    onTransitionEnd(timeout, handler) {
+    onTransitionEnd(timeout: number, handler: () => void) {
         this.setNextCallback(handler);
         const doesNotHaveTimeoutOrListener = timeout == null && !this.props.addEndListener;
         if (!this.node || doesNotHaveTimeoutOrListener) {
-            setTimeout(this.nextCallback, 0);
+            setTimeout(this.nextCallback as NextCallback, 0);
             return;
         }
 
         if (this.props.addEndListener) {
-            this.props.addEndListener(this.node, this.nextCallback);
+            this.props.addEndListener(this.node, this.nextCallback as NextCallback);
         }
 
         if (timeout != null) {
-            setTimeout(this.nextCallback, timeout);
+            setTimeout(this.nextCallback as NextCallback, timeout);
         }
     }
 
@@ -263,9 +306,11 @@ class Transition extends React.Component {
     }
 }
 
-function noop() {}
+function noop() {
+    //
+}
 
-Transition.defaultProps = {
+(Transition as any).defaultProps = {
     in: false,
     mountOnEnter: false,
     unmountOnExit: false,
