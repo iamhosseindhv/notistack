@@ -6,7 +6,6 @@ import clsx from 'clsx';
 import useEventCallback from '../utils/useEventCallback';
 import { CloseReason, SharedProps, SnackbarKey } from '../types';
 import { ComponentClasses } from '../utils/styles';
-import ClickAway from '../ClickAway';
 
 interface SnackbarProps extends Required<Pick<SharedProps, 'disableWindowBlurListener' | 'onClose'>> {
     open: boolean;
@@ -96,12 +95,6 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
         handleResume();
     };
 
-    const handleClickAway = (event: React.SyntheticEvent<any>) => {
-        if (onClose) {
-            onClose(event, 'clickaway', id);
-        }
-    };
-
     React.useEffect(() => {
         if (!disableWindowBlurListener && open) {
             window.addEventListener('focus', handleResume);
@@ -117,17 +110,15 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
     }, [disableWindowBlurListener, handleResume, open]);
 
     return (
-        <ClickAway onClickAway={handleClickAway}>
-            <div
-                ref={ref}
-                {...SnackbarProps}
-                className={clsx(ComponentClasses.Snackbar, className)}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-            >
-                {children}
-            </div>
-        </ClickAway>
+        <div
+            ref={ref}
+            {...SnackbarProps}
+            className={clsx(ComponentClasses.Snackbar, className)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            {children}
+        </div>
     );
 });
 

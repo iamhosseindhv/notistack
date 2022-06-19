@@ -127,7 +127,7 @@ type BaseVariant = 'default' | 'error' | 'success' | 'warning' | 'info';
 export type VariantType = keyof VariantMap;
 
 export type SnackbarKey = string | number;
-export type CloseReason = 'timeout' | 'clickaway' | 'maxsnack' | 'instructed';
+export type CloseReason = 'timeout' | 'maxsnack' | 'instructed';
 
 export type SnackbarMessage = string;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);

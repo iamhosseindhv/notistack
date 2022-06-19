@@ -7,8 +7,16 @@ import useForkRef from '../useForkRef';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import { defaultEasing, reflow } from '../utils';
-import { ownerWindow } from '../document-window';
 import { SlideTransitionDirection, TransitionHandlerProps, TransitionProps } from '../../types';
+
+function ownerDocument(node: Node | null | undefined): Document {
+    return (node && node.ownerDocument) || document;
+}
+
+function ownerWindow(node: Node | null): Window {
+    const doc = ownerDocument(node);
+    return doc.defaultView || window;
+}
 
 /**
  * Corresponds to 10 frames at 60 Hz.

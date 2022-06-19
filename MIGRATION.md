@@ -37,6 +37,8 @@ enqueueSnackbar('message', {
 
 * Drop support for `resumeHideDuration`, `onEntering` and `onExisting` transition callbacks due to the fact that they are rarely used. Get in touch if this decision affects you to potentially bring them back to life.
 
+* `onClose` won't be called with `reason: 'clickaway'` anymore. Get in touch if you need to detect clickaway's to potentially bring them back to life.
+
 * Exported type `WithSnackbarProps` was kept in type declerations for backwards compatibility. After nearly a year, it has been now deleted and you should use `ProviderContext` type instead.
 
 * Drop Customisation through `classes.variant(Success|Error|Info|Warning)`. To customise snackbars according to their

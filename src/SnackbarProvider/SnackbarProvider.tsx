@@ -225,10 +225,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             this.props.onClose(event, reason, key);
         }
 
-        if (reason === 'clickaway') {
-            return;
-        }
-
         const shouldCloseAll = key === undefined;
 
         this.setState(({ snacks, queue }) => ({
