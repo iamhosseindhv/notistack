@@ -3,10 +3,10 @@
  */
 import * as React from 'react';
 import clsx from 'clsx';
+import { reflow } from '../utils';
 import TransitionComponent, { TransitionStatus } from '../Transition';
 import useForkRef from '../useForkRef';
-import { TransitionHandlerProps, TransitionProps } from '../../types';
-import getAutoHeightDuration from '../getAutoHeightDuration';
+import { SnackbarKey, TransitionHandlerProps, TransitionProps } from '../../types';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import { ComponentClasses, makeStyles } from '../../utils/styles';
@@ -21,113 +21,77 @@ const classes = makeStyles({
 });
 
 const collapsedSize = '0px';
+const timeout = 175;
 
-const Collapse = React.forwardRef<unknown, TransitionProps>((props, ref) => {
-    const {
-        children,
-        style,
-        timeout = 300,
-        in: inProp,
-        onEnter,
-        onEntered,
-        onExit,
-        onExited,
-        direction, // Take this out since this is a Slide-only prop
-        ...other
-    } = props;
+interface CollapseProps {
+    children: JSX.Element;
+    in: boolean;
+    id: SnackbarKey;
+    onExited: TransitionProps['onExited'];
+}
 
-    const timer = React.useRef<ReturnType<typeof setTimeout>>();
-    const wrapperRef = React.useRef(null);
-    const autoTransitionDuration = React.useRef<number>();
+const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
+    const { children, in: inProp, onExited, id } = props;
 
-    React.useEffect(() => () => {
-        if (timer.current) {
-            clearTimeout(timer.current);
-        }
-    }, []);
+    const wrapperRef = React.useRef<HTMLDivElement>(null);
 
-    const nodeRef = React.useRef(null);
+    const nodeRef = React.useRef<HTMLDivElement>(null);
     const handleRef = useForkRef(ref, nodeRef);
 
     const getWrapperSize = () => (wrapperRef.current ? wrapperRef.current.clientHeight : 0);
 
-    const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
+    const handleEnter: TransitionHandlerProps['onEnter'] = (node) => {
         node.style.height = collapsedSize;
-        if (onEnter) {
-            onEnter(node, isAppearing, snackId);
-        }
     };
 
     const handleEntering = (node: HTMLElement) => {
         const wrapperSize = getWrapperSize();
 
         const { duration: transitionDuration, easing } = getTransitionProps({
-            style, timeout, mode: 'enter',
+            timeout,
+            mode: 'enter',
         });
 
-        if (timeout === 'auto') {
-            const duration2 = getAutoHeightDuration(wrapperSize);
-            node.style.transitionDuration = `${duration2}ms`;
-            autoTransitionDuration.current = duration2;
-        } else {
-            node.style.transitionDuration = typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
-        }
+        node.style.transitionDuration = typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
 
         node.style.height = `${wrapperSize}px`;
         node.style.transitionTimingFunction = easing || '';
     };
 
-    const handleEntered: TransitionHandlerProps['onEntered'] = (node, isAppearing, snackId) => {
+    const handleEntered: TransitionHandlerProps['onEntered'] = (node) => {
         node.style.height = 'auto';
-        if (onEntered) {
-            onEntered(node, isAppearing, snackId);
-        }
     };
 
-    const handleExit: TransitionHandlerProps['onExit'] = (node, snackId) => {
+    const handleExit: TransitionHandlerProps['onExit'] = (node) => {
         node.style.height = `${getWrapperSize()}px`;
-        if (onExit) {
-            onExit(node, snackId);
-        }
     };
 
     const handleExiting = (node: HTMLElement) => {
-        const wrapperSize = getWrapperSize();
+        reflow(node);
+
         const { duration: transitionDuration, easing } = getTransitionProps({
-            style, timeout, mode: 'exit',
+            timeout,
+            mode: 'exit',
         });
 
-        if (timeout === 'auto') {
-            const duration2 = getAutoHeightDuration(wrapperSize);
-            node.style.transitionDuration = `${duration2}ms`;
-            autoTransitionDuration.current = duration2;
-        } else {
-            node.style.transitionDuration = typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
-        }
-
+        node.style.transitionDuration = typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
         node.style.height = collapsedSize;
         node.style.transitionTimingFunction = easing || '';
     };
 
-    const handleAddEndListener = (next: any) => {
-        if (timeout === 'auto') {
-            timer.current = setTimeout(next, autoTransitionDuration.current || 0);
-        }
-    };
-
     return (
         <TransitionComponent
+            id={id}
             in={inProp}
+            unmountOnExit
             onEnter={handleEnter}
             onEntered={handleEntered}
             onEntering={handleEntering}
             onExit={handleExit}
             onExited={onExited}
             onExiting={handleExiting}
-            addEndListener={handleAddEndListener}
             nodeRef={nodeRef}
-            timeout={timeout === 'auto' ? null : timeout}
-            {...other}
+            timeout={timeout}
         >
             {(state: TransitionStatus, childProps: Record<string, any>) => (
                 <div
@@ -141,10 +105,10 @@ const Collapse = React.forwardRef<unknown, TransitionProps>((props, ref) => {
                         ...(state === 'entered' && {
                             overflow: 'visible',
                         }),
-                        ...(state === 'exited' && !inProp && {
+                        ...(state === 'exited'
+                            && !inProp && {
                             visibility: 'hidden',
                         }),
-                        ...style,
                     }}
                     {...childProps}
                 >
@@ -152,11 +116,9 @@ const Collapse = React.forwardRef<unknown, TransitionProps>((props, ref) => {
                         ref={wrapperRef}
                         className={ComponentClasses.CollapseWrapper}
                         // Hack to get children with a negative margin to not falsify the height computation.
-                        style={{ display: 'flex' }}
+                        style={{ display: 'flex', width: '100%' }}
                     >
-                        <div style={{ width: '100%' }}>
-                            {children}
-                        </div>
+                        {children}
                     </div>
                 </div>
             )}

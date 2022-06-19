@@ -10,6 +10,7 @@ import MaterialDesignContent from '../ui/MaterialDesignContent';
 
 const styles = makeStyles({
     wrappedRoot: {
+        width: '100%',
         position: 'relative',
         transform: 'translateX(0)',
         top: 0,
@@ -94,7 +95,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     }), {});
 
     return (
-        <Collapse id={otherSnack.id} unmountOnExit timeout={175} in={collapsed} onExited={callbacks.onExited}>
+        <Collapse id={otherSnack.id} in={collapsed} onExited={callbacks.onExited}>
             <Snackbar
                 open={open}
                 id={otherSnack.id}

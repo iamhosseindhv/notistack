@@ -1,7 +1,7 @@
 import { TransitionDuration } from '../types';
 
 interface ComponentProps {
-    style: React.CSSProperties | undefined;
+    style?: React.CSSProperties | undefined;
     /**
      * number: 400
      * string: 'auto'
