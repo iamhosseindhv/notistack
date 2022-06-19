@@ -40,6 +40,8 @@ export interface TransitionDuration {
     exit?: number;
 }
 
+export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited' | 'unmounted';
+
 type TransitionComponent = React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
 
 /**

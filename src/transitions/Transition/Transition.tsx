@@ -31,14 +31,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import React from 'react';
-import { TransitionEnterHandler, TransitionExitHandler, TransitionProps } from '../../types';
-import { TransitionStatus } from './types';
+import { TransitionEnterHandler, TransitionExitHandler, TransitionProps, TransitionStatus } from '../../types';
 
-export const UNMOUNTED = 'unmounted';
-export const EXITED = 'exited';
-export const ENTERING = 'entering';
-export const ENTERED = 'entered';
-export const EXITING = 'exiting';
+const UNMOUNTED = 'unmounted';
+const EXITED = 'exited';
+const ENTERING = 'entering';
+const ENTERED = 'entered';
+const EXITING = 'exiting';
 
 interface TransitionComponentProps extends Omit<TransitionProps, 'children'> {
     children: (status: TransitionStatus, childProps: Record<string, any>) => React.ReactNode;

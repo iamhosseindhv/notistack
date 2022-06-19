@@ -2,8 +2,8 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import TransitionComponent, { TransitionStatus } from '../Transition';
-import { TransitionHandlerProps, TransitionProps } from '../../types';
+import TransitionComponent from '../Transition';
+import { TransitionHandlerProps, TransitionProps, TransitionStatus } from '../../types';
 import useForkRef from '../useForkRef';
 import { reflow } from '../utils';
 import getTransitionProps from '../getTransitionProps';
@@ -70,7 +70,7 @@ const Fade = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout}
             {...other}
         >
-            {(status: TransitionStatus, childProps: Record<string, any>) =>
+            {(status, childProps) =>
                 React.cloneElement(children, {
                     style: {
                         opacity: 0,

@@ -4,7 +4,7 @@
 import * as React from 'react';
 import clsx from 'clsx';
 import { reflow } from '../utils';
-import TransitionComponent, { TransitionStatus } from '../Transition';
+import TransitionComponent from '../Transition';
 import useForkRef from '../useForkRef';
 import { SnackbarKey, TransitionHandlerProps, TransitionProps } from '../../types';
 import getTransitionProps from '../getTransitionProps';
@@ -95,7 +95,7 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
             nodeRef={nodeRef}
             timeout={timeout}
         >
-            {(state: TransitionStatus, childProps: Record<string, any>) => (
+            {(state, childProps) => (
                 <div
                     ref={handleRef}
                     className={clsx(classes.root, { [classes.entered]: state === 'entered' })}

@@ -2,12 +2,12 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import TransitionComponent, { TransitionStatus } from '../Transition';
+import TransitionComponent from '../Transition';
 import { reflow } from '../utils';
 import useForkRef from '../useForkRef';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
-import { TransitionHandlerProps, TransitionProps } from '../../types';
+import { TransitionHandlerProps, TransitionProps, TransitionStatus } from '../../types';
 
 const styles: Partial<Record<TransitionStatus, React.CSSProperties>> = {
     entering: {
@@ -70,7 +70,7 @@ const Zoom = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout}
             {...other}
         >
-            {(state: TransitionStatus, childProps: Record<string, any>) =>
+            {(state, childProps) =>
                 React.cloneElement(children, {
                     style: {
                         transform: 'scale(0)',

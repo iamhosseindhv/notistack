@@ -2,7 +2,7 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import TransitionComponent, { TransitionStatus } from '../Transition';
+import TransitionComponent from '../Transition';
 import useForkRef from '../useForkRef';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
@@ -206,7 +206,7 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout}
             {...other}
         >
-            {(state: TransitionStatus, childProps: Record<string, any>) =>
+            {(state, childProps) =>
                 React.cloneElement(children, {
                     ref: handleRef,
                     style: {

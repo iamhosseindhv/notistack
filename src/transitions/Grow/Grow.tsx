@@ -2,7 +2,7 @@
  * Credit to MUI team @ https://mui.com
  */
 import * as React from 'react';
-import TransitionComponent, { TransitionStatus } from '../Transition';
+import TransitionComponent from '../Transition';
 import { reflow } from '../utils';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
@@ -123,7 +123,7 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout === 'auto' ? undefined : timeout}
             {...other}
         >
-            {(state: TransitionStatus, childProps: Record<string, any>) =>
+            {(state, childProps) =>
                 React.cloneElement(children, {
                     style: {
                         opacity: 0,
