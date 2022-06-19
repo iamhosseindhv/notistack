@@ -1,2 +1,2 @@
-export * from './Transition.js';
-export { default } from './Transition.js';
+export * from './Transition';
+export { default } from './Transition';

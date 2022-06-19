@@ -31,22 +31,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import React from 'react';
-import { TransitionEnterHandler, TransitionExitHandler, TransitionProps, TransitionStatus } from '../../types';
+import { CustomTransitionProps, TransitionStatus } from '../../types';
 
 const UNMOUNTED = 'unmounted';
 const EXITED = 'exited';
 const ENTERING = 'entering';
 const ENTERED = 'entered';
 const EXITING = 'exiting';
-
-interface TransitionComponentProps extends Omit<TransitionProps, 'children'> {
-    children: (status: TransitionStatus, childProps: Record<string, any>) => React.ReactNode;
-    nodeRef: React.RefObject<HTMLDivElement>;
-    appear?: boolean;
-    addEndListener?: (node: HTMLDivElement, callback: () => void) => void;
-    onEntering?: TransitionEnterHandler;
-    onExiting?: TransitionExitHandler;
-}
 
 interface State {
     status: TransitionStatus;
@@ -57,12 +48,12 @@ interface NextCallback {
     cancel?: () => void;
 }
 
-class Transition extends React.Component<TransitionComponentProps, State> {
+class Transition extends React.Component<CustomTransitionProps, State> {
     appearStatus: TransitionStatus | null;
 
     nextCallback: NextCallback | null;
 
-    constructor(props: TransitionComponentProps) {
+    constructor(props: CustomTransitionProps) {
         super(props);
 
         const { appear } = props;
@@ -89,7 +80,7 @@ class Transition extends React.Component<TransitionComponentProps, State> {
         this.nextCallback = null;
     }
 
-    static getDerivedStateFromProps({ in: nextIn }: TransitionComponentProps, prevState: State) {
+    static getDerivedStateFromProps({ in: nextIn }: CustomTransitionProps, prevState: State) {
         if (nextIn && prevState.status === UNMOUNTED) {
             return { status: EXITED };
         }
@@ -100,7 +91,7 @@ class Transition extends React.Component<TransitionComponentProps, State> {
         this.updateStatus(true, this.appearStatus);
     }
 
-    componentDidUpdate(prevProps: TransitionComponentProps) {
+    componentDidUpdate(prevProps: CustomTransitionProps) {
         let nextStatus: TransitionStatus | null = null;
         if (prevProps !== this.props) {
             const { status } = this.state;
