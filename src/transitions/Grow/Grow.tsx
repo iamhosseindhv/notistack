@@ -4,11 +4,23 @@
 import * as React from 'react';
 import TransitionComponent, { TransitionStatus } from '../Transition';
 import { reflow } from '../utils';
-import getAutoHeightDuration from '../getAutoHeightDuration';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import useForkRef from '../useForkRef';
 import { TransitionHandlerProps, TransitionProps } from '../../types';
+
+/**
+ * https://www.wolframalpha.com/input/?i=(4+%2B+15+*+(x+%2F+36+)+**+0.25+%2B+(x+%2F+36)+%2F+5)+*+10
+ */
+function getAutoHeightDuration(height: number): number {
+    if (!height) {
+        return 0;
+    }
+
+    const constant = height / 36;
+
+    return Math.round((4 + 15 * constant ** 0.25 + constant / 5) * 10);
+}
 
 function getScale(value: number): string {
     return `scale(${value}, ${value ** 2})`;
@@ -26,17 +38,7 @@ const styles: Partial<Record<string, React.CSSProperties>> = {
 };
 
 const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
-    const {
-        children,
-        in: inProp,
-        style,
-        timeout = 'auto',
-        onEnter,
-        onEntered,
-        onExit,
-        onExited,
-        ...other
-    } = props;
+    const { children, in: inProp, style, timeout = 'auto', onEnter, onEntered, onExit, onExited, ...other } = props;
     const timer = React.useRef<ReturnType<typeof setTimeout>>();
     const autoTimeout = React.useRef<number>();
 
@@ -47,14 +49,11 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
         reflow(node);
 
-        const {
-            duration: transitionDuration,
-            delay,
-            easing,
-        } = getTransitionProps({ style, timeout, mode: 'enter' });
+        const { duration: transitionDuration, delay, easing } = getTransitionProps({ style, timeout, mode: 'enter' });
 
         let duration = transitionDuration;
-        if (typeof duration === 'string') { // i.e if timeout === 'auto'
+        if (typeof duration === 'string') {
+            // i.e if timeout === 'auto'
             duration = getAutoHeightDuration(node.clientHeight);
             autoTimeout.current = duration;
         }
@@ -70,14 +69,11 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     };
 
     const handleExit: TransitionHandlerProps['onExit'] = (node, snackId) => {
-        const {
-            duration: transitionDuration,
-            delay,
-            easing,
-        } = getTransitionProps({ style, timeout, mode: 'exit' });
+        const { duration: transitionDuration, delay, easing } = getTransitionProps({ style, timeout, mode: 'exit' });
 
         let duration = transitionDuration;
-        if (typeof duration === 'string') { // i.e if timeout === 'auto'
+        if (typeof duration === 'string') {
+            // i.e if timeout === 'auto'
             duration = getAutoHeightDuration(node.clientHeight);
             autoTimeout.current = duration;
         }
@@ -87,7 +83,7 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             createTransition('transform', {
                 easing,
                 duration: duration * 0.666,
-                delay: delay || (duration * 0.333),
+                delay: delay || duration * 0.333,
             }),
         ].join(',');
 
@@ -105,11 +101,14 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
         }
     };
 
-    React.useEffect(() => () => {
-        if (timer.current) {
-            clearTimeout(timer.current);
-        }
-    }, []);
+    React.useEffect(
+        () => () => {
+            if (timer.current) {
+                clearTimeout(timer.current);
+            }
+        },
+        [],
+    );
 
     return (
         <TransitionComponent
