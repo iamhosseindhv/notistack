@@ -11,19 +11,9 @@
     "declaration": false,
     "lib": ["esnext","dom"],
     "jsx": "react",
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "importHelpers": true,
     "sourceMap": true,
     "rootDir": "./src",
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "noImplicitReturns": false,
-    "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "*": ["src/*", "node_modules/*"]
-    },
   },
   "typedocOptions": {
     "inputFiles": ["./src/types.ts"],
