@@ -52,7 +52,8 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
             mode: 'enter',
         });
 
-        node.style.transitionDuration = typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
+        node.style.transitionDuration =
+            typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
 
         node.style.height = `${wrapperSize}px`;
         node.style.transitionTimingFunction = easing || '';
@@ -74,7 +75,8 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
             mode: 'exit',
         });
 
-        node.style.transitionDuration = typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
+        node.style.transitionDuration =
+            typeof transitionDuration === 'string' ? transitionDuration : `${transitionDuration}ms`;
         node.style.height = collapsedSize;
         node.style.transitionTimingFunction = easing || '';
     };
@@ -105,10 +107,10 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
                         ...(state === 'entered' && {
                             overflow: 'visible',
                         }),
-                        ...(state === 'exited'
-                            && !inProp && {
-                            visibility: 'hidden',
-                        }),
+                        ...(state === 'exited' &&
+                            !inProp && {
+                                visibility: 'hidden',
+                            }),
                     }}
                     {...childProps}
                 >
@@ -125,5 +127,7 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
         </TransitionComponent>
     );
 });
+
+Collapse.displayName = 'Collapse';
 
 export default Collapse;

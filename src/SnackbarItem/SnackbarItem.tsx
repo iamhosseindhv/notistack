@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import clsx from 'clsx';
 import Collapse from '../transitions/Collapse';
 import { getSlideDirection, toSnackbarAnchorOrigin, keepSnackbarClassKeys } from './utils';
-import { TransitionHandlerProps, SnackbarProviderProps, CustomContentProps, InternalSnack, SharedProps } from '../types';
+import {
+    TransitionHandlerProps,
+    SnackbarProviderProps,
+    CustomContentProps,
+    InternalSnack,
+    SharedProps,
+} from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
 import Snackbar from './Snackbar';
 import { makeStyles } from '../utils/styles';
@@ -33,7 +39,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
-    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction([props.snack.onClose, props.onClose]);
+    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction([
+        props.snack.onClose,
+        props.onClose,
+    ]);
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
@@ -47,17 +56,16 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         }, 125);
     }, []);
 
-    useEffect(() => (): void => {
-        if (timeout.current) {
-            clearTimeout(timeout.current);
-        }
-    }, []);
+    useEffect(
+        () => (): void => {
+            if (timeout.current) {
+                clearTimeout(timeout.current);
+            }
+        },
+        []
+    );
 
-    const {
-        snack,
-        classes: allClasses,
-        Component = MaterialDesignContent,
-    } = props;
+    const { snack, classes: allClasses, Component = MaterialDesignContent } = props;
 
     const classes = useMemo(() => keepSnackbarClassKeys(allClasses), [allClasses]);
 
@@ -89,10 +97,15 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         content = content(otherSnack.id, otherSnack.message);
     }
 
-    const callbacks: { [key in keyof TransitionHandlerProps]?: any } = (['onEnter', 'onEntered', 'onExit', 'onExited'] as (keyof TransitionHandlerProps)[]).reduce((acc, cbName) => ({
-        ...acc,
-        [cbName]: createChainedFunction([props.snack[cbName], props[cbName]]),
-    }), {});
+    const callbacks: { [key in keyof TransitionHandlerProps]?: any } = (
+        ['onEnter', 'onEntered', 'onExit', 'onExited'] as (keyof TransitionHandlerProps)[]
+    ).reduce(
+        (acc, cbName) => ({
+            ...acc,
+            [cbName]: createChainedFunction([props.snack[cbName], props[cbName]]),
+        }),
+        {}
+    );
 
     return (
         <Collapse id={otherSnack.id} in={collapsed} onExited={callbacks.onExited}>
@@ -104,7 +117,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                 className={clsx(
                     styles.wrappedRoot,
                     classes.root,
-                    classes[toSnackbarAnchorOrigin(otherSnack.anchorOrigin)],
+                    classes[toSnackbarAnchorOrigin(otherSnack.anchorOrigin)]
                 )}
                 SnackbarProps={SnackbarProps}
                 onClose={handleClose}

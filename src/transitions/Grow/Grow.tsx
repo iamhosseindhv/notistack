@@ -107,7 +107,7 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
                 clearTimeout(timer.current);
             }
         },
-        [],
+        []
     );
 
     return (
@@ -123,20 +123,24 @@ const Grow = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout === 'auto' ? null : timeout}
             {...other}
         >
-            {(state: TransitionStatus, childProps: Record<string, any>) => React.cloneElement(children, {
-                style: {
-                    opacity: 0,
-                    transform: getScale(0.75),
-                    visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
-                    ...styles[state],
-                    ...style,
-                    ...children.props.style,
-                },
-                ref: handleRef,
-                ...childProps,
-            })}
+            {(state: TransitionStatus, childProps: Record<string, any>) =>
+                React.cloneElement(children, {
+                    style: {
+                        opacity: 0,
+                        transform: getScale(0.75),
+                        visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
+                        ...styles[state],
+                        ...style,
+                        ...children.props.style,
+                    },
+                    ref: handleRef,
+                    ...childProps,
+                })
+            }
         </TransitionComponent>
     );
 });
+
+Grow.displayName = 'Grow';
 
 export default Grow;

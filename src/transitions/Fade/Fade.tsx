@@ -70,19 +70,23 @@ const Fade = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout}
             {...other}
         >
-            {(status: TransitionStatus, childProps: Record<string, any>) => React.cloneElement(children, {
-                style: {
-                    opacity: 0,
-                    visibility: status === 'exited' && !inProp ? 'hidden' : undefined,
-                    ...styles[status],
-                    ...style,
-                    ...children.props.style,
-                },
-                ref: handleRef,
-                ...childProps,
-            })}
+            {(status: TransitionStatus, childProps: Record<string, any>) =>
+                React.cloneElement(children, {
+                    style: {
+                        opacity: 0,
+                        visibility: status === 'exited' && !inProp ? 'hidden' : undefined,
+                        ...styles[status],
+                        ...style,
+                        ...children.props.style,
+                    },
+                    ref: handleRef,
+                    ...childProps,
+                })
+            }
         </TransitionComponent>
     );
 });
+
+Fade.displayName = 'Fade';
 
 export default Fade;

@@ -7,12 +7,20 @@ import { defaults, merge } from './merger';
 import SnackbarItem from '../SnackbarItem';
 import SnackbarContainer from '../SnackbarContainer';
 import warning from '../utils/warning';
-import { SnackbarProviderProps, SnackbarKey, ProviderContext, TransitionHandlerProps, InternalSnack, OptionsObject, SharedProps } from '../types';
+import {
+    SnackbarProviderProps,
+    SnackbarKey,
+    ProviderContext,
+    TransitionHandlerProps,
+    InternalSnack,
+    OptionsObject,
+    SharedProps,
+} from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
 
-const isOptions = (messageOrOptions: string | (OptionsObject & { message?: string })): messageOrOptions is OptionsObject & { message?: string } => (
-    typeof messageOrOptions !== 'string'
-);
+const isOptions = (
+    messageOrOptions: string | (OptionsObject & { message?: string })
+): messageOrOptions is OptionsObject & { message?: string } => typeof messageOrOptions !== 'string';
 
 type Reducer = (state: State) => State;
 type SnacksByPosition = { [key: string]: InternalSnack[] };
@@ -44,7 +52,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Adds a new snackbar to the queue to be presented.
      * Returns generated or user defined key referencing the new snackbar or null
      */
-    enqueueSnackbar = (messageOrOptions: string | (OptionsObject & { message?: string }), optsOrUndefined: OptionsObject = {}): SnackbarKey => {
+    enqueueSnackbar = (
+        messageOrOptions: string | (OptionsObject & { message?: string }),
+        optsOrUndefined: OptionsObject = {}
+    ): SnackbarKey => {
         const opts = isOptions(messageOrOptions) ? messageOrOptions : optsOrUndefined;
 
         let message: string | undefined = messageOrOptions as string;
@@ -52,11 +63,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             message = messageOrOptions.message;
         }
 
-        const {
-            key,
-            preventDuplicate,
-            ...options
-        } = opts;
+        const { key, preventDuplicate, ...options } = opts;
 
         const hasSpecifiedKey = isDefined(key);
         const id = hasSpecifiedKey ? (key as SnackbarKey) : new Date().getTime() + Math.random();
@@ -92,9 +99,8 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
         this.setState((state) => {
             if ((preventDuplicate === undefined && this.props.preventDuplicate) || preventDuplicate) {
-                const compareFunction = (item: InternalSnack): boolean => (
-                    hasSpecifiedKey ? item.id === id : item.message === message
-                );
+                const compareFunction = (item: InternalSnack): boolean =>
+                    hasSpecifiedKey ? item.id === id : item.message === message;
 
                 const inQueue = state.queue.findIndex(compareFunction) > -1;
                 const inView = state.snacks.findIndex(compareFunction) > -1;
@@ -110,7 +116,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         });
 
         return id;
-    }
+    };
 
     /**
      * Reducer: Display snack if there's space for it. Otherwise, immediately
@@ -155,9 +161,10 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         let popped = false;
         let ignore = false;
 
-        const persistentCount = state.snacks.reduce((acc, current) => (
-            acc + (current.open && current.persist ? 1 : 0)
-        ), 0);
+        const persistentCount = state.snacks.reduce(
+            (acc, current) => acc + (current.open && current.persist ? 1 : 0),
+            0
+        );
 
         if (persistentCount === this.maxSnack) {
             warning('NO_PERSIST_ALL');
@@ -204,11 +211,9 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         }
 
         this.setState(({ snacks }) => ({
-            snacks: snacks.map((item) => (
-                item.id === key ? { ...item, entered: true } : { ...item }
-            )),
+            snacks: snacks.map((item) => (item.id === key ? { ...item, entered: true } : { ...item })),
         }));
-    }
+    };
 
     /**
      * Hide a snackbar after its timeout.
@@ -232,9 +237,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                     return { ...item };
                 }
 
-                return item.entered
-                    ? { ...item, open: false }
-                    : { ...item, requestClose: true };
+                return item.entered ? { ...item, open: false } : { ...item, requestClose: true };
             }),
             queue: queue.filter((item) => item.id !== key), // eslint-disable-line react/no-unused-state
         }));
@@ -251,7 +254,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         }
 
         this.handleCloseSnack(null, 'instructed', key);
-    }
+    };
 
     /**
      * When we set open attribute of a snackbar to false (i.e. after we hide a snackbar),
@@ -281,13 +284,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
     render(): JSX.Element {
         const { contextValue } = this.state;
-        const {
-            domRoot,
-            children,
-            dense = false,
-            Components = {},
-            classes,
-        } = this.props;
+        const { domRoot, children, dense = false, Components = {}, classes } = this.props;
 
         const categ = this.state.snacks.reduce<SnacksByPosition>((acc, current) => {
             const category = originKeyExtractor(current.anchorOrigin);

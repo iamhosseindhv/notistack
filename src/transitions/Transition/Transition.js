@@ -263,7 +263,7 @@ class Transition extends React.Component {
     }
 }
 
-function noop() { }
+function noop() {}
 
 Transition.defaultProps = {
     in: false,

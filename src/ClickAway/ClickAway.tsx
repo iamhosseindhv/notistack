@@ -11,10 +11,7 @@ function mapEventPropToEvent(eventProp: string): string {
 }
 
 function clickedRootScrollbar(event: MouseEvent, doc: Document) {
-    return (
-        doc.documentElement.clientWidth < event.clientX
-        || doc.documentElement.clientHeight < event.clientY
-    );
+    return doc.documentElement.clientWidth < event.clientX || doc.documentElement.clientHeight < event.clientY;
 }
 
 const mouseEvent = 'onClick';
@@ -60,11 +57,7 @@ function ClickAway({ children, onClickAway }: ClickAwayProps): JSX.Element {
 
         const doc = ownerDocument(nodeRef.current);
 
-        if (
-            !activatedRef.current
-            || !nodeRef.current
-            || ('clientX' in event && clickedRootScrollbar(event, doc))
-        ) {
+        if (!activatedRef.current || !nodeRef.current || ('clientX' in event && clickedRootScrollbar(event, doc))) {
             return;
         }
 
@@ -81,7 +74,7 @@ function ClickAway({ children, onClickAway }: ClickAwayProps): JSX.Element {
             insideDOM = !doc.documentElement.contains(event.target) || nodeRef.current.contains(event.target);
         }
 
-        if (!insideDOM && (!insideReactTree)) {
+        if (!insideDOM && !insideReactTree) {
             onClickAway(event);
         }
     });
@@ -95,7 +88,9 @@ function ClickAway({ children, onClickAway }: ClickAwayProps): JSX.Element {
         }
     };
 
-    const childrenProps: { ref: React.Ref<Element> } & Pick<React.DOMAttributes<Element>, 'onClick' | 'onTouchEnd'> = { ref: handleRef };
+    const childrenProps: { ref: React.Ref<Element> } & Pick<React.DOMAttributes<Element>, 'onClick' | 'onTouchEnd'> = {
+        ref: handleRef,
+    };
 
     childrenProps[touchEvent] = createHandleSynthetic(touchEvent);
 

@@ -20,4 +20,6 @@ const SnackbarContent = forwardRef<HTMLDivElement, SnackbarContentProps>(({ clas
     <div ref={ref} className={clsx(classes.root, className)} {...props} />
 ));
 
+SnackbarContent.displayName = 'SnackbarContent';
+
 export default SnackbarContent;

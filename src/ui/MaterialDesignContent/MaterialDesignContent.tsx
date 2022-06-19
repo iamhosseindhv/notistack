@@ -14,7 +14,8 @@ const classes = makeStyles({
         alignItems: 'center',
         padding: '6px 16px',
         borderRadius: '4px',
-        boxShadow: '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
+        boxShadow:
+            '0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12)',
     },
     lessPadding: {
         paddingLeft: `${8 * 2.5}px`,
@@ -49,15 +50,7 @@ const classes = makeStyles({
 });
 
 const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((props, forwardedRef) => {
-    const {
-        id,
-        message,
-        action: componentOrFunctionAction,
-        iconVariant,
-        variant,
-        hideIconVariant,
-        style,
-    } = props;
+    const { id, message, action: componentOrFunctionAction, iconVariant, variant, hideIconVariant, style } = props;
 
     const icon = iconVariant[variant];
 
@@ -75,18 +68,18 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
                 ComponentClasses.MuiContent,
                 classes.root,
                 { [classes.lessPadding]: !hideIconVariant && icon },
-                classes[variant],
+                classes[variant]
             )}
         >
             <div id="notistack-snackbar" className={classes.message}>
                 {!hideIconVariant ? icon : null}
                 {message}
             </div>
-            {action && (
-                <div className={classes.action}>{action}</div>
-            )}
+            {action && <div className={classes.action}>{action}</div>}
         </SnackbarContent>
     );
 });
+
+MaterialDesignContent.displayName = 'MaterialDesignContent';
 
 export default memo(MaterialDesignContent);

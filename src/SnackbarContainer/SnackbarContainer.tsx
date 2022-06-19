@@ -23,7 +23,10 @@ const styles = makeStyles({
         zIndex: 1400,
         height: 'auto',
         width: 'auto',
-        transition: createTransition(['top', 'right', 'bottom', 'left', 'max-width'], { duration: 300, easing: 'ease' }),
+        transition: createTransition(['top', 'right', 'bottom', 'left', 'max-width'], {
+            duration: 300,
+            easing: 'ease',
+        }),
         // container itself is invisible and should not block clicks, clicks should be passed to its children
         // a pointerEvents: all is applied in the collapse component
         pointerEvents: 'none',
@@ -85,12 +88,7 @@ interface SnackbarContainerProps {
 }
 
 const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
-    const {
-        classes = {},
-        anchorOrigin,
-        dense,
-        children,
-    } = props;
+    const { classes = {}, anchorOrigin, dense, children } = props;
 
     const combinedClassname = clsx(
         ComponentClasses.SnackbarContainer,
@@ -99,14 +97,10 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
         { [styles.rootDense]: dense },
         styles.root, // root should come after others to override maxWidth
         classes.containerRoot,
-        classes[`containerAnchorOrigin${originKeyExtractor(anchorOrigin)}` as ContainerClassKey],
+        classes[`containerAnchorOrigin${originKeyExtractor(anchorOrigin)}` as ContainerClassKey]
     );
 
-    return (
-        <div className={combinedClassname}>
-            {children}
-        </div>
-    );
+    return <div className={combinedClassname}>{children}</div>;
 };
 
 export default memo(SnackbarContainer);

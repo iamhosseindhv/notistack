@@ -63,22 +63,24 @@ const getTransitionDuration = (optionsDuration: any, propsDuration: any) => {
     return defaults.transitionDuration;
 };
 
-export const merge = (options, props) => (name: keyof InternalSnack, shouldObjectMerge = false): any => {
-    if (shouldObjectMerge) {
-        return {
-            ...defaults[name],
-            ...props[name],
-            ...options[name],
-        };
-    }
+export const merge =
+    (options, props) =>
+    (name: keyof InternalSnack, shouldObjectMerge = false): any => {
+        if (shouldObjectMerge) {
+            return {
+                ...defaults[name],
+                ...props[name],
+                ...options[name],
+            };
+        }
 
-    if (name === 'autoHideDuration') {
-        return getAutoHideDuration(options.autoHideDuration, props.autoHideDuration);
-    }
+        if (name === 'autoHideDuration') {
+            return getAutoHideDuration(options.autoHideDuration, props.autoHideDuration);
+        }
 
-    if (name === 'transitionDuration') {
-        return getTransitionDuration(options.transitionDuration, props.transitionDuration);
-    }
+        if (name === 'transitionDuration') {
+            return getTransitionDuration(options.transitionDuration, props.transitionDuration);
+        }
 
-    return options[name] || props[name] || defaults[name];
-};
+        return options[name] || props[name] || defaults[name];
+    };

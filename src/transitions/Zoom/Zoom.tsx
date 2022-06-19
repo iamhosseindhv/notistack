@@ -70,19 +70,23 @@ const Zoom = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout}
             {...other}
         >
-            {(state: TransitionStatus, childProps: Record<string, any>) => React.cloneElement(children, {
-                style: {
-                    transform: 'scale(0)',
-                    visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
-                    ...styles[state],
-                    ...style,
-                    ...children.props.style,
-                },
-                ref: handleRef,
-                ...childProps,
-            })}
+            {(state: TransitionStatus, childProps: Record<string, any>) =>
+                React.cloneElement(children, {
+                    style: {
+                        transform: 'scale(0)',
+                        visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
+                        ...styles[state],
+                        ...style,
+                        ...children.props.style,
+                    },
+                    ref: handleRef,
+                    ...childProps,
+                })
+            }
         </TransitionComponent>
     );
 });
+
+Zoom.displayName = 'Zoom';
 
 export default Zoom;

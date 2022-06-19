@@ -8,9 +8,9 @@ import { CloseReason, SharedProps, SnackbarKey } from '../types';
 import { ComponentClasses } from '../utils/styles';
 import ClickAway from '../ClickAway';
 
-interface SnackbarProps extends Required<Pick<SharedProps, | 'disableWindowBlurListener' | 'onClose'>> {
+interface SnackbarProps extends Required<Pick<SharedProps, 'disableWindowBlurListener' | 'onClose'>> {
     open: boolean;
-    id: SnackbarKey
+    id: SnackbarKey;
     className: string;
     children: JSX.Element;
     autoHideDuration: number | null | undefined;
@@ -118,11 +118,19 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
 
     return (
         <ClickAway onClickAway={handleClickAway}>
-            <div ref={ref} {...SnackbarProps} className={clsx(ComponentClasses.Snackbar, className)} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <div
+                ref={ref}
+                {...SnackbarProps}
+                className={clsx(ComponentClasses.Snackbar, className)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
                 {children}
             </div>
         </ClickAway>
     );
 });
+
+Snackbar.displayName = 'Snackbar';
 
 export default Snackbar;

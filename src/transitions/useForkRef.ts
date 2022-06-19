@@ -12,7 +12,7 @@ import * as React from 'react';
  */
 function setRef<T>(
     ref: React.MutableRefObject<T | null> | ((instance: T | null) => void) | null | undefined,
-    value: T | null,
+    value: T | null
 ): void {
     if (typeof ref === 'function') {
         ref(value);
@@ -23,7 +23,7 @@ function setRef<T>(
 
 export default function useForkRef<Instance>(
     refA: React.Ref<Instance> | null | undefined,
-    refB: React.Ref<Instance> | null | undefined,
+    refB: React.Ref<Instance> | null | undefined
 ): React.Ref<Instance> | null {
     /**
      * This will create a new function if the ref props change and are defined.

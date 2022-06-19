@@ -1,4 +1,12 @@
-import { InternalSnack, SlideTransitionDirection, SnackbarOrigin, SnackbarClassKey, SnackbarProviderProps, ClassNameMap, ContainerClassKey } from '../types';
+import {
+    InternalSnack,
+    SlideTransitionDirection,
+    SnackbarOrigin,
+    SnackbarClassKey,
+    SnackbarProviderProps,
+    ClassNameMap,
+    ContainerClassKey,
+} from '../types';
 import { originKeyExtractor } from '../utils';
 
 const direction: Record<string, SlideTransitionDirection> = {
@@ -16,14 +24,15 @@ export const getSlideDirection = (anchorOrigin: InternalSnack['anchorOrigin']): 
 };
 
 /** Tranforms classes name */
-export const toSnackbarAnchorOrigin = (anchorOrigin: SnackbarOrigin): SnackbarClassKey => (
-    `anchorOrigin${originKeyExtractor(anchorOrigin)}` as SnackbarClassKey
-);
+export const toSnackbarAnchorOrigin = (anchorOrigin: SnackbarOrigin): SnackbarClassKey =>
+    `anchorOrigin${originKeyExtractor(anchorOrigin)}` as SnackbarClassKey;
 
 /**
  * Omit SnackbarContainer class keys that are not needed for SnackbarItem
  */
-export const keepSnackbarClassKeys = (classes: SnackbarProviderProps['classes'] = {}): Partial<ClassNameMap<SnackbarClassKey>> => {
+export const keepSnackbarClassKeys = (
+    classes: SnackbarProviderProps['classes'] = {}
+): Partial<ClassNameMap<SnackbarClassKey>> => {
     const containerClasses: Record<ContainerClassKey, true> = {
         containerRoot: true,
         containerAnchorOriginTopCenter: true,

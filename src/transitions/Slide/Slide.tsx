@@ -14,8 +14,8 @@ import { SlideTransitionDirection, TransitionHandlerProps, TransitionProps } fro
  * Corresponds to 10 frames at 60 Hz.
  * A few bytes payload overhead when lodash/debounce is ~3 kB and debounce ~300 B.
  */
-function debounce(func, wait = 166) {
-    let timeout;
+function debounce(func: () => void, wait = 166) {
+    let timeout: ReturnType<typeof setTimeout>;
     function debounced(...args: any[]) {
         const later = () => {
             func.apply(this, args);
@@ -35,7 +35,10 @@ function debounce(func, wait = 166) {
  * Translate the node so it can't be seen on the screen.
  * Later, we're going to translate the node back to its original location with `none`.
  */
-function getTranslateValue(direction: SlideTransitionDirection, node: HTMLElement & { fakeTransform?: string }): string {
+function getTranslateValue(
+    direction: SlideTransitionDirection,
+    node: HTMLElement & { fakeTransform?: string }
+): string {
     const rect = node.getBoundingClientRect();
     const containerWindow = ownerWindow(node);
     let transform;
@@ -195,17 +198,21 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             timeout={timeout}
             {...other}
         >
-            {(state: TransitionStatus, childProps: Record<string, any>) => React.cloneElement(children, {
-                ref: handleRef,
-                style: {
-                    visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
-                    ...style,
-                    ...children.props.style,
-                },
-                ...childProps,
-            })}
+            {(state: TransitionStatus, childProps: Record<string, any>) =>
+                React.cloneElement(children, {
+                    ref: handleRef,
+                    style: {
+                        visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
+                        ...style,
+                        ...children.props.style,
+                    },
+                    ...childProps,
+                })
+            }
         </TransitionComponent>
     );
 });
+
+Slide.displayName = 'Slide';
 
 export default Slide;
