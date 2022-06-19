@@ -6,6 +6,9 @@ module.exports = {
     },
     extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended'],
     parser: 'babel-eslint',
+    globals: {
+        process: true,
+    },
     parserOptions: {
         ecmaFeatures: {
             jsx: true,
