@@ -26,6 +26,7 @@ function debounce(func: () => void, wait = 166) {
     let timeout: ReturnType<typeof setTimeout>;
     function debounced(...args: any[]) {
         const later = () => {
+            // @ts-ignore
             func.apply(this, args);
         };
         clearTimeout(timeout);
@@ -104,7 +105,7 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     } = props;
 
     const nodeRef = React.useRef(null);
-    const handleRefIntermediary = useForkRef(children.ref, nodeRef);
+    const handleRefIntermediary = useForkRef((children as any).ref, nodeRef);
     const handleRef = useForkRef(handleRefIntermediary, ref);
 
     const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
@@ -207,12 +208,12 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
             {...other}
         >
             {(state, childProps) =>
-                React.cloneElement(children, {
+                React.cloneElement(children as any, {
                     ref: handleRef,
                     style: {
                         visibility: state === 'exited' && !inProp ? 'hidden' : undefined,
                         ...style,
-                        ...children.props.style,
+                        ...(children as any).props.style,
                     },
                     ...childProps,
                 })

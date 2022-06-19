@@ -133,7 +133,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                     // then handleEntered to check if there's a request for closing
                     onEntered={createChainedFunction([callbacks.onEntered, handleEntered])}
                 >
-                    {content || <Component {...otherSnack} />}
+                    {(content as React.ReactElement) || <Component {...otherSnack} />}
                 </TransitionComponent>
             </Snackbar>
         </Collapse>

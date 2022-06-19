@@ -64,11 +64,11 @@ const getTransitionDuration = (optionsDuration: any, propsDuration: any) => {
 };
 
 export const merge =
-    (options, props) =>
+    (options: any, props: any) =>
     (name: keyof InternalSnack, shouldObjectMerge = false): any => {
         if (shouldObjectMerge) {
             return {
-                ...defaults[name],
+                ...(defaults as any)[name],
                 ...props[name],
                 ...options[name],
             };
@@ -82,5 +82,5 @@ export const merge =
             return getTransitionDuration(options.transitionDuration, props.transitionDuration);
         }
 
-        return options[name] || props[name] || defaults[name];
+        return options[name] || props[name] || (defaults as any)[name];
     };
