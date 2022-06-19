@@ -42,7 +42,14 @@ export interface TransitionDuration {
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited' | 'unmounted';
 
-type TransitionComponent = React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
+export interface CustomTransitionProps extends Omit<TransitionProps, 'children'> {
+    children: (status: TransitionStatus, childProps: Record<string, any>) => React.ReactNode;
+    nodeRef: React.RefObject<HTMLDivElement>;
+    appear?: boolean;
+    addEndListener?: (node: HTMLDivElement, callback: () => void) => void;
+    onEntering?: TransitionEnterHandler;
+    onExiting?: TransitionExitHandler;
+}
 
 /**
  * @category Shared
@@ -81,7 +88,7 @@ export interface TransitionProps extends Partial<TransitionHandlerProps> {
     /**
      * The duration of the transition, in milliseconds
      */
-    timeout?: number | TransitionDuration | 'auto';
+    timeout?: number | TransitionDuration;
     /**
      * Enable or disable enter transitions.
      */
@@ -197,17 +204,11 @@ export interface SharedProps<V extends VariantType = VariantType> extends Partia
      */
     disableWindowBlurListener?: boolean;
     /**
-     * The component used for the transition. notistack supports 4 transitions
-     * out of the box. You can also create your own transitions using react-transition-group.
-     * ```jsx
-     * import { Fade } from 'notistack';
-     * import { Grow } from 'notistack';
-     * import { Slide } from 'notistack';
-     * import { Zoom } from 'notistack';
-     * ```
+     * The component used for the transition. See how you can use a different transition:
+     * https://notistack.com/examples/advanced/custom-transition
      * @default Slide
      */
-    TransitionComponent?: TransitionComponent;
+    TransitionComponent?: React.JSXElementConstructor<TransitionProps & { children: React.ReactElement<any, any> }>;
     /**
      * The duration for the transition, in milliseconds.
      *
@@ -218,10 +219,6 @@ export interface SharedProps<V extends VariantType = VariantType> extends Partia
      * or individually:
      * ```js
      * timeout={{ enter: 300, exit: 500 }}
-     * ```
-     * or auto-adjust based on dimensions of the snackbar (Only applicable if TransitionComponent is Grow)
-     * ```js
-     * transitionDuration="auto"
      * ```
      * @default { enter: 225, exit: 195 }
      */
@@ -416,7 +413,4 @@ export declare const SnackbarContent: React.ComponentType<SnackbarContentProps &
 
 export declare function useSnackbar(): ProviderContext;
 
-export declare const Slide: TransitionComponent;
-export declare const Grow: TransitionComponent;
-export declare const Fade: TransitionComponent;
-export declare const Zoom: TransitionComponent;
+export declare const Transition: React.JSXElementConstructor<CustomTransitionProps>;
