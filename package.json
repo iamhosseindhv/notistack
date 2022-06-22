@@ -18,12 +18,13 @@
     },
     "scripts": {
         "prebuild": "npm run docs",
-        "build": "tsdx build --transpileOnly --entry ./src/index.js",
+        "build": "tsdx build --entry ./src/index.js",
         "watch": "tsdx watch --transpileOnly --entry ./src/index.js",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-        "prerelease": "npm run build",
-        "postversion": "cp package.json dist",
+        "copy": "cp package.json README.md LICENSE.md dist",
+        "prerelease": "npm run build && npm run copy",
+        "postversion": "npm run copy",
         "release:alpha": "np --tag alpha"
     },
     "peerDependencies": {
