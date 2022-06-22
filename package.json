@@ -95,7 +95,7 @@
     "np": {
         "branch": "alpha",
         "yarn": false,
-        "contents": "dist",
+        "contents": "./dist",
         "message": "v%s",
         "releaseDraft": false
     },
