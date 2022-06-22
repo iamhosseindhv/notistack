@@ -22,6 +22,7 @@
         "watch": "tsdx watch --transpileOnly --entry ./src/index.js",
         "docs": "rimraf typedoc.json && typedoc --tsconfig",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+        "test": "echo todo-test",
         "copy": "cp package.json README.md LICENSE.md dist",
         "prerelease": "npm run build && npm run copy",
         "postversion": "npm run copy",
