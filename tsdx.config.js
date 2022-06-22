@@ -11,11 +11,7 @@ module.exports = {
                 targets: [
                     // copy decleration file over
                     { src: 'src/types.ts', dest: DIST_FOLDER, rename: 'index.d.ts' },
-                    // and a bunch of other things
-                    { src: 'package.json', dest: DIST_FOLDER },
-                    { src: 'README.md', dest: DIST_FOLDER },
-                    { src: 'LICENSE.md', dest: DIST_FOLDER },
-                ]
+                ],
             })
         );
         return config;
