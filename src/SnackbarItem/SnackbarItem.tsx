@@ -39,10 +39,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
-    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction([
-        props.snack.onClose,
-        props.onClose,
-    ]);
+    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction(props.snack.onClose!, props.onClose);
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
@@ -102,7 +99,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     ).reduce(
         (acc, cbName) => ({
             ...acc,
-            [cbName]: createChainedFunction([props.snack[cbName], props[cbName]]),
+            [cbName]: createChainedFunction(props.snack[cbName] as any, props[cbName] as any),
         }),
         {}
     );
@@ -131,7 +128,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
                     onEnter={callbacks.onEnter}
                     // order matters. first callbacks.onEntered to set entered: true,
                     // then handleEntered to check if there's a request for closing
-                    onEntered={createChainedFunction([callbacks.onEntered, handleEntered])}
+                    onEntered={createChainedFunction(callbacks.onEntered, handleEntered)}
                 >
                     {(content as React.ReactElement) || <Component {...otherSnack} />}
                 </TransitionComponent>

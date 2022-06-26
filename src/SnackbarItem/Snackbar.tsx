@@ -30,13 +30,13 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
 
     const timerAutoHide = React.useRef<ReturnType<typeof setTimeout>>();
 
-    const handleClose = useEventCallback((...args: [React.SyntheticEvent<any>, CloseReason, SnackbarKey]) => {
+    const handleClose = useEventCallback((...args: [null, CloseReason, SnackbarKey]) => {
         if (onClose) {
             onClose(...args);
         }
     });
 
-    const setAutoHideTimer = useEventCallback((autoHideDurationParam: number | null) => {
+    const setAutoHideTimer = useEventCallback((autoHideDurationParam?: number | null) => {
         if (!onClose || autoHideDurationParam == null) {
             return;
         }

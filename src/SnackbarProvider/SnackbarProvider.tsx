@@ -317,8 +317,8 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                             onClose={this.handleCloseSnack}
                             onEnter={this.props.onEnter}
                             onExit={this.props.onExit}
-                            onExited={createChainedFunction([this.handleExitedSnack, this.props.onExited])}
-                            onEntered={createChainedFunction([this.handleEnteredSnack, this.props.onEntered])}
+                            onExited={createChainedFunction(this.handleExitedSnack, this.props.onExited!)}
+                            onEntered={createChainedFunction(this.handleEnteredSnack, this.props.onEntered!)}
                         />
                     ))}
                 </SnackbarContainer>

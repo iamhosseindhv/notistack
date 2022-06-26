@@ -1,5 +1,5 @@
 {
-  "include": ["src"],
+  "include": ["src", ".eslintrc"],
   "compilerOptions": {
     "strict": true,
     "module": "esnext",
@@ -11,7 +11,6 @@
     "declaration": false,
     "lib": ["esnext","dom"],
     "jsx": "react",
-    "allowJs": true,
     "sourceMap": true,
     "rootDir": "./src",
   },
