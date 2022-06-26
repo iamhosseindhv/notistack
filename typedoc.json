@@ -7535,7 +7535,7 @@
 			}
 		},
 		{
-			"id": 291,
+			"id": 293,
 			"name": "SnackbarContent",
 			"kind": 32,
 			"kindString": "Variable",
@@ -7546,7 +7546,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 412,
+					"line": 415,
 					"character": 36
 				}
 			],
@@ -7578,7 +7578,7 @@
 			}
 		},
 		{
-			"id": 294,
+			"id": 296,
 			"name": "Transition",
 			"kind": 32,
 			"kindString": "Variable",
@@ -7589,7 +7589,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 416,
+					"line": 419,
 					"character": 31
 				}
 			],
@@ -7606,7 +7606,63 @@
 			}
 		},
 		{
-			"id": 292,
+			"id": 286,
+			"name": "closeSnackbar",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 409,
+					"character": 34
+				}
+			],
+			"type": {
+				"type": "indexedAccess",
+				"indexType": {
+					"type": "stringLiteral",
+					"value": "closeSnackbar"
+				},
+				"objectType": {
+					"type": "reference",
+					"name": "ProviderContext"
+				}
+			}
+		},
+		{
+			"id": 285,
+			"name": "enqueueSnackbar",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 408,
+					"character": 36
+				}
+			],
+			"type": {
+				"type": "indexedAccess",
+				"indexType": {
+					"type": "stringLiteral",
+					"value": "enqueueSnackbar"
+				},
+				"objectType": {
+					"type": "reference",
+					"name": "ProviderContext"
+				}
+			}
+		},
+		{
+			"id": 294,
 			"name": "useSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -7615,7 +7671,7 @@
 			},
 			"signatures": [
 				{
-					"id": 293,
+					"id": 295,
 					"name": "useSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -7632,13 +7688,13 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 414,
+					"line": 417,
 					"character": 35
 				}
 			]
 		},
 		{
-			"id": 285,
+			"id": 287,
 			"name": "withSnackbar",
 			"kind": 64,
 			"kindString": "Function",
@@ -7647,7 +7703,7 @@
 			},
 			"signatures": [
 				{
-					"id": 286,
+					"id": 288,
 					"name": "withSnackbar",
 					"kind": 4096,
 					"kindString": "Call signature",
@@ -7656,7 +7712,7 @@
 					},
 					"typeParameter": [
 						{
-							"id": 287,
+							"id": 289,
 							"name": "P",
 							"kind": 131072,
 							"kindString": "Type parameter",
@@ -7672,7 +7728,7 @@
 					],
 					"parameters": [
 						{
-							"id": 288,
+							"id": 290,
 							"name": "component",
 							"kind": 32768,
 							"kindString": "Parameter",
@@ -7732,7 +7788,7 @@
 							{
 								"type": "reflection",
 								"declaration": {
-									"id": 289,
+									"id": 291,
 									"name": "__type",
 									"kind": 65536,
 									"kindString": "Type literal",
@@ -7741,7 +7797,7 @@
 									},
 									"children": [
 										{
-											"id": 290,
+											"id": 292,
 											"name": "WrappedComponent",
 											"kind": 32,
 											"kindString": "Variable",
@@ -7751,7 +7807,7 @@
 											"sources": [
 												{
 													"fileName": "src/types.ts",
-													"line": 410,
+													"line": 413,
 													"character": 76
 												}
 											],
@@ -7777,14 +7833,14 @@
 											"title": "Variables",
 											"kind": 32,
 											"children": [
-												290
+												292
 											]
 										}
 									],
 									"sources": [
 										{
 											"fileName": "src/types.ts",
-											"line": 410,
+											"line": 413,
 											"character": 57
 										}
 									]
@@ -7797,7 +7853,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 408,
+					"line": 411,
 					"character": 36
 				}
 			]
@@ -7902,16 +7958,18 @@
 			"title": "Variables",
 			"kind": 32,
 			"children": [
-				291,
-				294
+				293,
+				296,
+				286,
+				285
 			]
 		},
 		{
 			"title": "Functions",
 			"kind": 64,
 			"children": [
-				292,
-				285
+				294,
+				287
 			]
 		}
 	]
