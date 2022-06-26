@@ -55,8 +55,6 @@ const App = () => {
 
 Alternatively, You can use `useSnackbar` hook to display Snackbars. Just remember to wrap your app inside of a `SnackbarProvider` to have access to the hook context:
 
-**2:** Export any component that needs to send notification using `withSnackbar`. By doing this, you'll have access to methods `enqueueSnackbar` and `closeSnackbar`, where the former can be used to send snackbars.
-
 ```javascript
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
