@@ -405,6 +405,9 @@ export declare class SnackbarProvider extends React.Component<SnackbarProviderPr
     closeSnackbar: ProviderContext['closeSnackbar'];
 }
 
+export declare const enqueueSnackbar: ProviderContext['enqueueSnackbar'];
+export declare const closeSnackbar: ProviderContext['closeSnackbar'];
+
 export declare function withSnackbar<P extends ProviderContext>(
     component: React.ComponentType<P>
 ): React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };

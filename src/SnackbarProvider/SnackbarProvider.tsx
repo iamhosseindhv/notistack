@@ -31,12 +31,18 @@ interface State {
     contextValue: ProviderContext;
 }
 
+export let enqueueSnackbar: ProviderContext['enqueueSnackbar'];
+export let closeSnackbar: ProviderContext['closeSnackbar'];
+
 class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     constructor(props: SnackbarProviderProps) {
         super(props);
+        enqueueSnackbar = this.enqueueSnackbar;
+        closeSnackbar = this.closeSnackbar;
+
         this.state = {
             snacks: [],
-            queue: [], // eslint-disable-line react/no-unused-state
+            queue: [],
             contextValue: {
                 enqueueSnackbar: this.enqueueSnackbar,
                 closeSnackbar: this.closeSnackbar,
@@ -236,7 +242,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
 
                 return item.entered ? { ...item, open: false } : { ...item, requestClose: true };
             }),
-            queue: queue.filter((item) => item.id !== key), // eslint-disable-line react/no-unused-state
+            queue: queue.filter((item) => item.id !== key),
         }));
     };
 
