@@ -1,10 +1,10 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import getDisplayName from './utils/getDisplayName';
 import SnackbarContext from './SnackbarContext';
 
 const withSnackbar = (Component) => {
-    const WrappedComponent = React.forwardRef((props, ref) => (
+    const WrappedComponent = forwardRef((props, ref) => (
         <SnackbarContext.Consumer>
             {context => (
                 <Component
