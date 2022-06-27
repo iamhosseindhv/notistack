@@ -1,4 +1,5 @@
-import React from 'react';
+import type { FC } from 'react';
+import { memo } from 'react';
 import clsx from 'clsx';
 import { styled } from '@mui/material/styles';
 import { SNACKBAR_INDENTS } from './utils/constants';
@@ -97,7 +98,7 @@ interface SnackbarContainerProps {
     anchorOrigin: NonNullable<SnackbarProviderProps['anchorOrigin']>;
 }
 
-const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
+const SnackbarContainer: FC<SnackbarContainerProps> = (props) => {
     const { className, anchorOrigin, dense, ...other } = props;
 
     const combinedClassname = clsx(
@@ -113,4 +114,4 @@ const SnackbarContainer: React.FC<SnackbarContainerProps> = (props) => {
     );
 };
 
-export default React.memo(SnackbarContainer);
+export default memo(SnackbarContainer);
