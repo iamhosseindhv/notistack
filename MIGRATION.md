@@ -39,8 +39,6 @@ enqueueSnackbar('message', {
 
 * `onClose` won't be called with `reason: 'clickaway'` anymore. Get in touch if you need to detect clickaway's to potentially bring them back to life.
 
-* 
-
 * Drop Customisation through `classes.variant(Success|Error|Info|Warning)`. To customise snackbars according to their
 variant, use a [custom component](#8-new-components-prop). [`This example`](https://github.com/iamhosseindhv/notistack/tree/alpha/examples/custom-snackbar-example) demonstrates how this is done.
 

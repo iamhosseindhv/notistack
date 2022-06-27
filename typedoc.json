@@ -3305,7 +3305,7 @@
 							},
 							{
 								"tag": "param",
-								"text": "Can be:`\"timeout\"` (`autoHideDuration` expired) or: `\"clickaway\"`\n or: `\"maxsnack\"` (snackbar was closed because `maxSnack` has reached) or: `\"instructed\"`\n(snackbar was closed programmatically)",
+								"text": "Can be:`\"timeout\"` (`autoHideDuration` expired) or: `\"maxsnack\"`\n(snackbar was closed because `maxSnack` has reached) or: `\"instructed\"` (snackbar was\nclosed programmatically)",
 								"param": "reason"
 							},
 							{
@@ -4122,7 +4122,7 @@
 							},
 							{
 								"tag": "param",
-								"text": "Can be:`\"timeout\"` (`autoHideDuration` expired) or: `\"clickaway\"`\n or: `\"maxsnack\"` (snackbar was closed because `maxSnack` has reached) or: `\"instructed\"`\n(snackbar was closed programmatically)",
+								"text": "Can be:`\"timeout\"` (`autoHideDuration` expired) or: `\"maxsnack\"`\n(snackbar was closed because `maxSnack` has reached) or: `\"instructed\"` (snackbar was\nclosed programmatically)",
 								"param": "reason"
 							},
 							{
@@ -5165,7 +5165,7 @@
 							},
 							{
 								"tag": "param",
-								"text": "Can be:`\"timeout\"` (`autoHideDuration` expired) or: `\"clickaway\"`\n or: `\"maxsnack\"` (snackbar was closed because `maxSnack` has reached) or: `\"instructed\"`\n(snackbar was closed programmatically)",
+								"text": "Can be:`\"timeout\"` (`autoHideDuration` expired) or: `\"maxsnack\"`\n(snackbar was closed because `maxSnack` has reached) or: `\"instructed\"` (snackbar was\nclosed programmatically)",
 								"param": "reason"
 							},
 							{
