@@ -259,6 +259,8 @@ export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
     enqueueSnackbar: ProviderContext['enqueueSnackbar'];
 
     closeSnackbar: ProviderContext['closeSnackbar'];
+
+    render(): ReactNode;
 }
 
 export interface ProviderContext {
