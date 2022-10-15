@@ -1,5 +1,11 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@2.0.7`
+###### Oct 15, 2022
+* Fix TypeScript cannot be used as a JSX constructor [#485](https://github.com/iamhosseindhv/notistack/issues/485) 
+
+<br />
+
 ### `notistack@2.0.6`
 ###### Oct 15, 2022
 * **@ryancrunchi** **@vwalsh** Fix TypeScript cannot be used as a JSX constructor [#485](https://github.com/iamhosseindhv/notistack/issues/485) 
