@@ -264,12 +264,13 @@ export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
 export interface ProviderContext {
     enqueueSnackbar: (message: SnackbarMessage, options?: OptionsObject) => SnackbarKey;
     closeSnackbar: (key?: SnackbarKey) => void;
+    render(): ReactNode;
 }
 
 export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
     React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
 
-export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SnackbarContent: (props: SnackbarContentProps) => JSX.element
 
 export function useSnackbar(): ProviderContext;
 
