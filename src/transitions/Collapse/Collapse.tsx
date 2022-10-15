@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { reflow } from '../utils';
 import TransitionComponent from '../Transition';
 import useForkRef from '../useForkRef';
-import { SnackbarKey, TransitionHandlerProps, TransitionProps } from '../../types';
+import { TransitionProps } from '../../types';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import { ComponentClasses, makeStyles } from '../../utils/styles';
@@ -26,12 +26,11 @@ const timeout = 175;
 interface CollapseProps {
     children: JSX.Element;
     in: boolean;
-    id: SnackbarKey;
     onExited: TransitionProps['onExited'];
 }
 
 const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) => {
-    const { children, in: inProp, onExited, id } = props;
+    const { children, in: inProp, onExited } = props;
 
     const wrapperRef = React.useRef<HTMLDivElement>(null);
 
@@ -40,7 +39,7 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
 
     const getWrapperSize = () => (wrapperRef.current ? wrapperRef.current.clientHeight : 0);
 
-    const handleEnter: TransitionHandlerProps['onEnter'] = (node) => {
+    const handleEnter: TransitionProps['onEnter'] = (node) => {
         node.style.height = collapsedSize;
     };
 
@@ -59,11 +58,11 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
         node.style.transitionTimingFunction = easing || '';
     };
 
-    const handleEntered: TransitionHandlerProps['onEntered'] = (node) => {
+    const handleEntered: TransitionProps['onEntered'] = (node) => {
         node.style.height = 'auto';
     };
 
-    const handleExit: TransitionHandlerProps['onExit'] = (node) => {
+    const handleExit: TransitionProps['onExit'] = (node) => {
         node.style.height = `${getWrapperSize()}px`;
     };
 
@@ -83,7 +82,6 @@ const Collapse = React.forwardRef<HTMLDivElement, CollapseProps>((props, ref) =>
 
     return (
         <TransitionComponent
-            id={id}
             in={inProp}
             unmountOnExit
             onEnter={handleEnter}

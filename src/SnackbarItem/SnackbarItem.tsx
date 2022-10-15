@@ -39,7 +39,10 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     const timeout = useRef<ReturnType<typeof setTimeout>>();
     const [collapsed, setCollapsed] = useState(true);
 
-    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction(props.snack.onClose!, props.onClose);
+    const handleClose: NonNullable<SharedProps['onClose']> = createChainedFunction([
+        props.snack.onClose,
+        props.onClose,
+    ]);
 
     const handleEntered: TransitionHandlerProps['onEntered'] = () => {
         if (props.snack.requestClose) {
@@ -99,13 +102,13 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
     ).reduce(
         (acc, cbName) => ({
             ...acc,
-            [cbName]: createChainedFunction(props.snack[cbName] as any, props[cbName] as any),
+            [cbName]: createChainedFunction([props.snack[cbName] as any, props[cbName] as any], otherSnack.id),
         }),
         {}
     );
 
     return (
-        <Collapse id={otherSnack.id} in={collapsed} onExited={callbacks.onExited}>
+        <Collapse in={collapsed} onExited={callbacks.onExited}>
             <Snackbar
                 open={open}
                 id={otherSnack.id}
@@ -121,14 +124,14 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             >
                 <TransitionComponent
                     {...transitionProps}
-                    id={otherSnack.id}
+                    appear
                     in={open}
                     onExit={callbacks.onExit}
                     onExited={handleExitedScreen}
                     onEnter={callbacks.onEnter}
                     // order matters. first callbacks.onEntered to set entered: true,
                     // then handleEntered to check if there's a request for closing
-                    onEntered={createChainedFunction(callbacks.onEntered, handleEntered)}
+                    onEntered={createChainedFunction([callbacks.onEntered, handleEntered], otherSnack.id)}
                 >
                     {(content as React.ReactElement) || <Component {...otherSnack} />}
                 </TransitionComponent>
