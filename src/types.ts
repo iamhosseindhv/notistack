@@ -410,8 +410,8 @@ export interface ProviderContext {
 
 export declare class SnackbarProvider extends React.Component<SnackbarProviderProps> {
     enqueueSnackbar: ProviderContext['enqueueSnackbar'];
-
     closeSnackbar: ProviderContext['closeSnackbar'];
+    render(): React.ReactNode;
 }
 
 export declare function useSnackbar(): ProviderContext;
@@ -419,6 +419,6 @@ export declare function useSnackbar(): ProviderContext;
 export declare const enqueueSnackbar: ProviderContext['enqueueSnackbar'];
 export declare const closeSnackbar: ProviderContext['closeSnackbar'];
 
-export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
+export declare const SnackbarContent: (props: SnackbarContentProps) => JSX.Element;
 
 export declare const Transition: React.JSXElementConstructor<TransitionComponentProps>;
