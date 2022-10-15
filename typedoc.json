@@ -15,7 +15,7 @@
 			},
 			"typeParameter": [
 				{
-					"id": 200,
+					"id": 202,
 					"name": "S",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -24,7 +24,7 @@
 					}
 				},
 				{
-					"id": 201,
+					"id": 203,
 					"name": "SS",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -33,7 +33,7 @@
 					}
 				},
 				{
-					"id": 246,
+					"id": 248,
 					"name": "S",
 					"kind": 131072,
 					"kindString": "Type parameter",
@@ -44,7 +44,7 @@
 			],
 			"children": [
 				{
-					"id": 249,
+					"id": 251,
 					"name": "constructor",
 					"kind": 512,
 					"kindString": "Constructor",
@@ -65,7 +65,7 @@
 					},
 					"signatures": [
 						{
-							"id": 250,
+							"id": 252,
 							"name": "new SnackbarProvider",
 							"kind": 16384,
 							"kindString": "Constructor signature",
@@ -86,7 +86,7 @@
 							},
 							"parameters": [
 								{
-									"id": 251,
+									"id": 253,
 									"name": "props",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -123,12 +123,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 249,
+								"id": 251,
 								"name": "Component.__constructor"
 							}
 						},
 						{
-							"id": 252,
+							"id": 254,
 							"name": "new SnackbarProvider",
 							"kind": 16384,
 							"kindString": "Constructor signature",
@@ -149,7 +149,7 @@
 							},
 							"parameters": [
 								{
-									"id": 253,
+									"id": 255,
 									"name": "props",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -163,7 +163,7 @@
 									}
 								},
 								{
-									"id": 254,
+									"id": 256,
 									"name": "context",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -183,7 +183,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 249,
+								"id": 251,
 								"name": "Component.__constructor"
 							}
 						}
@@ -202,7 +202,7 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 249,
+						"id": 251,
 						"name": "Component.__constructor"
 					}
 				},
@@ -217,7 +217,7 @@
 					"sources": [
 						{
 							"fileName": "src/types.ts",
-							"line": 414,
+							"line": 413,
 							"character": 17
 						}
 					],
@@ -234,7 +234,7 @@
 					}
 				},
 				{
-					"id": 248,
+					"id": 250,
 					"name": "context",
 					"kind": 1024,
 					"kindString": "Property",
@@ -264,7 +264,7 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 248,
+						"id": 250,
 						"name": "Component.context"
 					}
 				},
@@ -437,7 +437,7 @@
 					}
 				},
 				{
-					"id": 247,
+					"id": 249,
 					"name": "contextType",
 					"kind": 1024,
 					"kindString": "Property",
@@ -484,12 +484,12 @@
 					},
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 247,
+						"id": 249,
 						"name": "Component.contextType"
 					}
 				},
 				{
-					"id": 226,
+					"id": 228,
 					"name": "UNSAFE_componentWillMount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -499,7 +499,7 @@
 					},
 					"signatures": [
 						{
-							"id": 227,
+							"id": 229,
 							"name": "UNSAFE_componentWillMount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -530,7 +530,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 226,
+								"id": 228,
 								"name": "DeprecatedLifecycle.UNSAFE_componentWillMount"
 							}
 						}
@@ -544,12 +544,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 226,
+						"id": 228,
 						"name": "DeprecatedLifecycle.UNSAFE_componentWillMount"
 					}
 				},
 				{
-					"id": 232,
+					"id": 234,
 					"name": "UNSAFE_componentWillReceiveProps",
 					"kind": 2048,
 					"kindString": "Method",
@@ -559,7 +559,7 @@
 					},
 					"signatures": [
 						{
-							"id": 233,
+							"id": 235,
 							"name": "UNSAFE_componentWillReceiveProps",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -586,7 +586,7 @@
 							},
 							"parameters": [
 								{
-									"id": 234,
+									"id": 236,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -606,7 +606,7 @@
 									}
 								},
 								{
-									"id": 235,
+									"id": 237,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -625,7 +625,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 232,
+								"id": 234,
 								"name": "DeprecatedLifecycle.UNSAFE_componentWillReceiveProps"
 							}
 						}
@@ -639,12 +639,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 232,
+						"id": 234,
 						"name": "DeprecatedLifecycle.UNSAFE_componentWillReceiveProps"
 					}
 				},
 				{
-					"id": 241,
+					"id": 243,
 					"name": "UNSAFE_componentWillUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -654,7 +654,7 @@
 					},
 					"signatures": [
 						{
-							"id": 242,
+							"id": 244,
 							"name": "UNSAFE_componentWillUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -681,7 +681,7 @@
 							},
 							"parameters": [
 								{
-									"id": 243,
+									"id": 245,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -701,7 +701,7 @@
 									}
 								},
 								{
-									"id": 244,
+									"id": 246,
 									"name": "nextState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -720,7 +720,7 @@
 									}
 								},
 								{
-									"id": 245,
+									"id": 247,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -739,7 +739,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 241,
+								"id": 243,
 								"name": "DeprecatedLifecycle.UNSAFE_componentWillUpdate"
 							}
 						}
@@ -753,12 +753,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 241,
+						"id": 243,
 						"name": "DeprecatedLifecycle.UNSAFE_componentWillUpdate"
 					}
 				},
 				{
-					"id": 211,
+					"id": 213,
 					"name": "componentDidCatch",
 					"kind": 2048,
 					"kindString": "Method",
@@ -768,7 +768,7 @@
 					},
 					"signatures": [
 						{
-							"id": 212,
+							"id": 214,
 							"name": "componentDidCatch",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -780,7 +780,7 @@
 							},
 							"parameters": [
 								{
-									"id": 213,
+									"id": 215,
 									"name": "error",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -793,7 +793,7 @@
 									}
 								},
 								{
-									"id": 214,
+									"id": 216,
 									"name": "errorInfo",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -812,7 +812,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 211,
+								"id": 213,
 								"name": "ComponentLifecycle.componentDidCatch"
 							}
 						}
@@ -826,12 +826,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 211,
+						"id": 213,
 						"name": "ComponentLifecycle.componentDidCatch"
 					}
 				},
 				{
-					"id": 202,
+					"id": 204,
 					"name": "componentDidMount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -841,7 +841,7 @@
 					},
 					"signatures": [
 						{
-							"id": 203,
+							"id": 205,
 							"name": "componentDidMount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -857,7 +857,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 202,
+								"id": 204,
 								"name": "ComponentLifecycle.componentDidMount"
 							}
 						}
@@ -871,12 +871,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 202,
+						"id": 204,
 						"name": "ComponentLifecycle.componentDidMount"
 					}
 				},
 				{
-					"id": 219,
+					"id": 221,
 					"name": "componentDidUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -886,7 +886,7 @@
 					},
 					"signatures": [
 						{
-							"id": 220,
+							"id": 222,
 							"name": "componentDidUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -899,7 +899,7 @@
 							},
 							"parameters": [
 								{
-									"id": 221,
+									"id": 223,
 									"name": "prevProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -919,7 +919,7 @@
 									}
 								},
 								{
-									"id": 222,
+									"id": 224,
 									"name": "prevState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -938,7 +938,7 @@
 									}
 								},
 								{
-									"id": 223,
+									"id": 225,
 									"name": "snapshot",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -948,7 +948,7 @@
 									},
 									"type": {
 										"type": "reference",
-										"id": 201,
+										"id": 203,
 										"name": "SS"
 									}
 								}
@@ -959,7 +959,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 219,
+								"id": 221,
 								"name": "NewLifecycle.componentDidUpdate"
 							}
 						}
@@ -973,12 +973,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 219,
+						"id": 221,
 						"name": "NewLifecycle.componentDidUpdate"
 					}
 				},
 				{
-					"id": 224,
+					"id": 226,
 					"name": "componentWillMount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -988,7 +988,7 @@
 					},
 					"signatures": [
 						{
-							"id": 225,
+							"id": 227,
 							"name": "componentWillMount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1019,7 +1019,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 224,
+								"id": 226,
 								"name": "DeprecatedLifecycle.componentWillMount"
 							}
 						}
@@ -1033,12 +1033,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 224,
+						"id": 226,
 						"name": "DeprecatedLifecycle.componentWillMount"
 					}
 				},
 				{
-					"id": 228,
+					"id": 230,
 					"name": "componentWillReceiveProps",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1048,7 +1048,7 @@
 					},
 					"signatures": [
 						{
-							"id": 229,
+							"id": 231,
 							"name": "componentWillReceiveProps",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1075,7 +1075,7 @@
 							},
 							"parameters": [
 								{
-									"id": 230,
+									"id": 232,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1095,7 +1095,7 @@
 									}
 								},
 								{
-									"id": 231,
+									"id": 233,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1114,7 +1114,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 228,
+								"id": 230,
 								"name": "DeprecatedLifecycle.componentWillReceiveProps"
 							}
 						}
@@ -1128,12 +1128,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 228,
+						"id": 230,
 						"name": "DeprecatedLifecycle.componentWillReceiveProps"
 					}
 				},
 				{
-					"id": 209,
+					"id": 211,
 					"name": "componentWillUnmount",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1143,7 +1143,7 @@
 					},
 					"signatures": [
 						{
-							"id": 210,
+							"id": 212,
 							"name": "componentWillUnmount",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1159,7 +1159,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 209,
+								"id": 211,
 								"name": "ComponentLifecycle.componentWillUnmount"
 							}
 						}
@@ -1173,12 +1173,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 209,
+						"id": 211,
 						"name": "ComponentLifecycle.componentWillUnmount"
 					}
 				},
 				{
-					"id": 236,
+					"id": 238,
 					"name": "componentWillUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1188,7 +1188,7 @@
 					},
 					"signatures": [
 						{
-							"id": 237,
+							"id": 239,
 							"name": "componentWillUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1215,7 +1215,7 @@
 							},
 							"parameters": [
 								{
-									"id": 238,
+									"id": 240,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1235,7 +1235,7 @@
 									}
 								},
 								{
-									"id": 239,
+									"id": 241,
 									"name": "nextState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1254,7 +1254,7 @@
 									}
 								},
 								{
-									"id": 240,
+									"id": 242,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1273,7 +1273,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 236,
+								"id": 238,
 								"name": "DeprecatedLifecycle.componentWillUpdate"
 							}
 						}
@@ -1287,12 +1287,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 236,
+						"id": 238,
 						"name": "DeprecatedLifecycle.componentWillUpdate"
 					}
 				},
 				{
-					"id": 268,
+					"id": 270,
 					"name": "forceUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1301,7 +1301,7 @@
 					},
 					"signatures": [
 						{
-							"id": 269,
+							"id": 271,
 							"name": "forceUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1310,7 +1310,7 @@
 							},
 							"parameters": [
 								{
-									"id": 270,
+									"id": 272,
 									"name": "callback",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1328,7 +1328,7 @@
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 271,
+													"id": 273,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
@@ -1337,7 +1337,7 @@
 													},
 													"signatures": [
 														{
-															"id": 272,
+															"id": 274,
 															"name": "__call",
 															"kind": 4096,
 															"kindString": "Call signature",
@@ -1362,7 +1362,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 268,
+								"id": 270,
 								"name": "Component.forceUpdate"
 							}
 						}
@@ -1376,12 +1376,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 268,
+						"id": 270,
 						"name": "Component.forceUpdate"
 					}
 				},
 				{
-					"id": 215,
+					"id": 217,
 					"name": "getSnapshotBeforeUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1391,7 +1391,7 @@
 					},
 					"signatures": [
 						{
-							"id": 216,
+							"id": 218,
 							"name": "getSnapshotBeforeUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1404,7 +1404,7 @@
 							},
 							"parameters": [
 								{
-									"id": 217,
+									"id": 219,
 									"name": "prevProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1424,7 +1424,7 @@
 									}
 								},
 								{
-									"id": 218,
+									"id": 220,
 									"name": "prevState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1458,7 +1458,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 215,
+								"id": 217,
 								"name": "NewLifecycle.getSnapshotBeforeUpdate"
 							}
 						}
@@ -1472,12 +1472,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 215,
+						"id": 217,
 						"name": "NewLifecycle.getSnapshotBeforeUpdate"
 					}
 				},
 				{
-					"id": 273,
+					"id": 200,
 					"name": "render",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1486,7 +1486,7 @@
 					},
 					"signatures": [
 						{
-							"id": 274,
+							"id": 201,
 							"name": "render",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1495,30 +1495,28 @@
 							},
 							"type": {
 								"type": "reference",
-								"name": "ReactNode"
+								"name": "React.ReactNode"
 							},
-							"inheritedFrom": {
+							"overwrites": {
 								"type": "reference",
-								"id": 273,
 								"name": "Component.render"
 							}
 						}
 					],
 					"sources": [
 						{
-							"fileName": "node_modules/@types/react/index.d.ts",
-							"line": 488,
-							"character": 14
+							"fileName": "src/types.ts",
+							"line": 414,
+							"character": 10
 						}
 					],
-					"inheritedFrom": {
+					"overwrites": {
 						"type": "reference",
-						"id": 273,
 						"name": "Component.render"
 					}
 				},
 				{
-					"id": 255,
+					"id": 257,
 					"name": "setState",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1527,7 +1525,7 @@
 					},
 					"signatures": [
 						{
-							"id": 256,
+							"id": 258,
 							"name": "setState",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1536,7 +1534,7 @@
 							},
 							"typeParameter": [
 								{
-									"id": 257,
+									"id": 259,
 									"name": "K",
 									"kind": 131072,
 									"kindString": "Type parameter",
@@ -1555,7 +1553,7 @@
 							],
 							"parameters": [
 								{
-									"id": 258,
+									"id": 260,
 									"name": "state",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1568,7 +1566,7 @@
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 259,
+													"id": 261,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
@@ -1577,7 +1575,7 @@
 													},
 													"signatures": [
 														{
-															"id": 260,
+															"id": 262,
 															"name": "__call",
 															"kind": 4096,
 															"kindString": "Call signature",
@@ -1586,7 +1584,7 @@
 															},
 															"parameters": [
 																{
-																	"id": 261,
+																	"id": 263,
 																	"name": "prevState",
 																	"kind": 32768,
 																	"kindString": "Parameter",
@@ -1605,7 +1603,7 @@
 																	}
 																},
 																{
-																	"id": 262,
+																	"id": 264,
 																	"name": "props",
 																	"kind": 32768,
 																	"kindString": "Parameter",
@@ -1639,7 +1637,7 @@
 																	{
 																		"type": "reflection",
 																		"declaration": {
-																			"id": 263,
+																			"id": 265,
 																			"name": "__type",
 																			"kind": 65536,
 																			"kindString": "Type literal",
@@ -1675,7 +1673,7 @@
 													{
 														"type": "reflection",
 														"declaration": {
-															"id": 264,
+															"id": 266,
 															"name": "__type",
 															"kind": 65536,
 															"kindString": "Type literal",
@@ -1690,7 +1688,7 @@
 									}
 								},
 								{
-									"id": 265,
+									"id": 267,
 									"name": "callback",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1708,7 +1706,7 @@
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 266,
+													"id": 268,
 													"name": "__type",
 													"kind": 65536,
 													"kindString": "Type literal",
@@ -1717,7 +1715,7 @@
 													},
 													"signatures": [
 														{
-															"id": 267,
+															"id": 269,
 															"name": "__call",
 															"kind": 4096,
 															"kindString": "Call signature",
@@ -1742,7 +1740,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 255,
+								"id": 257,
 								"name": "Component.setState"
 							}
 						}
@@ -1756,12 +1754,12 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 255,
+						"id": 257,
 						"name": "Component.setState"
 					}
 				},
 				{
-					"id": 204,
+					"id": 206,
 					"name": "shouldComponentUpdate",
 					"kind": 2048,
 					"kindString": "Method",
@@ -1771,7 +1769,7 @@
 					},
 					"signatures": [
 						{
-							"id": 205,
+							"id": 207,
 							"name": "shouldComponentUpdate",
 							"kind": 4096,
 							"kindString": "Call signature",
@@ -1784,7 +1782,7 @@
 							},
 							"parameters": [
 								{
-									"id": 206,
+									"id": 208,
 									"name": "nextProps",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1804,7 +1802,7 @@
 									}
 								},
 								{
-									"id": 207,
+									"id": 209,
 									"name": "nextState",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1823,7 +1821,7 @@
 									}
 								},
 								{
-									"id": 208,
+									"id": 210,
 									"name": "nextContext",
 									"kind": 32768,
 									"kindString": "Parameter",
@@ -1842,7 +1840,7 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"id": 204,
+								"id": 206,
 								"name": "ComponentLifecycle.shouldComponentUpdate"
 							}
 						}
@@ -1856,7 +1854,7 @@
 					],
 					"inheritedFrom": {
 						"type": "reference",
-						"id": 204,
+						"id": 206,
 						"name": "ComponentLifecycle.shouldComponentUpdate"
 					}
 				}
@@ -1866,7 +1864,7 @@
 					"title": "Constructors",
 					"kind": 512,
 					"children": [
-						249
+						251
 					]
 				},
 				{
@@ -1874,33 +1872,33 @@
 					"kind": 1024,
 					"children": [
 						199,
-						248,
+						250,
 						198,
 						275,
 						277,
 						276,
-						247
+						249
 					]
 				},
 				{
 					"title": "Methods",
 					"kind": 2048,
 					"children": [
-						226,
-						232,
-						241,
-						211,
-						202,
-						219,
-						224,
 						228,
-						209,
-						236,
-						268,
-						215,
-						273,
-						255,
-						204
+						234,
+						243,
+						213,
+						204,
+						221,
+						226,
+						230,
+						211,
+						238,
+						270,
+						217,
+						200,
+						257,
+						206
 					]
 				}
 			],
@@ -8187,34 +8185,58 @@
 				}
 			],
 			"type": {
-				"type": "reference",
-				"typeArguments": [
-					{
-						"type": "intersection",
-						"types": [
-							{
-								"type": "reference",
-								"id": 318,
-								"name": "SnackbarContentProps"
+				"type": "reflection",
+				"declaration": {
+					"id": 329,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 330,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
 							},
-							{
-								"type": "reference",
-								"typeArguments": [
-									{
+							"parameters": [
+								{
+									"id": 331,
+									"name": "props",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
 										"type": "reference",
-										"name": "HTMLDivElement"
+										"id": 318,
+										"name": "SnackbarContentProps"
 									}
-								],
-								"name": "RefAttributes"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"name": "Element"
 							}
-						]
-					}
-				],
-				"name": "React.ComponentType"
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/types.ts",
+							"line": 422,
+							"character": 37
+						}
+					]
+				}
 			}
 		},
 		{
-			"id": 329,
+			"id": 332,
 			"name": "Transition",
 			"kind": 32,
 			"kindString": "Variable",
@@ -8427,7 +8449,7 @@
 			"kind": 32,
 			"children": [
 				328,
-				329,
+				332,
 				327,
 				326
 			]
