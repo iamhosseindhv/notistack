@@ -7,7 +7,7 @@ import useForkRef from '../useForkRef';
 import getTransitionProps from '../getTransitionProps';
 import createTransition from '../createTransition';
 import { defaultEasing, reflow } from '../utils';
-import { SlideTransitionDirection, TransitionHandlerProps, TransitionProps } from '../../types';
+import { SlideTransitionDirection, TransitionProps } from '../../types';
 
 function ownerDocument(node: Node | null | undefined): Document {
     return (node && node.ownerDocument) || document;
@@ -108,12 +108,12 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
     const handleRefIntermediary = useForkRef((children as any).ref, nodeRef);
     const handleRef = useForkRef(handleRefIntermediary, ref);
 
-    const handleEnter: TransitionHandlerProps['onEnter'] = (node, isAppearing, snackId) => {
+    const handleEnter: TransitionProps['onEnter'] = (node, isAppearing) => {
         setTranslateValue(direction, node);
         reflow(node);
 
         if (onEnter) {
-            onEnter(node, isAppearing, snackId);
+            onEnter(node, isAppearing);
         }
     };
 
@@ -132,7 +132,7 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
         node.style.transform = 'none';
     };
 
-    const handleExit: TransitionHandlerProps['onExit'] = (node, snackId) => {
+    const handleExit: TransitionProps['onExit'] = (node) => {
         const easing = style?.transitionTimingFunction || defaultEasing.sharp;
         const transitionProps = getTransitionProps({
             timeout,
@@ -146,17 +146,17 @@ const Slide = React.forwardRef<unknown, TransitionProps>((props, ref) => {
         setTranslateValue(direction, node);
 
         if (onExit) {
-            onExit(node, snackId);
+            onExit(node);
         }
     };
 
-    const handleExited: TransitionHandlerProps['onExited'] = (node, snackId) => {
+    const handleExited: TransitionProps['onExited'] = (node) => {
         // No need for transitions when the component is hidden
         node.style.webkitTransition = '';
         node.style.transition = '';
 
         if (onExited) {
-            onExited(node, snackId);
+            onExited(node);
         }
     };
 

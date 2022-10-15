@@ -144,7 +144,6 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
         if (queue.length > 0) {
             return {
                 ...state,
-                // @ts-ignore
                 snacks: [...snacks, queue[0]],
                 queue: queue.slice(1, queue.length),
             };
@@ -317,8 +316,8 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                             onClose={this.handleCloseSnack}
                             onEnter={this.props.onEnter}
                             onExit={this.props.onExit}
-                            onExited={createChainedFunction(this.handleExitedSnack, this.props.onExited!)}
-                            onEntered={createChainedFunction(this.handleEnteredSnack, this.props.onEntered!)}
+                            onExited={createChainedFunction([this.handleExitedSnack, this.props.onExited], snack.id)}
+                            onEntered={createChainedFunction([this.handleEnteredSnack, this.props.onEntered], snack.id)}
                         />
                     ))}
                 </SnackbarContainer>
