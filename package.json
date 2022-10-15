@@ -1,6 +1,6 @@
 {
     "name": "notistack",
-    "version": "3.0.0-alpha.9",
+    "version": "3.0.0-alpha.10",
     "description": "Highly customizable notification snackbars (toasts) that can be stacked on top of each other",
     "main": "./index.js",
     "module": "./notistack.esm.js",
