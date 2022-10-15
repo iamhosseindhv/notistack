@@ -31,7 +31,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 import React from 'react';
-import { CustomTransitionProps, TransitionStatus } from '../../types';
+import { TransitionComponentProps, TransitionStatus } from '../../types';
 
 const UNMOUNTED = 'unmounted';
 const EXITED = 'exited';
@@ -48,12 +48,12 @@ interface NextCallback {
     cancel?: () => void;
 }
 
-class Transition extends React.Component<CustomTransitionProps, State> {
+class Transition extends React.Component<TransitionComponentProps, State> {
     appearStatus: TransitionStatus | null;
 
     nextCallback: NextCallback | null;
 
-    constructor(props: CustomTransitionProps) {
+    constructor(props: TransitionComponentProps) {
         super(props);
 
         const { appear } = props;
@@ -80,7 +80,7 @@ class Transition extends React.Component<CustomTransitionProps, State> {
         this.nextCallback = null;
     }
 
-    static getDerivedStateFromProps({ in: nextIn }: CustomTransitionProps, prevState: State) {
+    static getDerivedStateFromProps({ in: nextIn }: TransitionComponentProps, prevState: State) {
         if (nextIn && prevState.status === UNMOUNTED) {
             return { status: EXITED };
         }
@@ -91,7 +91,7 @@ class Transition extends React.Component<CustomTransitionProps, State> {
         this.updateStatus(true, this.appearStatus);
     }
 
-    componentDidUpdate(prevProps: CustomTransitionProps) {
+    componentDidUpdate(prevProps: TransitionComponentProps) {
         let nextStatus: TransitionStatus | null = null;
         if (prevProps !== this.props) {
             const { status } = this.state;
@@ -141,7 +141,7 @@ class Transition extends React.Component<CustomTransitionProps, State> {
     }
 
     get node() {
-        const node = this.props.nodeRef.current;
+        const node = this.props.nodeRef?.current;
         if (!node) {
             throw new Error('notistack - Custom snackbar is not refForwarding');
         }
@@ -149,7 +149,7 @@ class Transition extends React.Component<CustomTransitionProps, State> {
     }
 
     performEnter(mounting: boolean) {
-        const { enter, id } = this.props;
+        const { enter } = this.props;
         const isAppearing = mounting;
 
         const timeouts = this.getTimeouts();
@@ -157,25 +157,25 @@ class Transition extends React.Component<CustomTransitionProps, State> {
         if (!mounting && !enter) {
             this.safeSetState({ status: ENTERED }, () => {
                 if (this.props.onEntered) {
-                    this.props.onEntered(this.node, isAppearing, id);
+                    this.props.onEntered(this.node, isAppearing);
                 }
             });
             return;
         }
 
         if (this.props.onEnter) {
-            this.props.onEnter(this.node, isAppearing, id);
+            this.props.onEnter(this.node, isAppearing);
         }
 
         this.safeSetState({ status: ENTERING }, () => {
             if (this.props.onEntering) {
-                this.props.onEntering(this.node, isAppearing, id);
+                this.props.onEntering(this.node, isAppearing);
             }
 
             this.onTransitionEnd(timeouts.enter, () => {
                 this.safeSetState({ status: ENTERED }, () => {
                     if (this.props.onEntered) {
-                        this.props.onEntered(this.node, isAppearing, id);
+                        this.props.onEntered(this.node, isAppearing);
                     }
                 });
             });
@@ -183,32 +183,32 @@ class Transition extends React.Component<CustomTransitionProps, State> {
     }
 
     performExit() {
-        const { exit, id } = this.props;
+        const { exit } = this.props;
         const timeouts = this.getTimeouts();
 
         // no exit animation skip right to EXITED
         if (!exit) {
             this.safeSetState({ status: EXITED }, () => {
                 if (this.props.onExited) {
-                    this.props.onExited(this.node, id);
+                    this.props.onExited(this.node);
                 }
             });
             return;
         }
 
         if (this.props.onExit) {
-            this.props.onExit(this.node, id);
+            this.props.onExit(this.node);
         }
 
         this.safeSetState({ status: EXITING }, () => {
             if (this.props.onExiting) {
-                this.props.onExiting(this.node, id);
+                this.props.onExiting(this.node);
             }
 
             this.onTransitionEnd(timeouts.exit, () => {
                 this.safeSetState({ status: EXITED }, () => {
                     if (this.props.onExited) {
-                        this.props.onExited(this.node, id);
+                        this.props.onExited(this.node);
                     }
                 });
             });
@@ -273,7 +273,6 @@ class Transition extends React.Component<CustomTransitionProps, State> {
         const {
             children,
             // filter props for `Transition`
-            id: _id,
             in: _in,
             mountOnEnter: _mountOnEnter,
             unmountOnExit: _unmountOnExit,

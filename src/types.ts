@@ -42,13 +42,9 @@ export interface TransitionDuration {
 
 export type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited' | 'unmounted';
 
-export interface CustomTransitionProps extends Omit<TransitionProps, 'children'> {
+export interface TransitionComponentProps extends Omit<TransitionProps, 'children'> {
     children: (status: TransitionStatus, childProps: Record<string, any>) => React.ReactNode;
     nodeRef: React.RefObject<HTMLDivElement>;
-    appear?: boolean;
-    addEndListener?: (node: HTMLDivElement, callback: () => void) => void;
-    onEntering?: TransitionEnterHandler;
-    onExiting?: TransitionExitHandler;
 }
 
 /**
@@ -58,29 +54,25 @@ export interface TransitionHandlerProps {
     /**
      * Callback fired before the transition is entering.
      */
-    onEnter: TransitionEnterHandler;
+    onEnter: (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
     /**
      * Callback fired when the transition has entered.
      */
-    onEntered: TransitionEnterHandler;
+    onEntered: (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
     /**
      * Callback fired before the transition is exiting.
      */
-    onExit: TransitionExitHandler;
+    onExit: (node: HTMLElement, key: SnackbarKey) => void;
     /**
      * Callback fired when the transition has exited.
      */
-    onExited: TransitionExitHandler;
+    onExited: (node: HTMLElement, key: SnackbarKey) => void;
 }
 
 export type SlideTransitionDirection = 'down' | 'left' | 'right' | 'up';
 
-export interface TransitionProps extends Partial<TransitionHandlerProps> {
-    /**
-     * Id/key of the snackbar this transition belongs to. Used in transition callbacks
-     * (e.g. onExited) to identify which snackbar has exited.
-     */
-    id: SnackbarKey;
+export interface TransitionProps {
+    appear?: boolean;
     /**
      * Show the component; triggers the enter or exit states
      */
@@ -122,6 +114,31 @@ export interface TransitionProps extends Partial<TransitionHandlerProps> {
      */
     direction?: SlideTransitionDirection;
     children: React.ReactNode;
+    /**
+     * Callback fired before the transition is entering.
+     */
+    onEnter?: (node: HTMLElement, isAppearing: boolean) => void;
+    /**
+     * Callback fired when the transition has entered.
+     */
+    onEntered?: (node: HTMLElement, isAppearing: boolean) => void;
+    /**
+     * Callback fired when the transition is entering.
+     */
+    onEntering?: (node: HTMLElement, isAppearing: boolean) => void;
+    /**
+     * Callback fired before the transition is exiting.
+     */
+    onExit?: (node: HTMLElement) => void;
+    /**
+     * Callback fired when the transition has exited.
+     */
+    onExited?: (node: HTMLElement) => void;
+    /**
+     * Callback fired when the transition is existing.
+     */
+    onExiting?: (node: HTMLElement) => void;
+    addEndListener?: (node: HTMLElement | HTMLDivElement, callback: () => void) => void;
 }
 
 export type ClassNameMap<ClassKey extends string = string> = Record<ClassKey, string>;
@@ -143,14 +160,6 @@ export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.Reac
 export type SnackbarContentCallback =
     | React.ReactNode
     | ((key: SnackbarKey, message?: SnackbarMessage) => React.ReactNode);
-
-export type TransitionCloseHandler = (
-    event: React.SyntheticEvent<any> | null,
-    reason: CloseReason,
-    key?: SnackbarKey
-) => void;
-export type TransitionEnterHandler = (node: HTMLElement, isAppearing: boolean, key: SnackbarKey) => void;
-export type TransitionExitHandler = (node: HTMLElement, key: SnackbarKey) => void;
 
 export type SnackbarClassKey =
     | 'root'
@@ -274,7 +283,7 @@ export interface SharedProps<V extends VariantType = VariantType> extends Partia
      * @param {string|number|undefined} key key of a Snackbar. key will be `undefined` if closeSnackbar
      * is called with no key (user requested all the snackbars to be closed)
      */
-    onClose?: TransitionCloseHandler;
+    onClose?: (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
 }
 
 /**
@@ -412,4 +421,4 @@ export declare const closeSnackbar: ProviderContext['closeSnackbar'];
 
 export declare const SnackbarContent: React.ComponentType<SnackbarContentProps & React.RefAttributes<HTMLDivElement>>;
 
-export declare const Transition: React.JSXElementConstructor<CustomTransitionProps>;
+export declare const Transition: React.JSXElementConstructor<TransitionComponentProps>;
