@@ -271,7 +271,9 @@ export interface ProviderContext {
 export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
     React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
 
-export declare const SnackbarContent: (props: SnackbarContentProps) => React.ReactElement;
+export declare const SnackbarContent: (
+    props: SnackbarContentProps & React.RefAttributes<HTMLDivElement>
+) => JSX.ReactElement<any, any>;
 
 export function useSnackbar(): ProviderContext;
 
