@@ -8213,15 +8213,40 @@
 										"isExported": true
 									},
 									"type": {
-										"type": "reference",
-										"id": 318,
-										"name": "SnackbarContentProps"
+										"type": "intersection",
+										"types": [
+											{
+												"type": "reference",
+												"id": 318,
+												"name": "SnackbarContentProps"
+											},
+											{
+												"type": "reference",
+												"typeArguments": [
+													{
+														"type": "reference",
+														"name": "HTMLDivElement"
+													}
+												],
+												"name": "RefAttributes"
+											}
+										]
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
-								"name": "Element"
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									},
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "ReactElement"
 							}
 						}
 					],
@@ -8247,7 +8272,7 @@
 			"sources": [
 				{
 					"fileName": "src/types.ts",
-					"line": 424,
+					"line": 426,
 					"character": 31
 				}
 			],

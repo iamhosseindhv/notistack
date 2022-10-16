@@ -419,6 +419,8 @@ export declare function useSnackbar(): ProviderContext;
 export declare const enqueueSnackbar: ProviderContext['enqueueSnackbar'];
 export declare const closeSnackbar: ProviderContext['closeSnackbar'];
 
-export declare const SnackbarContent: (props: SnackbarContentProps) => JSX.Element;
+export declare const SnackbarContent: (
+    props: SnackbarContentProps & React.RefAttributes<HTMLDivElement>
+) => React.ReactElement<any, any>;
 
 export declare const Transition: React.JSXElementConstructor<TransitionComponentProps>;
