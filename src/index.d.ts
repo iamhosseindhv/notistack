@@ -260,7 +260,7 @@ export class SnackbarProvider extends React.Component<SnackbarProviderProps> {
 
     closeSnackbar: ProviderContext['closeSnackbar'];
 
-    render(): ReactNode;
+    render(): React.ReactNode;
 }
 
 export interface ProviderContext {
@@ -271,7 +271,9 @@ export interface ProviderContext {
 export function withSnackbar<P extends ProviderContext>(component: React.ComponentType<P>):
     React.ComponentClass<Omit<P, keyof ProviderContext>> & { WrappedComponent: React.ComponentType<P> };
 
-export declare const SnackbarContent: (props: SnackbarContentProps) => JSX.element
+export declare const SnackbarContent: (
+    props: SnackbarContentProps & React.RefAttributes<HTMLDivElement>
+) => React.ReactElement<any, any>;
 
 export function useSnackbar(): ProviderContext;
 
