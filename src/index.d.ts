@@ -273,7 +273,7 @@ export function withSnackbar<P extends ProviderContext>(component: React.Compone
 
 export declare const SnackbarContent: (
     props: SnackbarContentProps & React.RefAttributes<HTMLDivElement>
-) => JSX.ReactElement<any, any>;
+) => React.ReactElement<any, any>;
 
 export function useSnackbar(): ProviderContext;
 

@@ -1495,7 +1495,7 @@
 							},
 							"type": {
 								"type": "reference",
-								"name": "ReactNode"
+								"name": "React.ReactNode"
 							},
 							"overwrites": {
 								"type": "reference",
@@ -5044,7 +5044,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 279,
+					"line": 281,
 					"character": 29
 				}
 			],
@@ -5099,15 +5099,40 @@
 										"isExported": true
 									},
 									"type": {
-										"type": "reference",
-										"id": 199,
-										"name": "SnackbarContentProps"
+										"type": "intersection",
+										"types": [
+											{
+												"type": "reference",
+												"id": 199,
+												"name": "SnackbarContentProps"
+											},
+											{
+												"type": "reference",
+												"typeArguments": [
+													{
+														"type": "reference",
+														"name": "HTMLDivElement"
+													}
+												],
+												"name": "RefAttributes"
+											}
+										]
 									}
 								}
 							],
 							"type": {
 								"type": "reference",
-								"name": "JSX.element"
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									},
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "ReactElement"
 							}
 						}
 					],
@@ -5148,7 +5173,7 @@
 			"sources": [
 				{
 					"fileName": "src/index.d.ts",
-					"line": 276,
+					"line": 278,
 					"character": 27
 				}
 			]
