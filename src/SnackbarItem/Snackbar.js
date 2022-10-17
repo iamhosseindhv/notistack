@@ -15,12 +15,15 @@ const Snackbar = React.forwardRef((props, ref) => {
         onClose,
         onMouseEnter,
         onMouseLeave,
+        onFocus,
+        onBlur,
         open,
         resumeHideDuration,
         ...other
     } = props;
 
     const timerAutoHide = React.useRef();
+    const isFocused = React.useRef(false);
 
     const handleClose = useEventCallback((...args) => {
         if (onClose) {
@@ -78,8 +81,27 @@ const Snackbar = React.forwardRef((props, ref) => {
         if (onMouseLeave) {
             onMouseLeave(event);
         }
-        handleResume();
+
+        if (!isFocused.current) {
+            handleResume();
+        }
     };
+    
+    function handleBlur(event) {
+        isFocused.current = false;
+        if (onBlur) {
+            onBlur(event);
+        }
+        handleResume();
+    }
+
+    function handleFocus(event) {
+        isFocused.current = true;
+        if (onFocus) {
+          onFocus(event);
+        }
+        handlePause();
+    }
 
     const handleClickAway = (event) => {
         if (onClose) {
@@ -103,7 +125,14 @@ const Snackbar = React.forwardRef((props, ref) => {
 
     return (
         <ClickAwayListener onClickAway={handleClickAway} {...ClickAwayListenerProps}>
-            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} ref={ref} {...other}>
+            <div
+                onBlur={handleBlur}
+                onFocus={handleFocus}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                ref={ref}
+                {...other}
+            >
                 {children}
             </div>
         </ClickAwayListener>
