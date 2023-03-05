@@ -8169,6 +8169,98 @@
 			}
 		},
 		{
+			"id": 333,
+			"name": "MaterialDesignContent",
+			"kind": 32,
+			"kindString": "Variable",
+			"flags": {
+				"isExported": true,
+				"isConst": true
+			},
+			"sources": [
+				{
+					"fileName": "src/types.ts",
+					"line": 428,
+					"character": 42
+				}
+			],
+			"type": {
+				"type": "reflection",
+				"declaration": {
+					"id": 334,
+					"name": "__type",
+					"kind": 65536,
+					"kindString": "Type literal",
+					"flags": {
+						"isExported": true
+					},
+					"signatures": [
+						{
+							"id": 335,
+							"name": "__call",
+							"kind": 4096,
+							"kindString": "Call signature",
+							"flags": {
+								"isExported": true
+							},
+							"parameters": [
+								{
+									"id": 336,
+									"name": "props",
+									"kind": 32768,
+									"kindString": "Parameter",
+									"flags": {
+										"isExported": true
+									},
+									"type": {
+										"type": "intersection",
+										"types": [
+											{
+												"type": "reference",
+												"id": 321,
+												"name": "CustomContentProps"
+											},
+											{
+												"type": "reference",
+												"typeArguments": [
+													{
+														"type": "reference",
+														"name": "HTMLDivElement"
+													}
+												],
+												"name": "RefAttributes"
+											}
+										]
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"typeArguments": [
+									{
+										"type": "intrinsic",
+										"name": "any"
+									},
+									{
+										"type": "intrinsic",
+										"name": "any"
+									}
+								],
+								"name": "ReactElement"
+							}
+						}
+					],
+					"sources": [
+						{
+							"fileName": "src/types.ts",
+							"line": 428,
+							"character": 43
+						}
+					]
+				}
+			}
+		},
+		{
 			"id": 328,
 			"name": "SnackbarContent",
 			"kind": 32,
@@ -8473,6 +8565,7 @@
 			"title": "Variables",
 			"kind": 32,
 			"children": [
+				333,
 				328,
 				332,
 				327,

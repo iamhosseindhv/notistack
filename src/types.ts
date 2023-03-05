@@ -424,3 +424,7 @@ export declare const SnackbarContent: (
 ) => React.ReactElement<any, any>;
 
 export declare const Transition: React.JSXElementConstructor<TransitionComponentProps>;
+
+export declare const MaterialDesignContent: (
+    props: CustomContentProps & React.RefAttributes<HTMLDivElement>
+) => React.ReactElement<any, any>;

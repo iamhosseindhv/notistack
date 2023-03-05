@@ -50,7 +50,16 @@ const classes = makeStyles({
 });
 
 const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((props, forwardedRef) => {
-    const { id, message, action: componentOrFunctionAction, iconVariant, variant, hideIconVariant, style } = props;
+    const {
+        id,
+        message,
+        action: componentOrFunctionAction,
+        iconVariant,
+        variant,
+        hideIconVariant,
+        style,
+        className,
+    } = props;
 
     const icon = iconVariant[variant];
 
@@ -66,9 +75,11 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
             style={style}
             className={clsx(
                 ComponentClasses.MuiContent,
+                ComponentClasses.MuiContentVariant(variant),
                 classes.root,
                 { [classes.lessPadding]: !hideIconVariant && icon },
-                classes[variant]
+                classes[variant],
+                className
             )}
         >
             <div id="notistack-snackbar" className={classes.message}>

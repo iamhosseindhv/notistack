@@ -20,7 +20,6 @@ const useStyles = makeStyles(() => ({
     }
   },
   card: {
-    backgroundColor: "#fddc6c",
     width: "100%"
   },
   typography: {
@@ -76,7 +75,7 @@ const ReportComplete = forwardRef<HTMLDivElement, ReportCompleteProps>(
 
     return (
       <SnackbarContent ref={ref} className={classes.root}>
-        <Card className={classes.card}>
+        <Card className={classes.card} style={{ backgroundColor: "#fddc6c" }}>
           <CardActions classes={{ root: classes.actionRoot }}>
             <Typography variant="body2" className={classes.typography}>
               {props.message}
