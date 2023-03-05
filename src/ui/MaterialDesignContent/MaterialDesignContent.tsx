@@ -75,6 +75,7 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
             style={style}
             className={clsx(
                 ComponentClasses.MuiContent,
+                ComponentClasses.MuiContentVariant(variant),
                 classes.root,
                 { [classes.lessPadding]: !hideIconVariant && icon },
                 classes[variant],

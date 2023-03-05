@@ -17,4 +17,5 @@ export const ComponentClasses = {
     Snackbar: 'notistack-Snackbar',
     CollapseWrapper: 'notistack-CollapseWrapper',
     MuiContent: 'notistack-MuiContent',
+    MuiContentVariant: (variant: string) => `notistack-MuiContent-${variant}`,
 };
