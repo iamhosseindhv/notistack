@@ -40,9 +40,9 @@ enqueueSnackbar('message', {
 * `onClose` won't be called with `reason: 'clickaway'` anymore. Get in touch if you need to detect clickaway's to potentially bring them back to life.
 
 * Drop Customisation through `classes.variant(Success|Error|Info|Warning)`. To customise snackbars according to their
-variant, use a [custom component](#8-new-components-prop). [`This example`](https://github.com/iamhosseindhv/notistack/tree/alpha/examples/custom-snackbar-example) demonstrates how this is done.
+variant, use a [custom component](#8-new-components-prop). [This example](https://github.com/iamhosseindhv/notistack/tree/master/examples/custom-snackbar-example) demonstrates how this is done.
 
-* Any customisation through Material-UI theme is not applied to the elements. This would also mean toggling theme `mode` to **Dark**/**Light** would not affect the appearance of snackbars. You can easily use a [custom component](#8-new-components-prop) to have full control over your snackbars. [`This example`](https://github.com/iamhosseindhv/notistack/tree/alpha/examples/custom-snackbar-example) demonstrates how your snackbars can react to change of theme mode.
+* Any customisation through Material-UI theme is not applied to the elements. This would also mean toggling theme `mode` to **Dark**/**Light** would not affect the appearance of snackbars. You can easily use a [custom component](#8-new-components-prop) to have full control over your snackbars. [`This example`](https://github.com/iamhosseindhv/notistack/tree/master/examples/custom-snackbar-example) demonstrates how your snackbars can react to change of theme mode.
 
 * Drop support for `withSnackbar` Higher-order component (HOC). Consequently, exported type `WithSnackbarProps` was kept in type declerations for backwards compatibility and after over a year, it has been now deleted and you should use `ProviderContext` type instead. You have two options to migrate your code:
   * Option 1: Migrate your code to be functional component and use `useSnackar`.
