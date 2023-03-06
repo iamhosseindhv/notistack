@@ -1,5 +1,69 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@3.0.0`
+###### March 6, 2023
+### New features
+* Notistack can now be used standalone and without requiring [@mui/core](https://mui.com) to be installed as a `peerDependency`.
+* Support for passing custom snackbar component. See [custom components](https://notistack.com/features/customization#custom-component) for more info.
+* Support for overriding styles using `styled`. See [overriding styles](https://notistack.com/features/customization#override-styles) for more info.
+* Allow displaying or closing Snackbars from outside a React component. See [getting started](https://notistack.com/getting-started) guide for more info.
+* Various typescript fix and imporvements
+* Exports `Transition` component to help with creating your own enter/close transitions. See [Transitions](https://notistack.com/features/transition) for more info.
+* Upgraded documentation website with docs and examples for both notistack `v2.x` and `v3.x`
+
+### Breaking changes
+* See [Migration guide](https://notistack.com/migration) for a full list of breaking changes with instruction on how to upgrade to v3.
+
+<br />
+
+### `notistack@2.0.8`
+###### Oct 15, 2022
+* **@jordansexton** Fix TypeScript bad import path [#485](https://github.com/iamhosseindhv/notistack/issues/485) 
+
+<br />
+
+### `notistack@2.0.7`
+###### Oct 15, 2022
+* Fix TypeScript cannot be used as a JSX constructor [#485](https://github.com/iamhosseindhv/notistack/issues/485) 
+
+<br />
+
+### `notistack@2.0.6`
+###### Oct 15, 2022
+* **@ryancrunchi** **@vwalsh** Fix TypeScript cannot be used as a JSX constructor [#485](https://github.com/iamhosseindhv/notistack/issues/485) 
+
+<br />
+
+### `notistack@2.0.5`
+###### May 12, 2022
+* **@neporshiso** Update TransitionComponent type for MUIv5 compatibility [#474](https://github.com/iamhosseindhv/notistack/pull/474) 
+
+<br />
+
+### `notistack@2.0.4`
+###### Apr 10, 2022
+* **@suren-atoyan** Add support for React 18 [#482](https://github.com/iamhosseindhv/notistack/pull/482) 
+
+<br />
+
+### `notistack@2.0.3`
+###### Oct 31, 2021
+* **@h0tw4t3r** Ensure `variant` classes are passed to SnackbarContent  [#451](https://github.com/iamhosseindhv/notistack/pull/451) 
+
+<br />
+
+### `notistack@2.0.2`
+###### Sep 26, 2021
+* **@hugofpsilva** **@ramosbugs** **@joemaffei** Publish material-ui v5 compatible version as `latest` instead of `next` [#437](https://github.com/iamhosseindhv/notistack/pull/437) 
+
+<br />
+
+### `notistack@1.0.10`
+###### July 25, 2021
+* **@joshkel** Support Collapse with root and container class keys [#408](https://github.com/iamhosseindhv/notistack/pull/408) 
+
+<br />
+
 ### `notistack@1.0.9`
 ###### May 19, 2021
 * **@SimonAmphora** Remove the need to use `!important` to customise variant styles [#215 (comment)](https://github.com/iamhosseindhv/notistack/issues/215#issuecomment-700060481) 
