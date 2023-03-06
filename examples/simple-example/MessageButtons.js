@@ -1,8 +1,6 @@
-import React from 'react';
-import clsx from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+import React, { useCallback, Fragment } from 'react';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
 import { useSnackbar } from 'notistack';
 
 const styles = {
@@ -11,79 +9,85 @@ const styles = {
         display: 'flex',
         margin: 16,
         justifyContent: 'center',
-        alignItems: 'middle',
+        alignItems: 'middle'
     },
     button: {
         margin: 8,
-        color: '#fff',
-        backgroundColor: '#313131',
+        borderColor: '#313131',
+        color: '#313131'
     },
     success: {
-        backgroundColor: '#43a047',
+        borderColor: '#43a047',
+        color: '#43a047'
     },
     error: {
-        backgroundColor: '#d32f2f',
+        borderColor: '#d32f2f',
+        color: '#d32f2f'
     },
     info: {
-        backgroundColor: '#2979ff',
+        borderColor: '#2979ff',
+        color: '#2979ff'
     },
     warning: {
-        backgroundColor: '#ffa000',
-    },
+        borderColor: '#ffa000',
+        color: '#ffa000'
+    }
 };
 
 const buttons = [
     { variant: 'success', message: 'Successfully done the operation.' },
     { variant: 'error', message: 'Something went wrong.' },
-    { variant: 'warning', message: 'Be careful of what you just did!' },
-    { variant: 'info', message: 'For your info...' },
+    { variant: 'warning', message: 'Something could go wrong' },
+    { variant: 'info', message: 'For your info...' }
 ];
 
-
-const MessageButtons = ({ classes }) => {
+const MessageButtons = () => {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-    const handleClick = button => () => {
+    const handleClick = useCallback((button) => () => {
         enqueueSnackbar(button.message, { variant: button.variant });
-    };
+    }, [enqueueSnackbar]);
 
-    const handleClickWithAction = () => {
-        enqueueSnackbar('Customise this snackbar youself.', {
+    const handleClickWithAction = useCallback(() => {
+        enqueueSnackbar('I use snackbars responsibly', {
             variant: 'default',
-            action: key => (
+            action: (key) => (
                 <Fragment>
-                    <Button color="secondary" size="small" onClick={() => alert(`Clicked on action of snackbar with key: ${key}`)}>
+                    <Button
+                        size='small'
+                        onClick={() => alert(`Clicked on action of snackbar with id: ${key}`)}
+                    >
                         Detail
                     </Button>
-                    <Button color="secondary" size="small" onClick={() => closeSnackbar(key)}>
+                    <Button size='small' onClick={() => closeSnackbar(key)}>
                         Dismiss
                     </Button>
                 </Fragment>
-            ),
+            )
         });
-    };
+    }, [enqueueSnackbar, closeSnackbar]);
 
     return (
-        <Paper className={classes.root}>
-            {buttons.map(button => (
+        <Paper style={styles.root}>
+            {buttons.map((button) => (
                 <Button
                     key={button.variant}
-                    variant="contained"
-                    className={clsx(classes.button, classes[button.variant])}
+                    variant='outlined'
+                    style={{ ...styles.button, ...styles[button.variant] }}
                     onClick={handleClick(button)}
                 >
                     {button.variant}
                 </Button>
             ))}
             <Button
-                variant="contained"
-                className={classes.button}
+                variant='outlined'
+                style={styles.button}
                 onClick={handleClickWithAction}
             >
                 default
             </Button>
         </Paper>
     );
-}
+};
 
-export default withStyles(styles)(MessageButtons);
+export default MessageButtons;

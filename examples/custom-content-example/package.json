@@ -1,0 +1,54 @@
+{
+  "name": "notistack-custom-content-example",
+  "description": "notistack example of a custom Snackbar content",
+  "repository": {
+    "url": "git+https://github.com/iamhosseindhv/notistack.git",
+    "type": "git"
+  },
+  "author": {
+    "name": "Hossein Dehnokhalaji",
+    "email": "hossein.dehnavi98@yahoo.com",
+    "url": "https://github.com/iamhosseindhv/notistack"
+  },
+  "homepage": "https://github.com/iamhosseindhv/notistack",
+  "bugs": {
+    "url": "https://github.com/iamhosseindhv/notistack/issues"
+  },
+  "contributors": [
+    "Hossein Dehnokhalaji (https://iamhosseindhv.com/)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "javascript",
+    "material-ui",
+    "mui",
+    "@mui/material",
+    "emotion",
+    "@emotion/react",
+    "@emotion/styled",
+    "stacked",
+    "snackbar",
+    "notification"
+  ],
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "@mui/styles": "5.8.4",
+    "notistack": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "version": "0.0.0",
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

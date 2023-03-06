@@ -91,7 +91,7 @@ const MyButton = () => {
 
 ### Online demo
 
-**Visit the [`documentation website`](https://notistack.com/examples) to see all the examples.**</br>
+**Visit the [`documentation website`](https://notistack.com/features/basic) to see all the examples.**</br>
 Or play with a minimal working example: [codesandbox](https://codesandbox.io/s/github/iamhosseindhv/notistack/tree/master/examples/simple-example??hidenavigation=1&module=%2FApp.js) </br>
 
 ### Contribution

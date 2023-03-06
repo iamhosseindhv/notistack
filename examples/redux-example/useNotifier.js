@@ -5,7 +5,7 @@ import { removeSnackbar } from './redux/actions';
 
 let displayed = [];
 
-const Notifier = () => {
+const useNotifier = () => {
     const dispatch = useDispatch();
     const notifications = useSelector(store => store.app.notifications || []);
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
@@ -49,8 +49,6 @@ const Notifier = () => {
             storeDisplayed(key);
         });
     }, [notifications, closeSnackbar, enqueueSnackbar, dispatch]);
-
-    return null;
 };
 
-export default Notifier;
+export default useNotifier;

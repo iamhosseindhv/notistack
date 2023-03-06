@@ -20,15 +20,16 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@material-ui/core": "^4.0.0",
-    "notistack": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "react-redux": "latest",
-    "react-scripts": "latest",
-    "redux": "latest"
+      "@emotion/react": "latest",
+      "@emotion/styled": "latest",
+      "@mui/material": "latest",
+      "notistack": "latest",
+      "react": "latest",
+      "react-dom": "latest",
+      "react-redux": "latest",
+      "react-scripts": "latest",
+      "redux": "latest"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

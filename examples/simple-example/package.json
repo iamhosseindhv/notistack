@@ -22,15 +22,20 @@
         "react",
         "javascript",
         "material-ui",
+        "mui",
+        "@mui/material",
+        "emotion",
+        "@emotion/react",
+        "@emotion/styled",
         "stacked",
         "snackbar",
         "notification"
     ],
     "dependencies": {
-        "@material-ui/core": "^4.0.0",
-        "clsx": "^1.1.0",
+        "@emotion/react": "latest",
+        "@emotion/styled": "latest",
+        "@mui/material": "latest",
         "notistack": "latest",
-        "prop-types": "latest",
         "react": "latest",
         "react-dom": "latest"
     }

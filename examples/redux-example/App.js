@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Notifier from './Notifier';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import useNotifier from './useNotifier';
 import {
     enqueueSnackbar as enqueueSnackbarAction,
     closeSnackbar as closeSnackbarAction,
 } from './redux/actions';
 
 const App = () => {
+    useNotifier();
     const dispatch = useDispatch();
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args));
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args));
@@ -36,11 +37,9 @@ const App = () => {
 
     return (
         <Fragment>
-            <Notifier />
             <Typography variant="h4" gutterBottom>Notistack redux example</Typography>
-
-            <Button variant="contained" onClick={handleClick}>Display snackbar</Button>
-            <Button variant="contained" onClick={handleDimissAll}>Dismiss all snackbars</Button>
+            <Button variant="outlined" onClick={handleClick}>Display snackbar</Button>
+            <Button variant="outlined" onClick={handleDimissAll}>Dismiss all snackbars</Button>
         </Fragment>
     );
 };
