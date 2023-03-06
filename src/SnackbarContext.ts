@@ -1,5 +1,11 @@
 import React from 'react';
-import { ProviderContext } from '.';
+import { ProviderContext } from './types';
 
-// @ts-ignore
-export default React.createContext<ProviderContext>();
+const noOp = () => {
+    return '';
+};
+
+export default React.createContext<ProviderContext>({
+    enqueueSnackbar: noOp,
+    closeSnackbar: noOp,
+});

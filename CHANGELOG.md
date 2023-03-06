@@ -1,5 +1,21 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@3.0.0`
+###### March 6, 2023
+### New features
+* Notistack can now be used standalone and without requiring [@mui/core](https://mui.com) to be installed as a `peerDependency`.
+* Support for passing custom snackbar component. See [custom components](https://notistack.com/features/customization#custom-component) for more info.
+* Support for overriding styles using `styled`. See [overriding styles](https://notistack.com/features/customization#override-styles) for more info.
+* Allow displaying or closing Snackbars from outside a React component. See [getting started](https://notistack.com/getting-started) guide for more info.
+* Various typescript fix and imporvements
+* Exports `Transition` component to help with creating your own enter/close transitions. See [Transitions](https://notistack.com/features/transition) for more info.
+* Upgraded documentation website with docs and examples for both notistack `v2.x` and `v3.x`
+
+### Breaking changes
+* See [Migration guide](https://notistack.com/migration) for a full list of breaking changes with instruction on how to upgrade to v3.
+
+<br />
+
 ### `notistack@2.0.8`
 ###### Oct 15, 2022
 * **@jordansexton** Fix TypeScript bad import path [#485](https://github.com/iamhosseindhv/notistack/issues/485) 

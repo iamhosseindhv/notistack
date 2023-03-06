@@ -1,28 +1,25 @@
 import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import { styled } from '@mui/material/styles';
-import { SnackbarContentProps } from '../index';
+import { SnackbarContentProps } from '../types';
+import { breakpoints } from '../utils';
+import { makeStyles } from '../utils/styles';
 
-const componentName = 'SnackbarContent';
-
-const classes = {
-    root: `${componentName}-root`,
-};
-
-const Root = styled('div')(({ theme }) => ({
-    [`&.${classes.root}`]: {
+const classes = makeStyles({
+    root: {
         display: 'flex',
         flexWrap: 'wrap',
         flexGrow: 1,
-        [theme.breakpoints.up('sm')]: {
+        [breakpoints.upSm]: {
             flexGrow: 'initial',
-            minWidth: 288,
+            minWidth: '288px',
         },
     },
-}));
+});
 
 const SnackbarContent = forwardRef<HTMLDivElement, SnackbarContentProps>(({ className, ...props }, ref) => (
-    <Root ref={ref} className={clsx(classes.root, className)} {...props} />
+    <div ref={ref} className={clsx(classes.root, className)} {...props} />
 ));
+
+SnackbarContent.displayName = 'SnackbarContent';
 
 export default SnackbarContent;

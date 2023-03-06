@@ -1,26 +1,24 @@
 {
   "name": "notistack-redux-example",
   "description": "Redux example for notistack",
-  "homepage": "https://www.notistack.com",
+  "homepage": "https://github.com/iamhosseindhv/notistack",
   "repository": {
     "url": "git+https://github.com/iamhosseindhv/notistack.git",
     "type": "git"
   },
   "main": "src/index.js",
-  "keywords": [
-    "react",
-    "javascript",
-    "material-ui",
-    "mui",
-    "@mui/material",
-    "emotion",
-    "@emotion/react",
-    "@emotion/styled",
-    "stacked",
-    "snackbar",
-    "notification",
-    "redux"
+  "author": {
+      "name": "Hossein Dehnokhalaji",
+      "email": "hossein.dehnavi98@yahoo.com",
+      "url": "https://github.com/iamhosseindhv/notistack"
+  },
+  "bugs": {
+      "url": "https://github.com/iamhosseindhv/notistack/issues"
+  },
+  "contributors": [
+      "Hossein Dehnokhalaji (https://iamhosseindhv.com/)"
   ],
+  "license": "MIT",
   "dependencies": {
       "@emotion/react": "latest",
       "@emotion/styled": "latest",
