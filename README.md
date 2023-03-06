@@ -4,37 +4,56 @@
 
 <div align="center">
 
-[**Notistack**](https://notistack.com) is a notification library which makes it extremely easy to display notifications on your web apps. It is highly customizable and enables you to stack snackbars/toasts on top of one another.
+**[Notistack](https://notistack.com): Display notifications with call of a function.**
+
+</div>
+
+<div align="center">
+Easy to use, customizable, smooth transitions, stack and queue them up!
+</div>
+<div align="center">
+<a href="https://notistack.com">Documentation</a>
+<span> · </span>
+<a href="https://notistack.com/features/basic">Examples</a>
 </br>
-**Visit the [documentation website](https://notistack.com/examples) for demos**.
+</br>
 
 [![npm version](https://img.shields.io/npm/v/notistack.svg?label=version)](https://www.npmjs.com/package/notistack)
 [![npm downloads](https://img.shields.io/npm/dm/notistack.svg)](https://www.npmjs.com/package/notistack)
 [![package license](https://img.shields.io/npm/l/notistack.svg)](https://www.npmjs.com/package/notistack)
 
-
 </div>
 
-
+<div align="center">
 
 | Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)|
 | --- | --- |
 | <img width="400" src="https://i.imgur.com/MtijvAK.gif"/>    | <img width="400" src="https://i.imgur.com/urX47Wn.gif"/>|
 
+</div>
+
 Table of Contents
 --
 - [How to use](#how-to-use)
 - [Online demo](#online-demo)
-- [Documentation](https://notistack.com/notistack/api-reference)
+- [Documentation](https://notistack.com/api-reference)
 
 ## Getting Started
 
 Use your preferred package manager:
-
 ```
 npm install notistack
 yarn add notistack
 ```
+
+#### Version guide
+| Version | Notes 
+| --- | --- |
+| `v3.x.x` | Latest stable release. Standalone (i.e. not dependent on [material-ui](https://github.com/mui/material-ui)) |
+| <= `v2.0.8` | Requires Material-UI v5 as peer dependency. `npm install notistack@2.0.8` |
+| <= `1.0.10` | Requires Material-UI <= v4 as peer dependency. `npm install notistack@latest-mui-v4` |
+
+
 
 ### How to use
 
@@ -44,29 +63,29 @@ Instantiate a `SnackbarProvider` component and start showing snackbars: (see [do
 import { SnackbarProvider, enqueueSnackbar } from 'notistack';
 
 const App = () => {
-    return (
-        <div>
-            <SnackbarProvider />
-            <button onClick={() => enqueueSnackbar('That was easy!')}>Show snackbar</button>
-        </div>
-    );
+  return (
+    <div>
+      <SnackbarProvider />
+      <button onClick={() => enqueueSnackbar('That was easy!')}>Show snackbar</button>
+    </div>
+  );
 };
 ```
 
 Alternatively, You can use `useSnackbar` hook to display Snackbars. Just remember to wrap your app inside of a `SnackbarProvider` to have access to the hook context:
 
-```javascript
+```jsx
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
 // wrap your app
 <SnackbarProvider>
-    <App />
-    <MyButton />
-</SnackbarProvider>;
+  <App />
+  <MyButton />
+</SnackbarProvider>
 
 const MyButton = () => {
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-    return <Button onClick={() => enqueueSnackbar('I love hooks')}>Show snackbar</Button>;
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  return <Button onClick={() => enqueueSnackbar('I love hooks')}>Show snackbar</Button>;
 };
 ```
 
