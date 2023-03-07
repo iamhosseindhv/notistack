@@ -72,6 +72,7 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
         <SnackbarContent
             ref={forwardedRef}
             role="alert"
+            aria-describedby="notistack-snackbar"
             style={style}
             className={clsx(
                 ComponentClasses.MuiContent,
