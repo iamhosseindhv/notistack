@@ -1,5 +1,13 @@
 Thanks to all contributers who improved notistack by opening an issue/PR.
 
+### `notistack@3.0.1`
+###### March 8, 2023
+* **@alexander7161** Restore aria-describedby prop on SnackbarContent [#547](https://github.com/iamhosseindhv/notistack/pull/547) 
+* **@sodenn** Fix regression on using React.Node as Snackbar message [#548](https://github.com/iamhosseindhv/notistack/issues/548) 
+
+<br />
+
+
 ### `notistack@3.0.0`
 ###### March 6, 2023
 ### New features
