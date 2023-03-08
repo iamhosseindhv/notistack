@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, isValidElement } from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 import SnackbarContext from '../SnackbarContext';
@@ -15,12 +15,16 @@ import {
     InternalSnack,
     OptionsObject,
     SharedProps,
+    SnackbarMessage,
 } from '../types';
 import createChainedFunction from '../utils/createChainedFunction';
 
 const isOptions = (
-    messageOrOptions: string | (OptionsObject & { message?: string })
-): messageOrOptions is OptionsObject & { message?: string } => typeof messageOrOptions !== 'string';
+    messageOrOptions: SnackbarMessage | (OptionsObject & { message?: SnackbarMessage })
+): messageOrOptions is OptionsObject & { message?: SnackbarMessage } => {
+    const isMessage = typeof messageOrOptions === 'string' || isValidElement(messageOrOptions);
+    return !isMessage;
+};
 
 type Reducer = (state: State) => State;
 type SnacksByPosition = { [key: string]: InternalSnack[] };
@@ -59,15 +63,18 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
      * Returns generated or user defined key referencing the new snackbar or null
      */
     enqueueSnackbar = (
-        messageOrOptions: string | (OptionsObject & { message?: string }),
+        messageOrOptions: SnackbarMessage | (OptionsObject & { message?: SnackbarMessage }),
         optsOrUndefined: OptionsObject = {}
     ): SnackbarKey => {
+        if (messageOrOptions === undefined || messageOrOptions === null) {
+            throw new Error('enqueueSnackbar called with invalid argument');
+        }
+
         const opts = isOptions(messageOrOptions) ? messageOrOptions : optsOrUndefined;
 
-        let message: string | undefined = messageOrOptions as string;
-        if (isOptions(messageOrOptions)) {
-            message = messageOrOptions.message;
-        }
+        const message: SnackbarMessage | undefined = isOptions(messageOrOptions)
+            ? messageOrOptions.message
+            : messageOrOptions;
 
         const { key, preventDuplicate, ...options } = opts;
 

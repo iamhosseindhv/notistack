@@ -155,7 +155,7 @@ export type VariantType = keyof VariantMap;
 export type SnackbarKey = string | number;
 export type CloseReason = 'timeout' | 'maxsnack' | 'instructed';
 
-export type SnackbarMessage = string;
+export type SnackbarMessage = string | React.ReactNode;
 export type SnackbarAction = React.ReactNode | ((key: SnackbarKey) => React.ReactNode);
 export type SnackbarContentCallback =
     | React.ReactNode
@@ -400,7 +400,7 @@ type OptionsWithExtraProps<V extends VariantType> = VariantMap[V] extends true
 
 interface EnqueueSnackbar {
     <V extends VariantType>(options: OptionsWithExtraProps<V> & { message?: SnackbarMessage }): SnackbarKey;
-    <V extends VariantType>(message: string, options?: OptionsWithExtraProps<V>): SnackbarKey;
+    <V extends VariantType>(message: SnackbarMessage, options?: OptionsWithExtraProps<V>): SnackbarKey;
 }
 
 export interface ProviderContext {

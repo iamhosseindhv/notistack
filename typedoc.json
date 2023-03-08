@@ -2080,8 +2080,9 @@
 								"isExported": true
 							},
 							"type": {
-								"type": "intrinsic",
-								"name": "string"
+								"type": "reference",
+								"id": 305,
+								"name": "SnackbarMessage"
 							}
 						},
 						{
@@ -8065,8 +8066,17 @@
 				}
 			],
 			"type": {
-				"type": "intrinsic",
-				"name": "string"
+				"type": "union",
+				"types": [
+					{
+						"type": "intrinsic",
+						"name": "string"
+					},
+					{
+						"type": "reference",
+						"name": "React.ReactNode"
+					}
+				]
 			}
 		},
 		{

@@ -49,6 +49,8 @@ const classes = makeStyles({
     },
 });
 
+const ariaDescribedby = 'notistack-snackbar';
+
 const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((props, forwardedRef) => {
     const {
         id,
@@ -72,7 +74,7 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
         <SnackbarContent
             ref={forwardedRef}
             role="alert"
-            aria-describedby="notistack-snackbar"
+            aria-describedby={ariaDescribedby}
             style={style}
             className={clsx(
                 ComponentClasses.MuiContent,
@@ -83,7 +85,7 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
                 className
             )}
         >
-            <div id="notistack-snackbar" className={classes.message}>
+            <div id={ariaDescribedby} className={classes.message}>
                 {!hideIconVariant ? icon : null}
                 {message}
             </div>
