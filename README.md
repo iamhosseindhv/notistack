@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://notistack.com/" rel="noopener" target="_blank"><img width="756" src="https://notistack.com/img/notistack-banner.png" alt="notistack logo"></a></p>
+  <a href="https://notistack.com/" rel="noopener" target="_blank"><img src="https://user-images.githubusercontent.com/26996372/227733276-b0dfa05f-eff8-4bda-9abf-aa3ea313ea96.png" alt="notistack logo"></a></p>
 </p>
 
 <div align="center">
