@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://notistack.com/" rel="noopener" target="_blank"><img src="https://user-images.githubusercontent.com/26996372/227733423-19064bf7-5176-4a0b-a1b6-cd80a7b32cdf.png" alt="notistack logo"></a></p>
+<a href="https://www.producthunt.com/posts/notistack" rel="noopener" target="_blank"><img src="https://user-images.githubusercontent.com/26996372/228764221-35426862-2796-4bf6-b7aa-6066845bbd88.png" alt="product hunt"></a>
 </p>
 
 <div align="center">
@@ -24,13 +24,6 @@ Easy to use, customizable, smooth transitions, stack and queue them up!
 
 </div>
 
-<div align="center">
-
-| Stacking behaviour | Dismiss oldest when reached maxSnack (3 here)|
-| --- | --- |
-| <img width="400" src="https://i.imgur.com/MtijvAK.gif"/>    | <img width="400" src="https://i.imgur.com/urX47Wn.gif"/>|
-
-</div>
 
 Table of Contents
 --
