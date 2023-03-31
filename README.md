@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://www.producthunt.com/posts/notistack" rel="noopener" target="_blank"><img src="https://user-images.githubusercontent.com/26996372/228764221-35426862-2796-4bf6-b7aa-6066845bbd88.png" alt="product hunt"></a>
+  <a href="https://notistack.com/" rel="noopener" target="_blank"><img src="https://user-images.githubusercontent.com/26996372/227733423-19064bf7-5176-4a0b-a1b6-cd80a7b32cdf.png" alt="notistack logo"></a></p>
 </p>
 
 <div align="center">
