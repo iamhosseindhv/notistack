@@ -63,7 +63,7 @@ class MyButton extends React.Component {
 
 
 ####  New `Components` prop
-You can now define your own `variant`s and show entirely customsied snackbars. Your custom component accepts all props passed to `enqueueSnackbar` or `SnackbarProvider`, so you have full control over it. On top of that, you'll be able pass additional options in options parameter of `enqueueSnackbar. Example usage:
+You can now define your own `variant`s and show entirely customsied snackbars. Your custom component accepts all props passed to `enqueueSnackbar` or `SnackbarProvider`, so you have full control over it. On top of that, you'll be able pass additional options in options parameter of `enqueueSnackbar. For Typescript users, be sure to follow [these](https://notistack.com/features/customization#custom-variant-(typescript)) additional steps to make the typings work. Example usage:
 
 ```tsx
 <SnackbarProvider
