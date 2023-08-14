@@ -171,7 +171,7 @@ export interface SnackbarProps extends StandardProps<React.HTMLAttributes<HTMLDi
 /**
  * @category Shared
  */
-export interface SharedProps extends Omit<SnackbarProps, 'classes'>, Partial<TransitionHandlerProps> {
+export interface SharedProps extends Omit<SnackbarProps, 'classes' | 'content'>, Partial<TransitionHandlerProps> {
     /**
      * Used to easily display different variant of snackbars. When passed to `SnackbarProvider`
      * all snackbars inherit the `variant`, unless you override it in `enqueueSnackbar` options.
