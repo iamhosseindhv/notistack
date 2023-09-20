@@ -406,6 +406,7 @@ interface EnqueueSnackbar {
 export interface ProviderContext {
     enqueueSnackbar: EnqueueSnackbar;
     closeSnackbar: (key?: SnackbarKey) => void;
+    snackCount: number
 }
 
 export declare class SnackbarProvider extends React.Component<SnackbarProviderProps> {

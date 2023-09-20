@@ -8,4 +8,5 @@ const noOp = () => {
 export default React.createContext<ProviderContext>({
     enqueueSnackbar: noOp,
     closeSnackbar: noOp,
+    snackCount: 0
 });

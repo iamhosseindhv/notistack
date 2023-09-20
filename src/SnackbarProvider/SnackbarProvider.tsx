@@ -50,6 +50,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             contextValue: {
                 enqueueSnackbar: this.enqueueSnackbar.bind(this),
                 closeSnackbar: this.closeSnackbar.bind(this),
+                snackCount: this.state.snacks.length
             },
         };
     }
