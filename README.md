@@ -50,7 +50,7 @@ yarn add notistack
 
 ### How to use
 
-Instantiate a `SnackbarProvider` component and start showing snackbars: (see [docs](https://notistack.com/notistack/api-reference) for a full list of available props)
+Instantiate a `SnackbarProvider` component and start showing snackbars: (see [docs](https://notistack.com/api-reference) for a full list of available props)
 
 ```jsx
 import { SnackbarProvider, enqueueSnackbar } from 'notistack';
