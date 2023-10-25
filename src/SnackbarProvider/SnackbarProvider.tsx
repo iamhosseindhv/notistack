@@ -116,7 +116,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
                     hasSpecifiedKey ? item.id === id : item.message === message;
 
                 const inQueue = state.queue.findIndex(compareFunction) > -1;
-                const inView = state.snacks.findIndex(compareFunction) > -1;
+                const inView = state.snacks.filter((item) => item.open).findIndex(compareFunction) > -1;
                 if (inQueue || inView) {
                     return state;
                 }
