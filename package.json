@@ -55,8 +55,9 @@
         "typescript": "^4.2.4"
     },
     "dependencies": {
+        "csstype": "^3.0.10",
         "clsx": "^1.1.0",
-        "goober": "^2.0.33"
+        "goober": "^2.1.8"
     },
     "bugs": {
         "url": "https://github.com/iamhosseindhv/notistack/issues"
