@@ -75,6 +75,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
         TransitionComponent,
         TransitionProps,
         transitionDuration,
+        disableAutoHideTimer,
         disableWindowBlurListener,
         content: componentOrFunctionContent,
         entered: ignoredEntered,
@@ -112,6 +113,7 @@ const SnackbarItem: React.FC<SnackbarItemProps> = (props) => {
             <Snackbar
                 open={open}
                 id={otherSnack.id}
+                disableAutoHideTimer={disableAutoHideTimer}
                 disableWindowBlurListener={disableWindowBlurListener}
                 autoHideDuration={otherSnack.autoHideDuration}
                 className={clsx(
