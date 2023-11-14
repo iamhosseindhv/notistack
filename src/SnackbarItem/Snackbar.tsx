@@ -3,9 +3,8 @@
  */
 import * as React from 'react';
 import clsx from 'clsx';
-import useEventCallback from '../utils/useEventCallback';
 import useSnackbarTimer from '../useSnackbarTimer';
-import { CloseReason, SharedProps, SnackbarKey } from '../types';
+import { SharedProps, SnackbarKey } from '../types';
 import { ComponentClasses } from '../utils/styles';
 import useMergedRef from 'src/utils/useMergedRef';
 
@@ -25,18 +24,6 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
 
     const mergedRef = useMergedRef(ref, internalRef);
 
-    const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = (event) => {
-        if (SnackbarProps.onMouseEnter) {
-            SnackbarProps.onMouseEnter(event);
-        }
-    };
-
-    const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = (event) => {
-        if (SnackbarProps.onMouseLeave) {
-            SnackbarProps.onMouseLeave(event);
-        }
-    };
-
     useSnackbarTimer(props, internalRef);
 
     return (
@@ -44,8 +31,8 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
             ref={mergedRef}
             {...SnackbarProps}
             className={clsx(ComponentClasses.Snackbar, className)}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseEnter={SnackbarProps.onMouseEnter}
+            onMouseLeave={SnackbarProps.onMouseLeave}
         >
             {children}
         </div>
