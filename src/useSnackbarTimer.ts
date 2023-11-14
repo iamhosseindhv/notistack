@@ -13,10 +13,10 @@ const useSnackbarTimer = (
     const { autoHideDuration, disableAutoHideTimer, disableWindowBlurListener = false, id, open, onClose } = props;
     const [progress, setProgress] = useState(0);
     const times = useMemo<{
-        used: number;
+        prevUsed: number;
         interval: null | number;
         intervalStart: null | number;
-    }>(() => ({ used: 0, interval: null, intervalStart: null }), []);
+    }>(() => ({ prevUsed: 0, interval: null, intervalStart: null }), []);
 
     useEffect(() => {
         if (!disableAutoHideTimer && !disableWindowBlurListener && open) {
@@ -46,7 +46,7 @@ const useSnackbarTimer = (
         }
     }, [disableAutoHideTimer, disableWindowBlurListener, open]);
 
-    const calcDiff = () => (times.intervalStart == null ? 0 : Date.now() - times.intervalStart);
+    const calcUsed = () => (times.intervalStart == null ? 0 : Date.now() - times.intervalStart);
 
     /**
      * Restart the timer when the user is no longer interacting with the Snackbar
@@ -61,7 +61,7 @@ const useSnackbarTimer = (
 
         times.intervalStart = Date.now();
         times.interval = window.setInterval(() => {
-            const totalUsed = calcDiff() + times.used;
+            const totalUsed = times.prevUsed + calcUsed();
             const nextProgress = Math.min(100, (totalUsed * 100) / autoHideDuration);
 
             setProgress(nextProgress);
@@ -86,7 +86,7 @@ const useSnackbarTimer = (
         }
 
         if (times.interval) {
-            times.used += calcDiff();
+            times.prevUsed += calcUsed();
 
             clearInterval(times.interval);
             times.interval = null;
