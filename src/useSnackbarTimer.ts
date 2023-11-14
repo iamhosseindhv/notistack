@@ -66,7 +66,7 @@ const useSnackbarTimer = (
 
             setProgress(nextProgress);
 
-            if (nextProgress >= 100) {
+            if (nextProgress === 100) {
                 pause();
 
                 if (onClose) {
