@@ -2,7 +2,10 @@ import { RefObject, useEffect, useMemo, useState } from 'react';
 import { SnackbarProps } from './SnackbarItem/Snackbar';
 
 const useSnackbarTimer = (
-    props: SnackbarProps,
+    props: Pick<
+        SnackbarProps,
+        'autoHideDuration' | 'disableAutoHideTimer' | 'disableWindowBlurListener' | 'id' | 'open' | 'onClose'
+    >,
     ref: RefObject<HTMLDivElement | null>
 ): {
     progress: number;
