@@ -7,6 +7,7 @@ import useEventCallback from '../utils/useEventCallback';
 import useSnackbarTimer from '../useSnackbarTimer';
 import { CloseReason, SharedProps, SnackbarKey } from '../types';
 import { ComponentClasses } from '../utils/styles';
+import useMergedRef from 'src/utils/useMergedRef';
 
 export interface SnackbarProps
     extends Required<Pick<SharedProps, 'disableAutoHideTimer' | 'disableWindowBlurListener' | 'onClose'>> {
@@ -22,6 +23,8 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
     const { children, className, SnackbarProps = {} } = props;
     const internalRef = React.useRef<HTMLDivElement | null>(null);
 
+    const mergedRef = useMergedRef(ref, internalRef);
+
     const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = (event) => {
         if (SnackbarProps.onMouseEnter) {
             SnackbarProps.onMouseEnter(event);
@@ -34,21 +37,11 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
         }
     };
 
-    const refCallback = React.useCallback((instance: HTMLDivElement | null) => {
-        if (typeof ref === 'function') {
-            ref(instance);
-        } else if (ref != null) {
-            ref.current = instance;
-        }
-
-        internalRef.current = instance;
-    }, []);
-
     useSnackbarTimer(props, internalRef);
 
     return (
         <div
-            ref={refCallback}
+            ref={mergedRef}
             {...SnackbarProps}
             className={clsx(ComponentClasses.Snackbar, className)}
             onMouseEnter={handleMouseEnter}
