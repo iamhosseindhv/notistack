@@ -27,13 +27,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>((props, ref) =>
     useSnackbarTimer(props, internalRef);
 
     return (
-        <div
-            ref={mergedRef}
-            {...SnackbarProps}
-            className={clsx(ComponentClasses.Snackbar, className)}
-            onMouseEnter={SnackbarProps.onMouseEnter}
-            onMouseLeave={SnackbarProps.onMouseLeave}
-        >
+        <div ref={mergedRef} {...SnackbarProps} className={clsx(ComponentClasses.Snackbar, className)}>
             {children}
         </div>
     );
