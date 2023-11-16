@@ -73,6 +73,7 @@
         "enqueueSnackbar",
         "snackbarprovider",
         "useSnackbar",
+        "useSnackbarTimer",
         "multiple",
         "react",
         "javascript",

@@ -208,6 +208,14 @@ export interface SharedProps<V extends VariantType = VariantType> extends Partia
      */
     autoHideDuration?: number | null;
     /**
+     * If `true`, the `autoHideDuration` timer will be disabled. You can take charge of running
+     * the timer yourself in your custom component, by using the `useSnackbarTimer` hook.
+     * This can be useful, if you want to display a progress bar in your custom component
+     * in order to indicate the timers progress.
+     * @default false
+     */
+    disableAutoHideTimer?: boolean;
+    /**
      * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
      * @default false
      */
@@ -318,6 +326,7 @@ type NeededByInternalSnack =
     | 'TransitionProps'
     | 'transitionDuration'
     | 'hideIconVariant'
+    | 'disableAutoHideTimer'
     | 'disableWindowBlurListener';
 
 /**
@@ -337,6 +346,7 @@ type NotNeededByCustomSnackbar =
     | keyof TransitionHandlerProps
     | 'onClose'
     | 'SnackbarProps'
+    | 'disableAutoHideTimer'
     | 'disableWindowBlurListener'
     | 'TransitionComponent'
     | 'transitionDuration'

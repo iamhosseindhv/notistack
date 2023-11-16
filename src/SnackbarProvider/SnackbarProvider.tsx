@@ -94,6 +94,7 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
             content: merger('content'),
             variant: merger('variant'),
             anchorOrigin: merger('anchorOrigin'),
+            disableAutoHideTimer: merger('disableAutoHideTimer'),
             disableWindowBlurListener: merger('disableWindowBlurListener'),
             autoHideDuration: merger('autoHideDuration'),
             hideIconVariant: merger('hideIconVariant'),

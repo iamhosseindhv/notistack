@@ -6,6 +6,7 @@ export const defaults = {
     maxSnack: 3,
     persist: false,
     hideIconVariant: false,
+    disableAutoHideTimer: false,
     disableWindowBlurListener: false,
     variant: 'default',
     autoHideDuration: 5000,
