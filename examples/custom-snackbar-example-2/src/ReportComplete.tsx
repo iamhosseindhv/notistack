@@ -1,67 +1,69 @@
-import { useState, forwardRef, useCallback } from "react";
-import clsx from "clsx";
-import { makeStyles } from "@mui/styles";
-import { useSnackbar, SnackbarContent, CustomContentProps } from "notistack";
-import Collapse from "@mui/material/Collapse";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import React, { useState, forwardRef, useCallback } from 'react';
+import { styled } from '@mui/material/styles';
+import { useSnackbar, SnackbarContent } from 'notistack';
+import Collapse from '@mui/material/Collapse';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    "@media (min-width:600px)": {
-      minWidth: "344px !important"
-    }
+const StyledSnackbarContent = styled(SnackbarContent)(({ theme }) => ({
+  '@media (min-width:600px)': {
+    minWidth: '344px !important',
   },
-  card: {
-    width: "100%"
-  },
-  typography: {
-    color: "#000"
-  },
-  actionRoot: {
-    padding: "8px 8px 8px 16px",
-    justifyContent: "space-between"
-  },
-  icons: {
-    marginLeft: "auto"
-  },
-  expand: {
-    padding: "8px 8px",
-    transform: "rotate(0deg)",
-    color: "#000",
-    transition: "all .2s"
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
-  },
-  paper: {
-    backgroundColor: "#fff",
-    padding: 16
-  },
-  checkIcon: {
-    fontSize: 20,
-    paddingRight: 4
-  },
-  button: {
-    padding: 0,
-    textTransform: "none"
-  }
 }));
 
-interface ReportCompleteProps extends CustomContentProps {
+const StyledCard = styled(Card)(({ theme }) => ({
+  width: '100%',
+  backgroundColor: '#fddc6c',
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: '#000',
+}));
+
+const StyledCardActions = styled(CardActions)(({ theme }) => ({
+  padding: '8px 8px 8px 16px',
+  justifyContent: 'space-between',
+}));
+
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  padding: '8px 8px',
+  color: '#000',
+  transition: 'all .2s',
+  '&.expandOpen': {
+    transform: 'rotate(180deg)',
+  },
+}));
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  padding: 16,
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  padding: 0,
+  textTransform: 'none',
+}));
+
+const StyledCheckCircleIcon = styled(CheckCircleIcon)(({ theme }) => ({
+  fontSize: 20,
+  paddingRight: 4,
+}));
+
+interface ReportCompleteProps {
+  id: string | number;
+  message: string;
   allowDownload?: boolean;
 }
 
 const ReportComplete = forwardRef<HTMLDivElement, ReportCompleteProps>(
-  ({ id, ...props }, ref) => {
-    const classes = useStyles();
+  ({ id, message, ...props }, ref) => {
     const { closeSnackbar } = useSnackbar();
     const [expanded, setExpanded] = useState(false);
 
@@ -74,53 +76,50 @@ const ReportComplete = forwardRef<HTMLDivElement, ReportCompleteProps>(
     }, [id, closeSnackbar]);
 
     return (
-      <SnackbarContent ref={ref} className={classes.root}>
-        <Card className={classes.card} style={{ backgroundColor: "#fddc6c" }}>
-          <CardActions classes={{ root: classes.actionRoot }}>
-            <Typography variant="body2" className={classes.typography}>
-              {props.message}
-            </Typography>
-            <div className={classes.icons}>
-              <IconButton
+      <StyledSnackbarContent ref={ref}>
+        <StyledCard>
+          <StyledCardActions>
+            <StyledTypography variant="body2">
+              {message}
+            </StyledTypography>
+            <div>
+              <StyledIconButton
                 aria-label="Show more"
                 size="small"
-                className={clsx(classes.expand, {
-                  [classes.expandOpen]: expanded
-                })}
                 onClick={handleExpandClick}
+                className={expanded ? 'expandOpen' : ''}
               >
                 <ExpandMoreIcon />
-              </IconButton>
-              <IconButton
+              </StyledIconButton>
+              <StyledIconButton
                 size="small"
-                className={classes.expand}
                 onClick={handleDismiss}
               >
                 <CloseIcon fontSize="small" />
-              </IconButton>
+              </StyledIconButton>
             </div>
-          </CardActions>
+          </StyledCardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <Paper className={classes.paper}>
+            <StyledPaper>
               <Typography
                 gutterBottom
                 variant="caption"
-                style={{ color: "#000", display: "block" }}
+                style={{ color: '#000', display: 'block' }}
               >
                 PDF ready
               </Typography>
-              <Button size="small" color="primary" className={classes.button}>
-                <CheckCircleIcon className={classes.checkIcon} />
+              <StyledButton size="small" color="primary">
+                <StyledCheckCircleIcon />
                 Download now
-              </Button>
-            </Paper>
+              </StyledButton>
+            </StyledPaper>
           </Collapse>
-        </Card>
-      </SnackbarContent>
+        </StyledCard>
+      </StyledSnackbarContent>
     );
   }
 );
 
-ReportComplete.displayName = "ReportComplete";
+ReportComplete.displayName = 'ReportComplete';
 
 export default ReportComplete;
