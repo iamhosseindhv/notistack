@@ -45,7 +45,7 @@ variant, use a [custom component](#8-new-components-prop). [This example](https:
 * Any customisation through Material-UI theme is not applied to the elements. This would also mean toggling theme `mode` to **Dark**/**Light** would not affect the appearance of snackbars. You can easily use a [custom component](#8-new-components-prop) to have full control over your snackbars. [`This example`](https://github.com/iamhosseindhv/notistack/tree/master/examples/custom-snackbar-example) demonstrates how your snackbars can react to change of theme mode.
 
 * Drop support for `withSnackbar` Higher-order component (HOC). Consequently, exported type `WithSnackbarProps` was kept in type declerations for backwards compatibility and after over a year, it has been now deleted and you should use `ProviderContext` type instead. You have two options to migrate your code:
-  * Option 1: Migrate your code to be functional component and use `useSnackar`.
+  * Option 1: Migrate your code to be functional component and use `useSnackbar`.
   * Option 2: Remove `withSnackbar` and import the function(s) you need directly from `notistack`:
 ```diff
 - import { withSnackbar } from 'notistack' 
