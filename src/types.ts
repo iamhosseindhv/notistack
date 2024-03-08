@@ -253,6 +253,10 @@ export interface SharedProps<V extends VariantType = VariantType> extends Partia
      */
     action?: SnackbarAction;
     /**
+     * Mapping between variants and an icon component
+     */
+    iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
+    /**
      * Hides iconVariant if set to `true`.
      * @default false
      */
@@ -377,10 +381,6 @@ export interface SnackbarProviderProps extends SharedProps {
      * Override or extend the styles applied to the container component or Snackbars.
      */
     classes?: Partial<ClassNameMap<CombinedClassKey>>;
-    /**
-     * Mapping between variants and an icon component
-     */
-    iconVariant?: Partial<Record<VariantType, React.ReactNode>>;
     /**
      * @ignore
      * SnackbarProvider's ref
