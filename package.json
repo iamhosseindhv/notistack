@@ -42,7 +42,7 @@
         "eslint": "^7.7.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-react": "^7.30.0",
-        "np": "^7.6.1",
+        "np": "10.1.0",
         "prettier": "^2.7.1",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
