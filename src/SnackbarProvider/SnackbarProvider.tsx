@@ -255,14 +255,14 @@ class SnackbarProvider extends Component<SnackbarProviderProps, State> {
     /**
      * Close snackbar with the given key
      */
-    closeSnackbar: ProviderContext['closeSnackbar'] = (key) => {
+    closeSnackbar: ProviderContext['closeSnackbar'] = (key, reason = 'instructed') => {
         // call individual snackbar onClose callback passed through options parameter
         const toBeClosed = this.state.snacks.find((item) => item.id === key);
         if (isDefined(key) && toBeClosed && toBeClosed.onClose) {
-            toBeClosed.onClose(null, 'instructed', key);
+            toBeClosed.onClose(null, reason, key);
         }
 
-        this.handleCloseSnack(null, 'instructed', key);
+        this.handleCloseSnack(null, reason, key);
     };
 
     /**
