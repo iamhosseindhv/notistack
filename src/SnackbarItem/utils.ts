@@ -23,7 +23,7 @@ export const getSlideDirection = (anchorOrigin: InternalSnack['anchorOrigin']): 
     return direction[anchorOrigin.vertical];
 };
 
-/** Tranforms classes name */
+/** Transforms classes name */
 export const toSnackbarAnchorOrigin = (anchorOrigin: SnackbarOrigin): SnackbarClassKey =>
     `anchorOrigin${originKeyExtractor(anchorOrigin)}` as SnackbarClassKey;
 

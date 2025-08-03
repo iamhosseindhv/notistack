@@ -20,7 +20,7 @@ export const defaults = {
 
 /**
  * Derives the right autoHideDuration taking into account the following
- * prority order: 1: Options, 2: Props, 3: default fallback
+ * priority order: 1: Options, 2: Props, 3: default fallback
  */
 const getAutoHideDuration = (optionsDuration: any, propsDuration: any) => {
     const isNumberOrNull = (numberish: number | null) => typeof numberish === 'number' || numberish === null;
@@ -32,7 +32,7 @@ const getAutoHideDuration = (optionsDuration: any, propsDuration: any) => {
 
 /**
  * Derives the right transitionDuration taking into account the following
- * prority order: 1: Options, 2: Props, 3: default fallback
+ * priority order: 1: Options, 2: Props, 3: default fallback
  */
 const getTransitionDuration = (optionsDuration: any, propsDuration: any) => {
     const is = (item: any, types: string[]) => types.some((t) => typeof item === t);
