@@ -3,7 +3,7 @@
 # Migration from v0/v1 to v2
 
 # Motivation
-Notistack `v2` primarily focuses on flexibility, scalibity and customisation. There has been numerous issues and pull requests
+Notistack `v2` primarily focuses on flexibility, scalability and customisation. There has been numerous issues and pull requests
 on the repository asking support for customising snackbars more easily.
 
 So far, customisation was only possible by overriding the existing styles, but this is not always enough. There is only so 
@@ -44,7 +44,7 @@ variant, use a [custom component](#8-new-components-prop). [This example](https:
 
 * Any customisation through Material-UI theme is not applied to the elements. This would also mean toggling theme `mode` to **Dark**/**Light** would not affect the appearance of snackbars. You can easily use a [custom component](#8-new-components-prop) to have full control over your snackbars. [`This example`](https://github.com/iamhosseindhv/notistack/tree/master/examples/custom-snackbar-example) demonstrates how your snackbars can react to change of theme mode.
 
-* Drop support for `withSnackbar` Higher-order component (HOC). Consequently, exported type `WithSnackbarProps` was kept in type declerations for backwards compatibility and after over a year, it has been now deleted and you should use `ProviderContext` type instead. You have two options to migrate your code:
+* Drop support for `withSnackbar` Higher-order component (HOC). Consequently, exported type `WithSnackbarProps` was kept in type declarations for backwards compatibility and after over a year, it has been now deleted and you should use `ProviderContext` type instead. You have two options to migrate your code:
   * Option 1: Migrate your code to be functional component and use `useSnackbar`.
   * Option 2: Remove `withSnackbar` and import the function(s) you need directly from `notistack`:
 ```diff
@@ -63,7 +63,7 @@ class MyButton extends React.Component {
 
 
 ####  New `Components` prop
-You can now define your own `variant`s and show entirely customsied snackbars. Your custom component accepts all props passed to `enqueueSnackbar` or `SnackbarProvider`, so you have full control over it. On top of that, you'll be able pass additional options in options parameter of `enqueueSnackbar. For Typescript users, be sure to follow [these](https://notistack.com/features/customization#custom-variant-(typescript)) additional steps to make the typings work. Example usage:
+You can now define your own `variant`s and show entirely customised snackbars. Your custom component accepts all props passed to `enqueueSnackbar` or `SnackbarProvider`, so you have full control over it. On top of that, you'll be able pass additional options in options parameter of `enqueueSnackbar. For Typescript users, be sure to follow [these](https://notistack.com/features/customization#custom-variant-(typescript)) additional steps to make the typings work. Example usage:
 
 ```tsx
 <SnackbarProvider
