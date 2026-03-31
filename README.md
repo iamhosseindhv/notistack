@@ -4,7 +4,7 @@
 
 <div align="center">
 
-**[Notistack](https://notistack.com): Display notifications with call of a function.**
+**[notistack](https://notistack.com): Display notifications with call of a function.**
 
 </div>
 
