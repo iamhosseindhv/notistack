@@ -43,9 +43,9 @@ const classes = makeStyles({
     action: {
         display: 'flex',
         alignItems: 'center',
-        marginLeft: 'auto',
-        paddingLeft: '16px',
-        marginRight: '-8px',
+        flexGrow: 1,
+        justifyContent: 'end',
+        marginInlineEnd: '-8px',
     },
 });
 
