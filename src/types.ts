@@ -279,11 +279,11 @@ export interface SharedProps<V extends VariantType = VariantType> extends Partia
      * @param {object} event The event source of the callback
      * @param {string} reason Can be:`"timeout"` (`autoHideDuration` expired) or: `"maxsnack"`
      * (snackbar was closed because `maxSnack` has reached) or: `"instructed"` (snackbar was
-     * closed programmatically)
+     * closed programmatically) or: any string if closeSnackbar had reason parameter
      * @param {string|number|undefined} key key of a Snackbar. key will be `undefined` if closeSnackbar
      * is called with no key (user requested all the snackbars to be closed)
      */
-    onClose?: (event: React.SyntheticEvent<any> | null, reason: CloseReason, key?: SnackbarKey) => void;
+    onClose?: (event: React.SyntheticEvent<any> | null, reason: CloseReason | string, key?: SnackbarKey) => void;
 }
 
 /**
@@ -405,7 +405,7 @@ interface EnqueueSnackbar {
 
 export interface ProviderContext {
     enqueueSnackbar: EnqueueSnackbar;
-    closeSnackbar: (key?: SnackbarKey) => void;
+    closeSnackbar: (key?: SnackbarKey, reason?: string) => void;
 }
 
 export declare class SnackbarProvider extends React.Component<SnackbarProviderProps> {
