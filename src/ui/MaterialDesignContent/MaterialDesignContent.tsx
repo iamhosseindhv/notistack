@@ -49,7 +49,7 @@ const classes = makeStyles({
     },
 });
 
-const ariaDescribedby = 'notistack-snackbar';
+const ariaDescribedbyPrefix = 'notistack-snackbar';
 
 const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((props, forwardedRef) => {
     const {
@@ -69,6 +69,8 @@ const MaterialDesignContent = forwardRef<HTMLDivElement, CustomContentProps>((pr
     if (typeof action === 'function') {
         action = action(id);
     }
+
+    const ariaDescribedby = `${ariaDescribedbyPrefix}-${id}`;
 
     return (
         <SnackbarContent
